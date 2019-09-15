@@ -7,16 +7,69 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+import FirebaseAuth
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
-
+    private final let APP_FIRST_OPEN = "APP_FIRST_OPEN"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        // Firebase stores login sessions in the keychain, which is NOT deleted when the user uninstalls the app.
+        // So, if a user is logged in, then uninstalls and re-installs the app, the default Firebase behavior would automatically
+        // log them in again. This code modifies that terrible default behavior by using a trivial UserDefaults boolean to
+        // track whether or not this is the first time the app has been opened and to log out any old sessions if so.
+        if UserDefaults.standard.bool(forKey: APP_FIRST_OPEN) == false {
+            // App has not been opened before, log out the old firebase session if there is one
+            do {
+                try Auth.auth().signOut()
+            } catch let signOutError as NSError {
+                // The signout will fail if this the absolute first time the app was ran on this user's device. That's okay.
+                print ("Error signing out: \(signOutError)")
+            }
+            UserDefaults.standard.set(true, forKey: APP_FIRST_OPEN)
+        }
         return true
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+            return GIDSignIn.sharedInstance().handle(url)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        if let error = error {
+            print("Error in didSignInForUser: \(error)")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        // Firebase log in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Error in authenticating with firebase: \(error)")
+                return
+            }
+            // User is signed in
+            print("Successfully signed user in")
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
