@@ -10,6 +10,8 @@
 		14F83F6A1174E3322F142052 /* Pods_QuickBite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC872374CFA47B18A57A118 /* Pods_QuickBite.framework */; };
 		8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */; };
 		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
+		850A7D8A232F8FF000F67125 /* HomeLoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */; };
+		850A7D8C232F923100F67125 /* HomeLoadingCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
 		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
@@ -98,6 +100,8 @@
 		8158ACD805B92BDCFC867AF8 /* Pods-QuickBite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.release.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.release.xcconfig"; sourceTree = "<group>"; };
 		8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeLoadingCoverView.xib; sourceTree = "<group>"; };
+		850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingCoverView.swift; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				85E927B0231A4615008D8DE0 /* DeliveryHomeTableViewController.swift */,
+				850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */,
+				850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */,
 				85E797672313A45800C01238 /* AllRestaurantsTableViewCell.swift */,
 				85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */,
 				85AF1925231BCC7000D8E86E /* DeliveryHomeHeader.xib */,
@@ -550,6 +556,7 @@
 				854348F72311218A00411B80 /* Account.storyboard in Resources */,
 				85808A92232CE86E00A86822 /* GoogleService-Info.plist in Resources */,
 				85E797712313B4F400C01238 /* FeaturedItemCollectionViewCell.xib in Resources */,
+				850A7D8A232F8FF000F67125 /* HomeLoadingCoverView.xib in Resources */,
 				854348D12310EA5600411B80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,6 +691,7 @@
 				85E797692313A45800C01238 /* AllRestaurantsTableViewCell.swift in Sources */,
 				85808A96232D0F6F00A86822 /* AppContainerViewController.swift in Sources */,
 				8552022223183A4800A1E2D0 /* QBTabBarController.swift in Sources */,
+				850A7D8C232F923100F67125 /* HomeLoadingCoverView.swift in Sources */,
 				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,
 				8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */,
 				856BDCE723151BE2001766AD /* Extensions.swift in Sources */,

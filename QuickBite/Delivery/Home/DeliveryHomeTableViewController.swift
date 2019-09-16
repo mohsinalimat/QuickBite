@@ -15,13 +15,17 @@ class DeliveryHomeTableViewController: UITableViewController {
     private var highlightedCategories: [HighlightedRestaurantCategory] = []
     private var allRestos: [Restaurant] = []
     private let homeHeader = DeliveryHomeHeader()
-    
     private let homeHeaderHeight: CGFloat = 65
+    private let loadingCoverView = HomeLoadingCoverView()
     
     private var selectedRestaurant: Restaurant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Cover tableview with loading view
+        setupLoadingCoverView()
+        
         
         let db = Firestore.firestore()
         
@@ -74,6 +78,17 @@ class DeliveryHomeTableViewController: UITableViewController {
         homeHeader.show(true)
     }
     
+    private func setupLoadingCoverView() {
+        let parentView = self.navigationController!.view!
+        parentView.addSubview(loadingCoverView)
+        
+        loadingCoverView.translatesAutoresizingMaskIntoConstraints = false
+        loadingCoverView.leftAnchor.constraint(equalTo: parentView.leftAnchor).isActive = true
+        loadingCoverView.rightAnchor.constraint(equalTo: parentView.rightAnchor).isActive = true
+        loadingCoverView.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
+        loadingCoverView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
+    }
+    
     
     private func loadRestaurants(_ documents: Array<QueryDocumentSnapshot>) {
         for document in documents {
@@ -85,6 +100,15 @@ class DeliveryHomeTableViewController: UITableViewController {
         }
         populateHighlightedCategories()
         tableView.reloadData()
+        hideLoadingCoverView()
+    }
+    
+    private func hideLoadingCoverView() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.loadingCoverView.alpha = 0.0
+        }) { (_) in
+            self.loadingCoverView.removeFromSuperview()
+        }
     }
     
     private func populateHighlightedCategories() {

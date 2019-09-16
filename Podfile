@@ -14,4 +14,5 @@ target 'QuickBite' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'SDWebImage'
+  pod 'NVActivityIndicatorView'
 end
