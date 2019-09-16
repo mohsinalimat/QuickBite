@@ -135,6 +135,9 @@ PODS:
   - nanopb/encode (0.3.901)
   - PMSuperButton (2.2.0)
   - Protobuf (3.9.0)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
 
 DEPENDENCIES:
   - BEMCheckBox
@@ -144,6 +147,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Hero
   - PMSuperButton
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -173,6 +177,7 @@ SPEC REPOS:
     - nanopb
     - PMSuperButton
     - Protobuf
+    - SDWebImage
 
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
@@ -201,7 +206,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PMSuperButton: 5e7b2eb79468dba1ced3fd00e47a7ce88a1fa664
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
 
-PODFILE CHECKSUM: 3e594909a7d97350891720141895a114427c4239
+PODFILE CHECKSUM: 2e66d9d2c273207cc64cd16fb150bcc2bdce8918
 
 COCOAPODS: 1.7.5

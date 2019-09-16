@@ -12,7 +12,7 @@ class AllRestaurantsTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantImage: UIImageView!
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var restaurantName: UILabel!
-    @IBOutlet weak var restaurantCuisines: UILabel!
+    @IBOutlet weak var restaurantCategories: UILabel!
     @IBOutlet weak var restaurantRating: UILabel!
     
     override func awakeFromNib() {

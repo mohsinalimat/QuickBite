@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		14F83F6A1174E3322F142052 /* Pods_QuickBite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC872374CFA47B18A57A118 /* Pods_QuickBite.framework */; };
 		8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */; };
+		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
 		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
@@ -96,6 +97,7 @@
 		1DEB3DB3D42F991A1083F436 /* Pods-QuickBite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.debug.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.debug.xcconfig"; sourceTree = "<group>"; };
 		8158ACD805B92BDCFC867AF8 /* Pods-QuickBite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.release.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.release.xcconfig"; sourceTree = "<group>"; };
 		8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		850A7D86232F730800F67125 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				850A7D87232F731C00F67125 /* Restaurant.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		850D907C05108DEA09F112B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +275,7 @@
 				85808A93232D0DEA00A86822 /* AppManager.swift */,
 				85808A95232D0F6F00A86822 /* AppContainerViewController.swift */,
 				854348CF2310EA5600411B80 /* Main.storyboard */,
+				850A7D86232F730800F67125 /* Objects */,
 				85E625A12315478B00954664 /* Extras */,
 				85CF2DFB2328F28600F9C815 /* Get Started */,
 				854348CD2310EA5600411B80 /* OrdersViewController.swift */,
@@ -636,6 +647,7 @@
 				85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */,
 				8552021E2317E87400A1E2D0 /* SPAlert.swift in Sources */,
 				852AE7F7232BB2BA00804751 /* TweeBorderedTextField.swift in Sources */,
+				850A7D88232F731C00F67125 /* Restaurant.swift in Sources */,
 				85E797702313B4F400C01238 /* FeaturedItemCollectionViewCell.swift in Sources */,
 				852AE7FB232BB2BA00804751 /* FontAnimation.swift in Sources */,
 				85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */,

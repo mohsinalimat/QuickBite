@@ -8,11 +8,12 @@
 
 import UIKit
 import FirebaseFirestore
+import SDWebImage
 
 class DeliveryHomeTableViewController: UITableViewController {
     
-    private var highlightedCategories: [HighlightedRestaurantCategory]!
-    private var allRestos: [Restaurant]!
+    private var highlightedCategories: [HighlightedRestaurantCategory] = []
+    private var allRestos: [Restaurant] = []
     private let homeHeader = DeliveryHomeHeader()
     
     private let homeHeaderHeight: CGFloat = 65
@@ -28,28 +29,26 @@ class DeliveryHomeTableViewController: UITableViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
+                self.loadRestaurants(querySnapshot!.documents)
             }
         }
 
         // Fake Data
-        let resto1 = Restaurant(name: "Chika Loca!", image: UIImage(imageLiteralResourceName: "food_sample_inasal"))
-        let resto2 = Restaurant(name: "Chicken Rotizado", image: UIImage(imageLiteralResourceName: "rotizado"))
-        let resto3 = Restaurant(name: "House of Pancakes", image: UIImage(imageLiteralResourceName: "pancakes"))
-        let resto4 = Restaurant(name: "Little Italy Pizzaria - SuperMall Downtown - 5th floor", image: UIImage(imageLiteralResourceName: "sample_food_2"))
-        let resto5 = Restaurant(name: "Burger King", image: UIImage(imageLiteralResourceName: "sample_food_1"))
-        let resto6 = Restaurant(name: "Hot Chix", image: UIImage(imageLiteralResourceName: "sample_food_3"))
+//        let resto1 = Restaurant(name: "Chika Loca!", image: UIImage(imageLiteralResourceName: "food_sample_inasal"))
+//        let resto2 = Restaurant(name: "Chicken Rotizado", image: UIImage(imageLiteralResourceName: "rotizado"))
+//        let resto3 = Restaurant(name: "House of Pancakes", image: UIImage(imageLiteralResourceName: "pancakes"))
+//        let resto4 = Restaurant(name: "Little Italy Pizzaria - SuperMall Downtown - 5th floor", image: UIImage(imageLiteralResourceName: "sample_food_2"))
+//        let resto5 = Restaurant(name: "Burger King", image: UIImage(imageLiteralResourceName: "sample_food_1"))
+//        let resto6 = Restaurant(name: "Hot Chix", image: UIImage(imageLiteralResourceName: "sample_food_3"))
         
-        let highlightedCategory1 = HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
-                                                      restaurants: [resto4, resto2, resto1, resto3])
-        let highlightedCategory2 = HighlightedRestaurantCategory(categoryName: "Burgers & Wings",
-                                                                restaurants: [resto1, resto5, resto1, resto6])
+//        let highlightedCategory1 = HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
+//                                                      restaurants: [resto4, resto2, resto1, resto3])
+//        let highlightedCategory2 = HighlightedRestaurantCategory(categoryName: "Burgers & Wings",
+//                                                                restaurants: [resto1, resto5, resto1, resto6])
         
-        highlightedCategories = [highlightedCategory1, highlightedCategory2]
+//        highlightedCategories = [highlightedCategory1, highlightedCategory2]
         
-        allRestos = [resto1, resto2, resto3, resto4, resto5, resto6]
+//        allRestos = [resto1, resto2, resto3, resto4, resto5, resto6]
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
@@ -73,6 +72,30 @@ class DeliveryHomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeHeader.show(true)
+    }
+    
+    
+    private func loadRestaurants(_ documents: Array<QueryDocumentSnapshot>) {
+        for document in documents {
+            if let restaurant = Restaurant(dictionary: document.data()) {
+                allRestos.append(restaurant)
+            } else {
+                print("couldn't append restaurant! \(document.data())")
+            }
+        }
+        populateHighlightedCategories()
+        tableView.reloadData()
+    }
+    
+    private func populateHighlightedCategories() {
+        var topPickRestos: [Restaurant] = []
+        for resto in allRestos {
+            if resto.topPick {
+                topPickRestos.append(resto)
+            }
+        }
+        highlightedCategories.append(HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
+                                                                   restaurants: topPickRestos))
     }
     
     
@@ -104,9 +127,11 @@ class DeliveryHomeTableViewController: UITableViewController {
             return tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
         case 1: // Highlighted Restaurant categories
             let cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedRestaurantCategoryCell", for: indexPath) as! HighlightedRestaurantCategoryTableViewCell
+            
             cell.categoryName.text = highlightedCategories[indexPath.row].categoryName
             cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
             cell.peekImplementation.delegate = self
+            
             return cell
         case 2: // All Restaurants
             if indexPath.row == 0 { // Header cell
@@ -117,7 +142,9 @@ class DeliveryHomeTableViewController: UITableViewController {
                 
                 let restaurant = allRestos[indexPath.row - 1]
                 cell.restaurantName.text = restaurant.name
-                cell.restaurantImage.image = restaurant.image
+                cell.restaurantCategories.text = restaurant.categories
+                cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "delivery"))
+                cell.restaurantRating.text = String(restaurant.rating)
                 
                 return cell
             }
@@ -135,6 +162,7 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
 }
 
+// Highlighed Restaurant Cells
 extension DeliveryHomeTableViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -147,7 +175,7 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
         let restaurant = highlightedCategories[collectionView.tag].restaurants[indexPath.row]
         
         cell.restaurantName.text = restaurant.name
-        cell.imageView.image = restaurant.image
+        cell.imageView.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "delivery"))
         
         return cell
     }

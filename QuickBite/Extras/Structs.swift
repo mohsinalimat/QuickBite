@@ -73,11 +73,6 @@ struct HighlightedRestaurantCategory {
     var restaurants: [Restaurant] = []
 }
 
-struct Restaurant {
-    var name = ""
-    var image = UIImage(#imageLiteral(resourceName: "sample_food_1"))
-}
-
 struct MenuItem: Codable {
     var name = ""
     var description = ""
