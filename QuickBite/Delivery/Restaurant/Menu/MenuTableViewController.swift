@@ -20,7 +20,7 @@ class MenuTableViewController: UITableViewController {
         if menuItemsForCategory.count < 3 {
             tableView.separatorStyle = .none
         }
-        tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        tableView.contentInset.top = 16
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

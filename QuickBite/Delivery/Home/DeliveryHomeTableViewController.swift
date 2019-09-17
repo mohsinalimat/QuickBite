@@ -36,10 +36,150 @@ class DeliveryHomeTableViewController: UITableViewController {
                 self.loadRestaurants(querySnapshot!.documents)
             }
         }
+
+//        let restaurantRef = db.collection("restaurants")
+//
+//        restaurantRef.document("chika_loca").setData([
+//            "name": "Chika Loca!",
+//            "categories": "Chicken, BBQ",
+//            "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
+//            "rating": 3.5,
+//            "image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/food_sample_inasal.jpg?alt=media&token=70e75f54-b368-4c44-a4b7-5bda1caf5c53",
+//            "address": "",
+//            "top_pick": true,
+//            "menu_items": [
+//                [
+//                    "item_name": "5pc. BBQ Chicken Wings",
+//                    "description": "",
+//                    "category": "Chicken",
+//                    "featured": true,
+//                    "item_image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/sample_food_3.jpg?alt=media&token=2eb2b213-df11-45cf-8867-66785d9f8075",
+//                    "price": 110,
+//                    "item_option_categories": [
+//                        [
+//                            "options_category_name": "Sides",
+//                            "required": true,
+//                            "single_selection": true,
+//                            "options": [
+//                                [
+//                                    "option_name": "Side1",
+//                                    "added_price": 30
+//                                ],
+//                                [
+//                                    "option_name": "Side2",
+//                                    "added_price": 40
+//                                ]
+//                            ]
+//                        ],
+//                        [
+//                            "options_category_name": "Extras",
+//                            "required": false,
+//                            "single_selection": false,
+//                            "options": [
+//                                [
+//                                    "option_name": "Extra BBQ Sauce",
+//                                    "added_price": 25
+//                                ],
+//                                [
+//                                    "option_name": "Extra Garlic Sauce",
+//                                    "added_price": 20
+//                                ],
+//                                [
+//                                    "option_name": "Extra Magic Sauce",
+//                                    "added_price": 100
+//                                ],
+//                                [
+//                                    "option_name": "Extra Super Magic Sauce Long Title",
+//                                    "added_price": 150
+//                                ]
+//                            ]
+//                        ]
+//                    ]
+//                ],
+//                [
+//                    "item_name": "Strawberry Smoothie",
+//                    "description": "",
+//                    "category": "Drinks",
+//                    "featured": false,
+//                    "item_image_url": "",
+//                    "price": 99,
+//                    "item_option_categories": []
+//                ],
+//                [
+//                    "item_name": "Chicken Inasal",
+//                    "description": "",
+//                    "category": "Chicken",
+//                    "featured": true,
+//                    "item_image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/inasal_2.png?alt=media&token=b789002b-96ff-47d2-8e43-defb8dff3c76",
+//                    "price": 115,
+//                    "item_option_categories": []
+//                ]
+//            ]
+//            ])
+//
+//        restaurantRef.document("house_of_pancakes").setData([
+//            "name": "House of Pancakes",
+//            "categories": "Breakfast, Smoothies",
+//            "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
+//            "rating": 4.7,
+//            "image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/Egg-free-french-toast_post.jpg?alt=media&token=8de1aa40-946c-4006-8cd6-6bc462e4236c",
+//            "address": "",
+//            "top_pick": false,
+//            "menu_items": [
+//                [
+//                    "item_name": "Brioche French Toast",
+//                    "description": "",
+//                    "category": "Breakfast",
+//                    "featured": true,
+//                    "price": 135,
+//                    "item_option_categories": [
+//                        [
+//                            "options_category_name": "Sides",
+//                            "required": true,
+//                            "single_selection": true,
+//                            "options": [
+//                                [
+//                                    "option_name": "Blueberries",
+//                                    "added_price": 0
+//                                ],
+//                                [
+//                                    "option_name": "Strawberries",
+//                                    "added_price": 0
+//                                ]
+//                            ]
+//                        ],
+//                        [
+//                            "options_category_name": "Extras",
+//                            "required": false,
+//                            "single_selection": false,
+//                            "options": [
+//                                [
+//                                    "option_name": "Extra butter packets",
+//                                    "added_price": 25
+//                                ],
+//                                [
+//                                    "option_name": "Extra syrup",
+//                                    "added_price": 20
+//                                ]
+//                            ]
+//                        ]
+//                    ]
+//                ],
+//                [
+//                    "item_name": "Banana Smoothie",
+//                    "description": "",
+//                    "category": "Drinks",
+//                    "featured": false,
+//                    "price": 99,
+//                    "item_option_categories": []
+//                ]
+//            ]
+//            ])
+
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        tableView.contentInset.top = 10
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.white), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

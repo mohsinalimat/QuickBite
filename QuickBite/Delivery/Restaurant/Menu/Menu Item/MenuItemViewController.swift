@@ -8,10 +8,12 @@
 
 import UIKit
 
-class MenuItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MenuItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var orderOptionsTableView: UITableView!
     @IBOutlet weak var menuItemImage: UIImageView!
     @IBOutlet weak var menuItemTitle: UILabel!
+    @IBOutlet weak var menuItemTitleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuItemDescription: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var topBar: GradientView!
@@ -40,11 +42,20 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     
-        menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        if menuItem.imageURL.isNotEmpty {
+            menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        } else {
+            menuItemTitleTopConstraint.constant = 100
+        }
         menuItemTitle.text = menuItem.itemName
         menuItemDescription.text = menuItem.description
         totalPriceLabel.text = menuItem.price.asPriceString
+        
+        scrollView.contentInset.bottom = 120
         
         addedPriceForSection = Array(repeating: 0.0, count: menuItem.itemOptionCategories.count)
         
@@ -57,6 +68,26 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 80
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentInset.bottom = 120
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
