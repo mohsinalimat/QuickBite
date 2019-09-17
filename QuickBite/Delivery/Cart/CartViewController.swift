@@ -83,10 +83,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCell", for: indexPath) as! CartItemTableViewCell
         
         let cartItem = cartItems[indexPath.row]
-        cell.itemTitle.text = cartItem.name
+        cell.itemTitle.text = cartItem.itemName
         cell.selectedItemOptions.text = cartItem.selectedOptions
         cell.quantityLabel.text = "\(cartItem.selectedQuantity)x"
-        cell.priceLabel.text = (cartItems[indexPath.row].price * cartItem.selectedQuantity).asPriceString
+        cell.priceLabel.text = (cartItems[indexPath.row].price * Double(cartItem.selectedQuantity)).asPriceString
         
         return cell
     }

@@ -6,6 +6,7 @@ use_frameworks!
 # https://firebase.google.com/docs/ios/setup#available-pods
 
 target 'QuickBite' do
+  pod 'CocoaLumberjack/Swift'
   pod 'PMSuperButton'
   pod 'BEMCheckBox'
   pod 'Hero'

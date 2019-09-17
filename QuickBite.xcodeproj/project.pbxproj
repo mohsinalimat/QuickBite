@@ -12,6 +12,8 @@
 		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
 		850A7D8A232F8FF000F67125 /* HomeLoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */; };
 		850A7D8C232F923100F67125 /* HomeLoadingCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */; };
+		850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8D232FA6D600F67125 /* MenuItem.swift */; };
+		850A7D902330DC2F00F67125 /* CustomLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8F2330DC2F00F67125 /* CustomLogger.swift */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
 		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
@@ -102,6 +104,8 @@
 		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeLoadingCoverView.xib; sourceTree = "<group>"; };
 		850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingCoverView.swift; sourceTree = "<group>"; };
+		850A7D8D232FA6D600F67125 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		850A7D8F2330DC2F00F67125 /* CustomLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogger.swift; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				850A7D87232F731C00F67125 /* Restaurant.swift */,
+				850A7D8D232FA6D600F67125 /* MenuItem.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				8591C439231661010036CBE6 /* AutoSizedTableView.swift */,
+				850A7D8F2330DC2F00F67125 /* CustomLogger.swift */,
 				856BDCE623151BE2001766AD /* Extensions.swift */,
 				85E625A22315479F00954664 /* GradientView.swift */,
 				8552022123183A4800A1E2D0 /* QBTabBarController.swift */,
@@ -642,6 +648,7 @@
 				852AE7F8232BB2BA00804751 /* WeakTargetProxy.swift in Sources */,
 				852AE7FA232BB2BA00804751 /* TweeActiveTextField.swift in Sources */,
 				85AF1921231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift in Sources */,
+				850A7D902330DC2F00F67125 /* CustomLogger.swift in Sources */,
 				855202202317EFEC00A1E2D0 /* CartBanner.swift in Sources */,
 				85E7976423136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift in Sources */,
 				85E625A32315479F00954664 /* GradientView.swift in Sources */,
@@ -661,6 +668,7 @@
 				852AE7F9232BB2BA00804751 /* TweeAttributedTextField.swift in Sources */,
 				85CF2DF02326554500F9C815 /* YoshikoTextField.swift in Sources */,
 				85808A94232D0DEB00A86822 /* AppManager.swift in Sources */,
+				850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */,
 				856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */,
 				85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */,
 				85CF2DF12326554500F9C815 /* HoshiTextField.swift in Sources */,

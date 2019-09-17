@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import SDWebImage
+import CocoaLumberjack
 
 class DeliveryHomeTableViewController: UITableViewController {
     
@@ -26,37 +27,19 @@ class DeliveryHomeTableViewController: UITableViewController {
         // Cover tableview with loading view
         setupLoadingCoverView()
         
-        
+        // Download restaurants from Firestore
         let db = Firestore.firestore()
-        
         db.collection("restaurants").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+                DDLogError("Error getting documents: \(err)")
             } else {
                 self.loadRestaurants(querySnapshot!.documents)
             }
         }
-
-        // Fake Data
-//        let resto1 = Restaurant(name: "Chika Loca!", image: UIImage(imageLiteralResourceName: "food_sample_inasal"))
-//        let resto2 = Restaurant(name: "Chicken Rotizado", image: UIImage(imageLiteralResourceName: "rotizado"))
-//        let resto3 = Restaurant(name: "House of Pancakes", image: UIImage(imageLiteralResourceName: "pancakes"))
-//        let resto4 = Restaurant(name: "Little Italy Pizzaria - SuperMall Downtown - 5th floor", image: UIImage(imageLiteralResourceName: "sample_food_2"))
-//        let resto5 = Restaurant(name: "Burger King", image: UIImage(imageLiteralResourceName: "sample_food_1"))
-//        let resto6 = Restaurant(name: "Hot Chix", image: UIImage(imageLiteralResourceName: "sample_food_3"))
-        
-//        let highlightedCategory1 = HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
-//                                                      restaurants: [resto4, resto2, resto1, resto3])
-//        let highlightedCategory2 = HighlightedRestaurantCategory(categoryName: "Burgers & Wings",
-//                                                                restaurants: [resto1, resto5, resto1, resto6])
-        
-//        highlightedCategories = [highlightedCategory1, highlightedCategory2]
-        
-//        allRestos = [resto1, resto2, resto3, resto4, resto5, resto6]
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.white), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -178,11 +161,7 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        homeHeader.showShadow(shouldShowHeaderShadow)
-    }
-    
-    private var shouldShowHeaderShadow: Bool {
-        return -tableView.contentOffset.y < (homeHeaderHeight - 70)
+        homeHeader.showShadow(-tableView.contentOffset.y < (homeHeaderHeight - 70))
     }
 }
 

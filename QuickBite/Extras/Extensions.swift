@@ -71,7 +71,7 @@ public extension UIImage {
     }
 }
 
-extension Int {
+extension Double {
     var asPriceString: String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -88,9 +88,9 @@ extension String {
         return self
     }
     
-    func getPrice() -> Int? {
+    func getPrice() -> Double? {
         if let range = self.range(of: "₱") {
-            return Int(self[range.upperBound...])!
+            return Double(self[range.upperBound...])!
         }
         return nil
     }

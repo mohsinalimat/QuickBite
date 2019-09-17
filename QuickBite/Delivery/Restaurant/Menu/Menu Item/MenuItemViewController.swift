@@ -10,6 +10,7 @@ import UIKit
 
 class MenuItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var orderOptionsTableView: UITableView!
+    @IBOutlet weak var menuItemImage: UIImageView!
     @IBOutlet weak var menuItemTitle: UILabel!
     @IBOutlet weak var menuItemDescription: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -22,10 +23,13 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var increaseQuantityBtn: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     
-    var menuItem = MenuItem()
+    var menuItem: MenuItem!
     
-    private var totalExtrasPrice = 0 {
+    private var addedPriceForSection: [Double]! {
         didSet { updateTotalPriceLabel() }
+    }
+    private var totalAddedPrice: Double {
+        return addedPriceForSection.reduce(0, +)
     }
     private var topBarIsShown = false
     private let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
@@ -36,24 +40,13 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Create some fake data for now
-        let menuItemOption1 = MenuItemOption(name: "Sides",
-                                             options: ["Strawberries", "Blueberries", "Honey", "Chocolate Chips"],
-                                             isSingleSelection: true, isRequired: true)
-        let menuItemOption2 = MenuItemOption(name: "Extras",
-                                             options: ["Butter packet ₱30", "Chocolate Syrup", "Syrup ₱40"],
-                                             isSingleSelection: false, isRequired: false)
-        menuItem = MenuItem(name: "Brioche French Toast",
-                            description: "Dipped in our signature cinnamon egg batter and served with your choice of Virginia ham, sizzling bacon or sausage along with two eggs any style.",
-                            price: 139,
-                            orderOptions: [menuItemOption1, menuItemOption2],
-                            selectedOptions: "", selectedQuantity: 0)
     
-        
-        menuItemTitle.text = menuItem.name
+        menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        menuItemTitle.text = menuItem.itemName
         menuItemDescription.text = menuItem.description
         totalPriceLabel.text = menuItem.price.asPriceString
+        
+        addedPriceForSection = Array(repeating: 0.0, count: menuItem.itemOptionCategories.count)
         
         orderOptionsTableView.register(OrderOptionHeaderView.nib, forHeaderFooterViewReuseIdentifier: OrderOptionHeaderView.reuseIdentifier)
         orderOptionsTableView.rowHeight = UITableView.automaticDimension
@@ -68,14 +61,10 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: OrderOptionHeaderView.reuseIdentifier) as! OrderOptionHeaderView
-        if section == 0 {
-            header.orderOptionsTitle.text = "Sides"
-            header.isSingleSelection = true
-            header.selectionIsRequired = true
-        } else {
-            header.orderOptionsTitle.text = "Extras"
-            header.isSingleSelection = false
-        }
+        let itemOptionCategory = menuItem.itemOptionCategories[section]
+        header.orderOptionsTitle.text = itemOptionCategory.categoryName
+        header.isSingleSelection = itemOptionCategory.isSingleSelection
+        header.selectionIsRequired = itemOptionCategory.isRequired
         return header
     }
     
@@ -84,17 +73,17 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return menuItem.orderOptions.count
+        return menuItem.itemOptionCategories.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItem.orderOptions[section].options.count
+        return menuItem.itemOptionCategories[section].options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderOptionCell", for: indexPath) as! OrderOptionTableViewCell
         
-        let orderOption = menuItem.orderOptions[indexPath.section]
+        let orderOption = menuItem.itemOptionCategories[indexPath.section]
         cell.label.text = orderOption.options[indexPath.row].stripPrice()
         if let price = orderOption.options[indexPath.row].getPrice() {
             cell.price.text = "add \(price.asPriceString)"
@@ -110,6 +99,8 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
             header.requirementIsSatisfied()
         }
         
+        let itemOptionCategory = menuItem.itemOptionCategories[indexPath.section]
+        
         if header.isSingleSelection {
             // Deselect other rows in the same section
             for cellRow in 0..<tableView.numberOfRows(inSection: indexPath.section) {
@@ -119,9 +110,12 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         
-        let orderOption = menuItem.orderOptions[indexPath.section]
-        if let price = orderOption.options[indexPath.row].getPrice() {
-            totalExtrasPrice += price
+        if let price = itemOptionCategory.options[indexPath.row].getPrice() {
+            if header.isSingleSelection {
+                addedPriceForSection[indexPath.section] = price
+            } else {
+                addedPriceForSection[indexPath.section] += price
+            }
         }
     }
     
@@ -130,14 +124,13 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         let header = tableView.headerView(forSection: indexPath.section) as! OrderOptionHeaderView
         guard !header.isSingleSelection else { return nil }
         
-        let orderOption = menuItem.orderOptions[indexPath.section]
+        let orderOption = menuItem.itemOptionCategories[indexPath.section]
         if let price = orderOption.options[indexPath.row].getPrice() {
-            totalExtrasPrice -= price
+            addedPriceForSection[indexPath.section] -= price
         }
         
         return indexPath
     }
-    
     
     
     // MARK: - Quantity Control
@@ -162,8 +155,9 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func updateTotalPriceLabel() {
-        let quantity = Int(quantityLabel.text!)!
-        totalPriceLabel.text = ((quantity * menuItem.price) + totalExtrasPrice).asPriceString
+        let quantity = Double(quantityLabel.text!)!
+//        let totalAddedPrice = addedPriceForSection.reduce(0, +)
+        totalPriceLabel.text = (quantity * (menuItem.price + totalAddedPrice)).asPriceString
     }
     
     
@@ -188,7 +182,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
         menuItem.selectedOptions = selectedOrderOptions
         menuItem.selectedQuantity = Int(quantityLabel.text!)!
-        menuItem.price = (menuItem.selectedQuantity * menuItem.price) + totalExtrasPrice
+        menuItem.finalPrice = (Double(menuItem.selectedQuantity) * (menuItem.price + totalAddedPrice))
         Cart.addItem(menuItem)
         
         Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in

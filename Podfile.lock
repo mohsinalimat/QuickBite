@@ -11,6 +11,9 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - CocoaLumberjack/Core (3.5.3)
+  - CocoaLumberjack/Swift (3.5.3):
+    - CocoaLumberjack/Core
   - Firebase (6.7.0):
     - Firebase/Core (= 6.7.0)
   - Firebase/Auth (6.7.0):
@@ -144,6 +147,7 @@ PODS:
 
 DEPENDENCIES:
   - BEMCheckBox
+  - CocoaLumberjack/Swift
   - Firebase
   - Firebase/Auth
   - Firebase/Firestore
@@ -158,6 +162,7 @@ SPEC REPOS:
     - AppAuth
     - BEMCheckBox
     - BoringSSL-GRPC
+    - CocoaLumberjack
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -188,6 +193,7 @@ SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
   FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
   FirebaseAuth: e7f86c2dfc57281cd01f7da5e4b40e01e4510a4a
@@ -214,6 +220,6 @@ SPEC CHECKSUMS:
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
 
-PODFILE CHECKSUM: 6211ed83f3b6f0cc842e82b824d970fb0e98f875
+PODFILE CHECKSUM: 013004b9c8cfee47df9df3e58b8b8e5355c1ebd4
 
 COCOAPODS: 1.7.5

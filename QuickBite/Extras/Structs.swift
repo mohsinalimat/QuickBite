@@ -17,10 +17,10 @@ struct Cart {
         return getItems().count >= 1
     }
     
-    static var totalPrice: Int {
-        var totalPrice = 0
+    static var totalPrice: Double {
+        var totalPrice = 0.0
         for item in getItems() {
-            totalPrice = totalPrice + (item.price * item.selectedQuantity)
+            totalPrice += item.finalPrice
         }
         return totalPrice
     }
@@ -72,25 +72,6 @@ struct HighlightedRestaurantCategory {
     var categoryName = ""
     var restaurants: [Restaurant] = []
 }
-
-struct MenuItem: Codable {
-    var name = ""
-    var description = ""
-    var price = 0
-    var orderOptions: [MenuItemOption] = []
-    
-    // Properties used once the item is added to an order
-    var selectedOptions = ""
-    var selectedQuantity = 0
-}
-
-struct MenuItemOption: Codable {
-    var name = "" // e.g. "Sides", "Extras", etc...
-    var options: [String] = []
-    var isSingleSelection = true
-    var isRequired = false
-}
-
 
 // Address
 struct AddressBook {

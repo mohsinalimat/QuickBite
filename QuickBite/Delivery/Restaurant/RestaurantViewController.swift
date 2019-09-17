@@ -17,10 +17,10 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
     
     var restaurant: Restaurant!
     
-    let featuredItems = [["5pc. Barbeque Chicken Wings", "₱139"], ["Chicken Inasal", "₱110"], ["Strawberry Smoothie", "₱99"]]
-    let featuredItemsPhotos = [UIImage(named: "sample_food_3"), UIImage(named: "food_sample_inasal"), UIImage(named: "smoothie")]
+    private var featuredItems: [MenuItem]!
+    private var menuCategories: [String]!
     
-    let menuCategories = ["Popular Items", "Chicken", "Pork", "Salads", "Sides", "Beverages"]
+    private var selectedMenuItem: MenuItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,8 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         
         restaurantName.text = restaurant.name
         
+        menuCategories = restaurant.getMenuCategories()
+        featuredItems = restaurant.getFeaturedItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,13 +48,17 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItemCell", for: indexPath) as! FeaturedItemCollectionViewCell
-        cell.title.text = featuredItems[indexPath.row][0]
-        cell.price.text = featuredItems[indexPath.row][1]
-        cell.imageView.image = featuredItemsPhotos[indexPath.row]
+        
+        let featuredItem = featuredItems[indexPath.row]
+        cell.title.text = featuredItem.itemName
+        cell.price.text = featuredItem.price.asPriceString
+        cell.imageView.sd_setImage(with: URL(string: featuredItem.imageURL))
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedMenuItem = featuredItems[indexPath.row]
         performSegue(withIdentifier: "ShowMenuItemSegue", sender: nil)
     }
 }
@@ -66,16 +72,17 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCategoryCell", for: indexPath)
         cell.textLabel?.text = menuCategories[indexPath.row]
-        cell.detailTextLabel?.text = "\(Int.random(in: 1...20))"
+        cell.detailTextLabel?.text = String(restaurant.getItemsInCategory(menuCategories[indexPath.row]).count)
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? MenuTableViewController {
-            destinationVC.title = menuCategories[menuCategoriesTableView.indexPathForSelectedRow!.row]
-        } else if let destinationVC = segue.destination as? MenuItemViewController {
-            // Pass menu item object to destinationVC here
+        if let menuTableVC = segue.destination as? MenuTableViewController {
+            let category = menuCategories[menuCategoriesTableView.indexPathForSelectedRow!.row]
+            menuTableVC.title = category
+            menuTableVC.menuItemsForCategory = restaurant.getItemsInCategory(category)
+        } else if let menuItemVC = segue.destination as? MenuItemViewController {
+            menuItemVC.menuItem = selectedMenuItem
         }
-        
     }
 }
