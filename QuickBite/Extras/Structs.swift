@@ -8,65 +8,8 @@
 
 import Foundation
 import UIKit
-
-struct Cart {
-    
-    static var bannerIsShown = false
-    
-    static var hasItems: Bool {
-        return getItems().count >= 1
-    }
-    
-    static var totalPrice: Double {
-        var totalPrice = 0.0
-        for item in getItems() {
-            totalPrice += item.finalPrice
-        }
-        return totalPrice
-    }
-    
-    static func addItem(_ item: MenuItem) {
-        // 1. Get the current cart array
-        var cartItems = getItems()
-        
-        // 2. Add the MenuItem object to it
-        cartItems.append(item)
-        
-        // 3. Encode the array and store it again
-        let newCartItemsData = try! JSONEncoder().encode(cartItems)
-        UserDefaults.standard.set(newCartItemsData, forKey: UDKeys.cartItems)
-    }
-    
-    static func getItems() -> [MenuItem] {
-        if let cartItemsData = UserDefaults.standard.data(forKey: UDKeys.cartItems) {
-            let cartItems = try! JSONDecoder().decode([MenuItem].self, from: cartItemsData)
-            return cartItems
-        } else {
-            return []
-        }
-    }
-    
-    static func getTotalQuantity() -> Int {
-        var totalQuantity = 0
-        for item in getItems() {
-            totalQuantity += item.selectedQuantity
-        }
-        return totalQuantity
-    }
-    
-    static func removeItem(at: Int) {
-        var cartItems = getItems()
-        cartItems.remove(at: at)
-        let newCartItemsData = try! JSONEncoder().encode(cartItems)
-        UserDefaults.standard.set(newCartItemsData, forKey: UDKeys.cartItems)
-    }
-    
-    static func removeAll() {
-        let freshCart: [MenuItem] = []
-        let freshCartData = try! JSONEncoder().encode(freshCart)
-        UserDefaults.standard.set(freshCartData, forKey: UDKeys.cartItems)
-    }
-}
+import Firebase
+import CocoaLumberjack
 
 struct HighlightedRestaurantCategory {
     var categoryName = ""
@@ -83,6 +26,7 @@ struct AddressBook {
         
         let newAddressesData = try! JSONEncoder().encode(addresses)
         UserDefaults.standard.set(newAddressesData, forKey: UDKeys.addressBook)
+        syncAddresses()
     }
     
     static func getAddresses() -> [Address] {
@@ -114,6 +58,36 @@ struct AddressBook {
         }
         
         return addresses[0]
+    }
+    
+    private static func syncAddresses() {
+        DDLogDebug("Syncing addresses")
+        // Sync addresses if the user is not using a guest account
+        guard let user = Auth.auth().currentUser else { return }
+        
+        let addresses = AddressBook.getAddresses()
+        var serializedAddresses: [[String : Any]] = []
+        for address in addresses {
+            let serializedAddress: [String: Any] = [
+                "floor_dept_house_no": address.floorDeptHouseNo,
+                "street": address.street,
+                "barangay": address.barangay,
+                "building": address.building,
+                "landmark": address.landmark,
+                "isDefault": address.isDefault
+            ]
+            serializedAddresses.append(serializedAddress)
+        }
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(user.uid).updateData([
+            "addresses": serializedAddresses
+        ]) { err in
+            if let err = err {
+                DDLogError("Error updating address: \(err)")
+            }
+        }
     }
 }
 

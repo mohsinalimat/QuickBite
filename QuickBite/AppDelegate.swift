@@ -67,7 +67,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             // User is signed in
-            print("Successfully signed user in")
+            print("Successfully signed user in to Firebase")
+            // Create corresponding user document to store additional info such as phone number, addresses, etc
+            guard let user = authResult?.user else {
+                fatalError("Couldn't get user!")
+            }
+            
+            let db = Firestore.firestore()
+            
+            // Check if a record already exists in the "users" collection
+            let userDocRef = db.collection("users").document(user.uid)
+            
+            userDocRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    // User document exists, do nothing
+                } else {
+                    // Document does not exist, so we should create one
+                    userDocRef.setData([
+                        "name": user.displayName ?? ""
+                    ])
+                }
+            }
         }
     }
     

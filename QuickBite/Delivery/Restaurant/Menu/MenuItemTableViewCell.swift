@@ -10,6 +10,7 @@ import UIKit
 
 class MenuItemTableViewCell: UITableViewCell {
     @IBOutlet weak var menuItemImage: UIImageView!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuItemName: UILabel!
     @IBOutlet weak var menuItemDescription: UILabel!
     @IBOutlet weak var menuItemPrice: UILabel!

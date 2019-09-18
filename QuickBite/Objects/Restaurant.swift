@@ -54,7 +54,7 @@ extension Restaurant {
         
         var convertedMenuItems: [MenuItem] = []
         for item in menuItems {
-            if let menuItem = MenuItem(dictionary: item) {
+            if let menuItem = MenuItem(dictionary: item, restaurantName: name) {
                 convertedMenuItems.append(menuItem)
             } else {
                 DDLogError("Couldn't create MenuItem from dictionary: \(item)")

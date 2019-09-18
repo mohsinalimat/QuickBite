@@ -9,10 +9,10 @@
 import Foundation
 
 struct UDKeys {
-    static let cartItems = "cartItems"
-    static let addressBook = "addressBook"
+    static let cartItems = "CART_ITEMS"
+    static let cartRestaurantName = "CART_RESTAURANT_NAME"
     
-    static let currentAccountIsStale = "staleAccount"
+    static let addressBook = "ADDRESS_BOOK"
 }
 
 //extension String {

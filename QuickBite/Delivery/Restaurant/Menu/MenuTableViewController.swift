@@ -31,7 +31,11 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell", for: indexPath) as! MenuItemTableViewCell
 
         let menuItem = menuItemsForCategory[indexPath.row]
-        cell.menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        if menuItem.imageURL.isNotEmpty {
+            cell.menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        } else {
+            cell.imageHeightConstraint.constant = 0
+        }
         cell.menuItemName.text = menuItem.itemName
         cell.menuItemDescription.text = menuItem.description
         cell.menuItemPrice.text = menuItem.price.asPriceString

@@ -1,15 +1,17 @@
 //
-//  ReviewOrderViewController.swift
+//  FinalizeOrderViewController.swift
 //  QuickBite
 //
-//  Created by Griffin Smalley on 9/2/19.
+//  Created by Griffin Smalley on 9/18/19.
 //  Copyright © 2019 GriffSoft. All rights reserved.
 //
 
 import UIKit
 
-class ReviewOrderViewController: UIViewController {
-    @IBOutlet weak var orderTotalLabel: UILabel!
+class FinalizeOrderViewController: UIViewController {
+    @IBOutlet weak var finalizeLabel: UILabel!
+    @IBOutlet weak var nameTextField: TweeAttributedTextField!
+    @IBOutlet weak var phoneTextField: TweeAttributedTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,8 @@ class ReviewOrderViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.white), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        finalizeLabel.text = "Finalize your order from \(Cart.getRestaurantName())"
     }
     
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14F83F6A1174E3322F142052 /* Pods_QuickBite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC872374CFA47B18A57A118 /* Pods_QuickBite.framework */; };
+		8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500B3D5233256C1007772B9 /* UserUtil.swift */; };
 		8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */; };
 		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
 		850A7D8A232F8FF000F67125 /* HomeLoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */; };
@@ -26,6 +27,8 @@
 		852AE7FB232BB2BA00804751 /* FontAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F5232BB2B900804751 /* FontAnimation.swift */; };
 		852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FD232BB2DF00804751 /* PasswordTextField.swift */; };
 		852AE800232BB2DF00804751 /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */; };
+		853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */; };
+		853B2BFB233235FF003E6011 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BFA233235FF003E6011 /* Cart.swift */; };
 		854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854348C92310EA5600411B80 /* AppDelegate.swift */; };
 		854348CE2310EA5600411B80 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854348CD2310EA5600411B80 /* OrdersViewController.swift */; };
 		854348D12310EA5600411B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854348CF2310EA5600411B80 /* Main.storyboard */; };
@@ -100,6 +103,7 @@
 		1AC872374CFA47B18A57A118 /* Pods_QuickBite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickBite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEB3DB3D42F991A1083F436 /* Pods-QuickBite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.debug.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.debug.xcconfig"; sourceTree = "<group>"; };
 		8158ACD805B92BDCFC867AF8 /* Pods-QuickBite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.release.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.release.xcconfig"; sourceTree = "<group>"; };
+		8500B3D5233256C1007772B9 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeLoadingCoverView.xib; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		852AE7F5232BB2B900804751 /* FontAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAnimation.swift; sourceTree = "<group>"; };
 		852AE7FD232BB2DF00804751 /* PasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
+		853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeOrderViewController.swift; sourceTree = "<group>"; };
+		853B2BFA233235FF003E6011 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		854348C62310EA5600411B80 /* QuickBite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickBite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		854348C92310EA5600411B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		854348CD2310EA5600411B80 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				850A7D87232F731C00F67125 /* Restaurant.swift */,
+				853B2BFA233235FF003E6011 /* Cart.swift */,
+				8500B3D5233256C1007772B9 /* UserUtil.swift */,
 				850A7D8D232FA6D600F67125 /* MenuItem.swift */,
 			);
 			path = Objects;
@@ -222,11 +230,12 @@
 		851DE0E62318DB4E00A374DB /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				8552021F2317EFEC00A1E2D0 /* CartBanner.swift */,
+				8552020F2317DD2A00A1E2D0 /* CartBanner.xib */,
 				851DE0E72318DB7600A374DB /* CartViewController.swift */,
 				851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */,
-				8552021F2317EFEC00A1E2D0 /* CartBanner.swift */,
 				85283768231D35390083ADD2 /* ReviewOrderViewController.swift */,
-				8552020F2317DD2A00A1E2D0 /* CartBanner.xib */,
+				853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -415,8 +424,8 @@
 			children = (
 				85E7976023136A0900C01238 /* Delivery.storyboard */,
 				85E927B2231A6576008D8DE0 /* Home */,
-				851DE0E62318DB4E00A374DB /* Cart */,
 				85E7976D2313B4D400C01238 /* Restaurant */,
+				851DE0E62318DB4E00A374DB /* Cart */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -682,6 +691,7 @@
 				8543490023114B0A00411B80 /* UserPrefsTableViewCell.swift in Sources */,
 				85CF2DF22326554500F9C815 /* MinoruTextField.swift in Sources */,
 				85CF2DF52326554500F9C815 /* JiroTextField.swift in Sources */,
+				853B2BFB233235FF003E6011 /* Cart.swift in Sources */,
 				8552021C2317E87400A1E2D0 /* SPAlertIconDoneView.swift in Sources */,
 				851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */,
 				85E927B1231A4615008D8DE0 /* DeliveryHomeTableViewController.swift in Sources */,
@@ -699,9 +709,11 @@
 				85E797692313A45800C01238 /* AllRestaurantsTableViewCell.swift in Sources */,
 				85808A96232D0F6F00A86822 /* AppContainerViewController.swift in Sources */,
 				8552022223183A4800A1E2D0 /* QBTabBarController.swift in Sources */,
+				853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */,
 				850A7D8C232F923100F67125 /* HomeLoadingCoverView.swift in Sources */,
 				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,
 				8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */,
+				8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */,
 				856BDCE723151BE2001766AD /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

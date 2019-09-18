@@ -12,6 +12,7 @@ import CocoaLumberjack
 struct MenuItem: Codable {
     var itemName: String
     var description: String
+    var restaurantName: String
     var price: Double
     var category: String
     var featured: Bool
@@ -25,7 +26,7 @@ struct MenuItem: Codable {
 }
 
 extension MenuItem {
-    init?(dictionary: [String : Any]) {
+    init?(dictionary: [String : Any], restaurantName: String) {
         // Required fields
         guard let itemName              = dictionary["item_name"] as? String,
             let description             = dictionary["description"] as? String,
@@ -49,6 +50,7 @@ extension MenuItem {
         
         self.init(itemName: itemName,
                   description: description,
+                  restaurantName: restaurantName,
                   price: price,
                   category: category,
                   featured: featured,

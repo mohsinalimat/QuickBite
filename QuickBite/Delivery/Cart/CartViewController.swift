@@ -28,9 +28,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isHidden = true
         
         cartItems = Cart.getItems()
         
@@ -73,6 +71,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.dismiss(animated: true, completion: nil)
             })
         }
+    }
+    
+    @IBAction func continueTapped(_ sender: Any) {
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
