@@ -414,12 +414,12 @@
 		85E625A12315478B00954664 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				85808A97232D24ED00A86822 /* Constants.swift */,
 				8591C439231661010036CBE6 /* AutoSizedTableView.swift */,
 				850A7D8F2330DC2F00F67125 /* CustomLogger.swift */,
 				856BDCE623151BE2001766AD /* Extensions.swift */,
 				85E625A22315479F00954664 /* GradientView.swift */,
 				8552022123183A4800A1E2D0 /* QBTabBarController.swift */,
-				85808A97232D24ED00A86822 /* Constants.swift */,
 				859D74B8233382A500FE4538 /* LoadingCoverView */,
 				852AE7FC232BB2C200804751 /* TweeTextField */,
 				85AF1924231BC4D100D8E86E /* MSPeekCollectionView */,

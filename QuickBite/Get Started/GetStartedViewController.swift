@@ -60,7 +60,7 @@ class GetStartedViewController: UIViewController {
                         udUser = User(name: user.displayName ?? "")
                     }
                     // Set UserDefaults current user
-                    UserUtil.setCurrentUser(udUser)
+                    UserUtil.updateCurrentUser(udUser)
                     
                     self.shouldShowLoadingOnReappear = false
                     if let addresses = UserUtil.currentUser?.addresses, !addresses.isEmpty {

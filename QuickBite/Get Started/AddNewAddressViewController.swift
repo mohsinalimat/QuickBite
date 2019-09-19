@@ -111,7 +111,7 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
                                  landmark: landmarkTextField.text ?? "",
                                  isDefault: true)
         
-        AddressBook.addAddress(newAddress)
+        UserUtil.addAddress(newAddress)
     }
     
     private func enableNextButton(_ enable: Bool) {

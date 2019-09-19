@@ -7,9 +7,19 @@
 //
 
 import Foundation
+import Firebase
 import CocoaLumberjack
 
 struct UserUtil {
+    
+    enum SyncProperty: String {
+        case name = "name"
+        case phone = "phone"
+        case address = "address"
+    }
+    
+    static private let dbUsers = Firestore.firestore().collection("users")
+    
     static var currentUser: User? {
         if let currentUserData = UserDefaults.standard.data(forKey: UDKeys.currentUser) {
             return try! JSONDecoder().decode(User.self, from: currentUserData)
@@ -17,7 +27,7 @@ struct UserUtil {
         return nil
     }
     
-    static func setCurrentUser(_ user: User) {
+    static func updateCurrentUser(_ user: User) {
         let userData = try! JSONEncoder().encode(user)
         UserDefaults.standard.set(userData, forKey: UDKeys.currentUser)
     }
@@ -29,18 +39,68 @@ struct UserUtil {
     static func setName(_ name: String) {
         if let user = currentUser {
             user.name = name
-            setCurrentUser(user)
+            updateCurrentUser(user)
         } else {
             DDLogError("Tried setting currentUser name without a currentUser set")
         }
+        syncUserProperty(property: .name)
     }
     
     static func setPhoneNumber(_ number: String) {
         if let user = currentUser {
             user.phone = number
-            setCurrentUser(user)
+            updateCurrentUser(user)
         } else {
             DDLogError("Tried setting currentUser name without a currentUser set")
+        }
+        syncUserProperty(property: .phone)
+    }
+    
+    static func addAddress(_ address: Address) {
+        guard let user = currentUser else {
+            DDLogError("Tried to add address without a user set!")
+            return
+        }
+
+        user.addresses.append(address)
+        updateCurrentUser(user)
+        syncUserProperty(property: .address)
+    }
+    
+    //    static func setDefaultAddress(id: UUID) {
+    //        let addresses = getAddresses()
+    //        for address in addresses {
+    //            address.isDefault = address.id == id
+    //        }
+    //        updateAddresses(addresses)
+    //    }
+    
+    private static func syncUserProperty(property: SyncProperty) {
+        DDLogDebug("Syncing userProperty: \(property)")
+        // Sync addresses if the user is not using a guest account
+        guard let fbUser = Auth.auth().currentUser, let user = currentUser else { return }
+
+        var newValue: Any!
+        switch property {
+        case .name:
+            newValue = user.name
+        case .phone:
+            newValue = user.phone
+        case .address:
+            var serializedAddresses: [[String : Any]] = []
+            for address in user.addresses {
+                serializedAddresses.append(address.dictionary)
+            }
+            newValue = serializedAddresses
+        }
+        
+
+        dbUsers.document(fbUser.uid).updateData([
+            property: newValue!
+        ]) { err in
+            if let err = err {
+                DDLogError("Error syncing porperty: \(err)")
+            }
         }
     }
 }
