@@ -130,7 +130,7 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
         nextWasTapped = true
         if checkAddressRequirements() {
             createAndSaveAddress()
-            performSegue(withIdentifier: "ShowMainDelivery", sender: nil)
+            performSegue(withIdentifier: "ShowMainDeliveryFromAddNewAddress", sender: nil)
         } else {
             showRequiredHints()
         }

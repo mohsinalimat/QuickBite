@@ -188,7 +188,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         let navBar = self.navigationController!.navigationBar
         navBar.addSubview(homeHeader)
         
-        homeHeader.setStreetLabel(AddressBook.getDefaultAddress().street)
+        homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.street)
         
         homeHeader.translatesAutoresizingMaskIntoConstraints = false
         homeHeader.leftAnchor.constraint(equalTo: navBar.leftAnchor).isActive = true

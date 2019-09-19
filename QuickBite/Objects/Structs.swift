@@ -24,6 +24,10 @@ struct AddressBook {
         
         addresses.append(address)
         
+        updateAddresses(addresses)
+    }
+    
+    private static func updateAddresses(_ addresses: [Address]) {
         let newAddressesData = try! JSONEncoder().encode(addresses)
         UserDefaults.standard.set(newAddressesData, forKey: UDKeys.addressBook)
         syncAddresses()
@@ -43,6 +47,7 @@ struct AddressBook {
         for address in addresses {
             address.isDefault = address.id == id
         }
+        updateAddresses(addresses)
     }
     
     static func getDefaultAddress() -> Address {

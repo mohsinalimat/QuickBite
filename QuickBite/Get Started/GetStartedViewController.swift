@@ -17,7 +17,7 @@ class GetStartedViewController: UIViewController {
     var handle: AuthStateDidChangeListenerHandle?
     
     private var shouldShowLoadingOnReappear: Bool = false
-    private var loadingCoverView = LoadingCoverView()
+    private var loadingCoverView = LoadingCoverView(loadingText: "Setting up your account...")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +38,37 @@ class GetStartedViewController: UIViewController {
             loadingCoverView.cover(parentView: self.view)
         }
         
-        // Not sure why this doesn't work in viewDidLoad but it doesn't
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let _ = user {
-                self.shouldShowLoadingOnReappear = false
-                self.performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
+            if let user = user {
+                // Download
+                let db = Firestore.firestore()
+                
+                // Check if a record already exists in the "users" collection
+                let userDocRef = db.collection("users").document(user.uid)
+                
+                userDocRef.getDocument { (document, error) in
+                    var udUser: User!
+                    if let document = document, document.exists, let data = document.data() {
+                        // User exists
+                        udUser = User(dictionary: data)
+                    } else {
+                        // User does not exist, so we should create one
+                        DDLogDebug("Creating user...")
+                        userDocRef.setData([
+                            "name": user.displayName ?? ""
+                            ])
+                        udUser = User(name: user.displayName ?? "")
+                    }
+                    // Set UserDefaults current user
+                    UserUtil.setCurrentUser(udUser)
+                    
+                    self.shouldShowLoadingOnReappear = false
+                    if let addresses = UserUtil.currentUser?.addresses, !addresses.isEmpty {
+                        self.performSegue(withIdentifier: "ShowMainDeliveryFromGetStarted", sender: nil)
+                    } else {
+                        self.performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
+                    }
+                }
             }
         }
     }

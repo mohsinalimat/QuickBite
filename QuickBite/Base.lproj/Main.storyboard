@@ -142,6 +142,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="OkW-3f-NKc"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="ShowMainDeliveryFromGetStarted" id="Jgi-eX-ifS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyv-tR-DRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -665,7 +668,7 @@
                         <outlet property="nextButton" destination="Jwl-Jb-JoN" id="JMb-cn-SkX"/>
                         <outlet property="scrollView" destination="yYh-XL-UNI" id="tvx-nO-GWJ"/>
                         <outlet property="streetTextField" destination="REC-2J-36f" id="AeG-Lc-Xr7"/>
-                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="ShowMainDelivery" id="R9m-Vd-9DA"/>
+                        <segue destination="49e-Tb-3d3" kind="showDetail" identifier="ShowMainDeliveryFromAddNewAddress" id="R9m-Vd-9DA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onl-JC-D9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -679,5 +682,8 @@
         <image name="google" width="50" height="50"/>
         <image name="orders" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jgi-eX-ifS"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

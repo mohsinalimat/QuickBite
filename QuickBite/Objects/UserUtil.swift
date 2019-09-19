@@ -26,15 +26,6 @@ struct UserUtil {
         UserDefaults.standard.removeObject(forKey: UDKeys.currentUser)
     }
     
-    
-//    static func currentUser() -> User {
-//        guard let currentUserData = UserDefaults.standard.data(forKey: UDKeys.currentUser) else {
-//            fatalError("Tried to get user without a user being set")
-//        }
-//        
-//        return try! JSONDecoder().decode(User.self, from: currentUserData)
-//    }
-    
     static func setName(_ name: String) {
         if let user = currentUser {
             user.name = name
@@ -58,6 +49,18 @@ class User: Codable {
     var name: String
     var phone: String
     var addresses: [Address]
+    
+    var defaultAddress: Address {
+        guard !addresses.isEmpty else {
+            fatalError("Tried to get default address with no addresses set")
+        }
+        
+        if let defaultAddress = addresses.first(where: { $0.isDefault }) {
+            return defaultAddress
+        }
+        
+        return addresses[0]
+    }
     
 //    var dictionary: [String : Any] {
 //        return [
@@ -90,6 +93,18 @@ class User: Codable {
         
         self.init(name: name,
                   phone: phone,
-                  addresses: [])
+                  addresses: addresses)
+    }
+    
+    func getDefaultAddress() -> Address {
+        guard !addresses.isEmpty else {
+            fatalError("Tried to get default address with no addresses set")
+        }
+        
+        if let defaultAddress = addresses.first(where: { $0.isDefault }) {
+            return defaultAddress
+        }
+        
+        return addresses[0]
     }
 }
