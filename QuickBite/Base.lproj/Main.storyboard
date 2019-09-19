@@ -80,33 +80,63 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kfx-na-wZf">
-                                <rect key="frame" x="16" y="584" width="343" height="60"/>
+                                <rect key="frame" x="16" y="582" width="343" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="8rf-qp-OId"/>
                                     <constraint firstAttribute="height" constant="60" id="Ea6-Xd-q1i"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20O-wI-jfI" customClass="GIDSignInButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGM-iK-sRL" customClass="PMSuperButton" customModule="PMSuperButton">
                                 <rect key="frame" x="16" y="658" width="343" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.32601508498191833" green="0.51300501823425293" blue="0.92562341690063477" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="A0H-fD-c48"/>
-                                    <constraint firstAttribute="width" constant="343" id="QWo-yj-3FN"/>
+                                    <constraint firstAttribute="height" constant="60" id="qv2-Xn-cCI"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="4" minY="12" maxX="0.0" maxY="12"/>
+                                <state key="normal" title="Sign in with Google" image="google">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="imageViewContentMode">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleSignInTapped:" destination="RPI-3C-PPM" eventType="touchUpInside" id="7BZ-9k-oeQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Kfx-na-wZf" firstAttribute="leading" secondItem="xDK-P0-z94" secondAttribute="leading" constant="16" id="56S-ZS-eJb"/>
+                            <constraint firstItem="OGM-iK-sRL" firstAttribute="leading" secondItem="xDK-P0-z94" secondAttribute="leading" constant="16" id="Is9-dg-wki"/>
+                            <constraint firstItem="fTT-Iv-0LO" firstAttribute="top" secondItem="OGM-iK-sRL" secondAttribute="bottom" constant="20" id="LNR-gl-6wX"/>
                             <constraint firstItem="xDK-P0-z94" firstAttribute="bottom" secondItem="fTT-Iv-0LO" secondAttribute="bottom" constant="8" id="LPR-sH-BZ9"/>
                             <constraint firstItem="xDK-P0-z94" firstAttribute="trailing" secondItem="Kfx-na-wZf" secondAttribute="trailing" constant="16" id="Qs8-Hb-Jxu"/>
-                            <constraint firstItem="20O-wI-jfI" firstAttribute="top" secondItem="Kfx-na-wZf" secondAttribute="bottom" constant="14" id="RPn-Kj-qgo"/>
-                            <constraint firstItem="20O-wI-jfI" firstAttribute="leading" secondItem="Kfx-na-wZf" secondAttribute="leading" id="TEg-gd-Eme"/>
                             <constraint firstItem="sk0-38-lgE" firstAttribute="centerY" secondItem="xDK-P0-z94" secondAttribute="centerY" id="Vli-tV-LWx"/>
                             <constraint firstItem="sk0-38-lgE" firstAttribute="centerX" secondItem="xDK-P0-z94" secondAttribute="centerX" id="WiX-GK-5Mj"/>
-                            <constraint firstItem="fTT-Iv-0LO" firstAttribute="top" secondItem="20O-wI-jfI" secondAttribute="bottom" constant="20" id="aXl-8p-SqW"/>
                             <constraint firstItem="fTT-Iv-0LO" firstAttribute="centerX" secondItem="xDK-P0-z94" secondAttribute="centerX" id="khp-TY-bxj"/>
+                            <constraint firstItem="OGM-iK-sRL" firstAttribute="top" secondItem="Kfx-na-wZf" secondAttribute="bottom" constant="16" id="yAC-fv-H6E"/>
+                            <constraint firstItem="xDK-P0-z94" firstAttribute="trailing" secondItem="OGM-iK-sRL" secondAttribute="trailing" constant="16" id="zdx-Vf-8ic"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xDK-P0-z94"/>
                     </view>
@@ -646,6 +676,7 @@
     <resources>
         <image name="account" width="30" height="30"/>
         <image name="arrow_right" width="35" height="35"/>
+        <image name="google" width="50" height="50"/>
         <image name="orders" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="1" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

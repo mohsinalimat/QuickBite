@@ -47,12 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-            return GIDSignIn.sharedInstance().handle(url)
+        return GIDSignIn.sharedInstance().handle(url)
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        DDLogDebug("didSignInForUser")
         if let error = error {
-            print("Error in didSignInForUser: \(error)")
+            NotificationCenter.default.post(name: .userCancelledLogin, object: nil)
+            DDLogError("Error in didSignInForUser: \(error)")
             return
         }
         
@@ -67,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             // User is signed in
-            print("Successfully signed user in to Firebase")
+            DDLogDebug("Successfully signed user in to Firebase")
             // Create corresponding user document to store additional info such as phone number, addresses, etc
             guard let user = authResult?.user else {
                 fatalError("Couldn't get user!")
@@ -79,21 +81,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let userDocRef = db.collection("users").document(user.uid)
             
             userDocRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    // User document exists, do nothing
+                var udUser: User!
+                if let document = document, document.exists, let data = document.data() {
+                    // User exists
+                    udUser = User(dictionary: data)
                 } else {
-                    // Document does not exist, so we should create one
+                    // User does not exist, so we should create one
                     userDocRef.setData([
                         "name": user.displayName ?? ""
                     ])
+                    udUser = User(name: user.displayName ?? "")
                 }
+                // Set UserDefaults current user
+                UserUtil.setCurrentUser(udUser)
+                
             }
         }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
-        // ...
+        DDLogDebug("didDisconnectWith")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

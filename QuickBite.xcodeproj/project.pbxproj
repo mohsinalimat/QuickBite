@@ -11,8 +11,8 @@
 		8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500B3D5233256C1007772B9 /* UserUtil.swift */; };
 		8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */; };
 		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
-		850A7D8A232F8FF000F67125 /* HomeLoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */; };
-		850A7D8C232F923100F67125 /* HomeLoadingCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */; };
+		850A7D8A232F8FF000F67125 /* LoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* LoadingCoverView.xib */; };
+		850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8B232F923100F67125 /* LoadingCoverView.swift */; };
 		850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8D232FA6D600F67125 /* MenuItem.swift */; };
 		850A7D902330DC2F00F67125 /* CustomLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8F2330DC2F00F67125 /* CustomLogger.swift */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
@@ -106,8 +106,8 @@
 		8500B3D5233256C1007772B9 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeLoadingCoverView.xib; sourceTree = "<group>"; };
-		850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingCoverView.swift; sourceTree = "<group>"; };
+		850A7D89232F8FF000F67125 /* LoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCoverView.xib; sourceTree = "<group>"; };
+		850A7D8B232F923100F67125 /* LoadingCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoverView.swift; sourceTree = "<group>"; };
 		850A7D8D232FA6D600F67125 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		850A7D8F2330DC2F00F67125 /* CustomLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogger.swift; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +215,7 @@
 				853B2BFA233235FF003E6011 /* Cart.swift */,
 				8500B3D5233256C1007772B9 /* UserUtil.swift */,
 				850A7D8D232FA6D600F67125 /* MenuItem.swift */,
+				8552020B2317C72E00A1E2D0 /* Structs.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -365,6 +366,15 @@
 			path = "Menu Item";
 			sourceTree = "<group>";
 		};
+		859D74B8233382A500FE4538 /* LoadingCoverView */ = {
+			isa = PBXGroup;
+			children = (
+				850A7D8B232F923100F67125 /* LoadingCoverView.swift */,
+				850A7D89232F8FF000F67125 /* LoadingCoverView.xib */,
+			);
+			path = LoadingCoverView;
+			sourceTree = "<group>";
+		};
 		85AF1924231BC4D100D8E86E /* MSPeekCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,8 +419,8 @@
 				856BDCE623151BE2001766AD /* Extensions.swift */,
 				85E625A22315479F00954664 /* GradientView.swift */,
 				8552022123183A4800A1E2D0 /* QBTabBarController.swift */,
-				8552020B2317C72E00A1E2D0 /* Structs.swift */,
 				85808A97232D24ED00A86822 /* Constants.swift */,
+				859D74B8233382A500FE4538 /* LoadingCoverView */,
 				852AE7FC232BB2C200804751 /* TweeTextField */,
 				85AF1924231BC4D100D8E86E /* MSPeekCollectionView */,
 				855202112317E87400A1E2D0 /* SPAlert */,
@@ -445,8 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				85E927B0231A4615008D8DE0 /* DeliveryHomeTableViewController.swift */,
-				850A7D8B232F923100F67125 /* HomeLoadingCoverView.swift */,
-				850A7D89232F8FF000F67125 /* HomeLoadingCoverView.xib */,
 				85E797672313A45800C01238 /* AllRestaurantsTableViewCell.swift */,
 				85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */,
 				85AF1925231BCC7000D8E86E /* DeliveryHomeHeader.xib */,
@@ -571,7 +579,7 @@
 				854348F72311218A00411B80 /* Account.storyboard in Resources */,
 				85808A92232CE86E00A86822 /* GoogleService-Info.plist in Resources */,
 				85E797712313B4F400C01238 /* FeaturedItemCollectionViewCell.xib in Resources */,
-				850A7D8A232F8FF000F67125 /* HomeLoadingCoverView.xib in Resources */,
+				850A7D8A232F8FF000F67125 /* LoadingCoverView.xib in Resources */,
 				854348D12310EA5600411B80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,7 +718,7 @@
 				85808A96232D0F6F00A86822 /* AppContainerViewController.swift in Sources */,
 				8552022223183A4800A1E2D0 /* QBTabBarController.swift in Sources */,
 				853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */,
-				850A7D8C232F923100F67125 /* HomeLoadingCoverView.swift in Sources */,
+				850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */,
 				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,
 				8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */,
 				8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */,

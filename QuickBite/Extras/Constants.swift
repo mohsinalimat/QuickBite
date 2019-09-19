@@ -13,8 +13,10 @@ struct UDKeys {
     static let cartRestaurantName = "CART_RESTAURANT_NAME"
     
     static let addressBook = "ADDRESS_BOOK"
+    
+    static let currentUser = "CURRENT_USER"
 }
 
-//extension String {
-//    static let cartItems2 = "cartItems"
-//}
+extension Notification.Name {
+    static let userCancelledLogin = Notification.Name("USER_CANCELLED_LOGIN")
+}

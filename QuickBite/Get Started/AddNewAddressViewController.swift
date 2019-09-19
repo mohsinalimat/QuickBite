@@ -9,6 +9,7 @@
 import UIKit
 import PMSuperButton
 import FirebaseAuth
+import CocoaLumberjack
 
 class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -25,6 +26,8 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
     
     private final let streetTextFieldTag = 1
     
+    private var nextWasTapped = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +43,16 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
         } else {
             greetingLabelHeight.constant = 0
         }
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if nextWasTapped == false {
+            // User is going backwards to GetStartedViewController
+            // Log out user if there is a user logged in
+            try? Auth.auth().signOut()
+            UserUtil.clearCurrentUser()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -115,6 +127,7 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func nextTapped(_ sender: Any) {
+        nextWasTapped = true
         if checkAddressRequirements() {
             createAndSaveAddress()
             performSegue(withIdentifier: "ShowMainDelivery", sender: nil)

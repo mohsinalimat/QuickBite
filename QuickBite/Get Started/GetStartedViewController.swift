@@ -11,9 +11,13 @@ import Foundation
 import Firebase
 import GoogleSignIn
 import FirebaseAuth
+import CocoaLumberjack
 
 class GetStartedViewController: UIViewController {
     var handle: AuthStateDidChangeListenerHandle?
+    
+    private var shouldShowLoadingOnReappear: Bool = false
+    private var loadingCoverView = LoadingCoverView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,28 +26,34 @@ class GetStartedViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userCancelledLogin(_:)), name: .userCancelledLogin, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DDLogDebug("ViewWillAppear")
+        if shouldShowLoadingOnReappear {
+            DDLogDebug("Showing loading cover view")
+            loadingCoverView.cover(parentView: self.view)
+        }
         
+        // Not sure why this doesn't work in viewDidLoad but it doesn't
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            // ...
             if let _ = user {
-                // If we have a user AND it's not a stale account, continue to the address selection page
+                self.shouldShowLoadingOnReappear = false
                 self.performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
             }
-//            guard let _ = user?.uid else {
-//                print("statechange called but no uid = not actually logged in? stale data somehow?")
-//                return
-//            }
-//            print("Did log in and has uid!")
-//            print(user?.uid)
-//            print(user?.displayName)
-//            print(user?.email)
-//            print(user?.phoneNumber)
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldShowLoadingOnReappear == false {
+            loadingCoverView.hide()
+        }
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -51,7 +61,15 @@ class GetStartedViewController: UIViewController {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-
+    @objc private func userCancelledLogin(_ notif: Notification) {
+        shouldShowLoadingOnReappear = false
+    }
+    
+    @IBAction func googleSignInTapped(_ sender: Any) {
+        shouldShowLoadingOnReappear = true
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
     /*
     // MARK: - Navigation
 

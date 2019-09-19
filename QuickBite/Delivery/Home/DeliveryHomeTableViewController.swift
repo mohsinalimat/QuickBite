@@ -17,7 +17,7 @@ class DeliveryHomeTableViewController: UITableViewController {
     private var allRestos: [Restaurant] = []
     private let homeHeader = DeliveryHomeHeader()
     private let homeHeaderHeight: CGFloat = 65
-    private let loadingCoverView = HomeLoadingCoverView()
+    private var loadingCoverView: LoadingCoverView!
     
     private var selectedRestaurant: Restaurant!
     
@@ -25,7 +25,8 @@ class DeliveryHomeTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Cover tableview with loading view
-        setupLoadingCoverView()
+        loadingCoverView = LoadingCoverView(loadingText: "Finding restaurants near you...")
+        loadingCoverView.cover(parentView: self.navigationController!.view!)
         
         // Download restaurants from Firestore
         let db = Firestore.firestore()
@@ -201,18 +202,6 @@ class DeliveryHomeTableViewController: UITableViewController {
         homeHeader.show(true)
     }
     
-    private func setupLoadingCoverView() {
-        let parentView = self.navigationController!.view!
-        parentView.addSubview(loadingCoverView)
-        
-        loadingCoverView.translatesAutoresizingMaskIntoConstraints = false
-        loadingCoverView.leftAnchor.constraint(equalTo: parentView.leftAnchor).isActive = true
-        loadingCoverView.rightAnchor.constraint(equalTo: parentView.rightAnchor).isActive = true
-        loadingCoverView.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
-        loadingCoverView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
-    }
-    
-    
     private func loadRestaurants(_ documents: Array<QueryDocumentSnapshot>) {
         for document in documents {
             if let restaurant = Restaurant(dictionary: document.data()) {
@@ -223,15 +212,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         }
         populateHighlightedCategories()
         tableView.reloadData()
-        hideLoadingCoverView()
-    }
-    
-    private func hideLoadingCoverView() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.loadingCoverView.alpha = 0.0
-        }) { (_) in
-            self.loadingCoverView.removeFromSuperview()
-        }
+        loadingCoverView.hide()
     }
     
     private func populateHighlightedCategories() {
@@ -244,7 +225,6 @@ class DeliveryHomeTableViewController: UITableViewController {
         highlightedCategories.append(HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
                                                                    restaurants: topPickRestos))
     }
-    
     
 
     // MARK: - Table view data source

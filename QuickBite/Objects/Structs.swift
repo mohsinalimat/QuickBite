@@ -68,15 +68,7 @@ struct AddressBook {
         let addresses = AddressBook.getAddresses()
         var serializedAddresses: [[String : Any]] = []
         for address in addresses {
-            let serializedAddress: [String: Any] = [
-                "floor_dept_house_no": address.floorDeptHouseNo,
-                "street": address.street,
-                "barangay": address.barangay,
-                "building": address.building,
-                "landmark": address.landmark,
-                "isDefault": address.isDefault
-            ]
-            serializedAddresses.append(serializedAddress)
+            serializedAddresses.append(address.dictionary)
         }
         
         let db = Firestore.firestore()
@@ -91,8 +83,9 @@ struct AddressBook {
     }
 }
 
+// Has to be a class because isDefault is mutable
 class Address: Codable {
-    let id = UUID()
+    let id: UUID
     var floorDeptHouseNo: String
     var street: String
     var barangay: String
@@ -100,7 +93,19 @@ class Address: Codable {
     var landmark: String
     var isDefault: Bool
     
+    var dictionary: [String : Any] {
+        return [
+            "floor_dept_house_no": floorDeptHouseNo,
+            "street": street,
+            "barangay": barangay,
+            "building": building,
+            "landmark": landmark,
+            "is_default": isDefault
+        ]
+    }
+
     init(floorDeptHouseNo: String, street: String, barangay: String, building: String, landmark: String, isDefault: Bool = false) {
+        self.id = UUID()
         self.floorDeptHouseNo = floorDeptHouseNo
         self.street = street
         self.barangay = barangay
@@ -109,6 +114,23 @@ class Address: Codable {
         self.isDefault = isDefault
     }
     
+    convenience init?(dictionary: [String : Any]) {
+        guard let street = dictionary["street"] as? String else { return nil }
+
+        let floorDeptHouseNo = dictionary["floor_dept_house_no"] as? String ?? ""
+        let barangay = dictionary["barangay"] as? String ?? ""
+        let building = dictionary["building"] as? String ?? ""
+        let landmark = dictionary["landmark"] as? String ?? ""
+        let isDefault = dictionary["is_default"] as? Bool ?? false
+
+        self.init(floorDeptHouseNo: floorDeptHouseNo,
+                  street: street,
+                  barangay: barangay,
+                  building: building,
+                  landmark: landmark,
+                  isDefault: isDefault)
+    }
+
     func toString() -> String {
         let addressLines = [floorDeptHouseNo, street, barangay, building, landmark]
         var fullAddressString = ""

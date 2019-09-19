@@ -12,7 +12,7 @@
 //     |
 //     L__ MenuOptionCategory ("Sides")
 //     |   |
-//     |   L__ [String]
+//     |   L__ [String] ("Side1", "Side2", etc.)
 //     |
 //     L__ MenuOptionCategory ("Extras")
 
@@ -32,14 +32,14 @@ struct Restaurant {
     var imageURL: String
     var menuItems: [MenuItem]
     
-    var dictionary: [String : Any] {
-        return [
-            "name": name,
-            "categories": categories,
-            "address": address,
-            "rating": rating
-        ]
-    }
+//    var dictionary: [String : Any] {
+//        return [
+//            "name": name,
+//            "categories": categories,
+//            "address": address,
+//            "rating": rating
+//        ]
+//    }
 }
 
 extension Restaurant {
