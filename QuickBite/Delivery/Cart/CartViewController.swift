@@ -28,7 +28,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.white), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         cartItems = Cart.getItems()
         
@@ -45,7 +46,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func updatePriceLabels() {
@@ -74,7 +75,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        
+        // If the current user is missing either their name or their phone number,
+        // show the FinalizeOrderViewController
+        if let user = UserUtil.currentUser, user.name.isNotEmpty, user.phone.isNotEmpty {
+            performSegue(withIdentifier: "ReviewOrderSegue", sender: nil)
+        } else {
+            performSegue(withIdentifier: "FinalizeOrderSegue", sender: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

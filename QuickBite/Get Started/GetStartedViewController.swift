@@ -32,9 +32,7 @@ class GetStartedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DDLogDebug("ViewWillAppear")
         if shouldShowLoadingOnReappear {
-            DDLogDebug("Showing loading cover view")
             loadingCoverView.cover(parentView: self.view)
         }
         
@@ -96,6 +94,10 @@ class GetStartedViewController: UIViewController {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
+    @IBAction func continueWithoutAccountTapped(_ sender: Any) {
+        UserUtil.updateCurrentUser(User())
+        performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
+    }
     /*
     // MARK: - Navigation
 

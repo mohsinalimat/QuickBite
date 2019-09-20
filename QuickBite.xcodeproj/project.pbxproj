@@ -15,6 +15,8 @@
 		850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8B232F923100F67125 /* LoadingCoverView.swift */; };
 		850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8D232FA6D600F67125 /* MenuItem.swift */; };
 		850A7D902330DC2F00F67125 /* CustomLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8F2330DC2F00F67125 /* CustomLogger.swift */; };
+		850CAAD62334BB3A003DD668 /* MiniPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850CAAD52334BB3A003DD668 /* MiniPopupView.swift */; };
+		850CAAD82334BB4E003DD668 /* MiniPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850CAAD72334BB4E003DD668 /* MiniPopupView.xib */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
 		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
@@ -110,6 +112,8 @@
 		850A7D8B232F923100F67125 /* LoadingCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoverView.swift; sourceTree = "<group>"; };
 		850A7D8D232FA6D600F67125 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		850A7D8F2330DC2F00F67125 /* CustomLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogger.swift; sourceTree = "<group>"; };
+		850CAAD52334BB3A003DD668 /* MiniPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPopupView.swift; sourceTree = "<group>"; };
+		850CAAD72334BB4E003DD668 /* MiniPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPopupView.xib; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
@@ -235,8 +239,10 @@
 				8552020F2317DD2A00A1E2D0 /* CartBanner.xib */,
 				851DE0E72318DB7600A374DB /* CartViewController.swift */,
 				851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */,
-				85283768231D35390083ADD2 /* ReviewOrderViewController.swift */,
 				853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */,
+				85283768231D35390083ADD2 /* ReviewOrderViewController.swift */,
+				850CAAD52334BB3A003DD668 /* MiniPopupView.swift */,
+				850CAAD72334BB4E003DD668 /* MiniPopupView.xib */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 				854348D62310EA5700411B80 /* LaunchScreen.storyboard in Resources */,
 				85AF1926231BCC7000D8E86E /* DeliveryHomeHeader.xib in Resources */,
 				8591C44423167E940036CBE6 /* OrderOptionHeaderView.xib in Resources */,
+				850CAAD82334BB4E003DD668 /* MiniPopupView.xib in Resources */,
 				855202102317DD2A00A1E2D0 /* CartBanner.xib in Resources */,
 				854348D32310EA5700411B80 /* Assets.xcassets in Resources */,
 				854348F72311218A00411B80 /* Account.storyboard in Resources */,
@@ -670,6 +677,7 @@
 				85E7976423136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift in Sources */,
 				85E625A32315479F00954664 /* GradientView.swift in Sources */,
 				855202192317E87400A1E2D0 /* SPAlertView.swift in Sources */,
+				850CAAD62334BB3A003DD668 /* MiniPopupView.swift in Sources */,
 				8552021B2317E87400A1E2D0 /* SPAlertIconHeartView.swift in Sources */,
 				854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */,
 				85AF191F231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift in Sources */,

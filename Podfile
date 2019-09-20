@@ -16,4 +16,5 @@ target 'QuickBite' do
   pod 'GoogleSignIn'
   pod 'SDWebImage'
   pod 'NVActivityIndicatorView'
+  pod 'InputMask'
 end

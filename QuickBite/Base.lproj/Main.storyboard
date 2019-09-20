@@ -76,7 +76,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Continue without an account"/>
                                 <connections>
-                                    <segue destination="65z-7o-Jid" kind="show" identifier="AddNewAddressSegue" id="pro-eh-ijc"/>
+                                    <action selector="continueWithoutAccountTapped:" destination="RPI-3C-PPM" eventType="touchUpInside" id="9bY-ir-xQ2"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kfx-na-wZf">
@@ -144,6 +144,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="showDetail" identifier="ShowMainDeliveryFromGetStarted" id="Jgi-eX-ifS"/>
+                        <segue destination="65z-7o-Jid" kind="show" identifier="AddNewAddressSegue" id="OPO-l1-hty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyv-tR-DRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
