@@ -17,10 +17,7 @@ class MenuTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-        if menuItemsForCategory.count < 3 {
-            tableView.separatorStyle = .none
-        }
-        tableView.contentInset.top = 16
+        tableView.contentInset.top = 10
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

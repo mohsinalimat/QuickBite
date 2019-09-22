@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 class MenuItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -14,9 +15,11 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var menuItemImage: UIImageView!
     @IBOutlet weak var menuItemTitle: UILabel!
     @IBOutlet weak var menuItemTitleTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuItemTopBarTitle: UILabel!
     @IBOutlet weak var menuItemDescription: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var topBar: GradientView!
+    @IBOutlet weak var topBarBackground: UIView!
     @IBOutlet weak var topBarShadow: GradientView!
     @IBOutlet weak var bottomFadeView: UIView!
     
@@ -33,7 +36,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     private var totalAddedPrice: Double {
         return addedPriceForSection.reduce(0, +)
     }
-    private var topBarIsShown = false
+    
     private let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -45,6 +48,11 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if #available(iOS 13, *) {
+            // Hide topBar gradient for iOS 13 devices
+            topBar.topColor = .clear
+        }
     
         if menuItem.imageURL.isNotEmpty {
             menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
@@ -52,6 +60,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
             menuItemTitleTopConstraint.constant = 100
         }
         menuItemTitle.text = menuItem.itemName
+        menuItemTopBarTitle.text = menuItem.itemName
         menuItemDescription.text = menuItem.description
         totalPriceLabel.text = menuItem.price.asPriceString
         
@@ -77,7 +86,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
+        let userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
@@ -187,7 +196,6 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func updateTotalPriceLabel() {
         let quantity = Double(quantityLabel.text!)!
-//        let totalAddedPrice = addedPriceForSection.reduce(0, +)
         totalPriceLabel.text = (quantity * (menuItem.price + totalAddedPrice)).asPriceString
     }
     
@@ -223,18 +231,38 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
 }
 
 extension MenuItemViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if shouldShowTopBar != topBarIsShown {
-            UIView.animate(withDuration: 0.1) {
-                self.topBar.backgroundColor = self.topBarIsShown ? UIColor.clear : UIColor.white
-                self.topBarShadow.alpha = self.topBarIsShown ? 0.0 : 1.0
-            }
-            topBarIsShown = !topBarIsShown
-        }
+    
+    enum TrackingPoint {
+        case top
+        case bottom
     }
     
-    private var shouldShowTopBar: Bool {
-        let frame = menuItemTitle.convert(menuItemTitle.bounds, to: nil)
-        return (frame.origin.y - 8) < topBar.frame.height
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let topBarAlpha = calculateAlpha(trackingView: menuItemTitle, forScrollOffset: topBar.frame.height, padding: 16)
+        topBarBackground.alpha = topBarAlpha
+        topBarShadow.alpha = topBarAlpha
+        
+        menuItemTopBarTitle.alpha = calculateAlpha(trackingView: menuItemTitle, trackingPoint: .bottom, forScrollOffset: topBar.frame.height, padding: 8, transitionRange: 10)
+        
+    }
+    
+    // trackingView: the view that, when scrolled past the offset, will cause return alpha to be > 0
+    // offset: the height from the top of the scrollview that, when trackingView is scrolled past,
+    //         will cause return alpha to be > 0
+    // padding: if a positive value is passed here, the appearing view will start appearing earlier.
+    //          if negative, later
+    private func calculateAlpha(trackingView: UIView, trackingPoint tpPref: TrackingPoint = .top, forScrollOffset offset: CGFloat, padding: CGFloat = 0, transitionRange: CGFloat = 40) -> CGFloat {
+        
+        let trackingFrame = trackingView.convert(trackingView.bounds, to: nil)
+        let trackingPoint = tpPref == .top ? trackingFrame.origin.y : trackingFrame.origin.y + trackingFrame.height
+        
+        let offsetAndPadding = offset + padding
+        
+        if trackingPoint > offsetAndPadding { return 0 }
+        if trackingPoint < offsetAndPadding - transitionRange { return 1 }
+        
+        let alpha = -trackingPoint.normalize(min: offsetAndPadding, max: offsetAndPadding + transitionRange)
+        
+        return alpha
     }
 }

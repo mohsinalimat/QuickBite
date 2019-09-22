@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//MARK:- UIFont
 extension UIFont {
     func smallCaps() -> UIFont {
         let upperCaseFeature = [
@@ -31,6 +32,7 @@ extension UIFont {
 @IBDesignable
 class SmallCapsLabel: UILabel {}
 
+//MARK:- UILabel
 extension UILabel {
     @IBInspectable var smallCaps: Bool {
         get {
@@ -67,6 +69,7 @@ extension UILabel {
     }
 }
 
+//MARK:- UIImage
 public extension UIImage {
     convenience init? (color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         let rect = CGRect(origin: .zero, size: size)
@@ -81,6 +84,7 @@ public extension UIImage {
     }
 }
 
+//MARK:- UIColor
 extension UIColor {
     static var systemBackgroundCompat: UIColor {
         if #available(iOS 13, *) {
@@ -91,6 +95,7 @@ extension UIColor {
     }
 }
 
+//MARK:- Double
 extension Double {
     var asPriceString: String {
         let numberFormatter = NumberFormatter()
@@ -99,8 +104,17 @@ extension Double {
     }
 }
 
-extension String {
+//MARK:- CGFloat
+extension CGFloat {
     
+    func normalize(min: CGFloat, max: CGFloat, from a: CGFloat = 0, to b: CGFloat = 1) -> CGFloat {
+        return (b - a) * ((self - min) / (max - min)) + a
+    }
+    
+}
+
+//MARK:- String
+extension String {
     func stripPrice() -> String {
         if let range = self.range(of: " ₱") {
             return String(self[..<range.lowerBound])
@@ -132,7 +146,7 @@ extension String {
 @IBDesignable
 class DesignableView: UIView {
 }
-
+//MARK:- UIView
 extension UIView {
     @IBInspectable var cornerRadius: CGFloat {
         get {
