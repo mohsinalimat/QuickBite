@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QBTabBarController: UITabBarController {
+class TDTabBarController: UITabBarController {
     
     private let cartBanner = CartBanner()
     private var cartBannerIsShown = false
@@ -40,6 +40,7 @@ class QBTabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if Cart.hasItems {
             cartBanner.updateLabels()
             cartBanner.layoutIfNeeded() // Avoids a strange visual bug with the total price label...
@@ -56,6 +57,14 @@ class QBTabBarController: UITabBarController {
         } else {
             cartBottomAnchor.constant = 100
             cartBannerIsShown = false
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserDefaults.standard.bool(forKey: UDKeys.redirectToOrders) {
+            self.selectedIndex = 1
+            UserDefaults.standard.removeObject(forKey: UDKeys.redirectToOrders)
         }
     }
 }

@@ -13,32 +13,24 @@ import GoogleSignIn
 import FirebaseAuth
 import CocoaLumberjack
 
-class GetStartedViewController: UIViewController {
+class GetStartedViewController: UIViewController, GIDSignInDelegate {
     var handle: AuthStateDidChangeListenerHandle?
     
-    private var shouldShowLoadingOnReappear: Bool = false
     private var loadingCoverView = LoadingCoverView(loadingText: "Setting up your account...")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        navigationController?.navigationBar.isHidden = true
         
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(userCancelledLogin(_:)), name: .userCancelledLogin, object: nil)
+        GIDSignIn.sharedInstance().presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if shouldShowLoadingOnReappear {
-            loadingCoverView.cover(parentView: self.view)
-        }
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                // Download
                 let db = Firestore.firestore()
                 
                 // Check if a record already exists in the "users" collection
@@ -59,8 +51,7 @@ class GetStartedViewController: UIViewController {
                     }
                     // Set UserDefaults current user
                     UserUtil.updateCurrentUser(udUser)
-                    
-                    self.shouldShowLoadingOnReappear = false
+                    self.loadingCoverView.hide() // In case the user comes back from AddNewAddress
                     if let addresses = UserUtil.currentUser?.addresses, !addresses.isEmpty {
                         self.performSegue(withIdentifier: "ShowMainDeliveryFromGetStarted", sender: nil)
                     } else {
@@ -71,27 +62,43 @@ class GetStartedViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if shouldShowLoadingOnReappear == false {
-            loadingCoverView.hide()
-        }
-    }
-    
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        DDLogDebug("view will disappear")
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-    @objc private func userCancelledLogin(_ notif: Notification) {
-        shouldShowLoadingOnReappear = false
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        DDLogDebug("didSignInForUser")
+        if let error = error {
+            DDLogError("Error in didSignInForUser: \(error)")
+            return
+        }
+        
+        loadingCoverView.cover(parentView: self.view, animated: true)
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        // Firebase log in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Error in authenticating with firebase: \(error)")
+                return
+            }
+            // User is signed in
+            DDLogDebug("Successfully signed user in to Firebase")
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        DDLogDebug("didDisconnectWith")
     }
     
     @IBAction func googleSignInTapped(_ sender: Any) {
-        shouldShowLoadingOnReappear = true
-        GIDSignIn.sharedInstance()?.signIn()
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func continueWithoutAccountTapped(_ sender: Any) {

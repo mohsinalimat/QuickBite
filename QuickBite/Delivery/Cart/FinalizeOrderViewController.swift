@@ -143,8 +143,6 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let reviewOrderVC = segue.destination as? ReviewOrderViewController {
             // Pass user info. We're not saving the user info until the user hits place order.

@@ -17,6 +17,7 @@
 		850A7D902330DC2F00F67125 /* CustomLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D8F2330DC2F00F67125 /* CustomLogger.swift */; };
 		850CAAD62334BB3A003DD668 /* MiniPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850CAAD52334BB3A003DD668 /* MiniPopupView.swift */; };
 		850CAAD82334BB4E003DD668 /* MiniPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850CAAD72334BB4E003DD668 /* MiniPopupView.xib */; };
+		850E16322334FBF000DA64FF /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850E16312334FBF000DA64FF /* Orders.storyboard */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
 		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
@@ -29,6 +30,8 @@
 		852AE7FB232BB2BA00804751 /* FontAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F5232BB2B900804751 /* FontAnimation.swift */; };
 		852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FD232BB2DF00804751 /* PasswordTextField.swift */; };
 		852AE800232BB2DF00804751 /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */; };
+		8532B7F02337E43500A6D892 /* NavBarShadow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8532B7EF2337E43500A6D892 /* NavBarShadow.xib */; };
+		8532B7F22337E63000A6D892 /* NavBarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532B7F12337E63000A6D892 /* NavBarShadow.swift */; };
 		853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */; };
 		853B2BFB233235FF003E6011 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BFA233235FF003E6011 /* Cart.swift */; };
 		854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854348C92310EA5600411B80 /* AppDelegate.swift */; };
@@ -51,7 +54,8 @@
 		8552021D2317E87400A1E2D0 /* SPAlertHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855202172317E87400A1E2D0 /* SPAlertHaptic.swift */; };
 		8552021E2317E87400A1E2D0 /* SPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855202182317E87400A1E2D0 /* SPAlert.swift */; };
 		855202202317EFEC00A1E2D0 /* CartBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552021F2317EFEC00A1E2D0 /* CartBanner.swift */; };
-		8552022223183A4800A1E2D0 /* QBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552022123183A4800A1E2D0 /* QBTabBarController.swift */; };
+		8552022223183A4800A1E2D0 /* TDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552022123183A4800A1E2D0 /* TDTabBarController.swift */; };
+		85679BBB23378B3800048625 /* TDNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85679BBA23378B3800048625 /* TDNavigationController.swift */; };
 		856BDCE723151BE2001766AD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856BDCE623151BE2001766AD /* Extensions.swift */; };
 		856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856BDCE823151CB6001766AD /* MenuItemViewController.swift */; };
 		85808A92232CE86E00A86822 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85808A91232CE86D00A86822 /* GoogleService-Info.plist */; };
@@ -65,8 +69,8 @@
 		85AF191F231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF191E231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift */; };
 		85AF1921231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1920231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift */; };
 		85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */; };
-		85AF1926231BCC7000D8E86E /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF1925231BCC7000D8E86E /* DeliveryHomeHeader.xib */; };
 		85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */; };
+		85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B026682337D375004C4826 /* DeliveryHomeHeader.xib */; };
 		85CF2DF02326554500F9C815 /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE42326554500F9C815 /* YoshikoTextField.swift */; };
 		85CF2DF12326554500F9C815 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE62326554500F9C815 /* HoshiTextField.swift */; };
 		85CF2DF22326554500F9C815 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE72326554500F9C815 /* MinoruTextField.swift */; };
@@ -75,7 +79,6 @@
 		85CF2DF52326554500F9C815 /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DEA2326554500F9C815 /* JiroTextField.swift */; };
 		85CF2DF72326554500F9C815 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DEC2326554500F9C815 /* KaedeTextField.swift */; };
 		85CF2DF92326554500F9C815 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DEE2326554500F9C815 /* IsaoTextField.swift */; };
-		85CF2DFD2328F2C600F9C815 /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DFC2328F2C600F9C815 /* SignInSignUpViewController.swift */; };
 		85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */; };
 		85E625A32315479F00954664 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E625A22315479F00954664 /* GradientView.swift */; };
 		85E7976123136A0900C01238 /* Delivery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85E7976023136A0900C01238 /* Delivery.storyboard */; };
@@ -114,6 +117,7 @@
 		850A7D8F2330DC2F00F67125 /* CustomLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogger.swift; sourceTree = "<group>"; };
 		850CAAD52334BB3A003DD668 /* MiniPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPopupView.swift; sourceTree = "<group>"; };
 		850CAAD72334BB4E003DD668 /* MiniPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPopupView.xib; sourceTree = "<group>"; };
+		850E16312334FBF000DA64FF /* Orders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Orders.storyboard; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		852AE7F5232BB2B900804751 /* FontAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAnimation.swift; sourceTree = "<group>"; };
 		852AE7FD232BB2DF00804751 /* PasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
+		8532B7EF2337E43500A6D892 /* NavBarShadow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarShadow.xib; sourceTree = "<group>"; };
+		8532B7F12337E63000A6D892 /* NavBarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarShadow.swift; sourceTree = "<group>"; };
 		853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeOrderViewController.swift; sourceTree = "<group>"; };
 		853B2BFA233235FF003E6011 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		854348C62310EA5600411B80 /* QuickBite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickBite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +158,8 @@
 		855202172317E87400A1E2D0 /* SPAlertHaptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertHaptic.swift; sourceTree = "<group>"; };
 		855202182317E87400A1E2D0 /* SPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlert.swift; sourceTree = "<group>"; };
 		8552021F2317EFEC00A1E2D0 /* CartBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBanner.swift; sourceTree = "<group>"; };
-		8552022123183A4800A1E2D0 /* QBTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QBTabBarController.swift; sourceTree = "<group>"; };
+		8552022123183A4800A1E2D0 /* TDTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDTabBarController.swift; sourceTree = "<group>"; };
+		85679BBA23378B3800048625 /* TDNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDNavigationController.swift; sourceTree = "<group>"; };
 		856BDCE623151BE2001766AD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		856BDCE823151CB6001766AD /* MenuItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewController.swift; sourceTree = "<group>"; };
 		85808A91232CE86D00A86822 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -166,8 +173,8 @@
 		85AF191E231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSPeekCollectionViewDelegateImplementation.swift; sourceTree = "<group>"; };
 		85AF1920231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+PeekConfiguration.swift"; sourceTree = "<group>"; };
 		85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewScrollDirection+PeekDataConversion.swift"; sourceTree = "<group>"; };
-		85AF1925231BCC7000D8E86E /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
 		85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHomeHeader.swift; sourceTree = "<group>"; };
+		85B026682337D375004C4826 /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
 		85CF2DE42326554500F9C815 /* YoshikoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoshikoTextField.swift; sourceTree = "<group>"; };
 		85CF2DE52326554500F9C815 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
 		85CF2DE62326554500F9C815 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -177,7 +184,6 @@
 		85CF2DEA2326554500F9C815 /* JiroTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiroTextField.swift; sourceTree = "<group>"; };
 		85CF2DEC2326554500F9C815 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
 		85CF2DEE2326554500F9C815 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
-		85CF2DFC2328F2C600F9C815 /* SignInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInSignUpViewController.swift; sourceTree = "<group>"; };
 		85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		85E625A22315479F00954664 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		85E7976023136A0900C01238 /* Delivery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Delivery.storyboard; sourceTree = "<group>"; };
@@ -232,6 +238,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		850E16302334FBDF00DA64FF /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				850E16312334FBF000DA64FF /* Orders.storyboard */,
+				854348CD2310EA5600411B80 /* OrdersViewController.swift */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
 		851DE0E62318DB4E00A374DB /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +285,15 @@
 			path = TweeTextField;
 			sourceTree = "<group>";
 		};
+		8532B7EE2337E41900A6D892 /* NavBarShadow */ = {
+			isa = PBXGroup;
+			children = (
+				8532B7F12337E63000A6D892 /* NavBarShadow.swift */,
+				8532B7EF2337E43500A6D892 /* NavBarShadow.xib */,
+			);
+			path = NavBarShadow;
+			sourceTree = "<group>";
+		};
 		854348BD2310EA5600411B80 = {
 			isa = PBXGroup;
 			children = (
@@ -303,8 +327,8 @@
 				850A7D86232F730800F67125 /* Objects */,
 				85E625A12315478B00954664 /* Extras */,
 				85CF2DFB2328F28600F9C815 /* Get Started */,
-				854348CD2310EA5600411B80 /* OrdersViewController.swift */,
 				85E7976623136F4300C01238 /* Delivery */,
+				850E16302334FBDF00DA64FF /* Orders */,
 				854348F32311183F00411B80 /* Account */,
 				854348D42310EA5700411B80 /* LaunchScreen.storyboard */,
 			);
@@ -412,7 +436,6 @@
 			children = (
 				85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */,
 				852AE7ED232BB14500804751 /* AddNewAddressViewController.swift */,
-				85CF2DFC2328F2C600F9C815 /* SignInSignUpViewController.swift */,
 			);
 			path = "Get Started";
 			sourceTree = "<group>";
@@ -425,7 +448,9 @@
 				850A7D8F2330DC2F00F67125 /* CustomLogger.swift */,
 				856BDCE623151BE2001766AD /* Extensions.swift */,
 				85E625A22315479F00954664 /* GradientView.swift */,
-				8552022123183A4800A1E2D0 /* QBTabBarController.swift */,
+				8552022123183A4800A1E2D0 /* TDTabBarController.swift */,
+				85679BBA23378B3800048625 /* TDNavigationController.swift */,
+				8532B7EE2337E41900A6D892 /* NavBarShadow */,
 				859D74B8233382A500FE4538 /* LoadingCoverView */,
 				852AE7FC232BB2C200804751 /* TweeTextField */,
 				85AF1924231BC4D100D8E86E /* MSPeekCollectionView */,
@@ -463,7 +488,7 @@
 				85E927B0231A4615008D8DE0 /* DeliveryHomeTableViewController.swift */,
 				85E797672313A45800C01238 /* AllRestaurantsTableViewCell.swift */,
 				85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */,
-				85AF1925231BCC7000D8E86E /* DeliveryHomeHeader.xib */,
+				85B026682337D375004C4826 /* DeliveryHomeHeader.xib */,
 				85E927B3231A6594008D8DE0 /* HighlightedRestaurantCategoryTableViewCell.swift */,
 				85E7976223136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift */,
 				85E7976323136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.xib */,
@@ -578,7 +603,6 @@
 				85E7976523136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.xib in Resources */,
 				85E7976123136A0900C01238 /* Delivery.storyboard in Resources */,
 				854348D62310EA5700411B80 /* LaunchScreen.storyboard in Resources */,
-				85AF1926231BCC7000D8E86E /* DeliveryHomeHeader.xib in Resources */,
 				8591C44423167E940036CBE6 /* OrderOptionHeaderView.xib in Resources */,
 				850CAAD82334BB4E003DD668 /* MiniPopupView.xib in Resources */,
 				855202102317DD2A00A1E2D0 /* CartBanner.xib in Resources */,
@@ -586,8 +610,11 @@
 				854348F72311218A00411B80 /* Account.storyboard in Resources */,
 				85808A92232CE86E00A86822 /* GoogleService-Info.plist in Resources */,
 				85E797712313B4F400C01238 /* FeaturedItemCollectionViewCell.xib in Resources */,
+				8532B7F02337E43500A6D892 /* NavBarShadow.xib in Resources */,
+				850E16322334FBF000DA64FF /* Orders.storyboard in Resources */,
 				850A7D8A232F8FF000F67125 /* LoadingCoverView.xib in Resources */,
 				854348D12310EA5600411B80 /* Main.storyboard in Resources */,
+				85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,12 +708,14 @@
 				8552021B2317E87400A1E2D0 /* SPAlertIconHeartView.swift in Sources */,
 				854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */,
 				85AF191F231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift in Sources */,
+				8532B7F22337E63000A6D892 /* NavBarShadow.swift in Sources */,
 				8591C43823165ACE0036CBE6 /* OrderOptionTableViewCell.swift in Sources */,
 				8591C43A231661010036CBE6 /* AutoSizedTableView.swift in Sources */,
 				85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */,
 				8552021E2317E87400A1E2D0 /* SPAlert.swift in Sources */,
 				852AE7F7232BB2BA00804751 /* TweeBorderedTextField.swift in Sources */,
 				850A7D88232F731C00F67125 /* Restaurant.swift in Sources */,
+				85679BBB23378B3800048625 /* TDNavigationController.swift in Sources */,
 				85E797702313B4F400C01238 /* FeaturedItemCollectionViewCell.swift in Sources */,
 				852AE7FB232BB2BA00804751 /* FontAnimation.swift in Sources */,
 				85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */,
@@ -720,11 +749,10 @@
 				8591C44023167DE40036CBE6 /* OrderOptionHeaderView.swift in Sources */,
 				85CF2DF32326554500F9C815 /* YokoTextField.swift in Sources */,
 				85FF20082314ED6E00ABCA99 /* MenuItemTableViewCell.swift in Sources */,
-				85CF2DFD2328F2C600F9C815 /* SignInSignUpViewController.swift in Sources */,
 				8552021D2317E87400A1E2D0 /* SPAlertHaptic.swift in Sources */,
 				85E797692313A45800C01238 /* AllRestaurantsTableViewCell.swift in Sources */,
 				85808A96232D0F6F00A86822 /* AppContainerViewController.swift in Sources */,
-				8552022223183A4800A1E2D0 /* QBTabBarController.swift in Sources */,
+				8552022223183A4800A1E2D0 /* TDTabBarController.swift in Sources */,
 				853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */,
 				850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */,
 				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,

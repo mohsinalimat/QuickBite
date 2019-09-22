@@ -67,7 +67,7 @@ struct Cart {
         UserDefaults.standard.set(newCartItemsData, forKey: UDKeys.cartItems)
     }
     
-    static func removeAll() {
+    static func empty() {
         UserDefaults.standard.removeObject(forKey: UDKeys.cartRestaurantName)
         let freshCart: [MenuItem] = []
         let freshCartData = try! JSONEncoder().encode(freshCart)

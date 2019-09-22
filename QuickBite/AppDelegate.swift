@@ -13,7 +13,7 @@ import FirebaseAuth
 import CocoaLumberjack
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     private final let APP_FIRST_OPEN = "APP_FIRST_OPEN"
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         DDOSLogger.sharedInstance.logFormatter = CustomFormatter()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        
         
         // Firebase stores login sessions in the keychain, which is NOT deleted when the user uninstalls the app.
         // So, if a user is logged in, then uninstalls and re-installs the app, the default Firebase behavior would automatically
@@ -48,34 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url)
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        DDLogDebug("didSignInForUser")
-        if let error = error {
-            NotificationCenter.default.post(name: .userCancelledLogin, object: nil)
-            DDLogError("Error in didSignInForUser: \(error)")
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        // Firebase log in
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-            if let error = error {
-                print("Error in authenticating with firebase: \(error)")
-                return
-            }
-            // User is signed in
-            DDLogDebug("Successfully signed user in to Firebase")
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        DDLogDebug("didDisconnectWith")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

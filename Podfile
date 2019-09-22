@@ -9,7 +9,7 @@ target 'QuickBite' do
   pod 'CocoaLumberjack/Swift'
   pod 'PMSuperButton'
   pod 'BEMCheckBox'
-  pod 'Hero'
+#  pod 'Hero'
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'

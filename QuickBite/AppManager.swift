@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Hero
 
 class AppManager {
     static let shared = AppManager()
@@ -19,16 +18,17 @@ class AppManager {
     
     func showApp() {
         var viewController: UIViewController
-        if Auth.auth().currentUser != nil || UserUtil.currentUser != nil {
+        if let user = UserUtil.currentUser, !user.addresses.isEmpty {
             viewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
         } else {
             viewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
         }
-        viewController.hero.modalAnimationType = .fade
-        appContainer.present(viewController, animated: true, completion: nil)
+        appContainer.present(viewController, animated: false, completion: nil)
     }
     
     func logout() {
+        Cart.empty()
+        UserUtil.clearCurrentUser()
         try! Auth.auth().signOut()
         self.appContainer.dismiss(animated: false, completion: nil)
     }

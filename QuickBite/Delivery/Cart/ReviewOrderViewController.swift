@@ -8,6 +8,10 @@
 
 import UIKit
 import PMSuperButton
+import Firebase
+import NVActivityIndicatorView
+import CocoaLumberjack
+
 
 class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,6 +30,8 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var changeTextField: TweeAttributedTextField!
     
     @IBOutlet weak var changePopUp: MiniPopupView!
+    
+    @IBOutlet weak var placeOrderActivityIndicator: NVActivityIndicatorView!
     
     private var orderTotal: Double!
     
@@ -69,7 +75,7 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         let value = Double(textField.text!)!
-        changeAmountIsValid = orderTotal.isLess(than: value)
+        changeAmountIsValid = (orderTotal.isLess(than: value) || orderTotal.isEqual(to: value))
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -123,9 +129,58 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func placeOrderTapped(_ sender: Any) {
         if changeAmountIsValid {
-            
+            placeOrderButton.isEnabled = false
+            placeOrder()
         } else {
             changePopUp.shake()
+        }
+    }
+    
+    private func placeOrder() {
+        let dbOrders = Firestore.firestore().collection("orders")
+        
+        dbOrders.document().setData([
+            "orderTotal": orderTotal!
+        ]) { err in
+            if let err = err {
+                DDLogError("Error submitting order: \(err)")
+                // SHOW ERROR MESSAGE
+                return
+            }
+            
+            // Order placed!
+            // 1. Stop animating indicatory
+            // 2. Show order placed alert
+            // 3. Set flag so tabbar knows to navigate to orders page
+            // 4. Clear cart contents
+            self.placeOrderActivityIndicator.stopAnimating()
+            self.showOrderPlacedAlert()
+            UserDefaults.standard.set(true, forKey: UDKeys.redirectToOrders)
+            Cart.empty()
+        }
+        
+        // Animate
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: [.curveEaseInOut], animations: {
+            self.placeOrderButton.titleLabel?.alpha = 0.0
+        }) { _ in
+            self.placeOrderActivityIndicator.startAnimating()
+            UIView.animate(withDuration: 0.1, animations: {
+                self.placeOrderActivityIndicator.alpha = 1.0
+            })
+        }
+    }
+    
+    private func showOrderPlacedAlert() {
+        let alertView = SPAlertView(title: "Order Placed", message: nil, preset: .done)
+        alertView.duration = 2.5
+        alertView.dismissByTap = false
+        alertView.present()
+        startDismissTimer()
+    }
+    
+    private func startDismissTimer() {
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

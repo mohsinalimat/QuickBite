@@ -13,8 +13,10 @@ struct UDKeys {
     static let cartRestaurantName = "CART_RESTAURANT_NAME"
     
     static let currentUser = "CURRENT_USER"
+    
+    static let redirectToOrders = "REDIRECT_TO_ORDERS"
 }
 
 extension Notification.Name {
-    static let userCancelledLogin = Notification.Name("USER_CANCELLED_LOGIN")
+//    static let notifName = Notification.Name("")
 }

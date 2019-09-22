@@ -12,14 +12,21 @@ import SDWebImage
 import CocoaLumberjack
 
 class DeliveryHomeTableViewController: UITableViewController {
+    private var tdNavController: TDNavigationController?
     
     private var highlightedCategories: [HighlightedRestaurantCategory] = []
-    private var allRestos: [Restaurant] = []
+    private var allRestaurants: [Restaurant] = []
     private let homeHeader = DeliveryHomeHeader()
     private let homeHeaderHeight: CGFloat = 65
     private var loadingCoverView: LoadingCoverView!
     
     private var selectedRestaurant: Restaurant!
+    
+    enum TableViewSection: Int {
+        case search
+        case highlightedRestaurantCategories
+        case allRestaurants
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,175 +44,38 @@ class DeliveryHomeTableViewController: UITableViewController {
                 self.loadRestaurants(querySnapshot!.documents)
             }
         }
-
-//        let restaurantRef = db.collection("restaurants")
-//
-//        restaurantRef.document("chika_loca").setData([
-//            "name": "Chika Loca!",
-//            "categories": "Chicken, BBQ",
-//            "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
-//            "rating": 3.5,
-//            "image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/food_sample_inasal.jpg?alt=media&token=70e75f54-b368-4c44-a4b7-5bda1caf5c53",
-//            "address": "",
-//            "top_pick": true,
-//            "menu_items": [
-//                [
-//                    "item_name": "5pc. BBQ Chicken Wings",
-//                    "description": "",
-//                    "category": "Chicken",
-//                    "featured": true,
-//                    "item_image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/sample_food_3.jpg?alt=media&token=2eb2b213-df11-45cf-8867-66785d9f8075",
-//                    "price": 110,
-//                    "item_option_categories": [
-//                        [
-//                            "options_category_name": "Sides",
-//                            "required": true,
-//                            "single_selection": true,
-//                            "options": [
-//                                [
-//                                    "option_name": "Side1",
-//                                    "added_price": 30
-//                                ],
-//                                [
-//                                    "option_name": "Side2",
-//                                    "added_price": 40
-//                                ]
-//                            ]
-//                        ],
-//                        [
-//                            "options_category_name": "Extras",
-//                            "required": false,
-//                            "single_selection": false,
-//                            "options": [
-//                                [
-//                                    "option_name": "Extra BBQ Sauce",
-//                                    "added_price": 25
-//                                ],
-//                                [
-//                                    "option_name": "Extra Garlic Sauce",
-//                                    "added_price": 20
-//                                ],
-//                                [
-//                                    "option_name": "Extra Magic Sauce",
-//                                    "added_price": 100
-//                                ],
-//                                [
-//                                    "option_name": "Extra Super Magic Sauce Long Title",
-//                                    "added_price": 150
-//                                ]
-//                            ]
-//                        ]
-//                    ]
-//                ],
-//                [
-//                    "item_name": "Strawberry Smoothie",
-//                    "description": "",
-//                    "category": "Drinks",
-//                    "featured": false,
-//                    "item_image_url": "",
-//                    "price": 99,
-//                    "item_option_categories": []
-//                ],
-//                [
-//                    "item_name": "Chicken Inasal",
-//                    "description": "",
-//                    "category": "Chicken",
-//                    "featured": true,
-//                    "item_image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/inasal_2.png?alt=media&token=b789002b-96ff-47d2-8e43-defb8dff3c76",
-//                    "price": 115,
-//                    "item_option_categories": []
-//                ]
-//            ]
-//            ])
-//
-//        restaurantRef.document("house_of_pancakes").setData([
-//            "name": "House of Pancakes",
-//            "categories": "Breakfast, Smoothies",
-//            "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
-//            "rating": 4.7,
-//            "image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/Egg-free-french-toast_post.jpg?alt=media&token=8de1aa40-946c-4006-8cd6-6bc462e4236c",
-//            "address": "",
-//            "top_pick": false,
-//            "menu_items": [
-//                [
-//                    "item_name": "Brioche French Toast",
-//                    "description": "",
-//                    "category": "Breakfast",
-//                    "featured": true,
-//                    "price": 135,
-//                    "item_option_categories": [
-//                        [
-//                            "options_category_name": "Sides",
-//                            "required": true,
-//                            "single_selection": true,
-//                            "options": [
-//                                [
-//                                    "option_name": "Blueberries",
-//                                    "added_price": 0
-//                                ],
-//                                [
-//                                    "option_name": "Strawberries",
-//                                    "added_price": 0
-//                                ]
-//                            ]
-//                        ],
-//                        [
-//                            "options_category_name": "Extras",
-//                            "required": false,
-//                            "single_selection": false,
-//                            "options": [
-//                                [
-//                                    "option_name": "Extra butter packets",
-//                                    "added_price": 25
-//                                ],
-//                                [
-//                                    "option_name": "Extra syrup",
-//                                    "added_price": 20
-//                                ]
-//                            ]
-//                        ]
-//                    ]
-//                ],
-//                [
-//                    "item_name": "Banana Smoothie",
-//                    "description": "",
-//                    "category": "Drinks",
-//                    "featured": false,
-//                    "price": 99,
-//                    "item_option_categories": []
-//                ]
-//            ]
-//            ])
-
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.contentInset.top = 10
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.white), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        let navBar = self.navigationController!.navigationBar
-        navBar.addSubview(homeHeader)
+        tdNavController = self.navigationController as? TDNavigationController
         
         homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.street)
+        addHomeHeader()
         
-        homeHeader.translatesAutoresizingMaskIntoConstraints = false
-        homeHeader.leftAnchor.constraint(equalTo: navBar.leftAnchor).isActive = true
-        homeHeader.rightAnchor.constraint(equalTo: navBar.rightAnchor).isActive = true
-        homeHeader.heightAnchor.constraint(equalToConstant: homeHeaderHeight).isActive = true
-        homeHeader.topAnchor.constraint(equalTo: navBar.topAnchor).isActive = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        homeHeader.show(true)
+    private func addHomeHeader() {
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 1000, height: 44))
+
+        homeHeader.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(homeHeader)
+        
+        NSLayoutConstraint.activate([
+            homeHeader.topAnchor.constraint(equalTo: container.topAnchor),
+            homeHeader.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            homeHeader.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            homeHeader.widthAnchor.constraint(equalToConstant: view.frame.width)
+        ])
+
+        self.navigationItem.titleView = container
     }
     
     private func loadRestaurants(_ documents: Array<QueryDocumentSnapshot>) {
         for document in documents {
             if let restaurant = Restaurant(dictionary: document.data()) {
-                allRestos.append(restaurant)
+                allRestaurants.append(restaurant)
             } else {
                 print("couldn't append restaurant! \(document.data())")
             }
@@ -217,7 +87,7 @@ class DeliveryHomeTableViewController: UITableViewController {
     
     private func populateHighlightedCategories() {
         var topPickRestos: [Restaurant] = []
-        for resto in allRestos {
+        for resto in allRestaurants {
             if resto.topPick {
                 topPickRestos.append(resto)
             }
@@ -236,15 +106,14 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: // Search
+        guard let tableViewSection = TableViewSection(rawValue: section) else { return 0 }
+        switch tableViewSection {
+        case .search:
             return 1
-        case 1: // Highlighted Restaurant categories
+        case .highlightedRestaurantCategories:
             return highlightedCategories.count
-        case 2: // All Restaurants
-            return allRestos.count + 1 // + 1 for the header cell
-        default:
-            return 0
+        case .allRestaurants:
+            return allRestaurants.count + 1 // + 1 for the header cell
         }
     }
     
@@ -267,7 +136,7 @@ class DeliveryHomeTableViewController: UITableViewController {
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AllRestaurantsCell", for: indexPath) as! AllRestaurantsTableViewCell
                 
-                let restaurant = allRestos[indexPath.row - 1]
+                let restaurant = allRestaurants[indexPath.row - 1]
                 cell.restaurantName.text = restaurant.name
                 cell.restaurantCategories.text = restaurant.categories
                 cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "delivery"))
@@ -280,8 +149,20 @@ class DeliveryHomeTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let tableViewSection = TableViewSection(rawValue: indexPath.section), tableViewSection == .allRestaurants else {
+            return
+        }
+        selectedRestaurant = allRestaurants[indexPath.row]
+        showRestaurant()
+    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        homeHeader.showShadow(-tableView.contentOffset.y < (homeHeaderHeight - 70))
+        tdNavController?.showShadow(-tableView.contentOffset.y < (homeHeaderHeight - 70))
+    }
+    
+    private func showRestaurant() {
+        performSegue(withIdentifier: "ShowRestaurantSegue", sender: nil)
     }
 }
 
@@ -308,8 +189,7 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
 extension DeliveryHomeTableViewController: MSPeekImplementationDelegate {
     func peekImplementation(_ peekImplementation: MSPeekCollectionViewDelegateImplementation, _ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedRestaurant = highlightedCategories[collectionView.tag].restaurants[indexPath.row]
-        homeHeader.show(false)
-        performSegue(withIdentifier: "ShowRestaurantSegue", sender: nil)
+        showRestaurant()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

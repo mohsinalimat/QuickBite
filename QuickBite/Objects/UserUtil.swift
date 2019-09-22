@@ -11,14 +11,13 @@ import Firebase
 import CocoaLumberjack
 
 struct UserUtil {
+    static private let dbUsers = Firestore.firestore().collection("users")
     
     enum SyncProperty: String {
         case name = "name"
         case phone = "phone"
         case address = "address"
     }
-    
-    static private let dbUsers = Firestore.firestore().collection("users")
     
     static var currentUser: User? {
         if let currentUserData = UserDefaults.standard.data(forKey: UDKeys.currentUser) {
@@ -33,6 +32,7 @@ struct UserUtil {
     }
     
     static func clearCurrentUser() {
+        DDLogDebug("Clearing current user!")
         UserDefaults.standard.removeObject(forKey: UDKeys.currentUser)
     }
     

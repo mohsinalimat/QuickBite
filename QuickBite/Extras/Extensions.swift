@@ -11,10 +11,20 @@ import UIKit
 
 extension UIFont {
     func smallCaps() -> UIFont {
-        let settings = [[UIFontDescriptor.FeatureKey.featureIdentifier: kLowerCaseType, UIFontDescriptor.FeatureKey.typeIdentifier: kLowerCaseSmallCapsSelector]]
-        let attributes: [UIFontDescriptor.AttributeName: Any] = [UIFontDescriptor.AttributeName(rawValue: UIFontDescriptor.AttributeName.featureSettings.rawValue): settings as AnyObject, UIFontDescriptor.AttributeName(rawValue: UIFontDescriptor.AttributeName.name.rawValue): fontName as AnyObject]
+        let upperCaseFeature = [
+            UIFontDescriptor.FeatureKey.featureIdentifier : kUpperCaseType,
+            UIFontDescriptor.FeatureKey.typeIdentifier : kUpperCaseType
+         ]
+
+        let lowerCaseFeature = [
+            UIFontDescriptor.FeatureKey.featureIdentifier : kLowerCaseType,
+            UIFontDescriptor.FeatureKey.typeIdentifier : kLowerCaseSmallCapsSelector
+        ]
+
+        let features = [upperCaseFeature, lowerCaseFeature]
+        let additions = fontDescriptor.addingAttributes([.featureSettings: features])
         
-        return UIFont(descriptor: UIFontDescriptor(fontAttributes: attributes), size: pointSize)
+        return UIFont(descriptor: additions, size: pointSize)
     }
 }
 
@@ -68,6 +78,16 @@ public extension UIImage {
         
         guard let cgImage = image?.cgImage else { return nil }
         self.init(cgImage: cgImage)
+    }
+}
+
+extension UIColor {
+    static var systemBackgroundCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .systemBackground
+        } else {
+            return .white
+        }
     }
 }
 

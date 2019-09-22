@@ -60,7 +60,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func removeAllTapped(_ sender: Any) {
-        Cart.removeAll()
+        Cart.empty()
         updatePriceLabels()
         continueButton.isEnabled = false
         UIView.animate(withDuration: 0.23, delay: 0, options: .curveEaseInOut, animations: {

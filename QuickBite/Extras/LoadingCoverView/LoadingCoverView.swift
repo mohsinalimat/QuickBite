@@ -46,6 +46,7 @@ class LoadingCoverView: UIView {
     }
     
     func cover(parentView: UIView, animated: Bool = false) {
+        self.alpha = 0.0
         parentView.addSubview(self)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.leftAnchor.constraint(equalTo: parentView.leftAnchor).isActive = true
@@ -53,7 +54,7 @@ class LoadingCoverView: UIView {
         self.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
         self.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
         
-        UIView.animate(withDuration: (animated ? 0.5 : 0)) {
+        UIView.animate(withDuration: (animated ? 0.2 : 0)) {
             self.alpha = 1.0
         }
     }

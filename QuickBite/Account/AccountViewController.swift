@@ -61,7 +61,7 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         case 2: // Notifications
             performSegue(withIdentifier: "ShowUserPrefsSegue", sender: nil)
         case 4: // Log Out
-            let optionMenu = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .actionSheet)
+            let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             optionMenu.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
                 AppManager.shared.logout()
