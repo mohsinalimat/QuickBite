@@ -43,5 +43,8 @@ class MenuTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let menuItemVC = segue.destination as! MenuItemViewController
         menuItemVC.menuItem = menuItemsForCategory[tableView.indexPathForSelectedRow!.row]
+        if let tdTabBarController = self.navigationController?.tabBarController as? TDTabBarController {
+            menuItemVC.delegate = tdTabBarController
+        }
     }
 }

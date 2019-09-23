@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TDTabBarController: UITabBarController {
+class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     
     private let cartBanner = CartBanner()
     private var cartBannerIsShown = false
@@ -33,14 +33,24 @@ class TDTabBarController: UITabBarController {
         view!.bringSubviewToFront(tabBar)
     }
     
-    @objc func cartTapped() {
-        let storyboard = UIStoryboard(name: "Delivery", bundle: nil)
-        let cartNavigationController = storyboard.instantiateViewController(withIdentifier: "CartNavigationController") as! UINavigationController
-        present(cartNavigationController, animated: true, completion: nil)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateCartAppearance()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserDefaults.standard.bool(forKey: UDKeys.redirectToOrders) {
+            self.selectedIndex = 1
+            UserDefaults.standard.removeObject(forKey: UDKeys.redirectToOrders)
+        }
+    }
+    
+    func itemAddedToCart() {
+        updateCartAppearance()
+    }
+    
+    private func updateCartAppearance() {
         if Cart.hasItems {
             cartBanner.updateLabels()
             cartBanner.layoutIfNeeded() // Avoids a strange visual bug with the total price label...
@@ -60,11 +70,9 @@ class TDTabBarController: UITabBarController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if UserDefaults.standard.bool(forKey: UDKeys.redirectToOrders) {
-            self.selectedIndex = 1
-            UserDefaults.standard.removeObject(forKey: UDKeys.redirectToOrders)
-        }
+    @objc func cartTapped() {
+        let storyboard = UIStoryboard(name: "Delivery", bundle: nil)
+        let cartNavigationController = storyboard.instantiateViewController(withIdentifier: "CartNavigationController") as! UINavigationController
+        present(cartNavigationController, animated: true, completion: nil)
     }
 }

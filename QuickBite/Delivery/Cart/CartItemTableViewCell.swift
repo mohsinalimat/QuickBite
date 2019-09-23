@@ -10,6 +10,7 @@ import UIKit
 
 class CartItemTableViewCell: UITableViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
     @IBOutlet weak var selectedItemOptions: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

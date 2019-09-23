@@ -9,6 +9,10 @@
 import UIKit
 import CocoaLumberjack
 
+protocol MenuItemViewControllerDelegate: class {
+    func itemAddedToCart()
+}
+
 class MenuItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var orderOptionsTableView: UITableView!
@@ -28,7 +32,11 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var increaseQuantityBtn: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     
+    private var ios13padding: CGFloat = 0
+    
     var menuItem: MenuItem!
+    
+    weak var delegate: MenuItemViewControllerDelegate?
     
     private var addedPriceForSection: [Double]! {
         didSet { updateTotalPriceLabel() }
@@ -52,6 +60,8 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         if #available(iOS 13, *) {
             // Hide topBar gradient for iOS 13 devices
             topBar.topColor = .clear
+            // FIXME:
+            ios13padding = 40
         }
     
         if menuItem.imageURL.isNotEmpty {
@@ -224,6 +234,8 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         menuItem.finalPrice = (Double(menuItem.selectedQuantity) * (menuItem.price + totalAddedPrice))
         Cart.addItem(menuItem)
         
+        delegate?.itemAddedToCart()
+        
         Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
             self.dismiss(animated: true, completion: nil)
         }
@@ -238,12 +250,12 @@ extension MenuItemViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let topBarAlpha = calculateAlpha(trackingView: menuItemTitle, forScrollOffset: topBar.frame.height, padding: 16)
+        let topBarBottom = topBar.frame.origin.y + topBar.frame.height + ios13padding
+        let topBarAlpha = calculateAlpha(trackingView: menuItemTitle, forScrollOffset: topBarBottom, padding: 16)
         topBarBackground.alpha = topBarAlpha
         topBarShadow.alpha = topBarAlpha
         
-        menuItemTopBarTitle.alpha = calculateAlpha(trackingView: menuItemTitle, trackingPoint: .bottom, forScrollOffset: topBar.frame.height, padding: 8, transitionRange: 10)
-        
+        menuItemTopBarTitle.alpha = calculateAlpha(trackingView: menuItemTitle, trackingPoint: .bottom, forScrollOffset: topBarBottom, padding: 8, transitionRange: 2)
     }
     
     // trackingView: the view that, when scrolled past the offset, will cause return alpha to be > 0
@@ -251,11 +263,12 @@ extension MenuItemViewController: UIScrollViewDelegate {
     //         will cause return alpha to be > 0
     // padding: if a positive value is passed here, the appearing view will start appearing earlier.
     //          if negative, later
-    private func calculateAlpha(trackingView: UIView, trackingPoint tpPref: TrackingPoint = .top, forScrollOffset offset: CGFloat, padding: CGFloat = 0, transitionRange: CGFloat = 40) -> CGFloat {
+    // transitionRange: the bigger this number, the more the trackingView needs to scroll past the offset before alpha becomes 1.
+    private func calculateAlpha(trackingView: UIView, trackingPoint tpPref: TrackingPoint = .top, forScrollOffset offset: CGFloat, padding: CGFloat = 0, transitionRange: CGFloat = 30) -> CGFloat {
         
         let trackingFrame = trackingView.convert(trackingView.bounds, to: nil)
         let trackingPoint = tpPref == .top ? trackingFrame.origin.y : trackingFrame.origin.y + trackingFrame.height
-        
+//        DDLogDebug("trackingPoint: \(trackingPoint), offset: \(offset + padding)")
         let offsetAndPadding = offset + padding
         
         if trackingPoint > offsetAndPadding { return 0 }

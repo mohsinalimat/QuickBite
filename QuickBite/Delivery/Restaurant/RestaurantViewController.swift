@@ -31,6 +31,7 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         
         menuCategories = restaurant.getMenuCategories()
         featuredItems = restaurant.getFeaturedItems()
+//        self.navigationController?.presentationController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +84,9 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
             menuTableVC.menuItemsForCategory = restaurant.getItemsInCategory(category)
         } else if let menuItemVC = segue.destination as? MenuItemViewController {
             menuItemVC.menuItem = selectedMenuItem
+            if let tdTabBarController = self.navigationController?.tabBarController as? TDTabBarController {
+                menuItemVC.delegate = tdTabBarController
+            }
         }
     }
 }

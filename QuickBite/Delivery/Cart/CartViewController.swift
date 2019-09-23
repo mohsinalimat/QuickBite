@@ -84,6 +84,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartItems.count
     }
@@ -92,6 +93,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCell", for: indexPath) as! CartItemTableViewCell
         
         let cartItem = cartItems[indexPath.row]
+        if cartItem.imageURL.isNotEmpty {
+            cell.itemImage.sd_setImage(with: URL(string: cartItem.imageURL))
+        }
         cell.itemTitle.text = cartItem.itemName
         cell.selectedItemOptions.text = cartItem.selectedOptions
         cell.quantityLabel.text = "\(cartItem.selectedQuantity)x"
