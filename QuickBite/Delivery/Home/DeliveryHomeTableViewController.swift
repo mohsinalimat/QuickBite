@@ -153,7 +153,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         guard let tableViewSection = TableViewSection(rawValue: indexPath.section), tableViewSection == .allRestaurants else {
             return
         }
-        selectedRestaurant = allRestaurants[indexPath.row]
+        selectedRestaurant = allRestaurants[indexPath.row + 1] // Account for header cell
         showRestaurant()
     }
     

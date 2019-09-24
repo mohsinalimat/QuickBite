@@ -1,46 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6aR-nB-awr">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5m6-Zs-WHq">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Orders-->
-        <scene sceneID="W5s-90-yHq">
+        <scene sceneID="OQi-zA-RtP">
             <objects>
-                <viewController id="6aR-nB-awr" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LpI-0Z-bN7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                <viewController storyboardIdentifier="CurrentOrderViewController" id="PzW-6J-4P3" customClass="OrdersViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iQX-Ym-vNU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="917"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="fRG-Qg-MeD"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vg-vJ-7tt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="104.66666666666667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyn-aL-aYB">
+                                        <rect key="frame" x="16" y="60" width="343" height="40.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Zyn-aL-aYB" firstAttribute="leading" secondItem="0vg-vJ-7tt" secondAttribute="leading" constant="16" id="XMM-nM-MQO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zyn-aL-aYB" secondAttribute="trailing" constant="16" id="hlY-ya-Zev"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zyn-aL-aYB" secondAttribute="bottom" constant="4" id="iav-96-1f2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DS8-Eb-I1t" firstAttribute="trailing" secondItem="0vg-vJ-7tt" secondAttribute="trailing" id="95Q-4U-RaK"/>
+                            <constraint firstItem="0vg-vJ-7tt" firstAttribute="leading" secondItem="DS8-Eb-I1t" secondAttribute="leading" id="KXB-BS-EPc"/>
+                            <constraint firstItem="0vg-vJ-7tt" firstAttribute="top" secondItem="iQX-Ym-vNU" secondAttribute="top" id="nvD-i1-o2n"/>
+                            <constraint firstItem="Zyn-aL-aYB" firstAttribute="top" secondItem="DS8-Eb-I1t" secondAttribute="top" constant="16" id="wzU-jy-gC0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DS8-Eb-I1t"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Orders" image="orders" id="Khd-Mn-zn1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z8j-js-XyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MN8-lI-Rjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="153"/>
+            <point key="canvasLocation" x="-1732" y="-242"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="CVk-HM-OMY">
+        <!--Orders-->
+        <scene sceneID="L3F-pc-yxE">
             <objects>
-                <viewController id="AeA-qB-fEX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Acl-UA-B7Z">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="5m6-Zs-WHq" customClass="OrdersViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kvk-p4-kCx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="oYH-sf-zdB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwf-k4-XaT">
+                                <rect key="frame" x="16" y="60" width="343" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dea-lV-PXb">
+                                <rect key="frame" x="0.0" y="108" width="375" height="621"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Dea-lV-PXb" firstAttribute="top" secondItem="Bwf-k4-XaT" secondAttribute="bottom" constant="7.3333333333333428" id="2J9-8w-go7"/>
+                            <constraint firstItem="gZn-f6-S1W" firstAttribute="trailing" secondItem="Dea-lV-PXb" secondAttribute="trailing" id="QY5-MQ-y91"/>
+                            <constraint firstItem="Dea-lV-PXb" firstAttribute="leading" secondItem="gZn-f6-S1W" secondAttribute="leading" id="axC-f2-H8Q"/>
+                            <constraint firstItem="Bwf-k4-XaT" firstAttribute="top" secondItem="gZn-f6-S1W" secondAttribute="top" constant="16" id="gc7-aG-YBK"/>
+                            <constraint firstItem="gZn-f6-S1W" firstAttribute="trailing" secondItem="Bwf-k4-XaT" secondAttribute="trailing" constant="16" id="ovk-4I-wTG"/>
+                            <constraint firstItem="gZn-f6-S1W" firstAttribute="bottom" secondItem="Dea-lV-PXb" secondAttribute="bottom" id="uMO-Y2-qat"/>
+                            <constraint firstItem="Bwf-k4-XaT" firstAttribute="leading" secondItem="gZn-f6-S1W" secondAttribute="leading" constant="16" id="vdf-r4-3BB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gZn-f6-S1W"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Orders" image="orders" id="sbG-WU-QQt"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="masterContentView" destination="Dea-lV-PXb" id="W7K-gM-N2l"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tma-4i-rI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KN6-ev-Y1o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-210"/>
+            <point key="canvasLocation" x="-818.39999999999998" y="-230.54187192118226"/>
         </scene>
     </scenes>
     <resources>

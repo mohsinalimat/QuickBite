@@ -9,12 +9,14 @@
 import UIKit
 
 class OrdersViewController: UIViewController {
-
+    @IBOutlet weak var masterContentView: UIView!
+    
+    private var currentOrderView: CurrentOrderView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        currentOrderView = CurrentOrderView()
+        masterContentView.addSubviewAndFill(currentOrderView)
     }
-
-
 }
 

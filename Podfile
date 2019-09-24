@@ -17,4 +17,5 @@ target 'QuickBite' do
   pod 'SDWebImage'
   pod 'NVActivityIndicatorView'
   pod 'InputMask'
+  pod 'GTProgressBar'
 end

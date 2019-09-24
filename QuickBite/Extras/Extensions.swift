@@ -33,6 +33,14 @@ extension UIFont {
 class SmallCapsLabel: UILabel {}
 
 //MARK:- UILabel
+
+struct LabelAnimateAnchorPoint {
+  static let leadingCenterY         = CGPoint(x: 0, y: 0.5)
+  static let trailingCenterY        = CGPoint(x: 1, y: 0.5)
+  static let centerXCenterY         = CGPoint(x: 0.5, y: 0.5)
+  static let leadingTop             = CGPoint(x: 0, y: 0)
+}
+
 extension UILabel {
     @IBInspectable var smallCaps: Bool {
         get {
@@ -67,6 +75,38 @@ extension UILabel {
             }
         }
     }
+    
+    func setFontSize(_ fontSize: CGFloat, animated: Bool = false, duration: Double = 0.3, animateAnchorPoint: CGPoint = LabelAnimateAnchorPoint.leadingCenterY) {
+        guard animated else {
+            self.font = self.font.withSize(fontSize)
+            return
+        }
+        
+        self.setAnchorPoint(anchorPoint: animateAnchorPoint)
+        
+        let startTransform = transform
+        let oldFrame = frame
+        var newFrame = oldFrame
+        let scaleRatio = fontSize / font.pointSize
+        
+        newFrame.size.width *= scaleRatio
+        newFrame.size.height *= scaleRatio
+        newFrame.origin.x = oldFrame.origin.x - (newFrame.size.width - oldFrame.size.width) * animateAnchorPoint.x
+        newFrame.origin.y = oldFrame.origin.y - (newFrame.size.height - oldFrame.size.height) * animateAnchorPoint.y
+        frame = newFrame
+        
+        font = font.withSize(fontSize)
+        
+        transform = CGAffineTransform.init(scaleX: 1 / scaleRatio, y: 1 / scaleRatio);
+        layoutIfNeeded()
+        
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
+            self.transform = startTransform
+            newFrame = self.frame
+        }) { _ in
+            self.frame = newFrame
+        }
+    }
 }
 
 //MARK:- UIImage
@@ -91,6 +131,14 @@ extension UIColor {
             return .systemBackground
         } else {
             return .white
+        }
+    }
+    
+    static var labelCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .label
+        } else {
+            return .black
         }
     }
 }
@@ -180,6 +228,27 @@ extension UIView {
         set {
             layer.borderWidth = newValue
         }
+    }
+    
+    func setAnchorPoint(anchorPoint: CGPoint) {
+        self.translatesAutoresizingMaskIntoConstraints = true
+        let oldOrigin = self.frame.origin
+        self.layer.anchorPoint = anchorPoint
+        let newOrigin = self.frame.origin
+        
+        let transition = CGPoint(x: newOrigin.x - oldOrigin.x, y: newOrigin.y - oldOrigin.y)
+        self.center = CGPoint(x: self.center.x - transition.x, y: self.center.y - transition.y)
+    }
+    
+    func addSubviewAndFill(_ subView: UIView) {
+        self.addSubview(subView)
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            subView.topAnchor.constraint(equalTo: self.topAnchor),
+            subView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            subView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            subView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
     }
     
     enum UIViewFadeStyle {

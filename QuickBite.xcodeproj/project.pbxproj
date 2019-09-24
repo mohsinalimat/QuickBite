@@ -30,8 +30,9 @@
 		852AE7FB232BB2BA00804751 /* FontAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F5232BB2B900804751 /* FontAnimation.swift */; };
 		852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FD232BB2DF00804751 /* PasswordTextField.swift */; };
 		852AE800232BB2DF00804751 /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */; };
-		8532B7F02337E43500A6D892 /* NavBarShadow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8532B7EF2337E43500A6D892 /* NavBarShadow.xib */; };
-		8532B7F22337E63000A6D892 /* NavBarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532B7F12337E63000A6D892 /* NavBarShadow.swift */; };
+		8532B7F42338CDDC00A6D892 /* CurrentOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8532B7F32338CDDC00A6D892 /* CurrentOrderView.xib */; };
+		8532B7F62338CE1800A6D892 /* PastOrdersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8532B7F52338CE1800A6D892 /* PastOrdersView.xib */; };
+		8532B7F82338CE2A00A6D892 /* CurrentOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532B7F72338CE2A00A6D892 /* CurrentOrderView.swift */; };
 		853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */; };
 		853B2BFB233235FF003E6011 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BFA233235FF003E6011 /* Cart.swift */; };
 		854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854348C92310EA5600411B80 /* AppDelegate.swift */; };
@@ -130,8 +131,9 @@
 		852AE7F5232BB2B900804751 /* FontAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAnimation.swift; sourceTree = "<group>"; };
 		852AE7FD232BB2DF00804751 /* PasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
-		8532B7EF2337E43500A6D892 /* NavBarShadow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarShadow.xib; sourceTree = "<group>"; };
-		8532B7F12337E63000A6D892 /* NavBarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarShadow.swift; sourceTree = "<group>"; };
+		8532B7F32338CDDC00A6D892 /* CurrentOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentOrderView.xib; sourceTree = "<group>"; };
+		8532B7F52338CE1800A6D892 /* PastOrdersView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastOrdersView.xib; sourceTree = "<group>"; };
+		8532B7F72338CE2A00A6D892 /* CurrentOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderView.swift; sourceTree = "<group>"; };
 		853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeOrderViewController.swift; sourceTree = "<group>"; };
 		853B2BFA233235FF003E6011 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		854348C62310EA5600411B80 /* QuickBite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickBite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +245,9 @@
 			children = (
 				850E16312334FBF000DA64FF /* Orders.storyboard */,
 				854348CD2310EA5600411B80 /* OrdersViewController.swift */,
+				8532B7F72338CE2A00A6D892 /* CurrentOrderView.swift */,
+				8532B7F32338CDDC00A6D892 /* CurrentOrderView.xib */,
+				8532B7F52338CE1800A6D892 /* PastOrdersView.xib */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -283,15 +288,6 @@
 				852AE7EF232BB2B900804751 /* Sources */,
 			);
 			path = TweeTextField;
-			sourceTree = "<group>";
-		};
-		8532B7EE2337E41900A6D892 /* NavBarShadow */ = {
-			isa = PBXGroup;
-			children = (
-				8532B7F12337E63000A6D892 /* NavBarShadow.swift */,
-				8532B7EF2337E43500A6D892 /* NavBarShadow.xib */,
-			);
-			path = NavBarShadow;
 			sourceTree = "<group>";
 		};
 		854348BD2310EA5600411B80 = {
@@ -450,7 +446,6 @@
 				85E625A22315479F00954664 /* GradientView.swift */,
 				8552022123183A4800A1E2D0 /* TDTabBarController.swift */,
 				85679BBA23378B3800048625 /* TDNavigationController.swift */,
-				8532B7EE2337E41900A6D892 /* NavBarShadow */,
 				859D74B8233382A500FE4538 /* LoadingCoverView */,
 				852AE7FC232BB2C200804751 /* TweeTextField */,
 				85AF1924231BC4D100D8E86E /* MSPeekCollectionView */,
@@ -610,11 +605,12 @@
 				854348F72311218A00411B80 /* Account.storyboard in Resources */,
 				85808A92232CE86E00A86822 /* GoogleService-Info.plist in Resources */,
 				85E797712313B4F400C01238 /* FeaturedItemCollectionViewCell.xib in Resources */,
-				8532B7F02337E43500A6D892 /* NavBarShadow.xib in Resources */,
 				850E16322334FBF000DA64FF /* Orders.storyboard in Resources */,
 				850A7D8A232F8FF000F67125 /* LoadingCoverView.xib in Resources */,
 				854348D12310EA5600411B80 /* Main.storyboard in Resources */,
 				85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */,
+				8532B7F42338CDDC00A6D892 /* CurrentOrderView.xib in Resources */,
+				8532B7F62338CE1800A6D892 /* PastOrdersView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				854348CE2310EA5600411B80 /* OrdersViewController.swift in Sources */,
+				8532B7F82338CE2A00A6D892 /* CurrentOrderView.swift in Sources */,
 				85E7976C2313A7CE00C01238 /* RestaurantViewController.swift in Sources */,
 				85CF2DF72326554500F9C815 /* KaedeTextField.swift in Sources */,
 				85CF2DF92326554500F9C815 /* IsaoTextField.swift in Sources */,
@@ -708,7 +705,6 @@
 				8552021B2317E87400A1E2D0 /* SPAlertIconHeartView.swift in Sources */,
 				854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */,
 				85AF191F231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift in Sources */,
-				8532B7F22337E63000A6D892 /* NavBarShadow.swift in Sources */,
 				8591C43823165ACE0036CBE6 /* OrderOptionTableViewCell.swift in Sources */,
 				8591C43A231661010036CBE6 /* AutoSizedTableView.swift in Sources */,
 				85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */,
