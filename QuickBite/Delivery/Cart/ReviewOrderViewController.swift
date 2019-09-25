@@ -53,14 +53,17 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
         populateContactInfo()
         populateOrderTotal()
 
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         changeTextField.tweePlaceholder = String(Int(orderTotal))
         
         bottomFadeView.fadeView(style: .top, percentage: 0.35)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,8 +77,12 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let value = Double(textField.text!)!
-        changeAmountIsValid = (orderTotal.isLess(than: value) || orderTotal.isEqual(to: value))
+        if let value = Double(textField.text!) {
+            changeAmountIsValid = (orderTotal.isLess(than: value) || orderTotal.isEqual(to: value))
+        } else {
+            changeTextField.tweePlaceholder = String(Int(orderTotal))
+            changeAmountIsValid = false
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -85,7 +92,7 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
+        let userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
@@ -110,7 +117,7 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func populateOrderTotal() {
-        let cartQuantity = Cart.getTotalQuantity()
+        let cartQuantity = Cart.totalQuantity
         let s = cartQuantity > 1 ? "s" : ""
         orderLabel.text = "\(cartQuantity) item\(s) - \(Cart.totalPrice.asPriceString)"
     }
@@ -130,24 +137,46 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     @IBAction func placeOrderTapped(_ sender: Any) {
         if changeAmountIsValid {
             placeOrderButton.isEnabled = false
+            saveUserInformation()
             placeOrder()
         } else {
             changePopUp.shake()
         }
     }
     
+    private func saveUserInformation() {
+        if let newName = userName {
+            UserUtil.setName(newName)
+        }
+        
+        if let newPhone = userPhone {
+            UserUtil.setPhoneNumber(newPhone)
+        }
+    }
+    
     private func placeOrder() {
         let dbOrders = Firestore.firestore().collection("orders")
         
-        dbOrders.document().setData([
-            "orderTotal": orderTotal!
-        ]) { err in
+        let user = UserUtil.currentUser!
+        let restaurant = Cart.restaurant!
+        let order = Order(customerName: user.name,
+                          customerContactNumber: user.phone,
+                          deliveryAddress: user.selectedAddress.toString(),
+                          restaurantName: restaurant.name,
+                          restaurantAddress: restaurant.address,
+                          restaurantContactNumber: restaurant.contactNumber,
+                          datePlaced: Date(),
+                          items: Cart.items,
+                          total: Cart.totalPrice,
+                          isPendingCompletion: true)
+        
+        dbOrders.document(order.id.uuidString).setData(order.dictionary) { err in
             if let err = err {
                 DDLogError("Error submitting order: \(err)")
                 // SHOW ERROR MESSAGE
                 return
             }
-            
+            DDLogDebug("order placed!")
             // Order placed!
             // 1. Stop animating indicatory
             // 2. Show order placed alert

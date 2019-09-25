@@ -10,7 +10,7 @@ import Foundation
 
 struct UDKeys {
     static let cartItems = "CART_ITEMS"
-    static let cartRestaurantName = "CART_RESTAURANT_NAME"
+    static let cartRestaurant = "CART_RESTAURANT"
     
     static let currentUser = "CURRENT_USER"
     

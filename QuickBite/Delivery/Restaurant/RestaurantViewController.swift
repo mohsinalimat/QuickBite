@@ -80,10 +80,11 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let menuTableVC = segue.destination as? MenuTableViewController {
             let category = menuCategories[menuCategoriesTableView.indexPathForSelectedRow!.row]
-            menuTableVC.title = category
-            menuTableVC.menuItemsForCategory = restaurant.getItemsInCategory(category)
+            menuTableVC.restaurant = restaurant
+            menuTableVC.menuCategory = category
         } else if let menuItemVC = segue.destination as? MenuItemViewController {
             menuItemVC.menuItem = selectedMenuItem
+            menuItemVC.restaurant = restaurant
             if let tdTabBarController = self.navigationController?.tabBarController as? TDTabBarController {
                 menuItemVC.delegate = tdTabBarController
             }

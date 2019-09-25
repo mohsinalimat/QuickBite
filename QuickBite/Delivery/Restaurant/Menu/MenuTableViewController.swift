@@ -10,7 +10,10 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     
-    var menuItemsForCategory: [MenuItem]!
+    var restaurant: Restaurant!
+    var menuCategory: String!
+    
+    private var menuItemsForCategory: [MenuItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +21,8 @@ class MenuTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.contentInset.top = 10
+        
+        menuItemsForCategory = restaurant.getItemsInCategory(menuCategory)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,6 +48,7 @@ class MenuTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let menuItemVC = segue.destination as! MenuItemViewController
         menuItemVC.menuItem = menuItemsForCategory[tableView.indexPathForSelectedRow!.row]
+        menuItemVC.restaurant = restaurant
         if let tdTabBarController = self.navigationController?.tabBarController as? TDTabBarController {
             menuItemVC.delegate = tdTabBarController
         }

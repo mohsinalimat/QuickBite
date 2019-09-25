@@ -110,6 +110,7 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
                                  barangay: barangayTextField.text ?? "",
                                  building: buildingTextField.text ?? "",
                                  landmark: landmarkTextField.text ?? "",
+                                 isSelected: true,
                                  isDefault: true)
         
         UserUtil.addAddress(newAddress)

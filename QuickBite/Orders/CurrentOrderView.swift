@@ -10,13 +10,15 @@ import UIKit
 import BEMCheckBox
 import GTProgressBar
 
+protocol CurrentOrderViewDelegate {
+    func viewPastOrdersTapped()
+    func contactUsTapped()
+}
+
 class CurrentOrderView: UIView {
     @IBOutlet var masterView: UIView!
     @IBOutlet weak var progressView: GTProgressBar!
     @IBOutlet weak var checkboxStackView: UIStackView!
-    
-    // Progress Checkboxes
-    @IBOutlet weak var orderSubmittedCheckbox: BEMCheckBox!
     
     // Progress Titles & Subtitles
     @IBOutlet weak var orderSubmittedTitle: UILabel!
@@ -32,6 +34,11 @@ class CurrentOrderView: UIView {
     private var subtitles: [UILabel]!
     
     private var animationDuration: Double = 0.3
+    
+    let startFontSize: CGFloat = 19
+    let endFontSize: CGFloat = 24
+    
+//    var textLayer: VerticallyCenteredTextLayer!
     
     enum OrderProgressStage: Int {
         case orderSubmitted
@@ -58,6 +65,15 @@ class CurrentOrderView: UIView {
         
         titles = [orderSubmittedTitle, beingPreparedByStoreTitle, orderOnItsWayTitle, foodDeliveredTitle]
         subtitles = [orderSubmittedSubtitle, beingPreparedByStoreSubtitle, orderOnItsWaySubtitle, foodDeliveredSubtitle]
+        
+//        textLayer = VerticallyCenteredTextLayer()
+//        textLayer.string = "Order Submitted"
+//        textLayer.font = UIFont.systemFont(ofSize: startFontSize, weight: .semibold)
+//        textLayer.fontSize = startFontSize
+//        textLayer.foregroundColor = UIColor.black.cgColor
+//        textLayer.contentsScale = UIScreen.main.scale //for some reason CATextLayer by default only works for 1x screen resolution and needs this line to work properly on 2x, 3x, etc. ...
+//        textLayer.frame = orderSubmittedTitleContainer.bounds
+//        orderSubmittedTitleContainer.layer.addSublayer(textLayer)
     }
     
     func setProgressStage(_ newStage: OrderProgressStage) {
@@ -116,10 +132,10 @@ class CurrentOrderView: UIView {
             // All titles in this loop are completed, so mark them as such
             let title = titles[index]
             title.textColor = .labelCompat
-            title.setFontSize(19.0)
+            title.setFontSize(19.0, animated: true)
             
             let subtitle = subtitles[index]
-            subtitle.alpha = 0.0
+            showSubtitle(subtitle, show: false, duration: 0.1)
         }
     }
     
@@ -146,13 +162,43 @@ class CurrentOrderView: UIView {
         showSubtitle(subtitle)
     }
     
-    private func showSubtitle(_ subtitle: UILabel) {
+    private func showSubtitle(_ subtitle: UILabel, show: Bool = true, duration: Double = 0.3) {
         UIView.animate(withDuration: animationDuration, delay: 0.3, options: [.curveEaseInOut], animations: {
-            subtitle.alpha = 1
+            subtitle.alpha = show ? 1 : 0
         })
     }
     
     @IBAction func contactUsTapped(_ sender: Any) {
-        setProgressStage(.onItsWay)
+//        setProgressStage(.onItsWay)
+        
+        
+        //animation:
+//        let duration: TimeInterval = 0.3
+//        textLayer.fontSize = endFontSize //because upon completion of the animation CABasicAnimation resets the animated CALayer to its original state (as opposed to changing its properties to the end state of the animation), setting fontSize to endFontSize right BEFORE the animation starts ensures the fontSize doesn't jump back right after the animation.
+//        let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
+//        fontSizeAnimation.fromValue = startFontSize
+//        fontSizeAnimation.toValue = endFontSize
+//        fontSizeAnimation.duration = duration
+//        fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+//        textLayer.add(fontSizeAnimation, forKey: nil)
     }
 }
+
+//class VerticallyCenteredTextLayer: CATextLayer {
+//
+//    // REF: http://lists.apple.com/archives/quartz-dev/2008/Aug/msg00016.html
+//    // CREDIT: David Hoerl - https://github.com/dhoerl
+//    // USAGE: To fix the vertical alignment issue that currently exists within the CATextLayer class. Change made to the yDiff calculation.
+//
+//
+//    override func draw(in context: CGContext) {
+//        let height = self.bounds.size.height
+//        let fontSize = self.fontSize
+//        let yDiff = (height-fontSize)/2 - fontSize/10
+//
+//        context.saveGState()
+//        context.translateBy(x: 0, y: yDiff) // Use -yDiff when in non-flipped coordinates (like macOS's default)
+//        super.draw(in: context)
+//        context.restoreGState()
+//    }
+//}

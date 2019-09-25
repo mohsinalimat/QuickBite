@@ -23,12 +23,10 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        finalizeLabel.text = "Finalize your order from \(Cart.getRestaurantName())"
+        finalizeLabel.text = "Finalize your order from \(Cart.restaurant!.name)"
         
         if UserUtil.currentUser!.name.isNotEmpty {
             // Hide name field, set phone as firstResponder
@@ -43,6 +41,11 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
             nameTextField?.becomeFirstResponder()
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
@@ -68,7 +71,7 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
+        let userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         

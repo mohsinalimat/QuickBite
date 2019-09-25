@@ -28,10 +28,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.white), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        cartItems = Cart.getItems()
+        cartItems = Cart.items
         
         deliveryFeePriceLabel.text = 50.asPriceString
         
@@ -45,7 +42,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     

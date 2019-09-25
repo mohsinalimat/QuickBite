@@ -35,7 +35,7 @@ class CartBanner: UIView {
     }
     
     func updateLabels() {
-        let cartItemCount = Cart.getTotalQuantity()
+        let cartItemCount = Cart.totalQuantity
         itemCountLabel.text = cartItemCount == 1 ? "1 item" : "\(cartItemCount) items"
         
         totalPriceLabel.text = Cart.totalPrice.asPriceString

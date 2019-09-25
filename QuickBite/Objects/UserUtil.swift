@@ -37,22 +37,20 @@ struct UserUtil {
     }
     
     static func setName(_ name: String) {
-        if let user = currentUser {
-            user.name = name
-            updateCurrentUser(user)
-        } else {
-            DDLogError("Tried setting currentUser name without a currentUser set")
+        guard let user = currentUser, user.name != name else {
+            return
         }
+        user.name = name
+        updateCurrentUser(user)
         syncUserProperty(property: .name)
     }
     
     static func setPhoneNumber(_ number: String) {
-        if let user = currentUser {
-            user.phone = number
-            updateCurrentUser(user)
-        } else {
-            DDLogError("Tried setting currentUser name without a currentUser set")
+        guard let user = currentUser, user.phone != number else {
+            return
         }
+        user.phone = number
+        updateCurrentUser(user)
         syncUserProperty(property: .phone)
     }
     
@@ -76,7 +74,7 @@ struct UserUtil {
     //    }
     
     private static func syncUserProperty(property: SyncProperty) {
-        DDLogDebug("Syncing userProperty: \(property)")
+        DDLogDebug("Syncing userProperty: \(property.rawValue)")
         // Sync addresses if the user is not using a guest account
         guard let fbUser = Auth.auth().currentUser, let user = currentUser else { return }
 
@@ -96,7 +94,7 @@ struct UserUtil {
         
 
         dbUsers.document(fbUser.uid).updateData([
-            property: newValue!
+            property.rawValue: newValue!
         ]) { err in
             if let err = err {
                 DDLogError("Error syncing porperty: \(err)")
@@ -120,6 +118,19 @@ class User: Codable {
         }
         
         return addresses[0]
+    }
+    
+    // Returns default address if no address is selected
+    var selectedAddress: Address {
+        guard !addresses.isEmpty else {
+            fatalError("Tried to get selected address with no addresses set")
+        }
+        
+        if let selectedAddress = addresses.first(where: { $0.isSelected }) {
+            return selectedAddress
+        }
+        
+        return defaultAddress
     }
     
 //    var dictionary: [String : Any] {
@@ -154,17 +165,5 @@ class User: Codable {
         self.init(name: name,
                   phone: phone,
                   addresses: addresses)
-    }
-    
-    func getDefaultAddress() -> Address {
-        guard !addresses.isEmpty else {
-            fatalError("Tried to get default address with no addresses set")
-        }
-        
-        if let defaultAddress = addresses.first(where: { $0.isDefault }) {
-            return defaultAddress
-        }
-        
-        return addresses[0]
     }
 }

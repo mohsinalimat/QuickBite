@@ -17,7 +17,6 @@
                 <outlet property="masterView" destination="iN0-l3-epB" id="30y-pb-gQZ"/>
                 <outlet property="orderOnItsWaySubtitle" destination="Vge-nl-lgZ" id="omU-va-bOC"/>
                 <outlet property="orderOnItsWayTitle" destination="RGF-3c-RMr" id="sLd-XN-6Ak"/>
-                <outlet property="orderSubmittedCheckbox" destination="gLR-95-86h" id="du0-hG-KDI"/>
                 <outlet property="orderSubmittedSubtitle" destination="bQp-Ed-mjr" id="TBy-T8-CGP"/>
                 <outlet property="orderSubmittedTitle" destination="Dpx-VV-kPe" id="I4A-Q1-LbS"/>
                 <outlet property="progressView" destination="dvp-Kb-VwM" id="IuO-8X-McL"/>

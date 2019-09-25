@@ -35,7 +35,7 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateCartAppearance()
+        updateCartBannerAppearance()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,11 +46,12 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
         }
     }
     
+    // MARK: - MenuItemViewControllerDelegate
     func itemAddedToCart() {
-        updateCartAppearance()
+        updateCartBannerAppearance()
     }
     
-    private func updateCartAppearance() {
+    private func updateCartBannerAppearance() {
         if Cart.hasItems {
             cartBanner.updateLabels()
             cartBanner.layoutIfNeeded() // Avoids a strange visual bug with the total price label...
@@ -59,7 +60,7 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
                 self.view!.layoutIfNeeded()
                 cartBottomAnchor.constant = -8
                 view!.setNeedsUpdateConstraints()
-                UIView.animate(withDuration: 0.4, delay: 0.6, usingSpringWithDamping: 0.6, initialSpringVelocity: 9.5, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 9.5, options: .curveEaseOut, animations: {
                     self.view!.layoutIfNeeded()
                 }, completion: nil)
                 cartBannerIsShown = true

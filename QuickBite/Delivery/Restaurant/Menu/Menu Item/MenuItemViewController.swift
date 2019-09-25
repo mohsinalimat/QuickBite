@@ -34,6 +34,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private var ios13padding: CGFloat = 0
     
+    var restaurant: Restaurant!
     var menuItem: MenuItem!
     
     weak var delegate: MenuItemViewControllerDelegate?
@@ -232,12 +233,13 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         menuItem.selectedOptions = selectedOrderOptions
         menuItem.selectedQuantity = Int(quantityLabel.text!)!
         menuItem.finalPrice = (Double(menuItem.selectedQuantity) * (menuItem.price + totalAddedPrice))
+        Cart.restaurant = restaurant
         Cart.addItem(menuItem)
         
-        delegate?.itemAddedToCart()
-        
         Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true) {
+                self.delegate?.itemAddedToCart()
+            }
         }
     }
 }

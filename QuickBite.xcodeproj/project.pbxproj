@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		14F83F6A1174E3322F142052 /* Pods_QuickBite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC872374CFA47B18A57A118 /* Pods_QuickBite.framework */; };
 		8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500B3D5233256C1007772B9 /* UserUtil.swift */; };
+		850181BD233B9EF800EF8017 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850181BC233B9EF800EF8017 /* Address.swift */; };
+		850181BF233B9F1A00EF8017 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850181BE233B9F1A00EF8017 /* Order.swift */; };
+		850181C2233BA0FE00EF8017 /* FBSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850181C1233BA0FE00EF8017 /* FBSerializer.swift */; };
 		8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */; };
 		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
 		850A7D8A232F8FF000F67125 /* LoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* LoadingCoverView.xib */; };
@@ -31,7 +34,6 @@
 		852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FD232BB2DF00804751 /* PasswordTextField.swift */; };
 		852AE800232BB2DF00804751 /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */; };
 		8532B7F42338CDDC00A6D892 /* CurrentOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8532B7F32338CDDC00A6D892 /* CurrentOrderView.xib */; };
-		8532B7F62338CE1800A6D892 /* PastOrdersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8532B7F52338CE1800A6D892 /* PastOrdersView.xib */; };
 		8532B7F82338CE2A00A6D892 /* CurrentOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532B7F72338CE2A00A6D892 /* CurrentOrderView.swift */; };
 		853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */; };
 		853B2BFB233235FF003E6011 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B2BFA233235FF003E6011 /* Cart.swift */; };
@@ -72,6 +74,7 @@
 		85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */; };
 		85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */; };
 		85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B026682337D375004C4826 /* DeliveryHomeHeader.xib */; };
+		85C4A543233B8A8D005819E6 /* PastOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4A542233B8A8D005819E6 /* PastOrdersViewController.swift */; };
 		85CF2DF02326554500F9C815 /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE42326554500F9C815 /* YoshikoTextField.swift */; };
 		85CF2DF12326554500F9C815 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE62326554500F9C815 /* HoshiTextField.swift */; };
 		85CF2DF22326554500F9C815 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE72326554500F9C815 /* MinoruTextField.swift */; };
@@ -110,6 +113,9 @@
 		1DEB3DB3D42F991A1083F436 /* Pods-QuickBite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.debug.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.debug.xcconfig"; sourceTree = "<group>"; };
 		8158ACD805B92BDCFC867AF8 /* Pods-QuickBite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickBite.release.xcconfig"; path = "Target Support Files/Pods-QuickBite/Pods-QuickBite.release.xcconfig"; sourceTree = "<group>"; };
 		8500B3D5233256C1007772B9 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
+		850181BC233B9EF800EF8017 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		850181BE233B9F1A00EF8017 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		850181C1233BA0FE00EF8017 /* FBSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBSerializer.swift; sourceTree = "<group>"; };
 		8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		850A7D89232F8FF000F67125 /* LoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCoverView.xib; sourceTree = "<group>"; };
@@ -132,7 +138,6 @@
 		852AE7FD232BB2DF00804751 /* PasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		852AE7FE232BB2DF00804751 /* AnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
 		8532B7F32338CDDC00A6D892 /* CurrentOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentOrderView.xib; sourceTree = "<group>"; };
-		8532B7F52338CE1800A6D892 /* PastOrdersView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastOrdersView.xib; sourceTree = "<group>"; };
 		8532B7F72338CE2A00A6D892 /* CurrentOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderView.swift; sourceTree = "<group>"; };
 		853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeOrderViewController.swift; sourceTree = "<group>"; };
 		853B2BFA233235FF003E6011 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
@@ -177,6 +182,7 @@
 		85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewScrollDirection+PeekDataConversion.swift"; sourceTree = "<group>"; };
 		85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHomeHeader.swift; sourceTree = "<group>"; };
 		85B026682337D375004C4826 /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
+		85C4A542233B8A8D005819E6 /* PastOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrdersViewController.swift; sourceTree = "<group>"; };
 		85CF2DE42326554500F9C815 /* YoshikoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoshikoTextField.swift; sourceTree = "<group>"; };
 		85CF2DE52326554500F9C815 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
 		85CF2DE62326554500F9C815 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -220,14 +226,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		850181C0233BA0EB00EF8017 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				850181C1233BA0FE00EF8017 /* FBSerializer.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		850A7D86232F730800F67125 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				850A7D87232F731C00F67125 /* Restaurant.swift */,
+				850181BC233B9EF800EF8017 /* Address.swift */,
 				853B2BFA233235FF003E6011 /* Cart.swift */,
-				8500B3D5233256C1007772B9 /* UserUtil.swift */,
 				850A7D8D232FA6D600F67125 /* MenuItem.swift */,
+				850181BE233B9F1A00EF8017 /* Order.swift */,
+				850A7D87232F731C00F67125 /* Restaurant.swift */,
 				8552020B2317C72E00A1E2D0 /* Structs.swift */,
+				8500B3D5233256C1007772B9 /* UserUtil.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -247,7 +263,7 @@
 				854348CD2310EA5600411B80 /* OrdersViewController.swift */,
 				8532B7F72338CE2A00A6D892 /* CurrentOrderView.swift */,
 				8532B7F32338CDDC00A6D892 /* CurrentOrderView.xib */,
-				8532B7F52338CE1800A6D892 /* PastOrdersView.xib */,
+				85C4A542233B8A8D005819E6 /* PastOrdersViewController.swift */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -255,9 +271,9 @@
 		851DE0E62318DB4E00A374DB /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				851DE0E72318DB7600A374DB /* CartViewController.swift */,
 				8552021F2317EFEC00A1E2D0 /* CartBanner.swift */,
 				8552020F2317DD2A00A1E2D0 /* CartBanner.xib */,
-				851DE0E72318DB7600A374DB /* CartViewController.swift */,
 				851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */,
 				853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */,
 				85283768231D35390083ADD2 /* ReviewOrderViewController.swift */,
@@ -319,6 +335,7 @@
 				854348C92310EA5600411B80 /* AppDelegate.swift */,
 				85808A93232D0DEA00A86822 /* AppManager.swift */,
 				85808A95232D0F6F00A86822 /* AppContainerViewController.swift */,
+				850181C0233BA0EB00EF8017 /* Tools */,
 				854348CF2310EA5600411B80 /* Main.storyboard */,
 				850A7D86232F730800F67125 /* Objects */,
 				85E625A12315478B00954664 /* Extras */,
@@ -610,7 +627,6 @@
 				854348D12310EA5600411B80 /* Main.storyboard in Resources */,
 				85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */,
 				8532B7F42338CDDC00A6D892 /* CurrentOrderView.xib in Resources */,
-				8532B7F62338CE1800A6D892 /* PastOrdersView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +738,7 @@
 				856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */,
 				85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */,
 				85CF2DF12326554500F9C815 /* HoshiTextField.swift in Sources */,
+				85C4A543233B8A8D005819E6 /* PastOrdersViewController.swift in Sources */,
 				85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */,
 				8552021A2317E87400A1E2D0 /* SPAlertPreset.swift in Sources */,
 				852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */,
@@ -733,6 +750,7 @@
 				85CF2DF22326554500F9C815 /* MinoruTextField.swift in Sources */,
 				85CF2DF52326554500F9C815 /* JiroTextField.swift in Sources */,
 				853B2BFB233235FF003E6011 /* Cart.swift in Sources */,
+				850181BD233B9EF800EF8017 /* Address.swift in Sources */,
 				8552021C2317E87400A1E2D0 /* SPAlertIconDoneView.swift in Sources */,
 				851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */,
 				85E927B1231A4615008D8DE0 /* DeliveryHomeTableViewController.swift in Sources */,
@@ -747,9 +765,11 @@
 				85FF20082314ED6E00ABCA99 /* MenuItemTableViewCell.swift in Sources */,
 				8552021D2317E87400A1E2D0 /* SPAlertHaptic.swift in Sources */,
 				85E797692313A45800C01238 /* AllRestaurantsTableViewCell.swift in Sources */,
+				850181C2233BA0FE00EF8017 /* FBSerializer.swift in Sources */,
 				85808A96232D0F6F00A86822 /* AppContainerViewController.swift in Sources */,
 				8552022223183A4800A1E2D0 /* TDTabBarController.swift in Sources */,
 				853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */,
+				850181BF233B9F1A00EF8017 /* Order.swift in Sources */,
 				850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */,
 				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,
 				8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */,

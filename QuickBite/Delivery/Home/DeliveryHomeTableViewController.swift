@@ -139,7 +139,7 @@ class DeliveryHomeTableViewController: UITableViewController {
                 let restaurant = allRestaurants[indexPath.row - 1]
                 cell.restaurantName.text = restaurant.name
                 cell.restaurantCategories.text = restaurant.categories
-                cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "delivery"))
+                cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL))
                 cell.restaurantRating.text = String(restaurant.rating)
                 
                 return cell
@@ -179,7 +179,7 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
         let restaurant = highlightedCategories[collectionView.tag].restaurants[indexPath.row]
         
         cell.restaurantName.text = restaurant.name
-        cell.imageView.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "delivery"))
+        cell.imageView.sd_setImage(with: URL(string: restaurant.imageURL))
         
         return cell
     }
