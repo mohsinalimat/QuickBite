@@ -185,7 +185,7 @@ class CurrentOrderViewController: UIViewController {
     }
     
     @IBAction func contactUsTapped(_ sender: Any) {
-        
+        UserUtil.moveCurrentOrderToPreviousOrders()
     }
     
     @IBAction func pastOrdersTapped(_ sender: Any) {

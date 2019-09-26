@@ -141,6 +141,14 @@ extension UIColor {
             return .black
         }
     }
+    
+    static var secondaryLabelCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .secondaryLabel
+        } else {
+            return UIColor(red: 60.0, green: 60.0, blue: 67.0, alpha: 0.6)
+        }
+    }
 }
 
 //MARK:- Double

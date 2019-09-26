@@ -15,6 +15,7 @@ class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var largeTitleContainerViewHeight: NSLayoutConstraint!
     
     private var previousOrders: [Order]!
+    private let dateFormatter = DateFormatter()
     
     var showBigTitle = true
 
@@ -22,6 +23,9 @@ class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         setupTitle()
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
         
         previousOrders = UserUtil.currentUser!.pastOrders
         if previousOrders.isEmpty {
@@ -49,7 +53,15 @@ class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrderTableViewCell", for: indexPath) as! PreviousOrderTableViewCell
         
         let order = previousOrders[indexPath.row]
-        
+        if order.restaurantImageUrl.isNotEmpty {
+            cell.restaurantImage.sd_setImage(with: URL(string: order.restaurantImageUrl))
+        } else {
+            cell.restaurantImageWidthConstraint.constant = 0
+        }
+        cell.restaurantName.text = order.restaurantName
+        cell.date.text = dateFormatter.string(from: order.datePlaced)
+        cell.total.text = order.total.asPriceString
+        cell.setMenuItems(order.items)
         
         return cell
     }

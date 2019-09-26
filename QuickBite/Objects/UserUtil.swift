@@ -63,6 +63,17 @@ struct UserUtil {
         updateCurrentUser(user)
     }
     
+    static func moveCurrentOrderToPreviousOrders() {
+        guard let user = currentUser, let currentOrder = user.currentOrder else {
+            DDLogError("failed moving current order to previous order")
+            return
+        }
+        user.pastOrders.append(currentOrder)
+        user.currentOrder = nil
+        updateCurrentUser(user)
+        syncUserProperty(property: .pastOrders)
+    }
+    
     static func addAddress(_ address: Address) {
         guard let user = currentUser else {
             DDLogError("Tried to add address without a user set!")
