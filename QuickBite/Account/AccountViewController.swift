@@ -12,7 +12,7 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var menuTableView: UITableView!
     
-    private var menuItems = [[String]]()
+    private var menuItems = [[String]]() // accidentally renamed lol
 
     override func viewDidLoad() {
         super.viewDidLoad()

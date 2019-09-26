@@ -1,22 +1,32 @@
 //
-//  CurrentOrderView.swift
+//  CurrentOrderViewController.swift
 //  QuickBite
 //
-//  Created by Griffin Smalley on 9/23/19.
+//  Created by Griffin Smalley on 9/26/19.
 //  Copyright © 2019 GriffSoft. All rights reserved.
 //
 
 import UIKit
-import BEMCheckBox
 import GTProgressBar
+import BEMCheckBox
+import CocoaLumberjack
+import FittedSheets
 
-protocol CurrentOrderViewDelegate {
-    func viewPastOrdersTapped()
-    func contactUsTapped()
+enum OrderProgressStage: Int {
+    case orderSubmitted
+    case beingPreparedByStore
+    case onItsWay
+    case delivered
 }
 
-class CurrentOrderView: UIView {
-    @IBOutlet var masterView: UIView!
+class CurrentOrderViewController: UIViewController {
+    
+    // Restaurant
+    @IBOutlet weak var restaurantImage: UIImageView!
+    @IBOutlet weak var restaurantImageWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var restaurantName: UILabel!
+    @IBOutlet weak var orderQuantityAndTotal: UILabel!
+    
     @IBOutlet weak var progressView: GTProgressBar!
     @IBOutlet weak var checkboxStackView: UIStackView!
     
@@ -35,47 +45,33 @@ class CurrentOrderView: UIView {
     
     private var animationDuration: Double = 0.3
     
-    let startFontSize: CGFloat = 19
-    let endFontSize: CGFloat = 24
-    
-//    var textLayer: VerticallyCenteredTextLayer!
-    
-    enum OrderProgressStage: Int {
-        case orderSubmitted
-        case beingPreparedByStore
-        case onItsWay
-        case delivered
-    }
-    
     private var currentStage: OrderProgressStage = .orderSubmitted
+    private var currentOrder: Order!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        Bundle.main.loadNibNamed("CurrentOrderView", owner: self, options: nil)
-        addSubviewAndFill(masterView)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        currentOrder = UserUtil.currentUser!.currentOrder!
+        
+        if currentOrder.restaurantImageUrl.isNotEmpty {
+            restaurantImage.sd_setImage(with: URL(string: currentOrder.restaurantImageUrl))
+        } else {
+            restaurantImageWidthConstraint.constant = 0
+        }
+        
+        restaurantName.text = currentOrder.restaurantName
+        setupTotalAndQuantityLabel()
+
         titles = [orderSubmittedTitle, beingPreparedByStoreTitle, orderOnItsWayTitle, foodDeliveredTitle]
         subtitles = [orderSubmittedSubtitle, beingPreparedByStoreSubtitle, orderOnItsWaySubtitle, foodDeliveredSubtitle]
-        
-//        textLayer = VerticallyCenteredTextLayer()
-//        textLayer.string = "Order Submitted"
-//        textLayer.font = UIFont.systemFont(ofSize: startFontSize, weight: .semibold)
-//        textLayer.fontSize = startFontSize
-//        textLayer.foregroundColor = UIColor.black.cgColor
-//        textLayer.contentsScale = UIScreen.main.scale //for some reason CATextLayer by default only works for 1x screen resolution and needs this line to work properly on 2x, 3x, etc. ...
-//        textLayer.frame = orderSubmittedTitleContainer.bounds
-//        orderSubmittedTitleContainer.layer.addSublayer(textLayer)
     }
     
+    private func setupTotalAndQuantityLabel() {
+        let s = currentOrder.items.count > 1 ? "s" : ""
+        orderQuantityAndTotal.text = "\(currentOrder.items.count) item\(s) · Total \(currentOrder.total.asPriceString)"
+    }
+    
+    // MARK: - Order Progress Tracker
     func setProgressStage(_ newStage: OrderProgressStage) {
         if (newStage.rawValue - currentStage.rawValue) > 1 {
             // We're jumping multiple stages. Set all enabled except for the last,
@@ -168,37 +164,39 @@ class CurrentOrderView: UIView {
         })
     }
     
+    // MARK: - Buttons
+    @IBAction func seeOrderDetailTapped(_ sender: Any) {
+        // Open BottomPopUp View
+        guard let orderDetailVC = storyboard?.instantiateViewController(withIdentifier: "CurrentOrderDetailVC") as? CurrentOrderDetailViewController else {
+            DDLogError("Unable to instantiante CurrentOrderDetailViewController")
+            return
+        }
+        orderDetailVC.order = currentOrder
+        let sheetController = SheetViewController(controller: orderDetailVC, sizes: [.fixed(calculateItemsSheetHeight())])
+        sheetController.extendBackgroundBehindHandle = true
+        sheetController.blurBottomSafeArea = false
+        sheetController.topCornersRadius = 15
+        present(sheetController, animated: false)
+    }
+    
+    private func calculateItemsSheetHeight() -> CGFloat {
+        let itemTableViewHeight = currentOrder.items.count * 150
+        return CGFloat(itemTableViewHeight + 170)
+    }
+    
     @IBAction func contactUsTapped(_ sender: Any) {
-//        setProgressStage(.onItsWay)
         
-        
-        //animation:
-//        let duration: TimeInterval = 0.3
-//        textLayer.fontSize = endFontSize //because upon completion of the animation CABasicAnimation resets the animated CALayer to its original state (as opposed to changing its properties to the end state of the animation), setting fontSize to endFontSize right BEFORE the animation starts ensures the fontSize doesn't jump back right after the animation.
-//        let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
-//        fontSizeAnimation.fromValue = startFontSize
-//        fontSizeAnimation.toValue = endFontSize
-//        fontSizeAnimation.duration = duration
-//        fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-//        textLayer.add(fontSizeAnimation, forKey: nil)
+    }
+    
+    @IBAction func pastOrdersTapped(_ sender: Any) {
+        performSegue(withIdentifier: "ShowPastOrdersSegue", sender: nil)
+    }
+    
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pastOrdersVC = segue.destination as? PreviousOrdersViewController {
+            pastOrdersVC.showBigTitle = false
+        }
     }
 }
-
-//class VerticallyCenteredTextLayer: CATextLayer {
-//
-//    // REF: http://lists.apple.com/archives/quartz-dev/2008/Aug/msg00016.html
-//    // CREDIT: David Hoerl - https://github.com/dhoerl
-//    // USAGE: To fix the vertical alignment issue that currently exists within the CATextLayer class. Change made to the yDiff calculation.
-//
-//
-//    override func draw(in context: CGContext) {
-//        let height = self.bounds.size.height
-//        let fontSize = self.fontSize
-//        let yDiff = (height-fontSize)/2 - fontSize/10
-//
-//        context.saveGState()
-//        context.translateBy(x: 0, y: yDiff) // Use -yDiff when in non-flipped coordinates (like macOS's default)
-//        super.draw(in: context)
-//        context.restoreGState()
-//    }
-//}

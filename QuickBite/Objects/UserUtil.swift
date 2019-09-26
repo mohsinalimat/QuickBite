@@ -17,6 +17,7 @@ struct UserUtil {
         case name = "name"
         case phone = "phone"
         case address = "address"
+        case pastOrders = "past_orders"
     }
     
     static var currentUser: User? {
@@ -54,6 +55,14 @@ struct UserUtil {
         syncUserProperty(property: .phone)
     }
     
+    static func addCurrentOrder(_ order: Order) {
+        guard let user = currentUser else {
+            return
+        }
+        user.currentOrder = order
+        updateCurrentUser(user)
+    }
+    
     static func addAddress(_ address: Address) {
         guard let user = currentUser else {
             DDLogError("Tried to add address without a user set!")
@@ -73,6 +82,17 @@ struct UserUtil {
     //        updateAddresses(addresses)
     //    }
     
+    static func addPastOrder(_ order: Order) {
+        guard let user = currentUser else {
+            DDLogError("Tried to add past order without a user set!")
+            return
+        }
+        
+        user.pastOrders.append(order)
+        updateCurrentUser(user)
+        syncUserProperty(property: .pastOrders)
+    }
+    
     private static func syncUserProperty(property: SyncProperty) {
         DDLogDebug("Syncing userProperty: \(property.rawValue)")
         // Sync addresses if the user is not using a guest account
@@ -85,11 +105,9 @@ struct UserUtil {
         case .phone:
             newValue = user.phone
         case .address:
-            var serializedAddresses: [[String : Any]] = []
-            for address in user.addresses {
-                serializedAddresses.append(address.dictionary)
-            }
-            newValue = serializedAddresses
+            newValue = user.addresses.compactMap({ $0.dictionary })
+        case .pastOrders:
+            newValue = user.pastOrders.compactMap({ $0.dictionary })
         }
         
 
@@ -97,7 +115,7 @@ struct UserUtil {
             property.rawValue: newValue!
         ]) { err in
             if let err = err {
-                DDLogError("Error syncing porperty: \(err)")
+                DDLogError("Error syncing property: \(err)")
             }
         }
     }
@@ -107,6 +125,9 @@ class User: Codable {
     var name: String
     var phone: String
     var addresses: [Address]
+    var currentOrder: Order?
+    var pastOrders: [Order]
+    var isGuest: Bool
     
     var defaultAddress: Address {
         guard !addresses.isEmpty else {
@@ -144,26 +165,24 @@ class User: Codable {
 //        ]
 //    }
     
-    init(name: String = "", phone: String = "", addresses: [Address] = []) {
+    init(name: String = "", phone: String = "", addresses: [Address] = [], pastOrders: [Order] = [], isGuest: Bool) {
         self.name = name
         self.phone = phone
         self.addresses = addresses
+        self.pastOrders = pastOrders
+        self.isGuest = isGuest
     }
     
     convenience init(dictionary: [String : Any]) {
         let name = dictionary["name"] as? String ?? ""
         let phone = dictionary["phone"] as? String ?? ""
-        let addressesRaw = dictionary["addresses"] as? Array<[String : Any]> ?? []
-        
-        var addresses: [Address] = []
-        for addressRaw in addressesRaw {
-            if let address = Address(dictionary: addressRaw) {
-                addresses.append(address)
-            }
-        }
+        let addresses = dictionary["addresses"] as? Array<[String : Any]> ?? []
+        let pastOrders = dictionary["past_orders"] as? Array<[String : Any]> ?? []
         
         self.init(name: name,
                   phone: phone,
-                  addresses: addresses)
+                  addresses: addresses.compactMap({ Address(dictionary: $0) }),
+                  pastOrders: pastOrders.compactMap({ Order(dictionary: $0) }),
+                  isGuest: false)
     }
 }

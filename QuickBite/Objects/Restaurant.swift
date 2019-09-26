@@ -66,7 +66,7 @@ extension Restaurant {
                   address: "",
                   topPick: topPick,
                   imageURL: imageURL,
-                  menuItems: FBSerializer.serializeMenuItems(menuItems))
+                  menuItems: menuItems.compactMap({ MenuItem(dictionary: $0) }))
     }
     
     func getFeaturedItems() -> [MenuItem] {

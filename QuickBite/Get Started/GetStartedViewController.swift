@@ -47,7 +47,7 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
                         userDocRef.setData([
                             "name": user.displayName ?? ""
                             ])
-                        udUser = User(name: user.displayName ?? "")
+                        udUser = User(name: user.displayName ?? "", isGuest: false)
                     }
                     // Set UserDefaults current user
                     UserUtil.updateCurrentUser(udUser)
@@ -64,7 +64,6 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        DDLogDebug("view will disappear")
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
@@ -102,7 +101,7 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
     }
     
     @IBAction func continueWithoutAccountTapped(_ sender: Any) {
-        UserUtil.updateCurrentUser(User())
+        UserUtil.updateCurrentUser(User(isGuest: true))
         performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
     }
     /*

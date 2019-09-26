@@ -73,6 +73,7 @@ PODS:
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
+  - FittedSheets (1.4.5)
   - GoogleAppMeasurement (6.1.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -152,6 +153,7 @@ DEPENDENCIES:
   - Firebase
   - Firebase/Auth
   - Firebase/Firestore
+  - FittedSheets
   - GoogleSignIn
   - GTProgressBar
   - InputMask
@@ -174,6 +176,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseFirestore
     - FirebaseInstanceID
+    - FittedSheets
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -206,6 +209,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
   FirebaseFirestore: c5873e279490fbe02239ab2cdfb91c2d546261cc
   FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
+  FittedSheets: 7f754c9f6fb4ea330cbc57c652b594255f2a6819
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
   GoogleDataTransport: 8f9897b8e073687f24ca8d3c3a8013dec7d2d1cc
   GoogleDataTransportCCTSupport: 7455d07b98851aa63e4c05a34dad356ca588479e
@@ -224,6 +228,6 @@ SPEC CHECKSUMS:
   Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
 
-PODFILE CHECKSUM: 63f22a76913d5b71242179281291c058e978f993
+PODFILE CHECKSUM: 24a2b8b00f613e858887b9acf6bc997799858519
 
 COCOAPODS: 1.7.5

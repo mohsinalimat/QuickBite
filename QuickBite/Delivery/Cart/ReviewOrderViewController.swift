@@ -28,7 +28,6 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var orderLabel: UILabel!
     
     @IBOutlet weak var changeTextField: TweeAttributedTextField!
-    
     @IBOutlet weak var changePopUp: MiniPopupView!
     
     @IBOutlet weak var placeOrderActivityIndicator: NVActivityIndicatorView!
@@ -155,7 +154,7 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func placeOrder() {
-        let dbOrders = Firestore.firestore().collection("orders")
+        let ordersDb = Firestore.firestore().collection("orders")
         
         let user = UserUtil.currentUser!
         let restaurant = Cart.restaurant!
@@ -165,18 +164,21 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
                           restaurantName: restaurant.name,
                           restaurantAddress: restaurant.address,
                           restaurantContactNumber: restaurant.contactNumber,
+                          restaurantImageUrl: restaurant.imageURL,
                           datePlaced: Date(),
                           items: Cart.items,
                           total: Cart.totalPrice,
+                          changeFor: Double(changeTextField.text!)!,
                           isPendingCompletion: true)
         
-        dbOrders.document(order.id.uuidString).setData(order.dictionary) { err in
+        UserUtil.addCurrentOrder(order)
+        
+        ordersDb.document(order.id.uuidString).setData(order.dictionary) { err in
             if let err = err {
                 DDLogError("Error submitting order: \(err)")
                 // SHOW ERROR MESSAGE
                 return
             }
-            DDLogDebug("order placed!")
             // Order placed!
             // 1. Stop animating indicatory
             // 2. Show order placed alert

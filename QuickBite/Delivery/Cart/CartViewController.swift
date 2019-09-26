@@ -91,11 +91,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cartItem = cartItems[indexPath.row]
         if cartItem.imageURL.isNotEmpty {
             cell.itemImage.sd_setImage(with: URL(string: cartItem.imageURL))
+        } else {
+            cell.imageWidthConstraint.constant = 0
         }
         cell.itemTitle.text = cartItem.itemName
         cell.selectedItemOptions.text = cartItem.selectedOptions
         cell.quantityLabel.text = "\(cartItem.selectedQuantity)x"
-        cell.priceLabel.text = (cartItems[indexPath.row].price * Double(cartItem.selectedQuantity)).asPriceString
+        cell.priceLabel.text = cartItem.finalPrice.asPriceString
         
         return cell
     }

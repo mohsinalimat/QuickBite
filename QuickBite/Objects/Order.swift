@@ -23,11 +23,13 @@ class Order: Codable {
     var restaurantName: String
     var restaurantAddress: String
     var restaurantContactNumber: String
+    var restaurantImageUrl: String
     
     // Order Info
     var datePlaced: Date
     var items: [MenuItem]
     var total: Double
+    var changeFor: Double
     var isPendingCompletion: Bool
     
     var dictionary: [String : Any] {
@@ -40,6 +42,7 @@ class Order: Codable {
             "restaurant_name": restaurantName,
             "restaurant_address": restaurantAddress,
             "restaurant_contact_number": restaurantContactNumber,
+            "restaurant_image_url": restaurantImageUrl,
             "items": itemsDictionary,
             "total": total,
             "is_pending_completion": isPendingCompletion
@@ -47,11 +50,7 @@ class Order: Codable {
     }
     
     var itemsDictionary: Array<[String : Any]> {
-        var itemsDict: Array<[String : Any]> = []
-        for item in items {
-            itemsDict.append(item.orderDictionary)
-        }
-        return itemsDict
+        return items.compactMap({ $0.orderDictionary })
     }
 
     init(id: UUID = UUID(),
@@ -61,9 +60,11 @@ class Order: Codable {
          restaurantName: String,
          restaurantAddress: String,
          restaurantContactNumber: String,
+         restaurantImageUrl: String,
          datePlaced: Date,
          items: [MenuItem],
          total: Double,
+         changeFor: Double,
          isPendingCompletion: Bool) {
         self.id = id
         
@@ -74,11 +75,12 @@ class Order: Codable {
         self.restaurantName = restaurantName
         self.restaurantAddress = restaurantAddress
         self.restaurantContactNumber = restaurantContactNumber
-        
+        self.restaurantImageUrl = restaurantImageUrl
         
         self.datePlaced = datePlaced
         self.items = items
         self.total = total
+        self.changeFor = changeFor
         self.isPendingCompletion = isPendingCompletion
     }
     
@@ -92,7 +94,9 @@ class Order: Codable {
             let restaurantName = dictionary["restaurant_name"] as? String,
             let restaurantAddress = dictionary["restaurant_address"] as? String,
             let restaurantContactNumber = dictionary["restaurant_contact_number"] as? String,
+            let restaurantImageUrl = dictionary["restaurant_image_url"] as? String,
             let total = dictionary["order_total"] as? Double,
+            let changeFor = dictionary["change_for"] as? Double,
             let isPendingCompletion = dictionary["is_pending_completion"] as? Bool else {
                 DDLogError("Unable to parse Order object: \(dictionary)")
                 return nil
@@ -106,9 +110,11 @@ class Order: Codable {
                   restaurantName: restaurantName,
                   restaurantAddress: restaurantAddress,
                   restaurantContactNumber: restaurantContactNumber,
+                  restaurantImageUrl: restaurantImageUrl,
                   datePlaced: datePlacedTimestamp.dateValue(),
-                  items: FBSerializer.serializeMenuItems(items),
+                  items: items.compactMap({ MenuItem(dictionary: $0) }),
                   total: total,
+                  changeFor: changeFor,
                   isPendingCompletion: isPendingCompletion)
     }
     

@@ -47,23 +47,13 @@ extension MenuItem {
         // Optional fields
         let imageURL = dictionary["item_image_url"] as? String ?? ""
         
-        // Convert itemOptions array into [MenuItemOptionCategory] array
-        var itemOptionCategoriesConverted: [MenuItemOptionCategory] = []
-        for itemOption in itemOptionCategories {
-            if let menuItemOptionCategory = MenuItemOptionCategory(dictionary: itemOption) {
-                itemOptionCategoriesConverted.append(menuItemOptionCategory)
-            } else {
-                DDLogError("Couldn't create MenuItemOptionCategory from dictionary: \(itemOption)")
-            }
-        }
-        
         self.init(itemName: itemName,
                   description: description,
                   price: price,
                   category: category,
                   featured: featured,
                   imageURL: imageURL,
-                  itemOptionCategories: itemOptionCategoriesConverted,
+                  itemOptionCategories: itemOptionCategories.compactMap({ MenuItemOptionCategory(dictionary: $0) }),
                   selectedOptions: "",
                   selectedQuantity: 0,
                   finalPrice: price)

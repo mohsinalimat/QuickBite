@@ -36,19 +36,10 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateCartBannerAppearance()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         if UserDefaults.standard.bool(forKey: UDKeys.redirectToOrders) {
             self.selectedIndex = 1
             UserDefaults.standard.removeObject(forKey: UDKeys.redirectToOrders)
         }
-    }
-    
-    // MARK: - MenuItemViewControllerDelegate
-    func itemAddedToCart() {
-        updateCartBannerAppearance()
     }
     
     private func updateCartBannerAppearance() {
@@ -75,5 +66,10 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
         let storyboard = UIStoryboard(name: "Delivery", bundle: nil)
         let cartNavigationController = storyboard.instantiateViewController(withIdentifier: "CartNavigationController") as! UINavigationController
         present(cartNavigationController, animated: true, completion: nil)
+    }
+    
+    // MARK: - MenuItemViewControllerDelegate
+    func itemAddedToCart() {
+        updateCartBannerAppearance()
     }
 }

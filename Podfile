@@ -18,4 +18,5 @@ target 'QuickBite' do
   pod 'NVActivityIndicatorView'
   pod 'InputMask'
   pod 'GTProgressBar'
+  pod 'FittedSheets'
 end

@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import CocoaLumberjack
 
-class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var largeTitleContainerView: UIView!
-    @IBOutlet weak var pastOrdersTableView: UITableView!
+class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var previousOrdersTableView: UITableView!
+    @IBOutlet weak var largeTitleContainerViewHeight: NSLayoutConstraint!
+    
+    private var previousOrders: [Order]!
     
     var showBigTitle = true
 
@@ -18,26 +22,36 @@ class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
 
         setupTitle()
+        
+        previousOrders = UserUtil.currentUser!.pastOrders
+        if previousOrders.isEmpty {
+            previousOrdersTableView.alpha = 0
+            previousOrdersTableView.isUserInteractionEnabled = false
+        }
     }
     
     private func setupTitle() {
         if showBigTitle {
             self.navigationController?.setNavigationBarHidden(true, animated: false)
-            pastOrdersTableView.contentInset.top = largeTitleContainerView.frame.height
         } else {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
-            self.title = "Past Orders"
-            largeTitleContainerView.removeFromSuperview()
+            self.title = "Previous Orders"
+            largeTitleContainerViewHeight.constant = 0
         }
     }
     
     // MARK: - Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return previousOrders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrderTableViewCell", for: indexPath) as! PreviousOrderTableViewCell
+        
+        let order = previousOrders[indexPath.row]
+        
+        
+        return cell
     }
     
 
