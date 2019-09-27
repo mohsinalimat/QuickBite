@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 import CocoaLumberjack
 
 struct UserUtil {
@@ -105,9 +106,9 @@ struct UserUtil {
     }
     
     private static func syncUserProperty(property: SyncProperty) {
-        DDLogDebug("Syncing userProperty: \(property.rawValue)")
         // Sync addresses if the user is not using a guest account
         guard let fbUser = Auth.auth().currentUser, let user = currentUser else { return }
+        DDLogDebug("Syncing userProperty: \(property.rawValue)")
 
         var newValue: Any!
         switch property {

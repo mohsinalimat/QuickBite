@@ -8,7 +8,7 @@
 
 import UIKit
 import PMSuperButton
-import Firebase
+import FirebaseFirestore
 import NVActivityIndicatorView
 import CocoaLumberjack
 

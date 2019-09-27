@@ -105,15 +105,15 @@ class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func createAndSaveAddress() {
-        let newAddress = Address(floorDeptHouseNo: floorDeptHouseNoTextField.text ?? "",
-                                 street: streetTextField.text ?? "",
-                                 barangay: barangayTextField.text ?? "",
-                                 building: buildingTextField.text ?? "",
-                                 landmark: landmarkTextField.text ?? "",
-                                 isSelected: true,
-                                 isDefault: true)
-        
-        UserUtil.addAddress(newAddress)
+//        let newAddress = Address(floorDeptHouseNo: floorDeptHouseNoTextField.text ?? "",
+//                                 street: streetTextField.text ?? "",
+//                                 barangay: barangayTextField.text ?? "",
+//                                 building: buildingTextField.text ?? "",
+//                                 landmark: landmarkTextField.text ?? "",
+//                                 isSelected: true,
+//                                 isDefault: true)
+//        
+//        UserUtil.addAddress(newAddress)
     }
     
     private func enableNextButton(_ enable: Bool) {

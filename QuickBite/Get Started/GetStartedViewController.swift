@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import Firebase
+import FirebaseFirestore
 import GoogleSignIn
 import FirebaseAuth
 import CocoaLumberjack
@@ -102,7 +102,8 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
     
     @IBAction func continueWithoutAccountTapped(_ sender: Any) {
         UserUtil.updateCurrentUser(User(isGuest: true))
-        performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
+//        performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
+        performSegue(withIdentifier: "AddNewGoogleAddressSegue", sender: nil)
     }
     /*
     // MARK: - Navigation

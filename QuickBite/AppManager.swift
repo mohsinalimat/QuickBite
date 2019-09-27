@@ -32,5 +32,9 @@ class AppManager {
         try! Auth.auth().signOut()
         self.appContainer.dismiss(animated: false, completion: nil)
     }
+    
+    func resetVCStack() {
+        self.appContainer.dismiss(animated: true, completion: nil)
+    }
 }
 

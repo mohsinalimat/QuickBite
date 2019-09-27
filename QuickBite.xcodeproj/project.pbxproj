@@ -11,6 +11,8 @@
 		8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500B3D5233256C1007772B9 /* UserUtil.swift */; };
 		850181BD233B9EF800EF8017 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850181BC233B9EF800EF8017 /* Address.swift */; };
 		850181BF233B9F1A00EF8017 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850181BE233B9F1A00EF8017 /* Order.swift */; };
+		8504CE44233DBFD3005B7932 /* AddNewAddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504CE43233DBFD3005B7932 /* AddNewAddressSearchViewController.swift */; };
+		8504CE46233DE43E005B7932 /* AddNewAddressMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504CE45233DE43E005B7932 /* AddNewAddressMapViewController.swift */; };
 		8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */; };
 		850A7D88232F731C00F67125 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A7D87232F731C00F67125 /* Restaurant.swift */; };
 		850A7D8A232F8FF000F67125 /* LoadingCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850A7D89232F8FF000F67125 /* LoadingCoverView.xib */; };
@@ -69,20 +71,13 @@
 		8591C43A231661010036CBE6 /* AutoSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8591C439231661010036CBE6 /* AutoSizedTableView.swift */; };
 		8591C44023167DE40036CBE6 /* OrderOptionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8591C43F23167DE40036CBE6 /* OrderOptionHeaderView.swift */; };
 		8591C44423167E940036CBE6 /* OrderOptionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8591C44323167E940036CBE6 /* OrderOptionHeaderView.xib */; };
+		85AA4A98233E5E8800825EDE /* FirebaseDataWriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA4A97233E5E8800825EDE /* FirebaseDataWriterViewController.swift */; };
 		85AF191F231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF191E231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift */; };
 		85AF1921231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1920231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift */; };
 		85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */; };
 		85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */; };
 		85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B026682337D375004C4826 /* DeliveryHomeHeader.xib */; };
 		85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */; };
-		85CF2DF02326554500F9C815 /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE42326554500F9C815 /* YoshikoTextField.swift */; };
-		85CF2DF12326554500F9C815 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE62326554500F9C815 /* HoshiTextField.swift */; };
-		85CF2DF22326554500F9C815 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE72326554500F9C815 /* MinoruTextField.swift */; };
-		85CF2DF32326554500F9C815 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE82326554500F9C815 /* YokoTextField.swift */; };
-		85CF2DF42326554500F9C815 /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DE92326554500F9C815 /* TextFieldEffects.swift */; };
-		85CF2DF52326554500F9C815 /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DEA2326554500F9C815 /* JiroTextField.swift */; };
-		85CF2DF72326554500F9C815 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DEC2326554500F9C815 /* KaedeTextField.swift */; };
-		85CF2DF92326554500F9C815 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DEE2326554500F9C815 /* IsaoTextField.swift */; };
 		85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */; };
 		85E625A32315479F00954664 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E625A22315479F00954664 /* GradientView.swift */; };
 		85E7976123136A0900C01238 /* Delivery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85E7976023136A0900C01238 /* Delivery.storyboard */; };
@@ -115,6 +110,8 @@
 		8500B3D5233256C1007772B9 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		850181BC233B9EF800EF8017 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		850181BE233B9F1A00EF8017 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		8504CE43233DBFD3005B7932 /* AddNewAddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressSearchViewController.swift; sourceTree = "<group>"; };
+		8504CE45233DE43E005B7932 /* AddNewAddressMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressMapViewController.swift; sourceTree = "<group>"; };
 		8507FDAE231C1CD40089926A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		850A7D87232F731C00F67125 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		850A7D89232F8FF000F67125 /* LoadingCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCoverView.xib; sourceTree = "<group>"; };
@@ -177,21 +174,13 @@
 		8591C439231661010036CBE6 /* AutoSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizedTableView.swift; sourceTree = "<group>"; };
 		8591C43F23167DE40036CBE6 /* OrderOptionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionHeaderView.swift; sourceTree = "<group>"; };
 		8591C44323167E940036CBE6 /* OrderOptionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderOptionHeaderView.xib; sourceTree = "<group>"; };
+		85AA4A97233E5E8800825EDE /* FirebaseDataWriterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataWriterViewController.swift; sourceTree = "<group>"; };
 		85AF191E231BC03500D8E86E /* MSPeekCollectionViewDelegateImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSPeekCollectionViewDelegateImplementation.swift; sourceTree = "<group>"; };
 		85AF1920231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+PeekConfiguration.swift"; sourceTree = "<group>"; };
 		85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewScrollDirection+PeekDataConversion.swift"; sourceTree = "<group>"; };
 		85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHomeHeader.swift; sourceTree = "<group>"; };
 		85B026682337D375004C4826 /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
 		85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrdersViewController.swift; sourceTree = "<group>"; };
-		85CF2DE42326554500F9C815 /* YoshikoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoshikoTextField.swift; sourceTree = "<group>"; };
-		85CF2DE52326554500F9C815 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
-		85CF2DE62326554500F9C815 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
-		85CF2DE72326554500F9C815 /* MinoruTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinoruTextField.swift; sourceTree = "<group>"; };
-		85CF2DE82326554500F9C815 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
-		85CF2DE92326554500F9C815 /* TextFieldEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
-		85CF2DEA2326554500F9C815 /* JiroTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiroTextField.swift; sourceTree = "<group>"; };
-		85CF2DEC2326554500F9C815 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
-		85CF2DEE2326554500F9C815 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
 		85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		85E625A22315479F00954664 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		85E7976023136A0900C01238 /* Delivery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Delivery.storyboard; sourceTree = "<group>"; };
@@ -420,27 +409,13 @@
 			path = MSPeekCollectionView;
 			sourceTree = "<group>";
 		};
-		85CF2DE32326554500F9C815 /* TextFieldEffects */ = {
-			isa = PBXGroup;
-			children = (
-				85CF2DE42326554500F9C815 /* YoshikoTextField.swift */,
-				85CF2DE52326554500F9C815 /* TextFieldEffects.h */,
-				85CF2DE62326554500F9C815 /* HoshiTextField.swift */,
-				85CF2DE72326554500F9C815 /* MinoruTextField.swift */,
-				85CF2DE82326554500F9C815 /* YokoTextField.swift */,
-				85CF2DE92326554500F9C815 /* TextFieldEffects.swift */,
-				85CF2DEA2326554500F9C815 /* JiroTextField.swift */,
-				85CF2DEC2326554500F9C815 /* KaedeTextField.swift */,
-				85CF2DEE2326554500F9C815 /* IsaoTextField.swift */,
-			);
-			path = TextFieldEffects;
-			sourceTree = "<group>";
-		};
 		85CF2DFB2328F28600F9C815 /* Get Started */ = {
 			isa = PBXGroup;
 			children = (
 				85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */,
 				852AE7ED232BB14500804751 /* AddNewAddressViewController.swift */,
+				8504CE43233DBFD3005B7932 /* AddNewAddressSearchViewController.swift */,
+				8504CE45233DE43E005B7932 /* AddNewAddressMapViewController.swift */,
 			);
 			path = "Get Started";
 			sourceTree = "<group>";
@@ -448,18 +423,18 @@
 		85E625A12315478B00954664 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
-				85808A97232D24ED00A86822 /* Constants.swift */,
+				85AA4A97233E5E8800825EDE /* FirebaseDataWriterViewController.swift */,
 				8591C439231661010036CBE6 /* AutoSizedTableView.swift */,
+				85808A97232D24ED00A86822 /* Constants.swift */,
 				850A7D8F2330DC2F00F67125 /* CustomLogger.swift */,
 				856BDCE623151BE2001766AD /* Extensions.swift */,
 				85E625A22315479F00954664 /* GradientView.swift */,
-				8552022123183A4800A1E2D0 /* TDTabBarController.swift */,
 				85679BBA23378B3800048625 /* TDNavigationController.swift */,
+				8552022123183A4800A1E2D0 /* TDTabBarController.swift */,
 				859D74B8233382A500FE4538 /* LoadingCoverView */,
-				852AE7FC232BB2C200804751 /* TweeTextField */,
 				85AF1924231BC4D100D8E86E /* MSPeekCollectionView */,
 				855202112317E87400A1E2D0 /* SPAlert */,
-				85CF2DE32326554500F9C815 /* TextFieldEffects */,
+				852AE7FC232BB2C200804751 /* TweeTextField */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -697,8 +672,6 @@
 				85633C01233CDB3E00193876 /* CurrentOrderDetailViewController.swift in Sources */,
 				854348CE2310EA5600411B80 /* OrdersContainerViewController.swift in Sources */,
 				85E7976C2313A7CE00C01238 /* RestaurantViewController.swift in Sources */,
-				85CF2DF72326554500F9C815 /* KaedeTextField.swift in Sources */,
-				85CF2DF92326554500F9C815 /* IsaoTextField.swift in Sources */,
 				85FF200A2314F06500ABCA99 /* MenuTableViewController.swift in Sources */,
 				852AE7F8232BB2BA00804751 /* WeakTargetProxy.swift in Sources */,
 				852AE7FA232BB2BA00804751 /* TweeActiveTextField.swift in Sources */,
@@ -708,6 +681,7 @@
 				85E7976423136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift in Sources */,
 				85E625A32315479F00954664 /* GradientView.swift in Sources */,
 				855202192317E87400A1E2D0 /* SPAlertView.swift in Sources */,
+				8504CE46233DE43E005B7932 /* AddNewAddressMapViewController.swift in Sources */,
 				850CAAD62334BB3A003DD668 /* MiniPopupView.swift in Sources */,
 				8552021B2317E87400A1E2D0 /* SPAlertIconHeartView.swift in Sources */,
 				854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */,
@@ -724,23 +698,18 @@
 				852AE7FB232BB2BA00804751 /* FontAnimation.swift in Sources */,
 				85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */,
 				852AE7F9232BB2BA00804751 /* TweeAttributedTextField.swift in Sources */,
-				85CF2DF02326554500F9C815 /* YoshikoTextField.swift in Sources */,
 				85808A94232D0DEB00A86822 /* AppManager.swift in Sources */,
 				850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */,
 				856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */,
 				85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */,
-				85CF2DF12326554500F9C815 /* HoshiTextField.swift in Sources */,
 				85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */,
 				85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */,
 				8552021A2317E87400A1E2D0 /* SPAlertPreset.swift in Sources */,
 				852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */,
-				85CF2DF42326554500F9C815 /* TextFieldEffects.swift in Sources */,
 				8552020C2317C72E00A1E2D0 /* Structs.swift in Sources */,
 				854348F92311288700411B80 /* AccountViewController.swift in Sources */,
 				85808A98232D24ED00A86822 /* Constants.swift in Sources */,
 				8543490023114B0A00411B80 /* UserPrefsTableViewCell.swift in Sources */,
-				85CF2DF22326554500F9C815 /* MinoruTextField.swift in Sources */,
-				85CF2DF52326554500F9C815 /* JiroTextField.swift in Sources */,
 				853B2BFB233235FF003E6011 /* Cart.swift in Sources */,
 				850181BD233B9EF800EF8017 /* Address.swift in Sources */,
 				8552021C2317E87400A1E2D0 /* SPAlertIconDoneView.swift in Sources */,
@@ -754,9 +723,9 @@
 				852AE7F6232BB2BA00804751 /* TweePlaceholderTextField.swift in Sources */,
 				851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */,
 				8591C44023167DE40036CBE6 /* OrderOptionHeaderView.swift in Sources */,
-				85CF2DF32326554500F9C815 /* YokoTextField.swift in Sources */,
 				85FF20082314ED6E00ABCA99 /* MenuItemTableViewCell.swift in Sources */,
 				8552021D2317E87400A1E2D0 /* SPAlertHaptic.swift in Sources */,
+				85AA4A98233E5E8800825EDE /* FirebaseDataWriterViewController.swift in Sources */,
 				85E797692313A45800C01238 /* AllRestaurantsTableViewCell.swift in Sources */,
 				85808A96232D0F6F00A86822 /* AppContainerViewController.swift in Sources */,
 				8552022223183A4800A1E2D0 /* TDTabBarController.swift in Sources */,
@@ -764,6 +733,7 @@
 				850181BF233B9F1A00EF8017 /* Order.swift in Sources */,
 				850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */,
 				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,
+				8504CE44233DBFD3005B7932 /* AddNewAddressSearchViewController.swift in Sources */,
 				8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */,
 				8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */,
 				856BDCE723151BE2001766AD /* Extensions.swift in Sources */,

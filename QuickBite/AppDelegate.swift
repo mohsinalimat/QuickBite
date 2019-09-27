@@ -11,6 +11,8 @@ import Firebase
 import GoogleSignIn
 import FirebaseAuth
 import CocoaLumberjack
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             UserDefaults.standard.set(true, forKey: APP_FIRST_OPEN)
         }
+        
+        GMSServices.provideAPIKey("AIzaSyDA9qrmg1UNFPnlAZWC1Xlis5TdkNIzavM")
+        GMSPlacesClient.provideAPIKey("AIzaSyDA9qrmg1UNFPnlAZWC1Xlis5TdkNIzavM")
         return true
     }
     

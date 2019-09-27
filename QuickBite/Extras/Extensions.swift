@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CocoaLumberjack
 
 //MARK:- UIFont
 extension UIFont {
@@ -149,6 +150,14 @@ extension UIColor {
             return UIColor(red: 60.0, green: 60.0, blue: 67.0, alpha: 0.6)
         }
     }
+    
+    static var tertiaryLabelCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .secondaryLabel
+        } else {
+            return UIColor(red: 60.0, green: 60.0, blue: 67.0, alpha: 0.3)
+        }
+    }
 }
 
 //MARK:- Double
@@ -197,6 +206,18 @@ extension String {
             return self
         }
     }
+    
+    var isNotEmpty: Bool {
+        return self != ""
+    }
+    
+    var gmsStreet: String? {
+        if let range = self.range(of: ", Cag") {
+            return String(self[..<range.lowerBound])
+        }
+        DDLogError("Unable to extract gmsStreet from address")
+        return nil
+    }
 }
 
 @IBDesignable
@@ -236,6 +257,12 @@ extension UIView {
         set {
             layer.borderWidth = newValue
         }
+    }
+    
+    func hide(_ shouldHide: Bool) {
+        UIView.animate(withDuration: 0.12, delay: 0.0, options: [.curveEaseInOut], animations: {
+            self.alpha = shouldHide ? 0.0 : 1.0
+        })
     }
     
     func setAnchorPoint(anchorPoint: CGPoint) {

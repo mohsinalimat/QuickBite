@@ -51,7 +51,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         
         tdNavController = self.navigationController as? TDNavigationController
         
-        homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.street)
+        homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.name)
         addHomeHeader()
         
     }
@@ -153,7 +153,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         guard let tableViewSection = TableViewSection(rawValue: indexPath.section), tableViewSection == .allRestaurants else {
             return
         }
-        selectedRestaurant = allRestaurants[indexPath.row + 1] // Account for header cell
+        selectedRestaurant = allRestaurants[indexPath.row - 1] // Account for header cell
         showRestaurant()
     }
     
