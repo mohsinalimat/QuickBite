@@ -68,6 +68,7 @@
                 <outlet property="imageView" destination="gOj-GB-M3d" id="Mru-Ti-VND"/>
                 <outlet property="leadingConstraint" destination="YMA-4a-ppD" id="gJr-go-f6i"/>
                 <outlet property="restaurantName" destination="cBb-Pp-hiF" id="m8M-6q-0IY"/>
+                <outlet property="timeAndDeliveryFee" destination="ceQ-ty-agZ" id="Bdx-j1-Clq"/>
                 <outlet property="trailingConstraint" destination="76Y-HO-Mx2" id="bFB-iH-OhM"/>
             </connections>
             <point key="canvasLocation" x="121.73913043478262" y="22.098214285714285"/>

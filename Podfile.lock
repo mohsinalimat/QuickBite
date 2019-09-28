@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.0-rc.2)
   - AppAuth (1.2.0):
     - AppAuth/Core (= 1.2.0)
     - AppAuth/ExternalUserAgent (= 1.2.0)
@@ -155,6 +156,7 @@ PODS:
   - SDWebImage/Core (5.1.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.2)
   - BEMCheckBox
   - CocoaLumberjack/Swift
   - Firebase
@@ -172,6 +174,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - AppAuth
     - BEMCheckBox
     - BoringSSL-GRPC
@@ -207,6 +210,7 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -241,6 +245,6 @@ SPEC CHECKSUMS:
   Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
 
-PODFILE CHECKSUM: f07a785ede0481e5a2c80ef3e5b02da77c1a5410
+PODFILE CHECKSUM: f2e9da52063fc603de98d1f4b9f6e4b89f713dbe
 
 COCOAPODS: 1.7.5

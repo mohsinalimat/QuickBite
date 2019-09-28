@@ -265,6 +265,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="deliveryTimeEstimate" destination="qov-Kf-dLL" id="AcN-wa-fqB"/>
                                     <outlet property="imageViewHeightConstraint" destination="xps-6c-bR9" id="pAV-da-fM9"/>
                                     <outlet property="restaurantCategories" destination="9UT-Xw-iSG" id="H7q-md-whl"/>
                                     <outlet property="restaurantImage" destination="pZ2-fo-gyr" id="FQi-UF-hjd"/>

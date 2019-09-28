@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CocoaLumberjack
+import NVActivityIndicatorView
+import PMSuperButton
 
 class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -22,6 +24,9 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     @IBOutlet weak var renameButton: UIButton!
     @IBOutlet weak var renameButtonImage: UIImageView!
     @IBOutlet weak var cancelRenameButton: UIButton!
+    @IBOutlet weak var geocoderIndicatorContainerView: UIView!
+    @IBOutlet weak var geocoderActivityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var saveAddressButton: PMSuperButton!
     
     var address: GMSPlace! // Set by AddNewAddressSearchViewController
     private let geocoder = GMSGeocoder()
@@ -34,6 +39,8 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        geocoderActivityIndicator.startAnimating()
 
         let camera = GMSCameraPosition.camera(withLatitude: address.coordinate.latitude, longitude: address.coordinate.longitude, zoom: 17.5)
         mapView.delegate = self
@@ -43,7 +50,9 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     // MARK: - MapView
     func mapView(_ mapView: GMSMapView, idleAt cameraPosition: GMSCameraPosition) {
         // Map was moved, reset userStreetNickname
+        geocoderIndicatorContainerView.alpha = 1
         userStreetNickname = nil
+        saveAddressButton.isEnabled = false
         geocoder.reverseGeocodeCoordinate(cameraPosition.target) { (response, error) in
             if let err = error {
                 DDLogError("Error reverse geocoding: \(err)")
@@ -53,6 +62,8 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
             if let result = response?.firstResult() {
                 if let line1 = result.lines?[0] {
                     self.setAddressLabels(line1)
+                    self.geocoderIndicatorContainerView.alpha = 0
+                    self.saveAddressButton.isEnabled = true
                 }
                 self.gmsAddress = result
                 DDLogDebug("\(String(describing: result.lines))")

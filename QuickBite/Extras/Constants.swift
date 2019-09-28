@@ -14,6 +14,8 @@ struct UDKeys {
     
     static let currentUser = "CURRENT_USER"
     
+    static let distanceTimes = "DISTANCE_TIMES"
+    
     static let redirectToOrders = "REDIRECT_TO_ORDERS"
 }
 

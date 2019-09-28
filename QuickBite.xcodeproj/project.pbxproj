@@ -79,6 +79,7 @@
 		85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B026682337D375004C4826 /* DeliveryHomeHeader.xib */; };
 		85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */; };
 		85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */; };
+		85D10E7E233F729700F60923 /* DistanceTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */; };
 		85E625A32315479F00954664 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E625A22315479F00954664 /* GradientView.swift */; };
 		85E7976123136A0900C01238 /* Delivery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85E7976023136A0900C01238 /* Delivery.storyboard */; };
 		85E7976423136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7976223136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift */; };
@@ -182,6 +183,7 @@
 		85B026682337D375004C4826 /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
 		85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrdersViewController.swift; sourceTree = "<group>"; };
 		85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTimeUtil.swift; sourceTree = "<group>"; };
 		85E625A22315479F00954664 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		85E7976023136A0900C01238 /* Delivery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Delivery.storyboard; sourceTree = "<group>"; };
 		85E7976223136F3D00C01238 /* HighlightedRestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightedRestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				850A7D87232F731C00F67125 /* Restaurant.swift */,
 				8552020B2317C72E00A1E2D0 /* Structs.swift */,
 				8500B3D5233256C1007772B9 /* UserUtil.swift */,
+				85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				85E625A32315479F00954664 /* GradientView.swift in Sources */,
 				855202192317E87400A1E2D0 /* SPAlertView.swift in Sources */,
 				8504CE46233DE43E005B7932 /* AddNewAddressMapViewController.swift in Sources */,
+				85D10E7E233F729700F60923 /* DistanceTimeUtil.swift in Sources */,
 				850CAAD62334BB3A003DD668 /* MiniPopupView.swift in Sources */,
 				8552021B2317E87400A1E2D0 /* SPAlertIconHeartView.swift in Sources */,
 				854348CA2310EA5600411B80 /* AppDelegate.swift in Sources */,

@@ -16,6 +16,7 @@ target 'QuickBite' do
   pod 'GoogleSignIn'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
   pod 'SDWebImage'
   pod 'NVActivityIndicatorView'
   pod 'InputMask'

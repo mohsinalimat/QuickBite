@@ -666,6 +666,29 @@
                                                             <constraint firstAttribute="width" secondItem="tiX-VC-E15" secondAttribute="height" multiplier="1:1" id="H9h-9a-WGw"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-P4-a05">
+                                                        <rect key="frame" x="25" y="5.3333333333333286" width="350" height="31"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FG4-Lx-YVF" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                                                <rect key="frame" x="0.0" y="5.6666666666666714" width="40" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="OG1-nz-gMt"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="VWl-e6-Zc9"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="lineScale"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                                        <color key="value" red="1" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="FG4-Lx-YVF" firstAttribute="centerY" secondItem="RqQ-P4-a05" secondAttribute="centerY" id="ENf-Tc-SnP"/>
+                                                            <constraint firstItem="FG4-Lx-YVF" firstAttribute="leading" secondItem="RqQ-P4-a05" secondAttribute="leading" id="s9i-g0-m8j"/>
+                                                        </constraints>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbQ-ev-Os7">
                                                         <rect key="frame" x="25" y="33.666666666666671" width="334" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -681,17 +704,21 @@
                                                     <constraint firstAttribute="trailing" secondItem="mbQ-ev-Os7" secondAttribute="trailing" constant="16" id="ILN-Jg-vGH"/>
                                                     <constraint firstItem="OKx-B4-KrA" firstAttribute="trailing" secondItem="tiX-VC-E15" secondAttribute="trailing" id="Osc-1I-XYe"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OKx-B4-KrA" secondAttribute="trailing" constant="16" id="aex-Oc-Gk0"/>
+                                                    <constraint firstAttribute="trailing" secondItem="RqQ-P4-a05" secondAttribute="trailing" id="akn-IC-Aaz"/>
+                                                    <constraint firstItem="RqQ-P4-a05" firstAttribute="height" secondItem="H9F-55-ibK" secondAttribute="height" constant="8" id="cwx-3M-pwv"/>
                                                     <constraint firstItem="mbQ-ev-Os7" firstAttribute="leading" secondItem="s0o-V6-99l" secondAttribute="leading" id="gJG-ne-YNw"/>
                                                     <constraint firstItem="S5G-fr-IDY" firstAttribute="leading" secondItem="s0o-V6-99l" secondAttribute="trailing" constant="4" id="gdI-lH-c3v"/>
                                                     <constraint firstItem="tiX-VC-E15" firstAttribute="centerY" secondItem="OKx-B4-KrA" secondAttribute="centerY" id="h9I-hF-Nzm"/>
                                                     <constraint firstItem="s0o-V6-99l" firstAttribute="leading" secondItem="KGV-aA-zAf" secondAttribute="leading" constant="25" id="lKU-Yh-hUJ"/>
                                                     <constraint firstItem="H9F-55-ibK" firstAttribute="leading" secondItem="KGV-aA-zAf" secondAttribute="leading" constant="25" id="m6z-lM-hhC"/>
                                                     <constraint firstItem="s0o-V6-99l" firstAttribute="top" secondItem="KGV-aA-zAf" secondAttribute="top" constant="8" id="oEf-fN-SMT"/>
+                                                    <constraint firstItem="RqQ-P4-a05" firstAttribute="centerY" secondItem="H9F-55-ibK" secondAttribute="centerY" id="qZj-Hs-6I1"/>
                                                     <constraint firstAttribute="trailing" secondItem="S5G-fr-IDY" secondAttribute="trailing" constant="4" id="qhd-FZ-KzZ"/>
                                                     <constraint firstItem="H9F-55-ibK" firstAttribute="leading" secondItem="s0o-V6-99l" secondAttribute="leading" id="tsC-fX-yUA"/>
                                                     <constraint firstItem="OKx-B4-KrA" firstAttribute="leading" secondItem="H9F-55-ibK" secondAttribute="trailing" constant="8" id="uUD-o6-3SY"/>
                                                     <constraint firstItem="H9F-55-ibK" firstAttribute="centerY" secondItem="s0o-V6-99l" secondAttribute="centerY" id="vAh-wo-pnd"/>
                                                     <constraint firstItem="mbQ-ev-Os7" firstAttribute="top" secondItem="s0o-V6-99l" secondAttribute="bottom" id="wcJ-qv-hDN"/>
+                                                    <constraint firstItem="RqQ-P4-a05" firstAttribute="leading" secondItem="H9F-55-ibK" secondAttribute="leading" id="xOt-se-ny0"/>
                                                     <constraint firstItem="S5G-fr-IDY" firstAttribute="firstBaseline" secondItem="OKx-B4-KrA" secondAttribute="firstBaseline" id="yT0-7U-fii"/>
                                                 </constraints>
                                             </view>
@@ -931,10 +958,13 @@
                         <outlet property="buildingLandmarkTextField" destination="cvz-A1-vcR" id="1wh-gv-QZy"/>
                         <outlet property="cancelRenameButton" destination="S5G-fr-IDY" id="Zl8-gY-Rbj"/>
                         <outlet property="floorDoorUnitTextField" destination="Jf8-2k-isZ" id="2ir-aH-QSo"/>
+                        <outlet property="geocoderActivityIndicator" destination="FG4-Lx-YVF" id="bfq-3Z-kqM"/>
+                        <outlet property="geocoderIndicatorContainerView" destination="RqQ-P4-a05" id="YUh-VZ-qeo"/>
                         <outlet property="instructionsTextField" destination="yKv-R6-O4L" id="RsM-CS-DGf"/>
                         <outlet property="mapView" destination="xyT-52-NXX" id="L7p-Xw-rC4"/>
                         <outlet property="renameButton" destination="OKx-B4-KrA" id="WaV-co-m3P"/>
                         <outlet property="renameButtonImage" destination="tiX-VC-E15" id="Z5f-II-GsF"/>
+                        <outlet property="saveAddressButton" destination="rMu-F1-ysG" id="Tav-Gs-XpP"/>
                         <outlet property="scrollView" destination="vVi-4g-5LK" id="P4r-0R-MxG"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="ShowMainDeliveryFromAddNewAddress" id="mYP-FL-rtQ"/>
                     </connections>

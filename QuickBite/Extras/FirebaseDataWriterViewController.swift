@@ -11,7 +11,6 @@ import Firebase
 import CocoaLumberjack
 
 class FirebaseDataWriterViewController: UIViewController {
-    private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +20,12 @@ class FirebaseDataWriterViewController: UIViewController {
     }
     
     private func writeRestaurants() {
+        let db = Firestore.firestore()
         let restaurantRef = db.collection("restaurants")
         
+        //MARK: - Chika Loca
         restaurantRef.document("chika_loca").setData([
+            "id": UUID().uuidString,
             "name": "Chika Loca!",
             "categories": "Chicken, BBQ",
             "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
@@ -32,7 +34,7 @@ class FirebaseDataWriterViewController: UIViewController {
             "geo_point": GeoPoint(latitude: 8.476797, longitude: 124.645025),
             "rating": 3.5,
             "image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/food_sample_inasal.jpg?alt=media&token=70e75f54-b368-4c44-a4b7-5bda1caf5c53",
-            "address": "",
+            "address": "Pabayo corner, Mayor R. Chaves St, Cagayan de Oro, 9000 Misamis Oriental",
             "top_pick": true,
             "menu_items": [
                 [
@@ -93,7 +95,9 @@ class FirebaseDataWriterViewController: UIViewController {
             }
         }
         
+        //MARK: - House of Pancakes
         restaurantRef.document("house_of_pancakes").setData([
+            "id": UUID().uuidString,
             "name": "House of Pancakes",
             "categories": "Breakfast, Smoothies",
             "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
@@ -101,7 +105,7 @@ class FirebaseDataWriterViewController: UIViewController {
             "geo_point": GeoPoint(latitude: 8.482862, longitude: 124.656042),
             "rating": 4.7,
             "image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/Egg-free-french-toast_post.jpg?alt=media&token=8de1aa40-946c-4006-8cd6-6bc462e4236c",
-            "address": "",
+            "address": "Claro M. Recto Ave, Cagayan de Oro, Misamis Oriental",
             "top_pick": false,
             "menu_items": [
                 [

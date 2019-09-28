@@ -7,9 +7,6 @@
 //
 
 import Foundation
-import UIKit
-import Firebase
-import CocoaLumberjack
 
 struct HighlightedRestaurantCategory {
     var categoryName = ""

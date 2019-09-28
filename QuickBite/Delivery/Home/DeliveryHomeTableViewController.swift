@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import SDWebImage
 import CocoaLumberjack
+import Alamofire
 
 class DeliveryHomeTableViewController: UITableViewController {
     private var tdNavController: TDNavigationController?
@@ -21,6 +22,10 @@ class DeliveryHomeTableViewController: UITableViewController {
     private var loadingCoverView: LoadingCoverView!
     
     private var selectedRestaurant: Restaurant!
+    
+    // Save distanceTimes in a variable so that we're not potentially reading
+    // from userDefaults over and over again
+    private var distanceTimes: [String : DistanceTime]?
     
     enum TableViewSection: Int {
         case search
@@ -73,16 +78,14 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
     
     private func loadRestaurants(_ documents: Array<QueryDocumentSnapshot>) {
-        for document in documents {
-            if let restaurant = Restaurant(dictionary: document.data()) {
-                allRestaurants.append(restaurant)
-            } else {
-                print("couldn't append restaurant! \(document.data())")
-            }
+        allRestaurants = documents.compactMap({ Restaurant(dictionary: $0.data()) })
+        
+        DistanceTimeUtil.getDistanceTimes(allRestaurants) { result, error in
+            self.distanceTimes = result
+            self.populateHighlightedCategories()
+            self.tableView.reloadData()
+            self.loadingCoverView.hide()
         }
-        populateHighlightedCategories()
-        tableView.reloadData()
-        loadingCoverView.hide()
     }
     
     private func populateHighlightedCategories() {
@@ -141,6 +144,9 @@ class DeliveryHomeTableViewController: UITableViewController {
                 cell.restaurantCategories.text = restaurant.categories
                 cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL))
                 cell.restaurantRating.text = String(restaurant.rating)
+                if let time = distanceTimes?[restaurant.id]?.time {
+                    cell.deliveryTimeEstimate.text = time
+                }
                 
                 return cell
             }
@@ -180,6 +186,9 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
         
         cell.restaurantName.text = restaurant.name
         cell.imageView.sd_setImage(with: URL(string: restaurant.imageURL))
+        if let time = distanceTimes?[restaurant.id]?.time {
+            cell.timeAndDeliveryFee.text = time + "· Free delivery"
+        }
         
         return cell
     }

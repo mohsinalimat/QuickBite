@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 // Has to be a class because isDefault is mutable
 class Address: Codable {
-    let id: UUID
+    let id: String
     var userNickname: String
     var floorDoorUnitNo: String
     var street: String
@@ -41,7 +41,7 @@ class Address: Codable {
         ]
     }
 
-    init(id: UUID = UUID(),
+    init(id: String = UUID().uuidString,
          userNickname: String,
          floorDoorUnitNo: String,
          street: String,
@@ -74,7 +74,7 @@ class Address: Codable {
         let instructions = dictionary["instructions"] as? String ?? ""
         let isDefault = dictionary["is_default"] as? Bool ?? false
         
-        self.init(id: UUID(uuidString: id)!,
+        self.init(id: id,
                   userNickname: userNickname,
                   floorDoorUnitNo: floorDoorUnitNo,
                   street: street,

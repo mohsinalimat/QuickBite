@@ -13,6 +13,7 @@ class HighlightedRestaurantCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var restaurantName: UILabel!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timeAndDeliveryFee: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

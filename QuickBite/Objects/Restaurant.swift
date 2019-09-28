@@ -21,12 +21,16 @@
 import Foundation
 import Firebase
 import CocoaLumberjack
+import CoreLocation
 
 struct Restaurant: Codable {
+    var id: String
     var name: String
     var categories: String
     var contactNumber: String
     var alternativeContactNumber: String
+    var latitude: CLLocationDegrees
+    var longitude: CLLocationDegrees
     var rating: Double
     var openHours: String
     var address: String
@@ -34,21 +38,18 @@ struct Restaurant: Codable {
     var imageURL: String
     var menuItems: [MenuItem]
     
-//    var dictionary: [String : Any] {
-//        return [
-//            "name": name,
-//            "categories": categories,
-//            "address": address,
-//            "rating": rating
-//        ]
-//    }
+    var geoPoint: GeoPoint {
+        return GeoPoint(latitude: latitude, longitude: longitude)
+    }
 }
 
 extension Restaurant {
     init?(dictionary: [String : Any]) {
-        guard let name = dictionary["name"] as? String,
+        guard let id = dictionary["id"] as? String,
+            let name = dictionary["name"] as? String,
             let categories = dictionary["categories"] as? String,
             let contactNumber = dictionary["contact_number"] as? String,
+            let geoPoint = dictionary["geo_point"] as? GeoPoint,
             let openHours = dictionary["open_hours"] as? String,
             let topPick = dictionary["top_pick"] as? Bool,
             let imageURL = dictionary["image_url"] as? String,
@@ -57,10 +58,13 @@ extension Restaurant {
         
         let alternativeContactNumber = dictionary["alternative_contact_number"] as? String
         
-        self.init(name: name,
+        self.init(id: id,
+                  name: name,
                   categories: categories,
                   contactNumber: contactNumber,
                   alternativeContactNumber: alternativeContactNumber ?? "",
+                  latitude: CLLocationDegrees(geoPoint.latitude),
+                  longitude: CLLocationDegrees(geoPoint.longitude),
                   rating: rating,
                   openHours: openHours,
                   address: "",
