@@ -48,7 +48,7 @@ struct DistanceTimeUtil {
     }
     
     // Returns a dictionary of restaurant ids and distanceTimes
-    static func getDistanceTimes(_ restaurants: [Restaurant], completionHandler: @escaping (_ result: [String : DistanceTime], _ error: Error?) -> Void) {
+    static func getDistanceTimes(_ restaurants: [Restaurant], completionHandler: @escaping (_ result: [String : DistanceTime]?, _ error: Error?) -> Void) {
         let selectedAddressId = UserUtil.currentUser!.selectedAddress.id
         
         guard let distanceTimesForCurrentAddress = getStoredDistanceTimes()[selectedAddressId] else {
@@ -58,17 +58,10 @@ struct DistanceTimeUtil {
         }
         
         // Store any restaurants that don't already have a DistanceTime object
-        // for the currently selected address.
+        // for the currently selected address OR have a DistanceTime object with non-OK status.
         // Will be used to construct the Distance API request later
-        var missingRestaurants: [Restaurant] = []
-        
-        restaurants.forEach { restaurant in
-            // If no dictionary exists for a restaurant,
-            // add it to the missingRestaurants array
-            if distanceTimesForCurrentAddress[restaurant.id] == nil {
-                missingRestaurants.append(restaurant)
-            }
-        }
+        let missingRestaurants = restaurants.filter({ distanceTimesForCurrentAddress[$0.id] == nil ||
+                                                      distanceTimesForCurrentAddress[$0.id]?.status != "OK" })
         
         if missingRestaurants.isEmpty {
             return completionHandler(distanceTimesForCurrentAddress, nil)
@@ -77,42 +70,55 @@ struct DistanceTimeUtil {
         return requestDistanceTimes(missingRestaurants, forAddressId: selectedAddressId, completionHandler: completionHandler)
     }
     
-    static func distanceForRestaurantId(_ restaurantId: String) {
-        
-    }
-    
     private static func requestDistanceTimes(_ restaurants: [Restaurant], forAddressId addressId: String,
-                                             completionHandler: @escaping (_ result: [String : DistanceTime], _ error: Error?) -> Void) {
+                                             completionHandler: @escaping (_ result: [String : DistanceTime]?, _ error: Error?) -> Void) {
         let geopoints = restaurants.compactMap({ $0.geoPoint })
         
         let url = APIRequestBuilder.getDistanceMatrixRequestUrl(restaurantGeopoints: geopoints)
         
-        var newDistanceTimes: [String : DistanceTime] = [:]
         DDLogDebug("Requesting distances")
         AF.request(url).responseJSON { response in
             do {
                 let dtMatrix = try JSONDecoder().decode(DistanceTimeMatrix.self, from: response.data!)
                 
-                var newResponseDistanceTimes = dtMatrix.rows.flatMap({
-                    $0.elements.compactMap({ DistanceTime(distance: $0.distance.text,time: $0.duration.text) })
-                })
-                
-                for restaurant in restaurants {
-                    newDistanceTimes[restaurant.id] = newResponseDistanceTimes.removeFirst()
+                if let newResponseDistanceTimes = processResponse(restaurants, dtMatrix) {
+                    completionHandler(saveNewDistanceTimes(newResponseDistanceTimes, forAddressId: addressId), nil)
+                } else {
+                    completionHandler(nil, nil)
+                    DDLogError("Error processing json!")
                 }
-                
-                completionHandler(saveNewDistanceTimes(newDistanceTimes, forAddressId: addressId), nil)
             } catch {
-                completionHandler([:], nil)
+                completionHandler(nil, nil)
                 DDLogError("Error parsing json! \(error)")
             }
         }
     }
+    
+    private static func processResponse(_ restaurants: [Restaurant], _ dtMatrix: DistanceTimeMatrix) -> [String : DistanceTime]? {
+        guard dtMatrix.status == "OK", let row = dtMatrix.rows.first else {
+            DDLogError("INCORRECT DISTANCE MATRIX RESPONSE STATUS OR EMPTY ROWS IN RESPONSE")
+            return nil
+        }
+        
+        var distanceTimes = row.elements.compactMap({ DistanceTime(status: $0.status,
+                                                                   distance: $0.distance.text,
+                                                                   distanceValue: $0.distance.value,
+                                                                   time: $0.duration.text,
+                                                                   timeValue: $0.duration.value) })
+        var newDistanceTimes: [String : DistanceTime] = [:]
+        for restaurant in restaurants {
+            newDistanceTimes[restaurant.id] = distanceTimes.removeFirst()
+        }
+        return newDistanceTimes
+    }
 }
 
 struct DistanceTime: Codable {
+    let status: String
     let distance: String
+    let distanceValue: Int
     let time: String
+    let timeValue: Int
 }
 
 struct APIRequestBuilder {
@@ -134,7 +140,7 @@ struct APIRequestBuilder {
         let keyString = "&key=AIzaSyDA9qrmg1UNFPnlAZWC1Xlis5TdkNIzavM"
         
         request.append(keyString)
-        DDLogDebug("Stringbase: \(request)")
+        DDLogDebug("API Request string: \(request)")
         return request
     }
 }

@@ -24,7 +24,7 @@ class Address: Codable {
     
     // Local properties
     var isSelected: Bool
-    var name: String {
+    var displayName: String {
         return userNickname.isNotEmpty ? userNickname : street
     }
     

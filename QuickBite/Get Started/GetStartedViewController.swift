@@ -55,7 +55,7 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
                     if let addresses = UserUtil.currentUser?.addresses, !addresses.isEmpty {
                         self.performSegue(withIdentifier: "ShowMainDeliveryFromGetStarted", sender: nil)
                     } else {
-                        self.performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
+                        self.performSegue(withIdentifier: "AddNewGoogleAddressSegue", sender: nil)
                     }
                 }
             }

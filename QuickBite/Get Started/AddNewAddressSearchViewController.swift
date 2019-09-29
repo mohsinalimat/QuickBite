@@ -27,6 +27,15 @@ class AddNewAddressSearchViewController: UIViewController {
             resultsViewController?.automaticallyAdjustsScrollViewInsets = false
             resultsViewController?.additionalSafeAreaInsets.top = searchBarContainer.frame.height - 5
         }
+        
+        // Dark Mode
+        if #available(iOS 13.0, *) {
+            resultsViewController?.tableCellBackgroundColor = .secondarySystemBackground
+            resultsViewController?.primaryTextColor = .secondaryLabel
+            resultsViewController?.primaryTextHighlightColor = .label
+            resultsViewController?.secondaryTextColor = .secondaryLabel
+        }
+        
         resultsViewController?.delegate = self
         resultsViewController?.autocompleteBoundsMode = .restrict
         let leftCoordinate = CLLocationCoordinate2D(latitude: 8.504086, longitude: 124.615774)
@@ -36,22 +45,7 @@ class AddNewAddressSearchViewController: UIViewController {
         
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
-        let searchBar = searchController?.searchBar
-        searchBar?.placeholder = "Add a delivery address..."
-        searchBar?.searchBarStyle = .minimal
-        searchBar?.setSearchFieldBackgroundImage(UIImage(), for: .normal)
-        searchBar?.setBackgroundImage(UIImage(color: .systemBackgroundCompat), for: .any, barMetrics: .default)
-        searchBar?.setShowsCancelButton(false, animated: false)
-        if let textField = searchBar?.value(forKey: "searchField") as? UITextField {
-            textField.font = .systemFont(ofSize: 24, weight: .medium)
-            if #available(iOS 13, *) {
-                searchController?.searchBar.searchTextField.textColor = .tertiaryLabel
-                searchBar?.searchTextField.textColor = .systemRed
-                searchBar?.searchTextField.tintColor = .systemRed
-            } else {
-                textField.textColor = .tertiaryLabelCompat
-            }
-        }
+        styleSearchBar()
         
         searchBarContainer.addSubview((searchController?.searchBar)!)
         view.addSubview(searchBarContainer)
@@ -76,19 +70,28 @@ class AddNewAddressSearchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchController?.isActive = true
-        // For some reason becomeFirstResponder() needs to be called explicitly in the main queue
+        // For some reason becomeFirstResponder() needs to be called in the main queue explicitly
         DispatchQueue.main.async {
             self.searchController?.searchBar.becomeFirstResponder()
         }
     }
     
-    private func moveForward() {
-        performSegue(withIdentifier: "ShowAddressMapSegue", sender: nil)
+    private func styleSearchBar() {
+        let searchBar = searchController?.searchBar
+        searchBar?.placeholder = "Add a delivery address..."
+        searchBar?.searchBarStyle = .minimal
+        searchBar?.setSearchFieldBackgroundImage(UIImage(), for: .normal)
+        searchBar?.setBackgroundImage(UIImage(color: .systemBackgroundCompat), for: .any, barMetrics: .default)
+        searchBar?.setShowsCancelButton(false, animated: false)
+        
+        if #available(iOS 13, *) {
+            searchBar?.searchTextField.font = .systemFont(ofSize: 24, weight: .medium)
+        } else if let textField = searchBar?.value(forKey: "searchField") as? UITextField {
+            textField.font = .systemFont(ofSize: 24, weight: .medium)
+        }
     }
     
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if let addNewAddressMapVC = segue.destination as? AddNewAddressMapViewController {
            addNewAddressMapVC.address = selectedPlace
@@ -100,13 +103,8 @@ class AddNewAddressSearchViewController: UIViewController {
 extension AddNewAddressSearchViewController: GMSAutocompleteResultsViewControllerDelegate {
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
-//        searchController?.isActive = false
-        // Do something with the selected place.
         selectedPlace = place
         performSegue(withIdentifier: "ShowAddressMapSegue", sender: nil)
-//        print("Place name: \(place.name)")
-//        print("Place address: \(place.formattedAddress)")
-//        print("Place attributions: \(place.attributions)")
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,

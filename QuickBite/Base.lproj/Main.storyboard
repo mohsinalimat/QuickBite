@@ -194,7 +194,7 @@
                     <view key="view" contentMode="scaleToFill" id="J7A-8X-esX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mQC-TF-qfs"/>
                     </view>
                 </viewController>
@@ -239,10 +239,10 @@
             </objects>
             <point key="canvasLocation" x="-2082.4000000000001" y="0.0"/>
         </scene>
-        <!--Add New Address View Controller-->
+        <!--Add New Address View Controller Old-->
         <scene sceneID="aQO-Ko-pec">
             <objects>
-                <viewController id="65z-7o-Jid" customClass="AddNewAddressViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="65z-7o-Jid" customClass="AddNewAddressViewControllerOld" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIy-4j-IWG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="912"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -618,6 +618,22 @@
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="812" translatesAutoresizingMaskIntoConstraints="NO" id="DR2-9f-a2B" userLabel="Master Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-52-NXX" customClass="GMSMapView">
+                                                <rect key="frame" x="0.0" y="66" width="375" height="343"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_marker" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-T5-uWf">
+                                                <rect key="frame" x="167.66666666666666" y="197.66666666666669" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Q9f-ke-6Hr"/>
+                                                    <constraint firstAttribute="width" secondItem="3M4-T5-uWf" secondAttribute="height" multiplier="1:1" id="W8w-Mp-Ej4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                        <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGV-aA-zAf" userLabel="Address Container View">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                                 <subviews>
@@ -692,7 +708,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbQ-ev-Os7">
                                                         <rect key="frame" x="25" y="33.666666666666671" width="334" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -722,27 +738,11 @@
                                                     <constraint firstItem="S5G-fr-IDY" firstAttribute="firstBaseline" secondItem="OKx-B4-KrA" secondAttribute="firstBaseline" id="yT0-7U-fii"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-52-NXX" customClass="GMSMapView">
-                                                <rect key="frame" x="0.0" y="66" width="375" height="329"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_marker" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-T5-uWf">
-                                                <rect key="frame" x="167.66666666666666" y="190.66666666666669" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Q9f-ke-6Hr"/>
-                                                    <constraint firstAttribute="width" secondItem="3M4-T5-uWf" secondAttribute="height" multiplier="1:1" id="W8w-Mp-Ej4"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                                        <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </imageView>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-mT-Dhj" userLabel="Bottom Container View">
-                                                <rect key="frame" x="0.0" y="389" width="375" height="301"/>
+                                                <rect key="frame" x="0.0" y="399" width="375" height="291"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="3EJ-B8-1ly">
-                                                        <rect key="frame" x="16" y="32" width="343" height="177"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="3EJ-B8-1ly">
+                                                        <rect key="frame" x="16" y="30" width="343" height="169"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jf8-2k-isZ" customClass="TweeAttributedTextField" customModule="QuickBite" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
@@ -783,7 +783,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cvz-A1-vcR" customClass="TweeAttributedTextField" customModule="QuickBite" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="71" width="343" height="35"/>
+                                                                <rect key="frame" x="0.0" y="67" width="343" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="bnk-QX-Jnt"/>
                                                                 </constraints>
@@ -821,7 +821,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKv-R6-O4L" customClass="TweeAttributedTextField" customModule="QuickBite" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="142" width="343" height="35"/>
+                                                                <rect key="frame" x="0.0" y="134" width="343" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="D8Q-8T-YXp"/>
                                                                 </constraints>
@@ -854,11 +854,14 @@
                                                                         <real key="value" value="14"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="aTc-2a-e9p" id="b59-8f-Hmw"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMu-F1-ysG" customClass="PMSuperButton" customModule="PMSuperButton">
-                                                        <rect key="frame" x="16" y="233" width="343" height="60"/>
+                                                        <rect key="frame" x="16" y="223" width="343" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="hVb-yd-Yxh"/>
                                                         </constraints>
@@ -901,7 +904,7 @@
                                                 <constraints>
                                                     <constraint firstItem="3EJ-B8-1ly" firstAttribute="leading" secondItem="jtG-mT-Dhj" secondAttribute="leading" constant="16" id="35g-GI-aB5"/>
                                                     <constraint firstItem="rMu-F1-ysG" firstAttribute="leading" secondItem="jtG-mT-Dhj" secondAttribute="leading" constant="16" id="5KN-kC-nur"/>
-                                                    <constraint firstItem="3EJ-B8-1ly" firstAttribute="top" secondItem="jtG-mT-Dhj" secondAttribute="top" constant="32" id="Jdf-Qc-3LN"/>
+                                                    <constraint firstItem="3EJ-B8-1ly" firstAttribute="top" secondItem="jtG-mT-Dhj" secondAttribute="top" constant="30" id="Jdf-Qc-3LN"/>
                                                     <constraint firstItem="rMu-F1-ysG" firstAttribute="top" secondItem="3EJ-B8-1ly" secondAttribute="bottom" constant="24" id="Reg-pW-14n"/>
                                                     <constraint firstAttribute="bottom" secondItem="rMu-F1-ysG" secondAttribute="bottom" constant="8" id="TJH-Dv-80h"/>
                                                     <constraint firstAttribute="trailing" secondItem="3EJ-B8-1ly" secondAttribute="trailing" constant="16" id="dTb-nT-z9n"/>
@@ -922,7 +925,7 @@
                                             <constraint firstItem="jtG-mT-Dhj" firstAttribute="leading" secondItem="DR2-9f-a2B" secondAttribute="leading" id="MaE-OF-6pb"/>
                                             <constraint firstAttribute="bottom" secondItem="jtG-mT-Dhj" secondAttribute="bottom" id="Vtb-ad-JCx"/>
                                             <constraint firstItem="KGV-aA-zAf" firstAttribute="top" secondItem="DR2-9f-a2B" secondAttribute="top" id="dOi-2m-po6"/>
-                                            <constraint firstItem="xyT-52-NXX" firstAttribute="bottom" secondItem="jtG-mT-Dhj" secondAttribute="top" constant="6" id="dlK-5A-fo5"/>
+                                            <constraint firstItem="xyT-52-NXX" firstAttribute="bottom" secondItem="jtG-mT-Dhj" secondAttribute="top" constant="10" id="dlK-5A-fo5"/>
                                             <constraint firstItem="xyT-52-NXX" firstAttribute="top" secondItem="KGV-aA-zAf" secondAttribute="bottom" id="laG-H2-MUo"/>
                                             <constraint firstItem="3M4-T5-uWf" firstAttribute="centerX" secondItem="xyT-52-NXX" secondAttribute="centerX" id="mqb-Aq-0S1"/>
                                             <constraint firstAttribute="trailing" secondItem="KGV-aA-zAf" secondAttribute="trailing" id="wdg-rh-mx4"/>

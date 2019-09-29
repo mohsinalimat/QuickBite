@@ -11,7 +11,7 @@ import PMSuperButton
 import FirebaseAuth
 import CocoaLumberjack
 
-class AddNewAddressViewController: UIViewController, UITextFieldDelegate {
+class AddNewAddressViewControllerOld: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var greetingLabelHeight: NSLayoutConstraint!

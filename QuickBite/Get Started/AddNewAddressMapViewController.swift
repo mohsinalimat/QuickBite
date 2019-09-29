@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import GoogleMaps
 import GooglePlaces
 import CocoaLumberjack
@@ -33,6 +34,8 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     
     private var gmsAddress: GMSAddress?
     private var userStreetNickname: String?
+    
+    private var saveWasTapped = false // Used to detect if the user hit the back button
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +50,19 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
         mapView.camera = camera
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if saveWasTapped == false {
+            // User is going backwards to GetStartedViewController
+            // Log out user if there is a user logged in
+            try? Auth.auth().signOut()
+            UserUtil.clearCurrentUser()
+        }
+    }
+    
     // MARK: - MapView
     func mapView(_ mapView: GMSMapView, idleAt cameraPosition: GMSCameraPosition) {
-        // Map was moved, reset userStreetNickname
+        // Map was moved -> reset userStreetNickname & show reverseGeocoder loading indicator
         geocoderIndicatorContainerView.alpha = 1
         userStreetNickname = nil
         saveAddressButton.isEnabled = false
@@ -131,6 +144,8 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
                 // SHOW ERROR MESSAGE
                 return
         }
+        
+        saveWasTapped = true
         
         let makeDefault = UserUtil.currentUser!.addresses.count == 0
         

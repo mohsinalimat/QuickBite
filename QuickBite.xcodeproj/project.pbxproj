@@ -25,7 +25,7 @@
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
 		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
-		852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7ED232BB14500804751 /* AddNewAddressViewController.swift */; };
+		852AE7EE232BB14500804751 /* AddNewAddressViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */; };
 		852AE7F6232BB2BA00804751 /* TweePlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F0232BB2B900804751 /* TweePlaceholderTextField.swift */; };
 		852AE7F7232BB2BA00804751 /* TweeBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F1232BB2B900804751 /* TweeBorderedTextField.swift */; };
 		852AE7F8232BB2BA00804751 /* WeakTargetProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F2232BB2B900804751 /* WeakTargetProxy.swift */; };
@@ -125,7 +125,7 @@
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
-		852AE7ED232BB14500804751 /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
+		852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewControllerOld.swift; sourceTree = "<group>"; };
 		852AE7F0232BB2B900804751 /* TweePlaceholderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweePlaceholderTextField.swift; sourceTree = "<group>"; };
 		852AE7F1232BB2B900804751 /* TweeBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweeBorderedTextField.swift; sourceTree = "<group>"; };
 		852AE7F2232BB2B900804751 /* WeakTargetProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakTargetProxy.swift; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */,
-				852AE7ED232BB14500804751 /* AddNewAddressViewController.swift */,
+				852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */,
 				8504CE43233DBFD3005B7932 /* AddNewAddressSearchViewController.swift */,
 				8504CE45233DE43E005B7932 /* AddNewAddressMapViewController.swift */,
 			);
@@ -736,7 +736,7 @@
 				853B2BF923323030003E6011 /* FinalizeOrderViewController.swift in Sources */,
 				850181BF233B9F1A00EF8017 /* Order.swift in Sources */,
 				850A7D8C232F923100F67125 /* LoadingCoverView.swift in Sources */,
-				852AE7EE232BB14500804751 /* AddNewAddressViewController.swift in Sources */,
+				852AE7EE232BB14500804751 /* AddNewAddressViewControllerOld.swift in Sources */,
 				8504CE44233DBFD3005B7932 /* AddNewAddressSearchViewController.swift in Sources */,
 				8507FDAF231C1CD50089926A /* SearchTableViewCell.swift in Sources */,
 				8500B3D6233256C1007772B9 /* UserUtil.swift in Sources */,

@@ -11,6 +11,9 @@ import UIKit
 class RestaurantViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var restaurantName: UILabel!
+    @IBOutlet weak var deliveryTime: UILabel!
+    @IBOutlet weak var restaurantCategories: UILabel!
+    @IBOutlet weak var distanceAndAddress: UILabel!
     
     @IBOutlet weak var featuredItemsCollectionView: UICollectionView!
     @IBOutlet weak var menuCategoriesTableView: UITableView!
@@ -28,10 +31,12 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         featuredItemsCollectionView.register(UINib(nibName: "FeaturedItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeaturedItemCell")
         
         restaurantName.text = restaurant.name
+        restaurantCategories.text = restaurant.categories
+        deliveryTime.text = restaurant.distanceTime!.time.chompAt(" ")
+        distanceAndAddress.text = restaurant.distanceTime!.distance + " · " + restaurant.address
         
         menuCategories = restaurant.getMenuCategories()
         featuredItems = restaurant.getFeaturedItems()
-//        self.navigationController?.presentationController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

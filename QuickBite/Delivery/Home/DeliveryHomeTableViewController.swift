@@ -11,6 +11,7 @@ import FirebaseFirestore
 import SDWebImage
 import CocoaLumberjack
 import Alamofire
+import CoreLocation
 
 class DeliveryHomeTableViewController: UITableViewController {
     private var tdNavController: TDNavigationController?
@@ -22,10 +23,7 @@ class DeliveryHomeTableViewController: UITableViewController {
     private var loadingCoverView: LoadingCoverView!
     
     private var selectedRestaurant: Restaurant!
-    
-    // Save distanceTimes in a variable so that we're not potentially reading
-    // from userDefaults over and over again
-    private var distanceTimes: [String : DistanceTime]?
+    private var sortByTime = true
     
     enum TableViewSection: Int {
         case search
@@ -56,7 +54,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         
         tdNavController = self.navigationController as? TDNavigationController
         
-        homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.name)
+        homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.displayName)
         addHomeHeader()
         
     }
@@ -81,20 +79,65 @@ class DeliveryHomeTableViewController: UITableViewController {
         allRestaurants = documents.compactMap({ Restaurant(dictionary: $0.data()) })
         
         DistanceTimeUtil.getDistanceTimes(allRestaurants) { result, error in
-            self.distanceTimes = result
+            self.sortRestaurantsByTime(result)
             self.populateHighlightedCategories()
             self.tableView.reloadData()
             self.loadingCoverView.hide()
         }
     }
     
-    private func populateHighlightedCategories() {
-        var topPickRestos: [Restaurant] = []
-        for resto in allRestaurants {
-            if resto.topPick {
-                topPickRestos.append(resto)
+    private func sortRestaurantsByTime(_ distanceTimes: [String : DistanceTime]?) {
+        allRestaurants.forEach { restaurant in
+            if let restaurantDt = distanceTimes?[restaurant.id], restaurantDt.status == "OK" {
+                restaurant.distanceTime = restaurantDt
+            } else {
+                // Google matrix API failed to find distance time.
+                // Calculate distance manually and create rough time estimate
+                // based off that
+                manuallyCalculateDistanceTime(restaurant)
             }
         }
+        
+        // In the event that the Google distance matrix API completely fails,
+        // sort the restaurants by distance rather than time. Also set a variable
+        // so that the tableView and collectionViews know to display distance instead of time.
+        if let _ = distanceTimes {
+            allRestaurants.sort(by: { $0.distanceTime!.timeValue < $1.distanceTime!.timeValue } )
+        } else {
+            allRestaurants.sort(by: { $0.distanceTime!.distanceValue < $1.distanceTime!.distanceValue } )
+            sortByTime = false
+        }
+    }
+    
+    private func manuallyCalculateDistanceTime(_ restaurant: Restaurant) {
+        let restaurantLoc = CLLocation(latitude: restaurant.latitude,
+                                       longitude: restaurant.longitude)
+        
+        let addressLoc = CLLocation(latitude: UserUtil.currentUser!.selectedAddress.latitude,
+                                    longitude: UserUtil.currentUser!.selectedAddress.longitude)
+        
+        let distance = ((restaurantLoc.distance(from: addressLoc) / 1000) * 100).rounded() / 100
+        let timeEstimate = estimateTimeFromDistance(distance)
+        
+        restaurant.distanceTime = DistanceTime(status: "MANUAL",
+                                               distance: "\(distance)km",
+                                               distanceValue: Int(distance * 1000),
+                                               time: "\(timeEstimate) mins",
+                                               timeValue: timeEstimate * 60)
+    }
+    
+    // Estimates a travel time for a beeline distance
+    private func estimateTimeFromDistance(_ distance: Double) -> Int {
+        let timeEstimate = Int(distance * 10)
+        if timeEstimate > 45 {
+            return 45
+        } else {
+            return timeEstimate
+        }
+    }
+    
+    private func populateHighlightedCategories() {
+        let topPickRestos = allRestaurants.filter({ $0.topPick })
         highlightedCategories.append(HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
                                                                    restaurants: topPickRestos))
     }
@@ -121,10 +164,11 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0: // Search
+        let tableViewSection = TableViewSection(rawValue: indexPath.section)!
+        switch tableViewSection {
+        case .search:
             return tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
-        case 1: // Highlighted Restaurant categories
+        case .highlightedRestaurantCategories:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedRestaurantCategoryCell", for: indexPath) as! HighlightedRestaurantCategoryTableViewCell
             
             cell.categoryName.text = highlightedCategories[indexPath.row].categoryName
@@ -132,7 +176,7 @@ class DeliveryHomeTableViewController: UITableViewController {
             cell.peekImplementation.delegate = self
             
             return cell
-        case 2: // All Restaurants
+        case .allRestaurants:
             if indexPath.row == 0 { // Header cell
                 let header = tableView.dequeueReusableCell(withIdentifier: "AllRestaurantsHeaderCell")
                 return header!
@@ -144,14 +188,14 @@ class DeliveryHomeTableViewController: UITableViewController {
                 cell.restaurantCategories.text = restaurant.categories
                 cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL))
                 cell.restaurantRating.text = String(restaurant.rating)
-                if let time = distanceTimes?[restaurant.id]?.time {
-                    cell.deliveryTimeEstimate.text = time
+                if sortByTime {
+                    cell.deliveryTimeEstimate.text = restaurant.distanceTime!.time
+                } else {
+                    cell.deliveryTimeEstimate.text = restaurant.distanceTime!.distance
                 }
                 
                 return cell
             }
-        default:
-            fatalError()
         }
     }
     
@@ -172,7 +216,7 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
 }
 
-// Highlighed Restaurant Cells
+// MARK: - Highlighed Restaurant Cells
 extension DeliveryHomeTableViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -186,8 +230,10 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
         
         cell.restaurantName.text = restaurant.name
         cell.imageView.sd_setImage(with: URL(string: restaurant.imageURL))
-        if let time = distanceTimes?[restaurant.id]?.time {
-            cell.timeAndDeliveryFee.text = time + "· Free delivery"
+        if sortByTime {
+            cell.timeAndDeliveryFee.text = restaurant.distanceTime!.time + " · Free delivery"
+        } else {
+            cell.timeAndDeliveryFee.text = restaurant.distanceTime!.distance + " · Free delivery"
         }
         
         return cell

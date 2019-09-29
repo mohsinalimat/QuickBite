@@ -115,8 +115,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Picks in Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEt-jQ-a97">
-                                            <rect key="frame" x="16" y="8" width="290.66666666666669" height="56"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                            <rect key="frame" x="16" y="8" width="283" height="56"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -166,8 +166,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Restaurants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eju-Js-lsg">
-                                            <rect key="frame" x="16" y="8" width="157" height="27"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                            <rect key="frame" x="16" y="8" width="151.66666666666666" height="27"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -531,8 +531,11 @@
                     <navigationItem key="navigationItem" id="2wi-fJ-Hgv"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="deliveryTime" destination="2tl-L9-CBm" id="Myv-UZ-BNb"/>
+                        <outlet property="distanceAndAddress" destination="631-Ai-7Rp" id="u17-eL-fP8"/>
                         <outlet property="featuredItemsCollectionView" destination="8Jb-vb-c4b" id="kHr-AM-7mU"/>
                         <outlet property="menuCategoriesTableView" destination="KB3-dl-qmS" id="ccq-78-VDZ"/>
+                        <outlet property="restaurantCategories" destination="Yfh-vc-ZPA" id="iEZ-qu-ZLr"/>
                         <outlet property="restaurantName" destination="mO4-07-h15" id="Jgu-Ze-7IN"/>
                     </connections>
                 </viewController>
@@ -1991,7 +1994,7 @@ Across from Tomas Saco Petron Really long insctructions</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3JA-ei-rIH"/>
-        <segue reference="2mG-vi-xrD"/>
+        <segue reference="hRg-Rz-Xqe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

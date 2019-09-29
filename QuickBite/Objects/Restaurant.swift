@@ -23,7 +23,7 @@ import Firebase
 import CocoaLumberjack
 import CoreLocation
 
-struct Restaurant: Codable {
+class Restaurant: Codable {
     var id: String
     var name: String
     var categories: String
@@ -41,10 +41,38 @@ struct Restaurant: Codable {
     var geoPoint: GeoPoint {
         return GeoPoint(latitude: latitude, longitude: longitude)
     }
-}
+    
+    var distanceTime: DistanceTime? // Used for sorting purposes
+    
+    init(id: String,
+         name: String,
+         categories: String,
+         contactNumber: String,
+         alternativeContactNumber: String,
+         latitude: CLLocationDegrees,
+         longitude: CLLocationDegrees,
+         rating: Double,
+         openHours: String,
+         address: String,
+         topPick: Bool,
+         imageURL: String,
+         menuItems: [MenuItem]) {
+        self.id = id
+        self.name = name
+        self.categories = categories
+        self.contactNumber = contactNumber
+        self.alternativeContactNumber = alternativeContactNumber
+        self.latitude = latitude
+        self.longitude = longitude
+        self.rating = rating
+        self.openHours = openHours
+        self.address = address
+        self.topPick = topPick
+        self.imageURL = imageURL
+        self.menuItems = menuItems
+    }
 
-extension Restaurant {
-    init?(dictionary: [String : Any]) {
+    convenience init?(dictionary: [String : Any]) {
         guard let id = dictionary["id"] as? String,
             let name = dictionary["name"] as? String,
             let categories = dictionary["categories"] as? String,
@@ -53,6 +81,7 @@ extension Restaurant {
             let openHours = dictionary["open_hours"] as? String,
             let topPick = dictionary["top_pick"] as? Bool,
             let imageURL = dictionary["image_url"] as? String,
+            let address = dictionary["address"] as? String,
             let rating = dictionary["rating"] as? Double,
             let menuItems = dictionary["menu_items"] as? Array<[String : Any]> else { return nil }
         
@@ -67,7 +96,7 @@ extension Restaurant {
                   longitude: CLLocationDegrees(geoPoint.longitude),
                   rating: rating,
                   openHours: openHours,
-                  address: "",
+                  address: address,
                   topPick: topPick,
                   imageURL: imageURL,
                   menuItems: menuItems.compactMap({ MenuItem(dictionary: $0) }))
