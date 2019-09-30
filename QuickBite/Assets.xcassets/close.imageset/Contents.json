@@ -2,11 +2,24 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "close.png"
+      "filename" : "close-60.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "close-dark2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

@@ -105,14 +105,11 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
 //        performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
         performSegue(withIdentifier: "AddNewGoogleAddressSegue", sender: nil)
     }
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let addNewAddressSearchVC = segue.destination as? AddNewAddressSearchViewController {
+            addNewAddressSearchVC.firstTimeSetupMode = true
+        }
     }
-    */
-
 }

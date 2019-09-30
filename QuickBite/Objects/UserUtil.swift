@@ -11,15 +11,17 @@ import FirebaseFirestore
 import FirebaseAuth
 import CocoaLumberjack
 
+enum SyncProperty: String {
+    case name = "name"
+    case phone = "phone"
+    case addresses = "addresses"
+    case pastOrders = "past_orders"
+    case pushNotifications = "push_notifications_enabled"
+    case smsNotifications = "sms_notifications_enabled"
+}
+
 struct UserUtil {
     static private let dbUsers = Firestore.firestore().collection("users")
-    
-    enum SyncProperty: String {
-        case name = "name"
-        case phone = "phone"
-        case address = "address"
-        case pastOrders = "past_orders"
-    }
     
     static var currentUser: User? {
         if let currentUserData = UserDefaults.standard.data(forKey: UDKeys.currentUser) {
@@ -38,6 +40,7 @@ struct UserUtil {
         UserDefaults.standard.removeObject(forKey: UDKeys.currentUser)
     }
     
+    // MARK: - Name
     static func setName(_ name: String) {
         guard let user = currentUser, user.name != name else {
             return
@@ -47,6 +50,7 @@ struct UserUtil {
         syncUserProperty(property: .name)
     }
     
+    // MARK: - Phone
     static func setPhoneNumber(_ number: String) {
         guard let user = currentUser, user.phone != number else {
             return
@@ -56,6 +60,7 @@ struct UserUtil {
         syncUserProperty(property: .phone)
     }
     
+    // MARK: - Order
     static func addCurrentOrder(_ order: Order) {
         guard let user = currentUser else {
             return
@@ -75,34 +80,84 @@ struct UserUtil {
         syncUserProperty(property: .pastOrders)
     }
     
-    static func addAddress(_ address: Address) {
+    // MARK: - Address
+    static func addAddress(_ newAddress: Address) {
         guard let user = currentUser else {
             DDLogError("Tried to add address without a user set!")
             return
         }
+        
+        let existingAddresses = user.addresses
+        
+        // If new address has isDefault == true, set all others false
+        if newAddress.isDefault {
+            existingAddresses.forEach({ $0.isDefault = false })
+        }
+        
+        // If new address has isSelected == true, set all others false
+        if newAddress.isSelected {
+            existingAddresses.forEach({ $0.isSelected = false })
+        }
+        
 
-        user.addresses.append(address)
+        user.addresses.append(newAddress)
         updateCurrentUser(user)
-        syncUserProperty(property: .address)
+        syncUserProperty(property: .addresses)
     }
     
-    //    static func setDefaultAddress(id: UUID) {
-    //        let addresses = getAddresses()
-    //        for address in addresses {
-    //            address.isDefault = address.id == id
-    //        }
-    //        updateAddresses(addresses)
-    //    }
-    
-    static func addPastOrder(_ order: Order) {
+    static func setDefaultAddress(addressId: String) {
         guard let user = currentUser else {
-            DDLogError("Tried to add past order without a user set!")
+            DDLogError("Tried to add address without a user set!")
+            return
+        }
+        user.addresses.forEach({ $0.isDefault = $0.id == addressId })
+        updateCurrentUser(user)
+    }
+    
+    static func setSelectedAddress(addressId: String) {
+        guard let user = currentUser else {
+            DDLogError("Tried to add address without a user set!")
+            return
+        }
+        user.addresses.forEach({ $0.isSelected = $0.id == addressId })
+        updateCurrentUser(user)
+    }
+    
+    static func setPushNotificationEnabled(_ enabled: Bool) {
+        guard let user = currentUser else {
+            DDLogError("No User!!")
             return
         }
         
-        user.pastOrders.append(order)
+        guard user.pushNotificationsEnabled != enabled else {
+            return
+        }
+        
+        user.pushNotificationsEnabled = enabled
         updateCurrentUser(user)
-        syncUserProperty(property: .pastOrders)
+        syncUserProperty(property: .pushNotifications)
+    }
+    
+    static func setSmsNotificationEnabled(_ enabled: Bool) {
+        guard let user = currentUser else {
+            DDLogError("No User!!")
+            return
+        }
+        
+        guard user.smsNotificationsEnabled != enabled else {
+            return
+        }
+        
+        user.smsNotificationsEnabled = enabled
+        updateCurrentUser(user)
+        syncUserProperty(property: .smsNotifications)
+    }
+    
+    // MARK: - Sync
+    // User this for manually triggering sync in situations where syncing
+    // after every change would be excessive, i.e. changing default address
+    static func triggerUserSync(property: SyncProperty) {
+        syncUserProperty(property: property)
     }
     
     private static func syncUserProperty(property: SyncProperty) {
@@ -116,10 +171,14 @@ struct UserUtil {
             newValue = user.name
         case .phone:
             newValue = user.phone
-        case .address:
+        case .addresses:
             newValue = user.addresses.compactMap({ $0.dictionary })
         case .pastOrders:
             newValue = user.pastOrders.compactMap({ $0.dictionary })
+        case .pushNotifications:
+            newValue = user.pushNotificationsEnabled
+        case .smsNotifications:
+            newValue = user.smsNotificationsEnabled
         }
         
 
@@ -139,6 +198,8 @@ class User: Codable {
     var addresses: [Address]
     var currentOrder: Order?
     var pastOrders: [Order]
+    var pushNotificationsEnabled: Bool
+    var smsNotificationsEnabled: Bool
     var isGuest: Bool
     
     var defaultAddress: Address {
@@ -166,35 +227,36 @@ class User: Codable {
         return defaultAddress
     }
     
-//    var dictionary: [String : Any] {
-//        return [
-//            "floor_dept_house_no": floorDeptHouseNo,
-//            "street": street,
-//            "barangay": barangay,
-//            "building": building,
-//            "landmark": landmark,
-//            "is_default": isDefault
-//        ]
-//    }
-    
-    init(name: String = "", phone: String = "", addresses: [Address] = [], pastOrders: [Order] = [], isGuest: Bool) {
+    init(name: String = "",
+         phone: String = "",
+         addresses: [Address] = [],
+         pastOrders: [Order] = [],
+         pushNotificationsEnabled: Bool = true,
+         smsNotificationsEnabled: Bool = true,
+         isGuest: Bool) {
         self.name = name
         self.phone = phone
         self.addresses = addresses
         self.pastOrders = pastOrders
+        self.pushNotificationsEnabled = pushNotificationsEnabled
+        self.smsNotificationsEnabled = smsNotificationsEnabled
         self.isGuest = isGuest
     }
     
     convenience init(dictionary: [String : Any]) {
-        let name = dictionary["name"] as? String ?? ""
-        let phone = dictionary["phone"] as? String ?? ""
-        let addresses = dictionary["addresses"] as? Array<[String : Any]> ?? []
-        let pastOrders = dictionary["past_orders"] as? Array<[String : Any]> ?? []
+        let name = dictionary[SyncProperty.name.rawValue] as? String ?? ""
+        let phone = dictionary[SyncProperty.phone.rawValue] as? String ?? ""
+        let addresses = dictionary[SyncProperty.addresses.rawValue] as? Array<[String : Any]> ?? []
+        let pastOrders = dictionary[SyncProperty.pastOrders.rawValue] as? Array<[String : Any]> ?? []
+        let pushNotificationsEnabled = dictionary[SyncProperty.pushNotifications.rawValue] as? Bool ?? true
+        let smsNotificationsEnabled = dictionary[SyncProperty.smsNotifications.rawValue] as? Bool ?? true
         
         self.init(name: name,
                   phone: phone,
                   addresses: addresses.compactMap({ Address(dictionary: $0) }),
                   pastOrders: pastOrders.compactMap({ Order(dictionary: $0) }),
+                  pushNotificationsEnabled: pushNotificationsEnabled,
+                  smsNotificationsEnabled: smsNotificationsEnabled,
                   isGuest: false)
     }
 }

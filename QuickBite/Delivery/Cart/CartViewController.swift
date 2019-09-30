@@ -38,21 +38,18 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         bottomFadeView.fadeView(style: .top, percentage: 0.9)
         
         updatePriceLabels()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(close), imageName: "close")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
     }
     
     private func updatePriceLabels() {
         let cartTotalPrice = Cart.totalPrice
         cartTotalPriceLabel.text = cartTotalPrice.asPriceString
         totalPriceLabel.text = cartTotalPrice == 0 ? 0.asPriceString : (cartTotalPrice + 50).asPriceString
-    }
-    
-    @IBAction func closeTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func removeAllTapped(_ sender: Any) {

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CocoaLumberjack
+import PMSuperButton
 
 //MARK:- UIFont
 extension UIFont {
@@ -111,7 +112,7 @@ extension UILabel {
 }
 
 //MARK:- UIImage
-public extension UIImage {
+extension UIImage {
     convenience init? (color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
@@ -122,6 +123,28 @@ public extension UIImage {
         
         guard let cgImage = image?.cgImage else { return nil }
         self.init(cgImage: cgImage)
+    }
+}
+
+//MARK:- PMSuperButton
+extension PMSuperButton {
+    func setEnabled(_ enable: Bool, actuallyEnableOrDisable: Bool = false) {
+        if enable {
+            self.gradientEnabled = true
+            self.gradientStartColor = #colorLiteral(red: 0.9361338615, green: 0.3251743913, blue: 0.3114004433, alpha: 1)
+            self.gradientEndColor = #colorLiteral(red: 1, green: 0.3441041454, blue: 0.3272007855, alpha: 0.8)
+            self.setTitleColor(.white, for: .normal)
+            self.shadowOpacity = 0.25
+        } else {
+            self.gradientEnabled = false
+            self.setTitleColor(.tertiaryLabelCompat, for: .normal)
+            self.backgroundColor = .tertiarySystemFillCompat
+            self.shadowOpacity = 0
+        }
+        
+        if actuallyEnableOrDisable {
+            self.isEnabled = enable
+        }
     }
 }
 
@@ -151,11 +174,27 @@ extension UIColor {
         }
     }
     
+    static var secondarySystemBackgoundCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .secondarySystemBackground
+        } else {
+            return UIColor(red: 242.0, green: 242.0, blue: 247.0, alpha: 1.0)
+        }
+    }
+    
     static var tertiaryLabelCompat: UIColor {
         if #available(iOS 13, *) {
-            return .secondaryLabel
+            return .tertiaryLabel
         } else {
             return UIColor(red: 60.0, green: 60.0, blue: 67.0, alpha: 0.3)
+        }
+    }
+    
+    static var tertiarySystemFillCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .tertiarySystemFill
+        } else {
+            return UIColor(red: 118.0, green: 118.0, blue: 128.0, alpha: 0.12)
         }
     }
 }
@@ -202,9 +241,8 @@ extension String {
     func chompAt(_ characterToChompAt: String) -> String {
         if let range = self.range(of: characterToChompAt) {
             return String(self[..<range.lowerBound])
-        } else {
-            return self
         }
+        return self
     }
     
     var isNotEmpty: Bool {
@@ -339,5 +377,54 @@ extension UIView {
         animation.duration = 0.6
         animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
         layer.add(animation, forKey: "shake")
+    }
+}
+
+// MARK: - UINavigationController
+extension UINavigationController {
+    func popBack(_ count: Int) {
+        guard count > 0 else {
+            return assertionFailure("Count can not be a negative value.")
+        }
+        let index = viewControllers.count - count - 1
+        guard index > 0 else {
+            return assertionFailure("Not enough View Controllers on the navigation stack.")
+        }
+        popToViewController(viewControllers[index], animated: true)
+    }
+}
+
+
+// MARK: - UIViewController
+extension UIViewController {
+    func presentInSeparateNavController(_ viewController: UIViewController, animated: Bool) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let reusableNavController = storyboard.instantiateViewController(withIdentifier: "ReusableTDNavController") as! TDNavigationController
+        
+        reusableNavController.pushViewController(viewController, animated: false)
+        
+        present(reusableNavController, animated: animated, completion: nil)
+    }
+}
+
+// MARK: - UIBarButtonItem
+extension UIBarButtonItem {
+    static func barButton(_ target: Any?,
+                           action: Selector,
+                           imageName: String,
+                           size: CGSize = CGSize(width: 32, height: 32),
+                           tintColor: UIColor? = nil) -> UIBarButtonItem
+    {
+        let button = UIButton(type: .system)
+//        button.tintColor = tintColor
+        button.setImage(UIImage(named: imageName), for: .normal)
+        button.addTarget(target, action: action, for: .touchUpInside)
+
+        let menuBarItem = UIBarButtonItem(customView: button)
+        menuBarItem.customView?.translatesAutoresizingMaskIntoConstraints = false
+        menuBarItem.customView?.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        menuBarItem.customView?.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+
+        return menuBarItem
     }
 }

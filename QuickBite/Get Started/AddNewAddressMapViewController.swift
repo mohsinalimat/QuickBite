@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import GoogleMaps
 import GooglePlaces
 import CocoaLumberjack
@@ -29,14 +28,15 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     @IBOutlet weak var geocoderActivityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var saveAddressButton: PMSuperButton!
     
-    var address: GMSPlace! // Set by AddNewAddressSearchViewController
+    var selectedAddress: GMSPlace! // Set by AddNewAddressSearchViewController
     private let geocoder = GMSGeocoder()
     
-    private var gmsAddress: GMSAddress?
+    private var mapCenterMarkerAddress: GMSAddress?
     private var userStreetNickname: String?
+    private var mapViewWasMoved = false
     
-    private var saveWasTapped = false // Used to detect if the user hit the back button
-
+    var firstTimeSetupMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,19 +45,9 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
         
         geocoderActivityIndicator.startAnimating()
 
-        let camera = GMSCameraPosition.camera(withLatitude: address.coordinate.latitude, longitude: address.coordinate.longitude, zoom: 17.5)
+        let camera = GMSCameraPosition.camera(withLatitude: selectedAddress.coordinate.latitude, longitude: selectedAddress.coordinate.longitude, zoom: 17.5)
         mapView.delegate = self
         mapView.camera = camera
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if saveWasTapped == false {
-            // User is going backwards to GetStartedViewController
-            // Log out user if there is a user logged in
-            try? Auth.auth().signOut()
-            UserUtil.clearCurrentUser()
-        }
     }
     
     // MARK: - MapView
@@ -78,13 +68,21 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
                     self.geocoderIndicatorContainerView.alpha = 0
                     self.saveAddressButton.isEnabled = true
                 }
-                self.gmsAddress = result
+                self.mapCenterMarkerAddress = result
                 DDLogDebug("\(String(describing: result.lines))")
             }
         }
     }
     
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        mapViewWasMoved = true
+    }
+    
     private func setAddressLabels(_ address: String) {
+        guard mapViewWasMoved else {
+            addressLabelCover.text = self.selectedAddress.formattedAddress?.gmsStreet
+            return
+        }
         addressLabelCover.text = address.gmsStreet ?? "Unknown address"
     }
     
@@ -138,20 +136,20 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     }
     
     @IBAction func saveAddressTapped(_ sender: Any) {
-        guard let latitude = gmsAddress?.coordinate.latitude,
-            let longitude = gmsAddress?.coordinate.longitude else {
+        guard let latitude = mapCenterMarkerAddress?.coordinate.latitude,
+            let longitude = mapCenterMarkerAddress?.coordinate.longitude else {
                 DDLogError("ERROR PARSING LAT LONG")
                 // SHOW ERROR MESSAGE
                 return
         }
         
-        saveWasTapped = true
+        let userNickname = userStreetNickname ?? selectedAddress.formattedAddress?.gmsStreet
         
         let makeDefault = UserUtil.currentUser!.addresses.count == 0
         
-        let address = Address(userNickname: userStreetNickname ?? "",
+        let newAddress = Address(userNickname: userNickname ?? "",
                               floorDoorUnitNo: floorDoorUnitTextField.text ?? "",
-                              street: gmsAddress?.lines?[0].gmsStreet ?? "",
+                              street: mapCenterMarkerAddress?.lines?[0].gmsStreet ?? "",
                               buildingLandmark: buildingLandmarkTextField.text ?? "",
                               instructions: instructionsTextField.text ?? "",
                               latitude: latitude,
@@ -159,9 +157,13 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
                               isSelected: true,
                               isDefault: makeDefault)
         
-        UserUtil.addAddress(address)
+        UserUtil.addAddress(newAddress)
         
-        continueToMainDelivery()
+        if firstTimeSetupMode {
+            continueToMainDelivery()
+        } else {
+            navigationController?.popBack(2)
+        }
     }
     
     private func continueToMainDelivery() {
@@ -175,9 +177,7 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height
-        scrollView.contentInset = contentInset
+        scrollView.contentInset.bottom = keyboardFrame.size.height
         
         // Disable map dragging
         mapView.isUserInteractionEnabled = false

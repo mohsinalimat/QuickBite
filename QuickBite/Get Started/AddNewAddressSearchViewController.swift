@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import FirebaseAuth
 import GooglePlaces
 
 class AddNewAddressSearchViewController: UIViewController {
 
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
-//    var resultView: UITextView?
     @IBOutlet weak var searchBarContainer: UIView!
     
     private var selectedPlace: GMSPlace?
+    
+    private var placeWasSelected = false // Used to detect if the user hit the back button
+    
+    var firstTimeSetupMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,8 @@ class AddNewAddressSearchViewController: UIViewController {
         // Fix layout bug where search results appear ~70px below search bar
         if #available(iOS 11.0, *) {
             resultsViewController?.automaticallyAdjustsScrollViewInsets = false
-            resultsViewController?.additionalSafeAreaInsets.top = searchBarContainer.frame.height - 5
+            let bottomOfSearchBar = searchBarContainer.frame.origin.y + searchBarContainer.frame.height
+            resultsViewController?.additionalSafeAreaInsets.top = bottomOfSearchBar
         }
         
         // Dark Mode
@@ -76,6 +81,23 @@ class AddNewAddressSearchViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // In first time setup, we want to clear the currentUser and sign out of FB
+        // if the user navigates back to the GetStartedVC
+        guard firstTimeSetupMode else {
+            return
+        }
+        
+        if placeWasSelected == false {
+            // User is going backwards to GetStartedViewController
+            // Log out user if there is a user logged in
+            try? Auth.auth().signOut()
+            UserUtil.clearCurrentUser()
+        }
+    }
+    
     private func styleSearchBar() {
         let searchBar = searchController?.searchBar
         searchBar?.placeholder = "Add a delivery address..."
@@ -93,9 +115,10 @@ class AddNewAddressSearchViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if let addNewAddressMapVC = segue.destination as? AddNewAddressMapViewController {
-           addNewAddressMapVC.address = selectedPlace
-       }
+        if let addNewAddressMapVC = segue.destination as? AddNewAddressMapViewController {
+            addNewAddressMapVC.selectedAddress = selectedPlace
+            addNewAddressMapVC.firstTimeSetupMode = firstTimeSetupMode
+        }
     }
 }
 
@@ -104,6 +127,7 @@ extension AddNewAddressSearchViewController: GMSAutocompleteResultsViewControlle
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         selectedPlace = place
+        placeWasSelected = true
         performSegue(withIdentifier: "ShowAddressMapSegue", sender: nil)
     }
     

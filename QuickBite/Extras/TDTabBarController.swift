@@ -13,6 +13,8 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     private let cartBanner = CartBanner()
     private var cartBannerIsShown = false
     private var cartBottomAnchor = NSLayoutConstraint()
+    private var currentTabShouldShowCart = true
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +44,13 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
         }
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        currentTabShouldShowCart = item.title == "Delivery"
+        updateCartBannerAppearance()
+    }
+    
     private func updateCartBannerAppearance() {
-        if Cart.hasItems {
+        if Cart.hasItems && currentTabShouldShowCart {
             cartBanner.updateLabels()
             cartBanner.layoutIfNeeded() // Avoids a strange visual bug with the total price label...
             

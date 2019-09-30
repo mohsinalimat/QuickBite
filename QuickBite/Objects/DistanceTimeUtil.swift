@@ -48,8 +48,8 @@ struct DistanceTimeUtil {
     }
     
     // Returns a dictionary of restaurant ids and distanceTimes
-    static func getDistanceTimes(_ restaurants: [Restaurant], completionHandler: @escaping (_ result: [String : DistanceTime]?, _ error: Error?) -> Void) {
-        let selectedAddressId = UserUtil.currentUser!.selectedAddress.id
+    static func getDistanceTimes(_ restaurants: [Restaurant], forAddress address: Address, completionHandler: @escaping (_ result: [String : DistanceTime]?, _ error: Error?) -> Void) {
+        let selectedAddressId = address.id
         
         guard let distanceTimesForCurrentAddress = getStoredDistanceTimes()[selectedAddressId] else {
             // No dictionary entry for this address id. Must be New address

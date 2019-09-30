@@ -101,9 +101,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height + 80
-        scrollView.contentInset = contentInset
+        scrollView.contentInset.bottom = keyboardFrame.size.height + 80
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {

@@ -33,7 +33,7 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         restaurantName.text = restaurant.name
         restaurantCategories.text = restaurant.categories
         deliveryTime.text = restaurant.distanceTime!.time.chompAt(" ")
-        distanceAndAddress.text = restaurant.distanceTime!.distance + " · " + restaurant.address
+        distanceAndAddress.text = restaurant.distanceTime!.distance + " · " + restaurant.address.chompAt(", Cag")
         
         menuCategories = restaurant.getMenuCategories()
         featuredItems = restaurant.getFeaturedItems()

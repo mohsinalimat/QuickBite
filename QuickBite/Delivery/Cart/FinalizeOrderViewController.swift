@@ -40,17 +40,11 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
             // Hide neither, set name to be firstResponder
             nameTextField?.becomeFirstResponder()
         }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         phoneEntryIsValid = complete
-        enableNextButton(textFieldsAreValid())
+        nextButton.setEnabled(textFieldsAreValid())
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -66,7 +60,7 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        enableNextButton(textFieldsAreValid())
+        nextButton.setEnabled(textFieldsAreValid())
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -75,9 +69,7 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height + 80
-        scrollView.contentInset = contentInset
+        scrollView.contentInset.bottom = keyboardFrame.size.height + 80
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
@@ -122,18 +114,6 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
         }
         
         return true
-    }
-    
-    private func enableNextButton(_ enable: Bool) {
-        if enable {
-            nextButton.gradientStartColor = #colorLiteral(red: 0.9361338615, green: 0.3251743913, blue: 0.3114004433, alpha: 1)
-            nextButton.gradientEndColor = #colorLiteral(red: 1, green: 0.3441041454, blue: 0.3272007855, alpha: 0.8)
-            nextButton.shadowOpacity = 0.25
-        } else {
-            nextButton.gradientStartColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-            nextButton.gradientEndColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-            nextButton.shadowOpacity = 0
-        }
     }
     
     @IBAction func nextTapped(_ sender: Any) {

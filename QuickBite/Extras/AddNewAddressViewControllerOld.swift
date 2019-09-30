@@ -69,7 +69,7 @@ class AddNewAddressViewControllerOld: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        enableNextButton(checkAddressRequirements())
+        nextButton.setEnabled(checkAddressRequirements())
     }
     
     private func checkAddressRequirements() -> Bool {
@@ -114,18 +114,6 @@ class AddNewAddressViewControllerOld: UIViewController, UITextFieldDelegate {
 //                                 isDefault: true)
 //        
 //        UserUtil.addAddress(newAddress)
-    }
-    
-    private func enableNextButton(_ enable: Bool) {
-        if enable {
-            nextButton.gradientStartColor = #colorLiteral(red: 0.9361338615, green: 0.3251743913, blue: 0.3114004433, alpha: 1)
-            nextButton.gradientEndColor = #colorLiteral(red: 1, green: 0.3441041454, blue: 0.3272007855, alpha: 0.8)
-            nextButton.shadowOpacity = 0.25
-        } else {
-            nextButton.gradientStartColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-            nextButton.gradientEndColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-            nextButton.shadowOpacity = 0
-        }
     }
     
     @IBAction func nextTapped(_ sender: Any) {

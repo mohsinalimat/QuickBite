@@ -22,6 +22,10 @@ class DeliveryHomeTableViewController: UITableViewController {
     private let homeHeaderHeight: CGFloat = 65
     private var loadingCoverView: LoadingCoverView!
     
+    private var navBarTapRecognizer: UITapGestureRecognizer!
+    
+    private var selectedAddress: Address!
+
     private var selectedRestaurant: Restaurant!
     private var sortByTime = true
     
@@ -34,6 +38,8 @@ class DeliveryHomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navBarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(headerWasTapped))
+        
         // Cover tableview with loading view
         loadingCoverView = LoadingCoverView(loadingText: "Finding restaurants near you...")
         loadingCoverView.cover(parentView: self.navigationController!.view!)
@@ -44,7 +50,7 @@ class DeliveryHomeTableViewController: UITableViewController {
             if let err = err {
                 DDLogError("Error getting documents: \(err)")
             } else {
-                self.loadRestaurants(querySnapshot!.documents)
+                self.setupRestaurants(querySnapshot!.documents)
             }
         }
         
@@ -53,12 +59,33 @@ class DeliveryHomeTableViewController: UITableViewController {
         tableView.contentInset.top = 10
         
         tdNavController = self.navigationController as? TDNavigationController
-        
-        homeHeader.setStreetLabel(UserUtil.currentUser!.defaultAddress.displayName)
+        selectedAddress = UserUtil.currentUser!.selectedAddress
+        homeHeader.setStreetLabel(selectedAddress.displayName)
         addHomeHeader()
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.addGestureRecognizer(navBarTapRecognizer)
+        
+        // Check if selected address has changed
+        let address = UserUtil.currentUser!.selectedAddress
+        if address.id != selectedAddress.id {
+            // Refresh screen
+            selectedAddress = address
+            loadingCoverView.cover(parentView: self.navigationController!.view!)
+            homeHeader.setStreetLabel(selectedAddress.displayName)
+            setupRestaurants()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.removeGestureRecognizer(navBarTapRecognizer)
+    }
+    
+    // MARK: - Home Header
     private func addHomeHeader() {
         let container = UIView(frame: CGRect(x: 0, y: 0, width: 1000, height: 44))
 
@@ -75,10 +102,20 @@ class DeliveryHomeTableViewController: UITableViewController {
         self.navigationItem.titleView = container
     }
     
-    private func loadRestaurants(_ documents: Array<QueryDocumentSnapshot>) {
-        allRestaurants = documents.compactMap({ Restaurant(dictionary: $0.data()) })
+    @objc private func headerWasTapped() {
+        let accountStoryboard = UIStoryboard(name: "Account", bundle: nil)
+        let addressesVC = accountStoryboard.instantiateViewController(withIdentifier: "AddressesVC")
         
-        DistanceTimeUtil.getDistanceTimes(allRestaurants) { result, error in
+        presentInSeparateNavController(addressesVC, animated: true)
+    }
+    
+    // MARK: - Restaurants Data
+    private func setupRestaurants(_ documents: [QueryDocumentSnapshot] = []) {
+        if !documents.isEmpty {
+            allRestaurants = documents.compactMap({ Restaurant(dictionary: $0.data()) })
+        }
+        
+        DistanceTimeUtil.getDistanceTimes(allRestaurants, forAddress: selectedAddress) { result, error in
             self.sortRestaurantsByTime(result)
             self.populateHighlightedCategories()
             self.tableView.reloadData()
@@ -136,10 +173,11 @@ class DeliveryHomeTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Highlighted Categories
     private func populateHighlightedCategories() {
         let topPickRestos = allRestaurants.filter({ $0.topPick })
-        highlightedCategories.append(HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
-                                                                   restaurants: topPickRestos))
+        highlightedCategories = [HighlightedRestaurantCategory(categoryName: "Top Picks in Cagayan",
+                                                               restaurants: topPickRestos)]
     }
     
 

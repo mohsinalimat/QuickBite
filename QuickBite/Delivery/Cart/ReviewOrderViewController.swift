@@ -40,7 +40,7 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     
     private var changeAmountIsValid = false {
         didSet {
-            enablePlaceOrderButton(changeAmountIsValid)
+            placeOrderButton.setEnabled(changeAmountIsValid)
         }
     }
     
@@ -58,11 +58,6 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
         changeTextField.tweePlaceholder = String(Int(orderTotal))
         
         bottomFadeView.fadeView(style: .top, percentage: 0.35)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,9 +90,7 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset = scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height + 80
-        scrollView.contentInset = contentInset
+        scrollView.contentInset.bottom = keyboardFrame.size.height + 80
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
@@ -119,18 +112,6 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
         let cartQuantity = Cart.totalQuantity
         let s = cartQuantity > 1 ? "s" : ""
         orderLabel.text = "\(cartQuantity) item\(s) - \(Cart.totalPrice.asPriceString)"
-    }
-    
-    private func enablePlaceOrderButton(_ enable: Bool) {
-        if enable {
-            placeOrderButton.gradientStartColor = #colorLiteral(red: 0.9361338615, green: 0.3251743913, blue: 0.3114004433, alpha: 1)
-            placeOrderButton.gradientEndColor = #colorLiteral(red: 1, green: 0.3441041454, blue: 0.3272007855, alpha: 0.8)
-            placeOrderButton.shadowOpacity = 0.25
-        } else {
-            placeOrderButton.gradientStartColor = #colorLiteral(red: 0.832096374, green: 0.832096374, blue: 0.832096374, alpha: 1)
-            placeOrderButton.gradientEndColor = #colorLiteral(red: 0.832096374, green: 0.832096374, blue: 0.832096374, alpha: 1)
-            placeOrderButton.shadowOpacity = 0
-        }
     }
     
     @IBAction func placeOrderTapped(_ sender: Any) {
