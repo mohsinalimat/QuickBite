@@ -20,6 +20,10 @@ class TDNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureNavBarAppearance()
+    }
+    
+    func configureNavBarAppearance() {
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithOpaqueBackground()
@@ -28,8 +32,9 @@ class TDNavigationController: UINavigationController {
 
             self.navigationBar.standardAppearance = navBarAppearance
         } else {
-            self.navigationBar.backgroundColor = .white
+            self.navigationBar.setBackgroundImage(UIImage(color: .white), for: .default)
             self.navigationBar.shadowImage = UIImage()
+            self.navigationBar.isTranslucent = false
         }
         
         self.navigationBar.layer.shadowColor = UIColor.black.cgColor

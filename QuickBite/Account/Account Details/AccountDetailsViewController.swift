@@ -41,28 +41,16 @@ class AccountDetailsViewController: UIViewController, UITextFieldDelegate, Maske
     
     open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         phoneEntryIsValid = complete
-        print("phoneEntryIsValid: \(phoneEntryIsValid)")
         refreshSaveButton()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print("textFieldDidChange: \(phoneEntryIsValid)")
         refreshSaveButton()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
-    
-    
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        refreshSaveButton()
-//    }
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        refreshSaveButton()
-//        return true
-//    }
     
     private func refreshSaveButton() {
         if (nameTextField.text! == user.name && phoneTextField.text! == user.phone) || nameTextField.text!.isEmpty || !phoneEntryIsValid {

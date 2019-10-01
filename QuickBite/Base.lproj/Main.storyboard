@@ -125,12 +125,21 @@
                                     <constraint firstAttribute="height" constant="60" id="FKz-vu-Vhy"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="JxY-GM-p30">
+                                <rect key="frame" x="16" y="14" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="4vW-mS-4wC"/>
+                                    <constraint firstAttribute="width" secondItem="JxY-GM-p30" secondAttribute="height" multiplier="1:1" id="khY-8g-hRr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mgu-AU-EMR" firstAttribute="leading" secondItem="Xvx-lZ-M0y" secondAttribute="leading" id="2M6-km-vHp"/>
                             <constraint firstItem="mgu-AU-EMR" firstAttribute="trailing" secondItem="Xvx-lZ-M0y" secondAttribute="trailing" id="56f-RH-OBc"/>
                             <constraint firstItem="mgu-AU-EMR" firstAttribute="top" secondItem="Xvx-lZ-M0y" secondAttribute="top" id="eZN-ol-Cmt"/>
+                            <constraint firstItem="JxY-GM-p30" firstAttribute="leading" secondItem="mgu-AU-EMR" secondAttribute="leading" constant="16" id="jdm-aG-t8l"/>
+                            <constraint firstItem="JxY-GM-p30" firstAttribute="centerY" secondItem="mgu-AU-EMR" secondAttribute="centerY" id="rtP-of-cGa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xvx-lZ-M0y"/>
                     </view>
@@ -143,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDo-m3-gg5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-308" y="528"/>
+            <point key="canvasLocation" x="-308" y="527.58620689655174"/>
         </scene>
         <!--Reusable Navigation Controller-->
         <scene sceneID="bl2-ub-4dL">
@@ -633,7 +642,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-52-NXX" customClass="GMSMapView">
                                                 <rect key="frame" x="0.0" y="66" width="375" height="343"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_marker" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-T5-uWf">
                                                 <rect key="frame" x="167.66666666666666" y="197.66666666666669" width="40" height="40"/>
@@ -721,7 +730,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbQ-ev-Os7">
                                                         <rect key="frame" x="25" y="33.666666666666671" width="334" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -996,6 +1005,7 @@
         <image name="edit" width="18" height="18"/>
         <image name="google" width="50" height="50"/>
         <image name="map_marker" width="18" height="18"/>
+        <image name="search" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mYP-FL-rtQ"/>

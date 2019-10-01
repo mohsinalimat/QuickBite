@@ -12,6 +12,7 @@ import SDWebImage
 import CocoaLumberjack
 import Alamofire
 import CoreLocation
+import Hero
 
 class DeliveryHomeTableViewController: UITableViewController {
     private var tdNavController: TDNavigationController?
@@ -28,6 +29,10 @@ class DeliveryHomeTableViewController: UITableViewController {
 
     private var selectedRestaurant: Restaurant!
     private var sortByTime = true
+    
+    // Fix edge case where backing out of searchVC and then immediately
+    // tapping the search bar again would corrupt the navigation bar
+    private var searchIsInCooldown = false
     
     enum TableViewSection: Int {
         case search
@@ -60,7 +65,6 @@ class DeliveryHomeTableViewController: UITableViewController {
         
         tdNavController = self.navigationController as? TDNavigationController
         selectedAddress = UserUtil.currentUser!.selectedAddress
-        homeHeader.setStreetLabel(selectedAddress.displayName)
         addHomeHeader()
     }
     
@@ -80,13 +84,23 @@ class DeliveryHomeTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
+            self.searchIsInCooldown = false
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.removeGestureRecognizer(navBarTapRecognizer)
+        searchIsInCooldown = true
     }
     
     // MARK: - Home Header
     private func addHomeHeader() {
+        homeHeader.setStreetLabel(selectedAddress.displayName)
+        
         let container = UIView(frame: CGRect(x: 0, y: 0, width: 1000, height: 44))
 
         homeHeader.translatesAutoresizingMaskIntoConstraints = false
@@ -238,11 +252,20 @@ class DeliveryHomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let tableViewSection = TableViewSection(rawValue: indexPath.section), tableViewSection == .allRestaurants else {
+        guard let tableViewSection = TableViewSection(rawValue: indexPath.section) else {
             return
         }
-        selectedRestaurant = allRestaurants[indexPath.row - 1] // Account for header cell
-        showRestaurant()
+        
+        if tableViewSection == .search {
+            guard !searchIsInCooldown else { return }
+            
+            navigationController?.hero.isEnabled = true
+            navigationController?.hero.navigationAnimationType = .autoReverse(presenting: .fade)
+            performSegue(withIdentifier: "ShowSearchSegue", sender: nil)
+        } else if tableViewSection == .allRestaurants {
+            selectedRestaurant = allRestaurants[indexPath.row - 1] // Account for header cell
+            showRestaurant()
+        }
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -251,6 +274,18 @@ class DeliveryHomeTableViewController: UITableViewController {
     
     private func showRestaurant() {
         performSegue(withIdentifier: "ShowRestaurantSegue", sender: nil)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let restaurantVC = segue.destination as? RestaurantViewController {
+            restaurantVC.restaurant = selectedRestaurant
+        } else if let searchVC = segue.destination as? SearchViewController {
+            searchVC.restaurants = allRestaurants
+            if let searchCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HomeSearchBarTableViewCell, let searchPrompt = searchCell.searchPrompt.text {
+                searchVC.searchPrompt = searchPrompt
+            }
+        }
     }
 }
 
@@ -284,10 +319,13 @@ extension DeliveryHomeTableViewController: MSPeekImplementationDelegate {
         selectedRestaurant = highlightedCategories[collectionView.tag].restaurants[indexPath.row]
         showRestaurant()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? RestaurantViewController {
-            destinationVC.restaurant = selectedRestaurant
-        }
-    }
+}
+
+class AllRestaurantsTableViewCell: UITableViewCell {
+    @IBOutlet weak var restaurantImage: UIImageView!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var restaurantName: UILabel!
+    @IBOutlet weak var restaurantCategories: UILabel!
+    @IBOutlet weak var restaurantRating: UILabel!
+    @IBOutlet weak var deliveryTimeEstimate: UILabel!
 }

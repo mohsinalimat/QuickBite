@@ -9,7 +9,7 @@ target 'QuickBite' do
   pod 'CocoaLumberjack/Swift'
   pod 'PMSuperButton'
   pod 'BEMCheckBox'
-#  pod 'Hero'
+  pod 'Hero'
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
@@ -22,4 +22,5 @@ target 'QuickBite' do
   pod 'InputMask'
   pod 'GTProgressBar'
   pod 'FittedSheets'
+#  pod 'Motion', '~> 3.1.0'
 end

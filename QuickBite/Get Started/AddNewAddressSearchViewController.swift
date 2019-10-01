@@ -13,7 +13,7 @@ import GooglePlaces
 class AddNewAddressSearchViewController: UIViewController {
 
     var resultsViewController: GMSAutocompleteResultsViewController?
-    var searchController: UISearchController?
+    var searchController: CustomSearchController?
     @IBOutlet weak var searchBarContainer: UIView!
     
     private var selectedPlace: GMSPlace?
@@ -48,7 +48,7 @@ class AddNewAddressSearchViewController: UIViewController {
         let coordinateBounds = GMSCoordinateBounds(coordinate: leftCoordinate, coordinate: rightCoordinate)
         resultsViewController?.autocompleteBounds = coordinateBounds
         
-        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController = CustomSearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         styleSearchBar()
         
@@ -101,14 +101,37 @@ class AddNewAddressSearchViewController: UIViewController {
     private func styleSearchBar() {
         let searchBar = searchController?.searchBar
         searchBar?.placeholder = "Add a delivery address..."
-        searchBar?.searchBarStyle = .minimal
-        searchBar?.setSearchFieldBackgroundImage(UIImage(), for: .normal)
         searchBar?.setBackgroundImage(UIImage(color: .systemBackgroundCompat), for: .any, barMetrics: .default)
-        searchBar?.setShowsCancelButton(false, animated: false)
         
+        searchBar?.tintColor = #colorLiteral(red: 0.9361338615, green: 0.3251743913, blue: 0.3114004433, alpha: 1) // Icon is not tinted in iOS 13
+        /// UISearchBar behaves completely differently in iOS 13 and pre-iOS 13 devices. Please read carefully before trying to modify!
+        /// textFieldBackground color:
+        ///      pre-13 - Extract textField using .value(forKey: "searchField"), then use textField.backgroundcolor property.
+        ///         13 - .setSearchFieldBackgroundImage(blank UIImage)
+        /// textFieldFont:
+        ///      pre-13 - Extract textField using .value(forKey: "searchField"), then use textField.font property.
+        ///         13 - Use .searchTextField (available only in iOS 13) property and set its font
+        /// Hide Cancel Button:
+        ///      pre-13 - There is an iOS bug that causes iOS 12 and lower devices to ignore the built-in .setShowsCancelButton.
+        ///            The workaround is to use a custom subclass of UISearchBar, which in turn can only be utilized with a custom
+        ///            subclass of UISearchController 🙄.
+        ///         13 - For some fucking reason, iOS 13 ignores the custom subclass's overriden .setShowsCancelButton 😡. So we have to
+        ///            call .setShowsCancelButton regardless.
+        /// Custom Search Icon Image:
+        ///      Calling .setImage works for both i0S 13 and pre-iOS 13. However, it is seemingly not resizable on iOS 13 and will render as
+        ///      whatever dimensions the image file is. On pre-iOS, the image will be extremely tiny by default, regardless of the dimensions
+        ///      of the image file itself AND regardless of the file type (.png or .pdf produce same result)
+        ///      pre-13 - Resize the image by extracting it from the textField's leftView property, then set it's frame size.
+        searchBar?.setImage(UIImage(named: "map_marker-25"), for: .search, state: .normal)
         if #available(iOS 13, *) {
+            searchBar?.setSearchFieldBackgroundImage(UIImage(), for: .normal)
+            searchBar?.setShowsCancelButton(false, animated: false) // Custom class gets ignored otherwise 😡
             searchBar?.searchTextField.font = .systemFont(ofSize: 24, weight: .medium)
         } else if let textField = searchBar?.value(forKey: "searchField") as? UITextField {
+            if let textFieldImage = textField.leftView as? UIImageView {
+                textFieldImage.frame.size = CGSize(width: 25, height: 25)
+            }
+            textField.backgroundColor = .white
             textField.font = .systemFont(ofSize: 24, weight: .medium)
         }
     }
@@ -145,4 +168,57 @@ extension AddNewAddressSearchViewController: GMSAutocompleteResultsViewControlle
     func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
+}
+
+// These custom subclasses fix a bug where setShowsCancelButton would be ignored on pre-iOS 13 devices
+// TODO: Move all searchbar styling to this class?
+class CustomSearchBar: UISearchBar {
+    override func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
+        super.setShowsCancelButton(false, animated: false)
+    }
+}
+
+class CustomSearchController: UISearchController {
+    lazy var _searchBar: CustomSearchBar = {
+        [unowned self] in
+        let customSearchBar = CustomSearchBar(frame: CGRect.zero)
+        return customSearchBar
+        }()
+    
+    override var searchBar: UISearchBar {
+        get {
+            return _searchBar
+        }
+    }
+}
+
+extension UIImage {
+
+    func resize(maxWidthHeight : Double)-> UIImage? {
+
+        let actualHeight = Double(size.height)
+        let actualWidth = Double(size.width)
+        var maxWidth = 0.0
+        var maxHeight = 0.0
+
+        if actualWidth > actualHeight {
+            maxWidth = maxWidthHeight
+            let per = (100.0 * maxWidthHeight / actualWidth)
+            maxHeight = (actualHeight * per) / 100.0
+        }else{
+            maxHeight = maxWidthHeight
+            let per = (100.0 * maxWidthHeight / actualHeight)
+            maxWidth = (actualWidth * per) / 100.0
+        }
+
+        let hasAlpha = true
+        let scale: CGFloat = 0.0
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: maxWidth, height: maxHeight), !hasAlpha, scale)
+        self.draw(in: CGRect(origin: .zero, size: CGSize(width: maxWidth, height: maxHeight)))
+
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
+
 }
