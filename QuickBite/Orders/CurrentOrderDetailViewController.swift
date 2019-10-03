@@ -30,13 +30,14 @@ class CurrentOrderDetailViewController: UIViewController, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCell", for: indexPath) as! CartItemTableViewCell
         
         let orderItem = order.items[indexPath.row]
-        if orderItem.imageURL.isNotEmpty {
-            cell.itemImage.sd_setImage(with: URL(string: orderItem.imageURL))
+        if orderItem.imageUrl.isNotEmpty {
+            cell.itemImage.sd_setImage(with: URL(string: orderItem.imageUrl))
         } else {
-            cell.imageWidthConstraint.constant = 0
+            cell.itemImage.removeFromSuperview()
         }
         cell.itemTitle.text = orderItem.itemName
         cell.selectedItemOptions.text = orderItem.selectedOptions
+        cell.specialInstructions.text = orderItem.specialInstructions
         cell.quantityLabel.text = "\(orderItem.selectedQuantity)x"
         cell.priceLabel.text = orderItem.finalPrice.asPriceString
         

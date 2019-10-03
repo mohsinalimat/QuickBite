@@ -43,6 +43,12 @@ class DeliveryHomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.contentInset.top = 10
+        
+        tdNavController = self.navigationController as? TDNavigationController
+        
         navBarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(headerWasTapped))
         
         // Cover tableview with loading view
@@ -59,11 +65,6 @@ class DeliveryHomeTableViewController: UITableViewController {
             }
         }
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        tableView.contentInset.top = 10
-        
-        tdNavController = self.navigationController as? TDNavigationController
         selectedAddress = UserUtil.currentUser!.selectedAddress
         addHomeHeader()
     }
@@ -88,6 +89,12 @@ class DeliveryHomeTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
             self.searchIsInCooldown = false
+        }
+        
+        if UserDefaults.standard.bool(forKey: UDKeys.redirectToCartRestaurant), let cartRestaurant = Cart.restaurant {
+            UserDefaults.standard.removeObject(forKey: UDKeys.redirectToCartRestaurant)
+            selectedRestaurant = cartRestaurant
+            showRestaurant()
         }
     }
     

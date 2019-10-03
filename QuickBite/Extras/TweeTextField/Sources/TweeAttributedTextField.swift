@@ -83,6 +83,13 @@ open class TweeAttributedTextField: TweeActiveTextField {
 			self.infoLabel.text = text
 		})
 	}
+    
+    public func showRequiredHint(_ text: String = "required", hideAfter: TimeInterval = 3.0) {
+        self.infoTextColor = #colorLiteral(red: 0.9361338615, green: 0.3251743913, blue: 0.3114004433, alpha: 1)
+        let font = UIFont.systemFont(ofSize: 15, weight: .semibold).smallCaps()
+        let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.kern: -0.4 ] as [NSAttributedString.Key : Any]
+        self.showInfo(NSAttributedString(string: text, attributes: attributes), animated: true)
+    }
 
 	/// Hides the info label with animation or not.
 	/// - Parameter animated: By default is `true`.

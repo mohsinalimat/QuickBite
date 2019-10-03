@@ -13,7 +13,6 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     private let cartBanner = CartBanner()
     private var cartBannerIsShown = false
     private var cartBottomAnchor = NSLayoutConstraint()
-    private var currentTabShouldShowCart = true
     
 
     override func viewDidLoad() {
@@ -37,7 +36,7 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateCartBannerAppearance()
+        showCartBanner()
         if UserDefaults.standard.bool(forKey: UDKeys.redirectToOrders) {
             self.selectedIndex = 1
             UserDefaults.standard.removeObject(forKey: UDKeys.redirectToOrders)
@@ -45,12 +44,11 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        currentTabShouldShowCart = item.title == "Delivery"
-        updateCartBannerAppearance()
+        showCartBanner(item.title == "Delivery", withSpring: false)
     }
     
-    private func updateCartBannerAppearance() {
-        if Cart.hasItems && currentTabShouldShowCart {
+    func showCartBanner(_ showOverride: Bool = true, animated: Bool = true, withSpring: Bool = true) {
+        if showOverride && Cart.hasItems {
             cartBanner.updateLabels()
             cartBanner.layoutIfNeeded() // Avoids a strange visual bug with the total price label...
             
@@ -58,9 +56,16 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
                 self.view!.layoutIfNeeded()
                 cartBottomAnchor.constant = -8
                 view!.setNeedsUpdateConstraints()
-                UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 9.5, options: .curveEaseOut, animations: {
-                    self.view!.layoutIfNeeded()
-                }, completion: nil)
+                let duration = animated ? 0.4 : 0.0
+                if withSpring {
+                    UIView.animate(withDuration: duration, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 9.5, options: .curveEaseOut, animations: {
+                        self.view!.layoutIfNeeded()
+                    }, completion: nil)
+                } else {
+                    UIView.animate(withDuration: 0.15, delay: 0.0, options: [.curveEaseInOut], animations: {
+                        self.view!.layoutIfNeeded()
+                    })
+                }
                 cartBannerIsShown = true
             }
         } else {
@@ -77,6 +82,6 @@ class TDTabBarController: UITabBarController, MenuItemViewControllerDelegate {
     
     // MARK: - MenuItemViewControllerDelegate
     func itemAddedToCart() {
-        updateCartBannerAppearance()
+        showCartBanner()
     }
 }

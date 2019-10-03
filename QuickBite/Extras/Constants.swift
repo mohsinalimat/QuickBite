@@ -17,6 +17,7 @@ struct UDKeys {
     static let distanceTimes = "DISTANCE_TIMES"
     
     static let redirectToOrders = "REDIRECT_TO_ORDERS"
+    static let redirectToCartRestaurant = "REDIRECT_TO_CART_RESTAURANT"
 }
 
 extension Notification.Name {

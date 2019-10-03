@@ -20,6 +20,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     var restaurants: [Restaurant]!
     private var filteredRestaurants = [Restaurant]()
     
+    private var tdTabBarController: TDTabBarController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,9 +33,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             navigationController?.navigationBar.isTranslucent = true
             navigationController?.navigationBar.standardAppearance = navBarAppearance
         } else {
-            navigationController?.navigationBar.backgroundColor = .clear
-            navigationController?.navigationBar.isTranslucent = true
-
+            // For some reason creating a UIImage from .tertiarySystemGroupedBackgroundCompat
+            // was not working and the navBar would remain white.
+            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "tertiary_system_grouped_background"), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
         }
         
         searchResultsTableView.rowHeight = UITableView.automaticDimension
@@ -41,16 +44,34 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         searchPromptLabel.text = searchPrompt
         
+        tdTabBarController = self.tabBarController as? TDTabBarController
+        
         searchTextField.addTarget(self, action: #selector(searchTextDidChange), for: UIControl.Event.editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        searchTextField.becomeFirstResponder()
+        
         navigationController?.hero.isEnabled = true
         
         if let selectedIndexPath = searchResultsTableView.indexPathForSelectedRow {
             searchResultsTableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+        
+        tdTabBarController?.showCartBanner(false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if #available(iOS 11.0, *) {
+            searchTextField.becomeFirstResponder()
+        } else {
+            // Fix a bug in iOS 10 where the searchTextField would become the first responder
+            // but neither the caret nor any entered text would be visible.
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+                self.searchTextField.becomeFirstResponder()
+            }
         }
     }
     
@@ -62,6 +83,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         // Reset nav bar
         let tdNavBar = navigationController as! TDNavigationController
         tdNavBar.configureNavBarAppearance()
+        
+        tdTabBarController?.showCartBanner(animated: false)
     }
     
     @objc func searchTextDidChange() {

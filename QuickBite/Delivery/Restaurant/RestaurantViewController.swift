@@ -15,6 +15,7 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var restaurantCategories: UILabel!
     @IBOutlet weak var distanceAndAddress: UILabel!
     
+    @IBOutlet weak var featuredItemsContainerView: UIView!
     @IBOutlet weak var featuredItemsCollectionView: UICollectionView!
     @IBOutlet weak var menuCategoriesTableView: UITableView!
     
@@ -37,10 +38,17 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         
         menuCategories = restaurant.getMenuCategories()
         featuredItems = restaurant.getFeaturedItems()
+        if featuredItems.isEmpty {
+            featuredItemsContainerView.removeFromSuperview()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // In case the user opened the cart from this screen or any of it's sub-screens,
+        // clear the redirect here so that the main screen doesn't hop back here.
+        UserDefaults.standard.removeObject(forKey: UDKeys.redirectToCartRestaurant)
         
         if let selectionIndexPath = menuCategoriesTableView.indexPathForSelectedRow {
             menuCategoriesTableView.deselectRow(at: selectionIndexPath, animated: false)
@@ -58,7 +66,7 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         let featuredItem = featuredItems[indexPath.row]
         cell.title.text = featuredItem.itemName
         cell.price.text = featuredItem.price.asPriceString
-        cell.imageView.sd_setImage(with: URL(string: featuredItem.imageURL))
+        cell.imageView.sd_setImage(with: URL(string: featuredItem.imageUrl))
         
         return cell
     }
@@ -83,7 +91,7 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let menuTableVC = segue.destination as? MenuTableViewController {
+        if let menuTableVC = segue.destination as? MenuCategoryViewController {
             let category = menuCategories[menuCategoriesTableView.indexPathForSelectedRow!.row]
             menuTableVC.restaurant = restaurant
             menuTableVC.menuCategory = category

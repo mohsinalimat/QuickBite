@@ -26,26 +26,20 @@ struct Cart {
             if let restaurantData = UserDefaults.standard.data(forKey: UDKeys.cartRestaurant) {
                 return try! JSONDecoder().decode(Restaurant.self, from: restaurantData)
             }
-            DDLogError("Tried getting cart restaurant without a restaurant being set")
             return nil
         }
-        
     }
     
     static var totalPrice: Double {
-        var totalPrice = 0.0
-        for item in items {
-            totalPrice += item.finalPrice
+        return items.reduce(0) { (result, next) -> Double in
+            return result + next.finalPrice
         }
-        return totalPrice
     }
     
     static var totalQuantity: Int {
-        var totalQuantity = 0
-        for item in items {
-            totalQuantity += item.selectedQuantity
+        return items.reduce(0) { (result, next) -> Int in
+            return result + next.selectedQuantity
         }
-        return totalQuantity
     }
     
     static var items: [MenuItem] {
@@ -58,13 +52,22 @@ struct Cart {
     }
     
     static func addItem(_ item: MenuItem) {
-        // 1. Get the current cart array
         var cartItems = items
         
-        // 3. Add the MenuItem object to it
-        cartItems.append(item)
+        // Merge identical items
+        var itemIsUnique = true
+        cartItems.forEach { (menuItem) in
+            if item.equals(menuItem) {
+                menuItem.selectedQuantity += item.selectedQuantity
+                menuItem.finalPrice += item.finalPrice
+                itemIsUnique = false
+            }
+        }
         
-        // 4. Encode the array and store it again
+        if itemIsUnique {
+            cartItems.append(item)
+        }
+        
         let newCartItemsData = try! JSONEncoder().encode(cartItems)
         UserDefaults.standard.set(newCartItemsData, forKey: UDKeys.cartItems)
     }

@@ -204,7 +204,7 @@ class FirebaseDataWriterViewController: UIViewController {
         
         // MARK: - Kagayan Coffee Cartel
         restaurantRef.document("kagayan_coffee_cartel").setData([
-            "id": UUID().uuidString,
+            "id": "F8D44BA9-0C9C-4BA1-A1DE-9D66278A6E8F",
             "name": "Kagayan Coffee Cartel",
             "categories": "Coffee, Smoothies",
             "open_hours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
@@ -219,9 +219,26 @@ class FirebaseDataWriterViewController: UIViewController {
                     "item_name": "Cappucino",
                     "description": "",
                     "category": "Coffee",
+                    "item_image_url": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/strawberry-banana-smoothie-4.jpg?alt=media&token=84974df0-e9ba-4047-8c16-84bb642204ca",
                     "featured": false,
                     "price": 135,
-                    "item_option_categories": []
+                    "item_option_categories": [
+                        [
+                            "options_category_name": "Sides",
+                            "required": true,
+                            "single_selection": true,
+                            "options": [
+                                [
+                                    "option_name": "Side1",
+                                    "added_price": 30
+                                ],
+                                [
+                                    "option_name": "Side2",
+                                    "added_price": 40
+                                ]
+                            ]
+                        ]
+                    ]
                 ],
                 [
                     "item_name": "Strawberry Smoothie",
@@ -229,14 +246,30 @@ class FirebaseDataWriterViewController: UIViewController {
                     "category": "Smoothies",
                     "featured": false,
                     "price": 99,
-                    "item_option_categories": []
+                    "item_option_categories": [
+                        [
+                            "options_category_name": "Sides",
+                            "required": true,
+                            "single_selection": true,
+                            "options": [
+                                [
+                                    "option_name": "Side1",
+                                    "added_price": 30
+                                ],
+                                [
+                                    "option_name": "Side2",
+                                    "added_price": 40
+                                ]
+                            ]
+                        ]
+                    ]
                 ]
             ]
         ]) { err in
             if let _ = err {
-                DDLogDebug("Error writing silver_rain!")
+                DDLogDebug("Error writing kcc!")
             } else {
-                DDLogDebug("Done writing silver_rain!")
+                DDLogDebug("Done writing kcc!")
             }
         }
     }

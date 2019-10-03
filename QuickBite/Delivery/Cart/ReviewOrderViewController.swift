@@ -10,8 +10,8 @@ import UIKit
 import PMSuperButton
 import FirebaseFirestore
 import NVActivityIndicatorView
+import Reachability
 import CocoaLumberjack
-
 
 class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -33,6 +33,9 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var placeOrderActivityIndicator: NVActivityIndicatorView!
     
     private var orderTotal: Double!
+    
+    private let reachability = Reachability()!
+    private var isNetworkReachable = true
     
     // Set by presenting view controller
     var userName: String?
@@ -58,11 +61,29 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
         changeTextField.tweePlaceholder = String(Int(orderTotal))
         
         bottomFadeView.fadeView(style: .top, percentage: 0.35)
+        
+        reachability.whenReachable = { reachability in
+            self.isNetworkReachable = true
+        }
+        reachability.whenUnreachable = { _ in
+            self.isNetworkReachable = false
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            DDLogDebug("Unable to start notifier")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         changePopUp.show()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -116,9 +137,28 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func placeOrderTapped(_ sender: Any) {
         if changeAmountIsValid {
-            placeOrderButton.isEnabled = false
-            saveUserInformation()
-            placeOrder()
+            guard isNetworkReachable else {
+                let alert = UIAlertController(title: "Error Placing Order",
+                                              message: "Please check your internet connection and try again.",
+                                              preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            
+            // Show confirmation alert
+            let alert = UIAlertController(title: "Confirm Order",
+                                          message: "You are about to place an order from \(Cart.restaurant!.name).",
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+                self.saveUserInformation()
+                self.placeOrder()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         } else {
             changePopUp.shake()
         }
@@ -135,6 +175,18 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func placeOrder() {
+        placeOrderButton.isEnabled = false
+        
+        // Show activity indicator
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: [.curveEaseInOut], animations: {
+            self.placeOrderButton.titleLabel?.alpha = 0.0
+        }) { _ in
+            self.placeOrderActivityIndicator.startAnimating()
+            UIView.animate(withDuration: 0.1, animations: {
+                self.placeOrderActivityIndicator.alpha = 1.0
+            })
+        }
+        
         let ordersDb = Firestore.firestore().collection("orders")
         
         let user = UserUtil.currentUser!
@@ -157,11 +209,21 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
         ordersDb.document(order.id.uuidString).setData(order.dictionary) { err in
             if let err = err {
                 DDLogError("Error submitting order: \(err)")
-                // SHOW ERROR MESSAGE
+                self.placeOrderActivityIndicator.alpha = 0.0
+                self.placeOrderButton.titleLabel?.alpha = 1.0
+                self.placeOrderButton.isEnabled = true
+                
+                let alert = UIAlertController(title: "Error Placing Order",
+                                              message: "Unable to place order. Please contact us by tapping \"Submit an Issue\" on your Account page.",
+                                              preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
                 return
             }
+            
             // Order placed!
-            // 1. Stop animating indicatory
+            // 1. Stop animating indicator
             // 2. Show order placed alert
             // 3. Set flag so tabbar knows to navigate to orders page
             // 4. Clear cart contents
@@ -169,16 +231,6 @@ class ReviewOrderViewController: UIViewController, UITextFieldDelegate {
             self.showOrderPlacedAlert()
             UserDefaults.standard.set(true, forKey: UDKeys.redirectToOrders)
             Cart.empty()
-        }
-        
-        // Animate
-        UIView.animate(withDuration: 0.1, delay: 0.0, options: [.curveEaseInOut], animations: {
-            self.placeOrderButton.titleLabel?.alpha = 0.0
-        }) { _ in
-            self.placeOrderActivityIndicator.startAnimating()
-            UIView.animate(withDuration: 0.1, animations: {
-                self.placeOrderActivityIndicator.alpha = 1.0
-            })
         }
     }
     

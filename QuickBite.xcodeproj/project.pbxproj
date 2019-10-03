@@ -23,7 +23,6 @@
 		850CAAD82334BB4E003DD668 /* MiniPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850CAAD72334BB4E003DD668 /* MiniPopupView.xib */; };
 		850E16322334FBF000DA64FF /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850E16312334FBF000DA64FF /* Orders.storyboard */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
-		851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */; };
 		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
 		852AE7EE232BB14500804751 /* AddNewAddressViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */; };
 		852AE7F6232BB2BA00804751 /* TweePlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F0232BB2B900804751 /* TweePlaceholderTextField.swift */; };
@@ -79,6 +78,7 @@
 		85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */; };
 		85AF1928231BCD8D00D8E86E /* DeliveryHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */; };
 		85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B026682337D375004C4826 /* DeliveryHomeHeader.xib */; };
+		85BEF10B2345FAA4005FE8E4 /* MenuCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEF10A2345FAA4005FE8E4 /* MenuCategoryViewController.swift */; };
 		85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */; };
 		85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */; };
 		85D10E7E233F729700F60923 /* DistanceTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */; };
@@ -91,8 +91,6 @@
 		85E797712313B4F400C01238 /* FeaturedItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85E7976F2313B4F400C01238 /* FeaturedItemCollectionViewCell.xib */; };
 		85E927B1231A4615008D8DE0 /* DeliveryHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E927B0231A4615008D8DE0 /* DeliveryHomeTableViewController.swift */; };
 		85E927B4231A6594008D8DE0 /* HighlightedRestaurantCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E927B3231A6594008D8DE0 /* HighlightedRestaurantCategoryTableViewCell.swift */; };
-		85FF20082314ED6E00ABCA99 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF20072314ED6E00ABCA99 /* MenuItemTableViewCell.swift */; };
-		85FF200A2314F06500ABCA99 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF20092314F06500ABCA99 /* MenuTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +122,6 @@
 		850CAAD72334BB4E003DD668 /* MiniPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPopupView.xib; sourceTree = "<group>"; };
 		850E16312334FBF000DA64FF /* Orders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Orders.storyboard; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemTableViewCell.swift; sourceTree = "<group>"; };
 		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
 		852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewControllerOld.swift; sourceTree = "<group>"; };
 		852AE7F0232BB2B900804751 /* TweePlaceholderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweePlaceholderTextField.swift; sourceTree = "<group>"; };
@@ -184,6 +181,7 @@
 		85AF1922231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewScrollDirection+PeekDataConversion.swift"; sourceTree = "<group>"; };
 		85AF1927231BCD8D00D8E86E /* DeliveryHomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHomeHeader.swift; sourceTree = "<group>"; };
 		85B026682337D375004C4826 /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
+		85BEF10A2345FAA4005FE8E4 /* MenuCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategoryViewController.swift; sourceTree = "<group>"; };
 		85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrdersViewController.swift; sourceTree = "<group>"; };
 		85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTimeUtil.swift; sourceTree = "<group>"; };
@@ -196,8 +194,6 @@
 		85E7976F2313B4F400C01238 /* FeaturedItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		85E927B0231A4615008D8DE0 /* DeliveryHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHomeTableViewController.swift; sourceTree = "<group>"; };
 		85E927B3231A6594008D8DE0 /* HighlightedRestaurantCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightedRestaurantCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		85FF20072314ED6E00ABCA99 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
-		85FF20092314F06500ABCA99 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +257,6 @@
 				851DE0E72318DB7600A374DB /* CartViewController.swift */,
 				8552021F2317EFEC00A1E2D0 /* CartBanner.swift */,
 				8552020F2317DD2A00A1E2D0 /* CartBanner.xib */,
-				851DE0E92318EA0E00A374DB /* CartItemTableViewCell.swift */,
 				853B2BF823323030003E6011 /* FinalizeOrderViewController.swift */,
 				85283768231D35390083ADD2 /* ReviewOrderViewController.swift */,
 				850CAAD52334BB3A003DD668 /* MiniPopupView.swift */,
@@ -501,8 +496,7 @@
 		85FF200B2314FFF100ABCA99 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				85FF20092314F06500ABCA99 /* MenuTableViewController.swift */,
-				85FF20072314ED6E00ABCA99 /* MenuItemTableViewCell.swift */,
+				85BEF10A2345FAA4005FE8E4 /* MenuCategoryViewController.swift */,
 				8591C44223167E1A0036CBE6 /* Menu Item */,
 			);
 			path = Menu;
@@ -694,7 +688,6 @@
 				85633C01233CDB3E00193876 /* CurrentOrderDetailViewController.swift in Sources */,
 				854348CE2310EA5600411B80 /* OrdersContainerViewController.swift in Sources */,
 				85E7976C2313A7CE00C01238 /* RestaurantViewController.swift in Sources */,
-				85FF200A2314F06500ABCA99 /* MenuTableViewController.swift in Sources */,
 				852AE7F8232BB2BA00804751 /* WeakTargetProxy.swift in Sources */,
 				852AE7FA232BB2BA00804751 /* TweeActiveTextField.swift in Sources */,
 				85AF1921231BC16900D8E86E /* UICollectionView+PeekConfiguration.swift in Sources */,
@@ -727,6 +720,7 @@
 				856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */,
 				85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */,
 				85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */,
+				85BEF10B2345FAA4005FE8E4 /* MenuCategoryViewController.swift in Sources */,
 				85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */,
 				8552021A2317E87400A1E2D0 /* SPAlertPreset.swift in Sources */,
 				852AE7FF232BB2DF00804751 /* PasswordTextField.swift in Sources */,
@@ -736,7 +730,6 @@
 				853B2BFB233235FF003E6011 /* Cart.swift in Sources */,
 				850181BD233B9EF800EF8017 /* Address.swift in Sources */,
 				8552021C2317E87400A1E2D0 /* SPAlertIconDoneView.swift in Sources */,
-				851DE0EA2318EA0E00A374DB /* CartItemTableViewCell.swift in Sources */,
 				85466AC6233CA83E007B8F21 /* PreviousOrderTableViewCell.swift in Sources */,
 				85E927B1231A4615008D8DE0 /* DeliveryHomeTableViewController.swift in Sources */,
 				854348FD23113F6A00411B80 /* AccountDetailsViewController.swift in Sources */,
@@ -746,7 +739,6 @@
 				852AE7F6232BB2BA00804751 /* TweePlaceholderTextField.swift in Sources */,
 				851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */,
 				8591C44023167DE40036CBE6 /* OrderOptionHeaderView.swift in Sources */,
-				85FF20082314ED6E00ABCA99 /* MenuItemTableViewCell.swift in Sources */,
 				8552021D2317E87400A1E2D0 /* SPAlertHaptic.swift in Sources */,
 				8535351D23423D5C0018AC8E /* NotificationsViewController.swift in Sources */,
 				85AA4A98233E5E8800825EDE /* FirebaseDataWriterViewController.swift in Sources */,

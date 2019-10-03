@@ -26,6 +26,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var topBarBackground: UIView!
     @IBOutlet weak var topBarShadow: GradientView!
     @IBOutlet weak var bottomFadeView: UIView!
+    @IBOutlet weak var specialInstructionsTextField: TweeAttributedTextField!
     
     // Quantity Button
     @IBOutlet weak var decreaseQuantityBtn: UIButton!
@@ -65,8 +66,8 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
             ios13padding = 40
         }
     
-        if menuItem.imageURL.isNotEmpty {
-            menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        if menuItem.imageUrl.isNotEmpty {
+            menuItemImage.sd_setImage(with: URL(string: menuItem.imageUrl))
         } else {
             menuItemTitleTopConstraint.constant = 100
         }
@@ -210,6 +211,33 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     @IBAction func addToOrderTapped(_ addButton: UIButton) {
+        if let cartRestaurant = Cart.restaurant, Cart.hasItems {
+            if restaurant.id != cartRestaurant.id {
+                // User is trying to add an item from a different restaurant
+                let alert = UIAlertController(title: "Clear Your Cart?",
+                                              message: "You already have items from \(cartRestaurant.name) in your cart. Adding this item will create a new cart with this item from \(restaurant.name).",
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+                    Cart.empty()
+                    self.addToOrderTapped(addButton)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            
+            if Cart.totalQuantity >= 10 {
+                let alert = UIAlertController(title: "Cart Full",
+                                              message: "Your cart already has the maximum number of items. Please remove some items or reduce the quantity of this item, then try again.",
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+        }
+        
         // Prevent double taps while "Added to Order" alert is showing
         addButton.isEnabled = false
         
@@ -230,6 +258,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         
         menuItem.selectedOptions = selectedOrderOptions
         menuItem.selectedQuantity = Int(quantityLabel.text!)!
+        menuItem.specialInstructions = specialInstructionsTextField.text ?? ""
         menuItem.finalPrice = (Double(menuItem.selectedQuantity) * (menuItem.price + totalAddedPrice))
         Cart.restaurant = restaurant
         Cart.addItem(menuItem)

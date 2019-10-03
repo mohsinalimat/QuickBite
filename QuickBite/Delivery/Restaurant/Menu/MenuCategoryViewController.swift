@@ -1,40 +1,43 @@
 //
-//  MenuTableViewController.swift
+//  MenuCategoryViewController2.swift
 //  QuickBite
 //
-//  Created by Griffin Smalley on 8/27/19.
+//  Created by Griffin Smalley on 10/3/19.
 //  Copyright © 2019 GriffSoft. All rights reserved.
 //
 
 import UIKit
 
-class MenuTableViewController: UITableViewController {
+class MenuCategoryViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var largeTitle: UILabel!
+    @IBOutlet weak var categoryTableView: UITableView!
     
     var restaurant: Restaurant!
     var menuCategory: String!
     
     private var menuItemsForCategory: [MenuItem] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        tableView.contentInset.top = 10
+        categoryTableView.rowHeight = UITableView.automaticDimension
+        categoryTableView.estimatedRowHeight = 44
+        
+        largeTitle.text = menuCategory
         
         menuItemsForCategory = restaurant.getItemsInCategory(menuCategory)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItemsForCategory.count
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell", for: indexPath) as! MenuItemTableViewCell
 
         let menuItem = menuItemsForCategory[indexPath.row]
-        if menuItem.imageURL.isNotEmpty {
-            cell.menuItemImage.sd_setImage(with: URL(string: menuItem.imageURL))
+        if menuItem.imageUrl.isNotEmpty {
+            cell.menuItemImage.sd_setImage(with: URL(string: menuItem.imageUrl))
         } else {
             cell.imageHeightConstraint.constant = 0
         }
@@ -45,12 +48,21 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
 
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let menuItemVC = segue.destination as! MenuItemViewController
-        menuItemVC.menuItem = menuItemsForCategory[tableView.indexPathForSelectedRow!.row]
+        menuItemVC.menuItem = menuItemsForCategory[categoryTableView.indexPathForSelectedRow!.row]
         menuItemVC.restaurant = restaurant
         if let tdTabBarController = self.navigationController?.tabBarController as? TDTabBarController {
             menuItemVC.delegate = tdTabBarController
         }
     }
+}
+
+class MenuItemTableViewCell: UITableViewCell {
+    @IBOutlet weak var menuItemImage: UIImageView!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuItemName: UILabel!
+    @IBOutlet weak var menuItemDescription: UILabel!
+    @IBOutlet weak var menuItemPrice: UILabel!
 }

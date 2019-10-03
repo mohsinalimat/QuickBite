@@ -53,13 +53,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 items · Total ₱1,888" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zR-44-Pfe">
-                                <rect key="frame" x="116.99999999999999" y="156.66666666666666" width="147.66666666666663" height="18"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="117.00000000000001" y="156.66666666666666" width="160.33333333333337" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bga-kw-47j">
-                                <rect key="frame" x="117" y="172.66666666666666" width="88" height="33"/>
+                                <rect key="frame" x="117" y="174" width="88" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="See Details"/>
                                 <connections>
@@ -67,7 +67,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="8T2-L8-GrK">
-                                <rect key="frame" x="205" y="178.66666666666666" width="23" height="23"/>
+                                <rect key="frame" x="205" y="180" width="23" height="23"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8T2-L8-GrK" secondAttribute="height" multiplier="1:1" id="Iqd-Rg-djk"/>
@@ -100,7 +100,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Being Prepared By Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb0-nr-PVJ">
                                 <rect key="frame" x="61" y="321.33333333333331" width="217" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicka Loca! is preparing your order." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJR-8M-QpW">
@@ -112,7 +112,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order On Its Way!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1u-sR-lBf">
                                 <rect key="frame" x="61" y="426" width="157" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your driver's ETA is 19 min" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEU-m6-W5A">
@@ -124,7 +124,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Delivered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj4-DD-dmB">
                                 <rect key="frame" x="61" y="530.66666666666663" width="133.33333333333334" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enjoy!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LC-L6-4ii">
@@ -140,7 +140,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="barBackgroundColor">
-                                        <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="barFillColor">
                                         <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -178,7 +178,7 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
                                                 <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -190,7 +190,7 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="offFillColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
                                                 <real key="value" value="0.5"/>
@@ -206,7 +206,7 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="NO"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
                                                 <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -218,7 +218,7 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="offFillColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
                                                 <real key="value" value="0.5"/>
@@ -234,7 +234,7 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="NO"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
                                                 <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -246,7 +246,7 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="offFillColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
                                                 <real key="value" value="0.5"/>
@@ -262,7 +262,7 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="NO"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
                                                 <color key="value" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -274,7 +274,7 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="offFillColor">
-                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
                                                 <real key="value" value="0.5"/>
@@ -339,7 +339,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6L1-MZ-0CI" userLabel="Divider">
                                 <rect key="frame" x="0.0" y="668.33333333333337" width="375" height="0.66666666666662877"/>
-                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.69999999999999996" id="YX4-jZ-b71"/>
                                 </constraints>
@@ -463,7 +463,7 @@
                         <subviews>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gA7-aL-7uG" userLabel="Dragger">
                                 <rect key="frame" x="157.66666666666666" y="6" width="60" height="8"/>
-                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="UFR-Bz-Goe"/>
                                     <constraint firstAttribute="width" constant="60" id="zzS-F8-3rs"/>
@@ -484,18 +484,18 @@
                                 <rect key="frame" x="0.0" y="46.666666666666657" width="375" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartItemCell" rowHeight="150" id="7bj-pf-o7M" customClass="CartItemTableViewCell" customModule="QuickBite" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartItemCell" rowHeight="200" id="zuR-gX-OE7" customClass="CartItemTableViewCell" customModule="QuickBite" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7bj-pf-o7M" id="6o7-uh-Ql3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zuR-gX-OE7" id="Elc-sT-2Xv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OaV-WL-dPF">
-                                                    <rect key="frame" x="16" y="8" width="85" height="85"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hud-pN-d5N">
+                                                    <rect key="frame" x="16" y="10.666666666666664" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="gWI-FD-J8u"/>
-                                                        <constraint firstAttribute="height" constant="85" id="gwg-Yj-ifL"/>
+                                                        <constraint firstAttribute="height" constant="80" id="3U0-aU-Jzx"/>
+                                                        <constraint firstAttribute="width" constant="80" id="uoe-AQ-oyZ"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -503,61 +503,71 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo2-FV-byl">
-                                                    <rect key="frame" x="111" y="40.666666666666664" width="30" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QH6-n2-BIf">
+                                                    <rect key="frame" x="106" y="40.666666666666664" width="30" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="e6Q-2n-Bpc"/>
+                                                        <constraint firstAttribute="width" constant="30" id="Mdj-Hl-xBg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Homemade Brioche French Toast (Deluxe)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSi-DR-C9b">
-                                                    <rect key="frame" x="151" y="20" width="146" height="61"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Homemade Brioche French Toast (Deluxe)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9A-0J-gOr">
+                                                    <rect key="frame" x="146" y="20" width="148" height="61"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱8888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlw-n0-ZBd">
-                                                    <rect key="frame" x="305" y="40" width="55" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱8,888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soJ-qv-nMR">
+                                                    <rect key="frame" x="302" y="40" width="58" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="55" id="dG9-7j-EY3"/>
+                                                        <constraint firstAttribute="width" constant="58" id="ksH-Eh-nmr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Strawberries, Honey, Chocolate Chips, Extra Butter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-AW-sA9">
-                                                    <rect key="frame" x="151" y="82" width="146" height="60"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strawberries, Honey, Chocolate Chips, Extra Butter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ty6-JC-msS">
+                                                    <rect key="frame" x="146" y="85" width="148" height="50.333333333333343"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Special Instructions: No french toast, no strawberries, no syrup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8At-3x-mHu">
+                                                    <rect key="frame" x="146" y="138.33333333333334" width="148" height="53.666666666666657"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="OaV-WL-dPF" firstAttribute="top" secondItem="6o7-uh-Ql3" secondAttribute="top" constant="8" id="1bN-H3-hni"/>
-                                                <constraint firstItem="lcZ-AW-sA9" firstAttribute="trailing" secondItem="HSi-DR-C9b" secondAttribute="trailing" id="2nv-Aa-b2e"/>
-                                                <constraint firstItem="oo2-FV-byl" firstAttribute="leading" secondItem="OaV-WL-dPF" secondAttribute="trailing" constant="10" id="AeC-Xs-5W0"/>
-                                                <constraint firstItem="qlw-n0-ZBd" firstAttribute="leading" secondItem="HSi-DR-C9b" secondAttribute="trailing" constant="8" id="Baa-In-zyc"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OaV-WL-dPF" secondAttribute="bottom" priority="750" constant="8" id="HxQ-ae-gHx"/>
-                                                <constraint firstAttribute="trailing" secondItem="qlw-n0-ZBd" secondAttribute="trailing" constant="15" id="KbM-8I-bNE"/>
-                                                <constraint firstAttribute="bottom" secondItem="lcZ-AW-sA9" secondAttribute="bottom" constant="8" id="WjV-qO-TFr"/>
-                                                <constraint firstItem="HSi-DR-C9b" firstAttribute="centerY" secondItem="oo2-FV-byl" secondAttribute="centerY" id="bhe-31-7RP"/>
-                                                <constraint firstItem="oo2-FV-byl" firstAttribute="centerY" secondItem="OaV-WL-dPF" secondAttribute="centerY" id="gUy-Qk-Y0H"/>
-                                                <constraint firstItem="lcZ-AW-sA9" firstAttribute="top" secondItem="HSi-DR-C9b" secondAttribute="bottom" constant="1" id="gxG-9K-Vhh"/>
-                                                <constraint firstItem="lcZ-AW-sA9" firstAttribute="leading" secondItem="HSi-DR-C9b" secondAttribute="leading" id="rgT-7d-U0c"/>
-                                                <constraint firstItem="qlw-n0-ZBd" firstAttribute="centerY" secondItem="oo2-FV-byl" secondAttribute="centerY" id="sX6-LW-CA6"/>
-                                                <constraint firstItem="OaV-WL-dPF" firstAttribute="leading" secondItem="6o7-uh-Ql3" secondAttribute="leading" constant="16" id="tex-PN-9pz"/>
-                                                <constraint firstItem="HSi-DR-C9b" firstAttribute="leading" secondItem="oo2-FV-byl" secondAttribute="trailing" constant="10" id="ydB-UT-h24"/>
+                                                <constraint firstItem="soJ-qv-nMR" firstAttribute="leading" secondItem="m9A-0J-gOr" secondAttribute="trailing" constant="8" id="0VN-Rj-Fyh"/>
+                                                <constraint firstItem="QH6-n2-BIf" firstAttribute="leading" secondItem="hud-pN-d5N" secondAttribute="trailing" constant="10" id="0va-3o-tJk"/>
+                                                <constraint firstItem="QH6-n2-BIf" firstAttribute="centerY" secondItem="hud-pN-d5N" secondAttribute="centerY" id="CnK-pN-tlA"/>
+                                                <constraint firstItem="m9A-0J-gOr" firstAttribute="centerY" secondItem="QH6-n2-BIf" secondAttribute="centerY" id="Eie-Ha-ixM"/>
+                                                <constraint firstItem="Ty6-JC-msS" firstAttribute="top" secondItem="m9A-0J-gOr" secondAttribute="bottom" constant="4" id="GOA-Zx-HAQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="8At-3x-mHu" secondAttribute="bottom" constant="8" id="Hc9-Es-gO2"/>
+                                                <constraint firstItem="hud-pN-d5N" firstAttribute="leading" secondItem="Elc-sT-2Xv" secondAttribute="leading" constant="16" id="NM1-xs-qii"/>
+                                                <constraint firstItem="soJ-qv-nMR" firstAttribute="centerY" secondItem="QH6-n2-BIf" secondAttribute="centerY" id="XPi-Zb-54L"/>
+                                                <constraint firstItem="8At-3x-mHu" firstAttribute="leading" secondItem="Ty6-JC-msS" secondAttribute="leading" id="bkY-5a-Ils"/>
+                                                <constraint firstItem="QH6-n2-BIf" firstAttribute="leading" secondItem="Elc-sT-2Xv" secondAttribute="leading" priority="999" constant="16" id="dpV-NS-veN"/>
+                                                <constraint firstItem="Ty6-JC-msS" firstAttribute="leading" secondItem="m9A-0J-gOr" secondAttribute="leading" id="eBe-5q-rU9"/>
+                                                <constraint firstAttribute="trailing" secondItem="soJ-qv-nMR" secondAttribute="trailing" constant="15" id="evE-A2-670"/>
+                                                <constraint firstItem="m9A-0J-gOr" firstAttribute="leading" secondItem="QH6-n2-BIf" secondAttribute="trailing" constant="10" id="fjg-qH-5rb"/>
+                                                <constraint firstItem="8At-3x-mHu" firstAttribute="trailing" secondItem="Ty6-JC-msS" secondAttribute="trailing" id="jWM-LM-n6T"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hud-pN-d5N" secondAttribute="bottom" priority="750" constant="8" id="n2k-qI-2gK"/>
+                                                <constraint firstItem="Ty6-JC-msS" firstAttribute="trailing" secondItem="m9A-0J-gOr" secondAttribute="trailing" id="oNH-Py-Eys"/>
+                                                <constraint firstItem="soJ-qv-nMR" firstAttribute="top" secondItem="Elc-sT-2Xv" secondAttribute="top" constant="40" id="qiI-bS-UgR"/>
+                                                <constraint firstItem="8At-3x-mHu" firstAttribute="top" secondItem="Ty6-JC-msS" secondAttribute="bottom" constant="3" id="yCD-fY-jIi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageWidthConstraint" destination="gWI-FD-J8u" id="JJJ-jb-46C"/>
-                                            <outlet property="itemImage" destination="OaV-WL-dPF" id="RRr-EV-B89"/>
-                                            <outlet property="itemTitle" destination="HSi-DR-C9b" id="acq-wZ-JfG"/>
-                                            <outlet property="priceLabel" destination="qlw-n0-ZBd" id="4EV-5K-Abb"/>
-                                            <outlet property="quantityLabel" destination="oo2-FV-byl" id="X3s-al-iyj"/>
-                                            <outlet property="selectedItemOptions" destination="lcZ-AW-sA9" id="UbV-CO-l4I"/>
+                                            <outlet property="itemImage" destination="hud-pN-d5N" id="grB-qG-aEU"/>
+                                            <outlet property="itemTitle" destination="m9A-0J-gOr" id="tRW-DA-R6u"/>
+                                            <outlet property="priceLabel" destination="soJ-qv-nMR" id="Y7l-UY-vta"/>
+                                            <outlet property="quantityLabel" destination="QH6-n2-BIf" id="cQ0-I1-Jxf"/>
+                                            <outlet property="selectedItemOptions" destination="Ty6-JC-msS" id="aUb-dx-vra"/>
+                                            <outlet property="specialInstructions" destination="8At-3x-mHu" id="jp4-pb-jRh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -632,7 +642,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No previous orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6z-IR-Uc6">
                                         <rect key="frame" x="115.00000000000001" y="302" width="145.33333333333337" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -674,7 +684,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sep 27, 4:23pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGD-3g-XMo">
                                                     <rect key="frame" x="117" y="57.000000000000007" width="116.66666666666669" height="19.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PzT-Zk-FT2">
@@ -682,7 +692,7 @@
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8a-zU-obk" userLabel="Divider">
                                                     <rect key="frame" x="0.0" y="127.33333333333333" width="375" height="0.6666666666666714"/>
-                                                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.69999999999999996" id="Yhy-lV-eju"/>
                                                     </constraints>

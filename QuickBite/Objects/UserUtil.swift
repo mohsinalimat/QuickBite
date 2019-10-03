@@ -52,7 +52,7 @@ struct UserUtil {
     
     // MARK: - Phone
     static func setPhoneNumber(_ number: String) {
-        guard let user = currentUser, user.phone != number else {
+        guard let user = currentUser, user.phone != number, number.count > 3 else {
             return
         }
         user.phone = number

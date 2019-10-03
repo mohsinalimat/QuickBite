@@ -135,11 +135,19 @@ extension PMSuperButton {
             self.gradientEndColor = #colorLiteral(red: 1, green: 0.3441041454, blue: 0.3272007855, alpha: 0.8)
             self.setTitleColor(.white, for: .normal)
             self.shadowOpacity = 0.25
+            
+            if let _ = self.imageView {
+                self.tintColor = .white
+            }
         } else {
-            self.gradientEnabled = false
+            self.gradientStartColor = .tertiarySystemFillCompat
+            self.gradientEndColor = .tertiarySystemFillCompat
             self.setTitleColor(.tertiaryLabelCompat, for: .normal)
-            self.backgroundColor = .tertiarySystemFillCompat
             self.shadowOpacity = 0
+            
+            if let _ = self.imageView {
+                self.tintColor = .tertiaryLabelCompat
+            }
         }
         
         if actuallyEnableOrDisable {
@@ -150,6 +158,15 @@ extension PMSuperButton {
 
 //MARK:- UIColor
 extension UIColor {
+    
+    func imageWithColor(width: Int = 1, height: Int = 1) -> UIImage {
+        let size = CGSize(width: width, height: height)
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+    
     static var systemBackgroundCompat: UIColor {
         if #available(iOS 13, *) {
             return .systemBackground
@@ -195,6 +212,14 @@ extension UIColor {
             return .tertiarySystemFill
         } else {
             return UIColor(red: 118.0, green: 118.0, blue: 128.0, alpha: 0.12)
+        }
+    }
+    
+    static var tertiarySystemGroupedBackgroundCompat: UIColor {
+        if #available(iOS 13, *) {
+            return .tertiarySystemGroupedBackground
+        } else {
+            return UIColor(red: 242.0, green: 242.0, blue: 247.0, alpha: 1.0)
         }
     }
 }

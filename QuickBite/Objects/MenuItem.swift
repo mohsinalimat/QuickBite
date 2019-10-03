@@ -9,19 +9,20 @@
 import Foundation
 import CocoaLumberjack
 
-struct MenuItem: Codable {
+class MenuItem: Codable {
     var itemName: String
     var description: String
     var price: Double
     var category: String
     var featured: Bool
-    var imageURL: String
+    var imageUrl: String
     var itemOptionCategories: [MenuItemOptionCategory]
     
     // Properties used when the item is added to an order
     var selectedOptions: String
     var selectedQuantity: Int
     var finalPrice: Double
+    var specialInstructions: String
     
     // USED FOR ORDERS ONLY
     var orderDictionary: [String : Any] {
@@ -29,13 +30,32 @@ struct MenuItem: Codable {
             "item_name": itemName,
             "final_price": finalPrice,
             "selected_quantity": selectedQuantity,
-            "selected_options": selectedOptions
+            "selected_options": selectedOptions,
+            "special_instructions": specialInstructions
         ]
     }
-}
-
-extension MenuItem {
-    init?(dictionary: [String : Any]) {
+    
+    init(itemName: String,
+         description: String,
+         price: Double,
+         category: String,
+         featured: Bool,
+         imageUrl: String,
+         itemOptionCategories: [MenuItemOptionCategory]) {
+        self.itemName = itemName
+        self.description = description
+        self.price = price
+        self.category = category
+        self.featured = featured
+        self.imageUrl = imageUrl
+        self.itemOptionCategories = itemOptionCategories
+        self.selectedOptions = ""
+        self.selectedQuantity = 0
+        self.finalPrice = 0
+        self.specialInstructions = ""
+    }
+    
+    convenience init?(dictionary: [String : Any]) {
         // Required fields
         guard let itemName              = dictionary["item_name"] as? String,
             let description             = dictionary["description"] as? String,
@@ -52,11 +72,16 @@ extension MenuItem {
                   price: price,
                   category: category,
                   featured: featured,
-                  imageURL: imageURL,
-                  itemOptionCategories: itemOptionCategories.compactMap({ MenuItemOptionCategory(dictionary: $0) }),
-                  selectedOptions: "",
-                  selectedQuantity: 0,
-                  finalPrice: price)
+                  imageUrl: imageURL,
+                  itemOptionCategories: itemOptionCategories.compactMap({ MenuItemOptionCategory(dictionary: $0) }))
+    }
+    
+    
+    func equals(_ other: MenuItem) -> Bool {
+        return self.itemName == other.itemName &&
+            self.description == other.description &&
+            self.selectedOptions == other.selectedOptions &&
+            self.specialInstructions == other.specialInstructions
     }
 }
 

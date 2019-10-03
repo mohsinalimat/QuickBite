@@ -64,7 +64,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your account information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sly-fJ-C6C">
                                                             <rect key="frame" x="0.0" y="20.666666666666671" width="228.33333333333334" height="22.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -175,32 +175,32 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door #8, 75 Golden Shower Drive" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-8y-h9n">
                                                             <rect key="frame" x="0.0" y="23" width="313" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Across from tomas saco petron" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDa-IV-gqF">
                                                             <rect key="frame" x="0.0" y="43.333333333333329" width="313" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl7-8C-EQU">
                                                             <rect key="frame" x="0.0" y="63.666666666666679" width="313" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions: really long instructions that I wrote while I was drink" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akR-cl-f4S">
                                                             <rect key="frame" x="0.0" y="84" width="313" height="40.666666666666657"/>
                                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msH-xM-Kb8" userLabel="Divider">
                                                     <rect key="frame" x="0.0" y="165.33333333333334" width="375" height="0.33333333333334281"/>
-                                                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="gu3-dx-KY8"/>
                                                     </constraints>
@@ -330,10 +330,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="812" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="hmN-yz-YoG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="912"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="745"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="812" translatesAutoresizingMaskIntoConstraints="NO" id="PpA-oe-FpT" userLabel="Master Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="829"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="745"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-Ei-DGg">
                                                 <rect key="frame" x="16" y="4" width="206.66666666666666" height="33.666666666666664"/>
@@ -350,7 +350,7 @@
                                                             <constraint firstAttribute="height" constant="35" id="0HC-qL-9Zj"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="Name"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="originalPlaceholderFontSize">
@@ -391,7 +391,7 @@
                                                             <constraint firstAttribute="height" constant="35" id="mvq-wY-JeN"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="Phone number"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="originalPlaceholderFontSize">
@@ -440,21 +440,21 @@
                                     <constraint firstItem="PpA-oe-FpT" firstAttribute="leading" secondItem="hmN-yz-YoG" secondAttribute="leading" id="5zb-sX-loL"/>
                                     <constraint firstAttribute="trailing" secondItem="PpA-oe-FpT" secondAttribute="trailing" id="Fix-OR-aZt"/>
                                     <constraint firstItem="PpA-oe-FpT" firstAttribute="width" secondItem="hmN-yz-YoG" secondAttribute="width" id="I8b-li-vn2"/>
-                                    <constraint firstItem="PpA-oe-FpT" firstAttribute="height" secondItem="hmN-yz-YoG" secondAttribute="height" priority="249" id="KgY-cO-UCM"/>
+                                    <constraint firstItem="PpA-oe-FpT" firstAttribute="height" secondItem="hmN-yz-YoG" secondAttribute="height" id="KgY-cO-UCM"/>
                                     <constraint firstAttribute="bottom" secondItem="PpA-oe-FpT" secondAttribute="bottom" id="KmO-MH-hiw"/>
                                     <constraint firstItem="PpA-oe-FpT" firstAttribute="top" secondItem="hmN-yz-YoG" secondAttribute="top" id="ux5-um-X1c"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a66-gQ-2jA" customClass="PMSuperButton" customModule="PMSuperButton">
                                 <rect key="frame" x="16" y="753" width="343" height="60"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="iYf-AD-rbM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Save Changes">
-                                    <color key="titleColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientEnabled" value="NO"/>
@@ -491,12 +491,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="hmN-yz-YoG" firstAttribute="top" secondItem="JlV-lM-nB0" secondAttribute="top" id="88V-y2-Ubh"/>
+                            <constraint firstItem="hmN-yz-YoG" firstAttribute="top" secondItem="haf-Jm-SjN" secondAttribute="top" id="88V-y2-Ubh"/>
                             <constraint firstItem="hmN-yz-YoG" firstAttribute="leading" secondItem="JlV-lM-nB0" secondAttribute="leading" id="9cx-I3-rHy"/>
                             <constraint firstItem="haf-Jm-SjN" firstAttribute="trailing" secondItem="a66-gQ-2jA" secondAttribute="trailing" constant="16" id="HsJ-oh-m7k"/>
-                            <constraint firstItem="PpA-oe-FpT" firstAttribute="height" secondItem="haf-Jm-SjN" secondAttribute="height" id="JKf-Gz-5Mu"/>
-                            <constraint firstAttribute="bottom" secondItem="hmN-yz-YoG" secondAttribute="bottom" id="KJf-fU-7Ch"/>
-                            <constraint firstItem="haf-Jm-SjN" firstAttribute="bottom" secondItem="a66-gQ-2jA" secondAttribute="bottom" constant="16" id="aIl-wF-XQe"/>
+                            <constraint firstItem="haf-Jm-SjN" firstAttribute="bottom" secondItem="a66-gQ-2jA" secondAttribute="bottom" constant="16" placeholder="YES" id="aIl-wF-XQe"/>
+                            <constraint firstItem="a66-gQ-2jA" firstAttribute="top" secondItem="hmN-yz-YoG" secondAttribute="bottom" constant="8" id="ewk-bf-Xd4"/>
                             <constraint firstItem="a66-gQ-2jA" firstAttribute="leading" secondItem="haf-Jm-SjN" secondAttribute="leading" constant="16" id="ics-F6-War"/>
                             <constraint firstAttribute="trailing" secondItem="hmN-yz-YoG" secondAttribute="trailing" id="nDr-wW-IOk"/>
                         </constraints>
@@ -510,7 +509,7 @@
                         <outlet property="phoneTextField" destination="z3O-BV-HHK" id="Cju-xB-g8L"/>
                         <outlet property="saveChangesButton" destination="a66-gQ-2jA" id="ZNG-m9-tze"/>
                         <outlet property="saveChangesButtonBottomConstraint" destination="aIl-wF-XQe" id="Clk-JC-owJ"/>
-                        <outlet property="scrollView" destination="hmN-yz-YoG" id="GxM-NQ-aKV"/>
+                        <outlet property="scrollView" destination="hmN-yz-YoG" id="Z9b-gk-hKI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0N-ex-VpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -524,7 +523,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="78" y="-746"/>
+            <point key="canvasLocation" x="77.599999999999994" y="-746.30541871921184"/>
         </scene>
     </scenes>
     <resources>

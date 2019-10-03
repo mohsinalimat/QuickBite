@@ -22,5 +22,7 @@ target 'QuickBite' do
   pod 'InputMask'
   pod 'GTProgressBar'
   pod 'FittedSheets'
+  pod 'Keyboard+LayoutGuide'
+  pod 'ReachabilitySwift'
 #  pod 'Motion', '~> 3.1.0'
 end

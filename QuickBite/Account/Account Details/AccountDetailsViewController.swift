@@ -9,17 +9,18 @@
 import UIKit
 import PMSuperButton
 import InputMask
+import CocoaLumberjack
+import KeyboardLayoutGuide
 
 class AccountDetailsViewController: UIViewController, UITextFieldDelegate, MaskedTextFieldDelegateListener {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameTextField: TweeAttributedTextField!
     @IBOutlet weak var phoneTextField: TweeAttributedTextField!
     @IBOutlet weak var saveChangesButton: PMSuperButton!
-    @IBOutlet weak var saveChangesButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet var maskedListener: MaskedTextFieldDelegate!
     
     private var user: User!
-    private var phoneEntryIsValid = true
+    private var phoneEntryIsValid = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,12 @@ class AccountDetailsViewController: UIViewController, UITextFieldDelegate, Maske
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Scroll view shit
+        automaticallyAdjustsScrollViewInsets = false
+        scrollView.contentInset = UIEdgeInsets.zero
+        
+        saveChangesButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -8).isActive = true
         
         user = UserUtil.currentUser!
         
@@ -53,18 +60,30 @@ class AccountDetailsViewController: UIViewController, UITextFieldDelegate, Maske
     }
     
     private func refreshSaveButton() {
-        if (nameTextField.text! == user.name && phoneTextField.text! == user.phone) || nameTextField.text!.isEmpty || !phoneEntryIsValid {
-            saveChangesButton.setEnabled(false, actuallyEnableOrDisable: true)
-        } else {
-            saveChangesButton.setEnabled(true, actuallyEnableOrDisable: true)
+        var nameTextFieldIsValid = false
+        if user.name.isEmpty { // Saved user name was empty when screen was opened. So just check if it's empty
+            if nameTextField.text!.isNotEmpty {
+                nameTextFieldIsValid = true
+            }
+        } else { // Saved user name had some characters in it.
+            if nameTextField.text! != user.name && nameTextField.text!.isNotEmpty {
+                nameTextFieldIsValid = true
+            }
         }
+        
+        let phoneFieldIsValid = phoneEntryIsValid && phoneTextField.text!.count > 3
+        
+        let enableSaveButton = nameTextFieldIsValid || phoneFieldIsValid
+        saveChangesButton.setEnabled(enableSaveButton, actuallyEnableOrDisable: true)
     }
     
     @IBAction func saveChangesTapped(_ sender: Any) {
         nameTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
         UserUtil.setName(nameTextField.text!)
-        UserUtil.setPhoneNumber(phoneTextField.text!)
+        if phoneEntryIsValid {
+            UserUtil.setPhoneNumber(phoneTextField.text!)
+        }
         
         let alertView = SPAlertView(title: "Changes Saved", message: nil, preset: .done)
         alertView.duration = 1
@@ -78,17 +97,10 @@ class AccountDetailsViewController: UIViewController, UITextFieldDelegate, Maske
     
     // MARK: - Keyboard Events
     @objc private func keyboardWillShow(notification: NSNotification) {
-        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        let userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
-        scrollView.contentInset.bottom = keyboardFrame.size.height
-        saveChangesButtonBottomConstraint.constant = keyboardFrame.size.height - saveChangesButton.frame.height
+        scrollView.contentInset.bottom = 0.1
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset.bottom = 0
-        saveChangesButtonBottomConstraint.constant = 16
     }
 }
