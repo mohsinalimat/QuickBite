@@ -17,7 +17,7 @@ class AccountDetailsViewController: UIViewController, UITextFieldDelegate, Maske
     @IBOutlet weak var nameTextField: TweeAttributedTextField!
     @IBOutlet weak var phoneTextField: TweeAttributedTextField!
     @IBOutlet weak var saveChangesButton: PMSuperButton!
-    @IBOutlet var maskedListener: MaskedTextFieldDelegate!
+    @IBOutlet var maskedListener: MaskedTextFieldDelegate! 
     
     private var user: User!
     private var phoneEntryIsValid = false

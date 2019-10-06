@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FacebookCore
 import FirebaseAuth
 import CocoaLumberjack
 import GoogleMaps
@@ -24,11 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        // CocoaLumberjack
         DDLog.add(DDOSLogger.sharedInstance)
         DDOSLogger.sharedInstance.logFormatter = CustomFormatter()
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        // Facebook
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // Google
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
         // Firebase stores login sessions in the keychain, which is NOT deleted when the user uninstalls the app.
         // So, if a user is logged in, then uninstalls and re-installs the app, the default Firebase behavior would automatically
@@ -52,7 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
+        let fbHandled = ApplicationDelegate.shared.application(application, open: url, options: options)
+        return GIDSignIn.sharedInstance().handle(url) || fbHandled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

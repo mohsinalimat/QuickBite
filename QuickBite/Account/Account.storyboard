@@ -138,21 +138,21 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressCell" id="OdX-IT-xDe" customClass="AddressTableViewCell" customModule="QuickBite" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="165.66667175292969"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OdX-IT-xDe" id="O4y-Dr-6II">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="165.66667175292969"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="ysr-Yp-WE4">
-                                                    <rect key="frame" x="337" y="68" width="30" height="30"/>
+                                                    <rect key="frame" x="337" y="5.6666666666666714" width="30" height="30.000000000000004"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="FXr-vx-GSV"/>
                                                         <constraint firstAttribute="width" constant="30" id="s7m-rr-RsU"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="default address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPG-ae-0nr" customClass="SmallCapsLabel" customModule="QuickBite" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="2" width="132" height="20.333333333333332"/>
+                                                    <rect key="frame" x="16.000000000000007" y="2" width="124.66666666666669" height="20.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -164,34 +164,34 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xmA-rs-c3C">
-                                                    <rect key="frame" x="16" y="21.000000000000007" width="313" height="124.66666666666669"/>
+                                                    <rect key="frame" x="16" y="21" width="313" height="0.0"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxK-u2-iOh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="23"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door #8, 75 Golden Shower Drive" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-8y-h9n">
-                                                            <rect key="frame" x="0.0" y="23" width="313" height="20.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Across from tomas saco petron" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDa-IV-gqF">
-                                                            <rect key="frame" x="0.0" y="43.333333333333329" width="313" height="20.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl7-8C-EQU">
-                                                            <rect key="frame" x="0.0" y="63.666666666666679" width="313" height="20.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions: really long instructions that I wrote while I was drink" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akR-cl-f4S">
-                                                            <rect key="frame" x="0.0" y="84" width="313" height="40.666666666666657"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -199,7 +199,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msH-xM-Kb8" userLabel="Divider">
-                                                    <rect key="frame" x="0.0" y="165.33333333333334" width="375" height="0.33333333333334281"/>
+                                                    <rect key="frame" x="0.0" y="40.666666666666657" width="375" height="0.3333333333333357"/>
                                                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="gu3-dx-KY8"/>
@@ -508,7 +508,6 @@
                         <outlet property="nameTextField" destination="xOG-dD-Fkn" id="jw4-rY-iLn"/>
                         <outlet property="phoneTextField" destination="z3O-BV-HHK" id="Cju-xB-g8L"/>
                         <outlet property="saveChangesButton" destination="a66-gQ-2jA" id="ZNG-m9-tze"/>
-                        <outlet property="saveChangesButtonBottomConstraint" destination="aIl-wF-XQe" id="Clk-JC-owJ"/>
                         <outlet property="scrollView" destination="hmN-yz-YoG" id="Z9b-gk-hKI"/>
                     </connections>
                 </viewController>

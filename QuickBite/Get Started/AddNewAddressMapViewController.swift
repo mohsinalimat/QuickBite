@@ -27,6 +27,7 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     @IBOutlet weak var geocoderIndicatorContainerView: UIView!
     @IBOutlet weak var geocoderActivityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var saveAddressButton: PMSuperButton!
+    @IBOutlet weak var pinHintView: UIView!
     
     var selectedAddress: GMSPlace! // Set by AddNewAddressSearchViewController
     private let geocoder = GMSGeocoder()
@@ -34,6 +35,7 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     private var mapCenterMarkerAddress: GMSAddress?
     private var userStreetNickname: String?
     private var mapViewWasMoved = false
+    private var pinHintIsShown = false
     
     var firstTimeSetupMode = false
     
@@ -48,6 +50,22 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
         let camera = GMSCameraPosition.camera(withLatitude: selectedAddress.coordinate.latitude, longitude: selectedAddress.coordinate.longitude, zoom: 17.5)
         mapView.delegate = self
         mapView.camera = camera
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showPleaseMoveHint(true)
+    }
+    
+    private func showPleaseMoveHint(_ show: Bool) {
+        guard pinHintIsShown != show else { return }
+        pinHintIsShown = show
+        DispatchQueue.main.async {
+            // Must be called on main thread because mapView(willMove) gets called on background thread
+            UIView.animate(withDuration: 0.4, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 9.5, options: .curveEaseOut, animations: {
+                self.pinHintView.frame.origin.y += show ? 58 : -58
+            }, completion: nil)
+        }
     }
     
     // MARK: - MapView
@@ -75,6 +93,7 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
     }
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        showPleaseMoveHint(false)
         mapViewWasMoved = true
     }
     

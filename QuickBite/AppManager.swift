@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
+import FacebookLogin
 
 class AppManager {
     static let shared = AppManager()
@@ -29,6 +31,14 @@ class AppManager {
     func logout() {
         Cart.empty()
         UserUtil.clearCurrentUser()
+        // facebook logout
+        if let _ = AccessToken.current {
+            LoginManager().logOut()
+        }
+        
+        // Google sign out
+        GIDSignIn.sharedInstance()?.signOut()
+        
         try! Auth.auth().signOut()
         self.appContainer.dismiss(animated: false, completion: nil)
     }

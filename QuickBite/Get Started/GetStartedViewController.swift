@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import FirebaseFirestore
 import GoogleSignIn
+import FacebookLogin
 import FirebaseAuth
 import CocoaLumberjack
 
@@ -67,6 +68,7 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
+    // MARK: - Google Sign In
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         DDLogDebug("didSignInForUser")
         if let error = error {
@@ -79,16 +81,7 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        
-        // Firebase log in
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-            if let error = error {
-                print("Error in authenticating with firebase: \(error)")
-                return
-            }
-            // User is signed in
-            DDLogDebug("Successfully signed user in to Firebase")
-        }
+        firebaseSignIn(credential)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
@@ -100,9 +93,50 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    // MARK: - Facebook Sign In
+    @IBAction func facebookSignInTapped(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn(
+            permissions: [.publicProfile, .email],
+            viewController: self
+        ) { result in
+            self.fbLoginManagerDidComplete(result)
+        }
+    }
+    
+    private func fbLoginManagerDidComplete(_ result: LoginResult) {
+        switch result {
+        case .failed:
+            DDLogError("facebook login failed")
+            let alert = UIAlertController(title: "Error Logging In",
+                                          message: "Unable to log in with Facebook. Please try again or log in using a different method.",
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        case .cancelled:
+            DDLogWarn("facebook login cancelled")
+        case .success:
+            DDLogDebug("facebook login success!")
+            loadingCoverView.cover(parentView: self.view, animated: true)
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+            firebaseSignIn(credential)
+        }
+    }
+    
+    private func firebaseSignIn(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Error in authenticating with firebase: \(error)")
+                return
+            }
+            // User is signed in
+            DDLogDebug("Successfully signed user in to Firebase")
+        }
+    }
+    
     @IBAction func continueWithoutAccountTapped(_ sender: Any) {
         UserUtil.updateCurrentUser(User(isGuest: true))
-//        performSegue(withIdentifier: "AddNewAddressSegue", sender: nil)
         performSegue(withIdentifier: "AddNewGoogleAddressSegue", sender: nil)
     }
     

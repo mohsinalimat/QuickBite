@@ -15,6 +15,22 @@ PODS:
   - CocoaLumberjack/Core (3.5.3)
   - CocoaLumberjack/Swift (3.5.3):
     - CocoaLumberjack/Core
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FBSDKCoreKit (5.6.0):
+    - FBSDKCoreKit/Basics (= 5.6.0)
+    - FBSDKCoreKit/Core (= 5.6.0)
+  - FBSDKCoreKit/Basics (5.6.0)
+  - FBSDKCoreKit/Core (5.6.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.6.0):
+    - FBSDKLoginKit/Login (= 5.6.0)
+  - FBSDKLoginKit/Login (5.6.0):
+    - FBSDKCoreKit (~> 5.0)
   - Firebase (6.8.1):
     - Firebase/Core (= 6.8.1)
   - Firebase/Auth (6.8.1):
@@ -162,6 +178,8 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
   - BEMCheckBox
   - CocoaLumberjack/Swift
+  - FacebookCore
+  - FacebookLogin
   - Firebase
   - Firebase/Auth
   - Firebase/Firestore
@@ -185,6 +203,10 @@ SPEC REPOS:
     - BEMCheckBox
     - BoringSSL-GRPC
     - CocoaLumberjack
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -224,6 +246,10 @@ SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
+  FBSDKCoreKit: d6655a343868d4bb5c29a60859bab07c3be14a0b
+  FBSDKLoginKit: c5a623de88a6b0cda35b35582921f6cec2efcc36
   Firebase: 9cbe4e5b5eaafa05dc932be58b7c8c3820d71e88
   FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
   FirebaseAuth: e7f86c2dfc57281cd01f7da5e4b40e01e4510a4a
@@ -257,6 +283,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
 
-PODFILE CHECKSUM: 5ce0acdd15b41876103d57fa34d7083040122b5e
+PODFILE CHECKSUM: 9af9a2386bc10cd0f2d3ec17e49498775f5bcf36
 
 COCOAPODS: 1.7.5
