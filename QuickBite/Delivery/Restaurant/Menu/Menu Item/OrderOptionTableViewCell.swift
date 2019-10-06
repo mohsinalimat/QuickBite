@@ -18,7 +18,6 @@ class OrderOptionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         checkbox.onAnimationType = .fill
         checkbox.offAnimationType = .fill
-        checkbox.animationDuration = 0.2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

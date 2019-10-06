@@ -11,7 +11,7 @@
         <!--Orders Container View Controller-->
         <scene sceneID="L3F-pc-yxE">
             <objects>
-                <viewController id="5m6-Zs-WHq" customClass="OrdersContainerViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5m6-Zs-WHq" customClass="OrdersContainerViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kvk-p4-kCx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
         <!--Current Order View Controller-->
         <scene sceneID="f6N-kI-TnO">
             <objects>
-                <viewController storyboardIdentifier="CurrentOrderVC" id="ETf-VA-1rG" customClass="CurrentOrderViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentOrderVC" id="ETf-VA-1rG" customClass="CurrentOrderViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cfh-Ml-eGk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -456,7 +456,7 @@
         <!--Current Order Detail View Controller-->
         <scene sceneID="pGj-UN-bh3">
             <objects>
-                <viewController storyboardIdentifier="CurrentOrderDetailVC" id="Aid-Gq-jIe" customClass="CurrentOrderDetailViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentOrderDetailVC" id="Aid-Gq-jIe" customClass="CurrentOrderDetailViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c3M-Yc-FGW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,16 +475,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cul-hq-mbe">
-                                <rect key="frame" x="16" y="4" width="75.666666666666671" height="34.666666666666664"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <rect key="frame" x="16" y="4" width="73.333333333333329" height="33.666666666666664"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="300" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S0E-uw-RqX" customClass="AutoSizedTableView" customModule="QuickBite" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="46.666666666666657" width="375" height="300"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="300" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S0E-uw-RqX" customClass="AutoSizedTableView" customModule="Tsada_Delivery" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="45.666666666666657" width="375" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartItemCell" rowHeight="200" id="zuR-gX-OE7" customClass="CartItemTableViewCell" customModule="QuickBite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartItemCell" rowHeight="200" id="zuR-gX-OE7" customClass="CartItemTableViewCell" customModule="Tsada_Delivery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zuR-gX-OE7" id="Elc-sT-2Xv">
@@ -576,22 +576,22 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-ST-xq3">
-                                <rect key="frame" x="170.33333333333334" y="362.66666666666669" width="98.000000000000028" height="23"/>
+                                <rect key="frame" x="170.33333333333334" y="361.66666666666669" width="98.000000000000028" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱1,235" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCI-tu-f76">
-                                <rect key="frame" x="292.33333333333331" y="362.66666666666669" width="62" height="23"/>
+                                <rect key="frame" x="292.33333333333331" y="361.66666666666669" width="62" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change For" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2L-lD-mvk">
-                                <rect key="frame" x="167.33333333333334" y="393" width="101.00000000000003" height="23"/>
+                                <rect key="frame" x="167.33333333333334" y="392" width="101.00000000000003" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱12,235" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFF-XT-4iW">
-                                <rect key="frame" x="280.33333333333331" y="393" width="74" height="23"/>
+                                <rect key="frame" x="280.33333333333331" y="392" width="74" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -631,7 +631,7 @@
         <!--Previous Orders View Controller-->
         <scene sceneID="vgW-nr-CS1">
             <objects>
-                <viewController storyboardIdentifier="PastOrdersVC" modalPresentationStyle="fullScreen" id="Tjv-yL-FOd" customClass="PreviousOrdersViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PastOrdersVC" modalPresentationStyle="fullScreen" id="Tjv-yL-FOd" customClass="PreviousOrdersViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U6I-NX-h8d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -656,7 +656,7 @@
                                 <rect key="frame" x="0.0" y="104.66666666666669" width="375" height="624.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PreviousOrderTableViewCell" id="aWX-BA-dWX" customClass="PreviousOrderTableViewCell" customModule="QuickBite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PreviousOrderTableViewCell" id="aWX-BA-dWX" customClass="PreviousOrderTableViewCell" customModule="Tsada_Delivery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aWX-BA-dWX" id="JGN-Sq-RCB">
@@ -795,7 +795,7 @@
         <!--Orders-->
         <scene sceneID="crN-Iu-4QB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="naV-md-I10" customClass="TDNavigationController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="naV-md-I10" customClass="TDNavigationController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Orders" image="orders" id="sbG-WU-QQt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ov0-kO-6Mt">

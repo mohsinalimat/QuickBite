@@ -8,8 +8,9 @@
 
 import UIKit
 import PMSuperButton
+import FittedSheets
 
-class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SelectPaymentMethodDelegate {
     @IBOutlet weak var cartRestaurantAndTotalQuantity: UILabel!
     @IBOutlet weak var cartItemsTableView: AutoSizedTableView!
     @IBOutlet weak var topBar: UIView!
@@ -25,6 +26,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var topBarShadowIsShown = false
     
     private var cartItems: [MenuItem] = []
+    
+    private var sheetController: SheetViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +67,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         totalPriceLabel.text = cartTotalPrice == 0 ? 0.asPriceString : (cartTotalPrice + 50).asPriceString
     }
     
+    // MARK: - Actions
     @IBAction func removeAllTapped(_ sender: Any) {
         Cart.empty()
         updatePriceLabels()
@@ -85,8 +89,36 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        // If the current user is missing either their name or their phone number,
-        // show the FinalizeOrderViewController
+        guard let paymentMethodVC = storyboard?.instantiateViewController(withIdentifier: "SelectPaymentMethodVC") as? SelectPaymentMethodViewController else {
+            return
+        }
+        paymentMethodVC.delegate = self
+        sheetController = SheetViewController(controller: paymentMethodVC, sizes: [.fixed(250)])
+        sheetController?.extendBackgroundBehindHandle = true
+        sheetController?.handleColor = .systemBackgroundCompat
+        sheetController?.blurBottomSafeArea = false
+        sheetController?.topCornersRadius = 15
+        present(sheetController!, animated: false)
+    }
+    
+    func didSelectPaymentMethod(_ paymentMethod: PaymentMethod) {
+        sheetController?.closeSheet(completion: {
+            switch paymentMethod {
+            case .cash:
+                self.continueToNextScreen()
+            case .gcash:
+                if UserDefaults.standard.bool(forKey: UDKeys.gcashDontShowInfoScreen) {
+                    self.continueToNextScreen()
+                } else {
+                    self.performSegue(withIdentifier: "ShowGCashInfoSegue", sender: nil)
+                }
+            case .card:
+                break
+            }
+        })
+    }
+    
+    private func continueToNextScreen() {
         if let user = UserUtil.currentUser, user.name.isNotEmpty, user.phone.isNotEmpty {
             performSegue(withIdentifier: "ReviewOrderSegue", sender: nil)
         } else {

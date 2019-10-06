@@ -16,6 +16,9 @@ struct UDKeys {
     
     static let distanceTimes = "DISTANCE_TIMES"
     
+    static let gcashIsNotFirstTime = "GCASH_IS_NOT_FIRST_TIME"
+    static let gcashDontShowInfoScreen = "GCASH_DONT_SHOW_INFO_SCREEN"
+    
     static let redirectToOrders = "REDIRECT_TO_ORDERS"
     static let redirectToCartRestaurant = "REDIRECT_TO_CART_RESTAURANT"
 }
