@@ -54,7 +54,7 @@ class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITab
         
         let order = previousOrders[indexPath.row]
         if order.restaurantImageUrl.isNotEmpty {
-            cell.restaurantImage.sd_setImage(with: URL(string: order.restaurantImageUrl))
+            cell.restaurantImage.sd_setImage(with: URL(string: order.restaurantImageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         } else {
             cell.restaurantImageWidthConstraint.constant = 0
         }

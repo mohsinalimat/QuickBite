@@ -235,11 +235,9 @@ extension Double {
 
 //MARK:- CGFloat
 extension CGFloat {
-    
     func normalize(min: CGFloat, max: CGFloat, from a: CGFloat = 0, to b: CGFloat = 1) -> CGFloat {
         return (b - a) * ((self - min) / (max - min)) + a
     }
-    
 }
 
 //MARK:- String
@@ -412,7 +410,7 @@ extension UINavigationController {
             return assertionFailure("Count can not be a negative value.")
         }
         let index = viewControllers.count - count - 1
-        guard index > 0 else {
+        guard index >= 0 else {
             return assertionFailure("Not enough View Controllers on the navigation stack.")
         }
         popToViewController(viewControllers[index], animated: true)
@@ -429,6 +427,10 @@ extension UIViewController {
         reusableNavController.pushViewController(viewController, animated: false)
         
         present(reusableNavController, animated: animated, completion: nil)
+    }
+    
+    @objc func closeSelf() {
+        dismiss(animated: true, completion: nil)
     }
 }
 

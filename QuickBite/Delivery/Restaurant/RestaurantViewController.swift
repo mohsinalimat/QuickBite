@@ -66,7 +66,7 @@ class RestaurantViewController: UIViewController, UICollectionViewDataSource, UI
         let featuredItem = featuredItems[indexPath.row]
         cell.title.text = featuredItem.itemName
         cell.price.text = featuredItem.price.asPriceString
-        cell.imageView.sd_setImage(with: URL(string: featuredItem.imageUrl))
+        cell.imageView.sd_setImage(with: URL(string: featuredItem.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         
         return cell
     }

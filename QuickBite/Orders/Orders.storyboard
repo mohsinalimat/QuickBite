@@ -576,30 +576,32 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-ST-xq3">
-                                <rect key="frame" x="170.33333333333334" y="361.66666666666669" width="98.000000000000028" height="23"/>
+                                <rect key="frame" x="188.66666666666666" y="361.66666666666669" width="97.999999999999972" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱1,235" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCI-tu-f76">
-                                <rect key="frame" x="292.33333333333331" y="361.66666666666669" width="62" height="23"/>
+                                <rect key="frame" x="292.66666666666669" y="361.66666666666669" width="61.666666666666686" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change For" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2L-lD-mvk">
-                                <rect key="frame" x="167.33333333333334" y="392" width="101.00000000000003" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2L-lD-mvk">
+                                <rect key="frame" x="138" y="392" width="148.66666666666663" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱12,235" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFF-XT-4iW">
-                                <rect key="frame" x="280.33333333333331" y="392" width="74" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFF-XT-4iW">
+                                <rect key="frame" x="309" y="392" width="45.333333333333314" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="vFF-XT-4iW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y2L-lD-mvk" secondAttribute="trailing" constant="6" id="49l-ai-UHK"/>
                             <constraint firstItem="qdw-ST-xq3" firstAttribute="centerY" secondItem="HCI-tu-f76" secondAttribute="centerY" id="4cm-RT-EFx"/>
                             <constraint firstItem="vFF-XT-4iW" firstAttribute="trailing" secondItem="HCI-tu-f76" secondAttribute="trailing" id="953-5F-F8K"/>
+                            <constraint firstItem="HCI-tu-f76" firstAttribute="leading" secondItem="qdw-ST-xq3" secondAttribute="trailing" priority="999" constant="6" id="KK9-5I-nn3"/>
                             <constraint firstItem="vFF-XT-4iW" firstAttribute="top" secondItem="HCI-tu-f76" secondAttribute="bottom" constant="7.3333333333333144" id="QCS-sV-VhN"/>
                             <constraint firstAttribute="trailing" secondItem="S0E-uw-RqX" secondAttribute="trailing" id="WDF-sL-o04"/>
                             <constraint firstItem="Y2L-lD-mvk" firstAttribute="centerY" secondItem="vFF-XT-4iW" secondAttribute="centerY" id="aDv-29-7pk"/>
@@ -607,7 +609,6 @@
                             <constraint firstItem="gA7-aL-7uG" firstAttribute="centerX" secondItem="c3M-Yc-FGW" secondAttribute="centerX" id="jA5-ch-yu9"/>
                             <constraint firstItem="cul-hq-mbe" firstAttribute="top" secondItem="c3M-Yc-FGW" secondAttribute="top" constant="4" id="jYD-BE-cgm"/>
                             <constraint firstItem="S0E-uw-RqX" firstAttribute="leading" secondItem="c3M-Yc-FGW" secondAttribute="leading" id="jld-kB-9xX"/>
-                            <constraint firstItem="vFF-XT-4iW" firstAttribute="leading" secondItem="Y2L-lD-mvk" secondAttribute="trailing" constant="12" id="mpj-YA-iFu"/>
                             <constraint firstAttribute="trailing" secondItem="HCI-tu-f76" secondAttribute="trailing" constant="20.666666666666686" id="r8m-Ms-Rjp"/>
                             <constraint firstItem="cul-hq-mbe" firstAttribute="leading" secondItem="c3M-Yc-FGW" secondAttribute="leading" constant="16" id="sQy-2i-M4g"/>
                             <constraint firstItem="gA7-aL-7uG" firstAttribute="top" secondItem="c3M-Yc-FGW" secondAttribute="top" constant="6" id="seb-Tr-SI3"/>
@@ -619,9 +620,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
-                        <outlet property="changeTotal" destination="vFF-XT-4iW" id="eTK-NS-Mpp"/>
                         <outlet property="orderItemsTableView" destination="S0E-uw-RqX" id="qTT-Ba-J5c"/>
                         <outlet property="orderTotal" destination="HCI-tu-f76" id="hgX-jO-OLC"/>
+                        <outlet property="paymentMethod" destination="vFF-XT-4iW" id="eTK-NS-Mpp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmk-CL-DHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

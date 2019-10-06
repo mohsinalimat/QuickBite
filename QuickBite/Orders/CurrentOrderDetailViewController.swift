@@ -11,14 +11,14 @@ import UIKit
 class CurrentOrderDetailViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var orderItemsTableView: AutoSizedTableView!
     @IBOutlet weak var orderTotal: UILabel!
-    @IBOutlet weak var changeTotal: UILabel!
+    @IBOutlet weak var paymentMethod: UILabel!
     
     var order: Order! // Set by presenting view controller
     
     override func viewDidLoad() {
         super.viewDidLoad()
         orderTotal.text = order.total.asPriceString
-        changeTotal.text = order.changeFor.asPriceString
+        paymentMethod.text = order.paymentMethod
     }
     
     // MARK: - TableView Data Source
@@ -31,7 +31,7 @@ class CurrentOrderDetailViewController: UIViewController, UITableViewDataSource 
         
         let orderItem = order.items[indexPath.row]
         if orderItem.imageUrl.isNotEmpty {
-            cell.itemImage.sd_setImage(with: URL(string: orderItem.imageUrl))
+            cell.itemImage.sd_setImage(with: URL(string: orderItem.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         } else {
             cell.itemImage.removeFromSuperview()
         }
@@ -43,15 +43,4 @@ class CurrentOrderDetailViewController: UIViewController, UITableViewDataSource 
         
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

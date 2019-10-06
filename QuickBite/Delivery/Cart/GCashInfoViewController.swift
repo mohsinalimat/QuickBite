@@ -15,6 +15,8 @@ class GCashInfoViewController: UIViewController {
     @IBOutlet weak var dontShowAgainCheckbox: BEMCheckBox!
     @IBOutlet weak var dontShowAgainButton: UIButton!
     
+    public var showModally = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +24,12 @@ class GCashInfoViewController: UIViewController {
         dontShowAgainCheckbox.onAnimationType = .fill
         dontShowAgainCheckbox.offAnimationType = .fill
         
+        if showModally {
+            navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(closeSelf), imageName: "close")
+        }
+        
         if UserDefaults.standard.bool(forKey: UDKeys.gcashIsNotFirstTime) == false {
+            self.navigationController?.navigationBar.isUserInteractionEnabled = false
             startUnderstandButtonCountdown()
             dontShowAgainCheckbox.isHidden = true
             dontShowAgainButton.isHidden = true
@@ -36,7 +43,9 @@ class GCashInfoViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             countdown -= 1
             if countdown == 0 {
+                self.navigationController?.navigationBar.isUserInteractionEnabled = true
                 self.enableUnderstandButton()
+                UserDefaults.standard.set(true, forKey: UDKeys.gcashIsNotFirstTime)
                 timer.invalidate()
             } else {
                 self.understandButton.setTitle("\(countdown)", for: .disabled)
@@ -54,10 +63,14 @@ class GCashInfoViewController: UIViewController {
     }
     
     @IBAction func understandButtonTapped(_ sender: Any) {
-        UserDefaults.standard.set(true, forKey: UDKeys.gcashIsNotFirstTime)
         
         if dontShowAgainCheckbox.on {
             UserDefaults.standard.set(true, forKey: UDKeys.gcashDontShowInfoScreen)
+        }
+        
+        guard !showModally else {
+            self.dismiss(animated: true)
+            return
         }
         
         if let user = UserUtil.currentUser, user.name.isNotEmpty, user.phone.isNotEmpty {

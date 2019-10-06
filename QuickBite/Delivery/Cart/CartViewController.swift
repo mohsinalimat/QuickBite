@@ -45,11 +45,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateCartRestaurantAndTotalQuantityLabel()
         updatePriceLabels()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(close), imageName: "close")
-    }
-    
-    @objc private func close() {
-        dismiss(animated: true, completion: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(closeSelf), imageName: "close")
     }
     
     private func updateCartRestaurantAndTotalQuantityLabel() {
@@ -89,9 +85,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        guard let paymentMethodVC = storyboard?.instantiateViewController(withIdentifier: "SelectPaymentMethodVC") as? SelectPaymentMethodViewController else {
-            return
-        }
+        let paymentMethodVC = storyboard!.instantiateViewController(withIdentifier: "SelectPaymentMethodVC") as! SelectPaymentMethodViewController
         paymentMethodVC.delegate = self
         sheetController = SheetViewController(controller: paymentMethodVC, sizes: [.fixed(250)])
         sheetController?.extendBackgroundBehindHandle = true
@@ -136,7 +130,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cartItem = cartItems[indexPath.row]
         if cartItem.imageUrl.isNotEmpty {
-            cell.itemImage.sd_setImage(with: URL(string: cartItem.imageUrl))
+            cell.itemImage.sd_setImage(with: URL(string: cartItem.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         } else {
             cell.itemImage.removeFromSuperview()
         }

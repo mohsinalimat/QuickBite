@@ -29,7 +29,7 @@ class Order: Codable {
     var datePlaced: Date
     var items: [MenuItem]
     var total: Double
-    var changeFor: Double
+    var paymentMethod: String
     var isPendingCompletion: Bool
     
     var dictionary: [String : Any] {
@@ -44,6 +44,7 @@ class Order: Codable {
             "restaurant_contact_number": restaurantContactNumber,
             "restaurant_image_url": restaurantImageUrl,
             "items": itemsDictionary,
+            "payment_method": paymentMethod,
             "total": total,
             "is_pending_completion": isPendingCompletion
         ]
@@ -64,7 +65,7 @@ class Order: Codable {
          datePlaced: Date,
          items: [MenuItem],
          total: Double,
-         changeFor: Double,
+         paymentMethod: String,
          isPendingCompletion: Bool) {
         self.id = id
         
@@ -80,7 +81,7 @@ class Order: Codable {
         self.datePlaced = datePlaced
         self.items = items
         self.total = total
-        self.changeFor = changeFor
+        self.paymentMethod = paymentMethod
         self.isPendingCompletion = isPendingCompletion
     }
     
@@ -96,7 +97,7 @@ class Order: Codable {
             let restaurantContactNumber = dictionary["restaurant_contact_number"] as? String,
             let restaurantImageUrl = dictionary["restaurant_image_url"] as? String,
             let total = dictionary["order_total"] as? Double,
-            let changeFor = dictionary["change_for"] as? Double,
+            let paymentMethod = dictionary["payment_method"] as? String,
             let isPendingCompletion = dictionary["is_pending_completion"] as? Bool else {
                 DDLogError("Unable to parse Order object: \(dictionary)")
                 return nil
@@ -114,7 +115,7 @@ class Order: Codable {
                   datePlaced: datePlacedTimestamp.dateValue(),
                   items: items.compactMap({ MenuItem(dictionary: $0) }),
                   total: total,
-                  changeFor: changeFor,
+                  paymentMethod: paymentMethod,
                   isPendingCompletion: isPendingCompletion)
     }
     

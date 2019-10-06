@@ -12,21 +12,21 @@ protocol SelectPaymentMethodDelegate {
     func didSelectPaymentMethod(_ paymentMethod: PaymentMethod)
 }
 
-enum PaymentMethod: Int {
-    case cash
-    case gcash
-    case card
+enum PaymentMethod: String {
+    case cash = "Cash"
+    case gcash = "GCash"
+    case card = "Credit/Debit Card"
 }
 
 class SelectPaymentMethodViewController: UIViewController {
     public var delegate: SelectPaymentMethodDelegate?
     
     @IBAction func paymentMethodSelected(_ sender: Any) {
-        guard let button = sender as? UIButton else {
-            print("Could not cast sender as button!")
-            return
-        }
+        let button = sender as! UIButton
         
-        delegate?.didSelectPaymentMethod(PaymentMethod(rawValue: button.tag)!)
+        let paymentMethod = PaymentMethod(rawValue: button.titleLabel!.text!)!
+        
+        Cart.paymentMethod = paymentMethod
+        delegate?.didSelectPaymentMethod(paymentMethod)
     }
 }

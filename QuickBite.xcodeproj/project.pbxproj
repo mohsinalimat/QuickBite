@@ -23,7 +23,7 @@
 		850CAAD82334BB4E003DD668 /* MiniPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850CAAD72334BB4E003DD668 /* MiniPopupView.xib */; };
 		850E16322334FBF000DA64FF /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850E16312334FBF000DA64FF /* Orders.storyboard */; };
 		851DE0E82318DB7600A374DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851DE0E72318DB7600A374DB /* CartViewController.swift */; };
-		85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewOrderViewController.swift */; };
+		85283769231D35390083ADD2 /* ReviewAndPlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85283768231D35390083ADD2 /* ReviewAndPlaceOrderViewController.swift */; };
 		852AE7EE232BB14500804751 /* AddNewAddressViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */; };
 		852AE7F6232BB2BA00804751 /* TweePlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F0232BB2B900804751 /* TweePlaceholderTextField.swift */; };
 		852AE7F7232BB2BA00804751 /* TweeBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AE7F1232BB2B900804751 /* TweeBorderedTextField.swift */; };
@@ -124,7 +124,7 @@
 		850CAAD72334BB4E003DD668 /* MiniPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPopupView.xib; sourceTree = "<group>"; };
 		850E16312334FBF000DA64FF /* Orders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Orders.storyboard; sourceTree = "<group>"; };
 		851DE0E72318DB7600A374DB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		85283768231D35390083ADD2 /* ReviewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrderViewController.swift; sourceTree = "<group>"; };
+		85283768231D35390083ADD2 /* ReviewAndPlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndPlaceOrderViewController.swift; sourceTree = "<group>"; };
 		852AE7ED232BB14500804751 /* AddNewAddressViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewControllerOld.swift; sourceTree = "<group>"; };
 		852AE7F0232BB2B900804751 /* TweePlaceholderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweePlaceholderTextField.swift; sourceTree = "<group>"; };
 		852AE7F1232BB2B900804751 /* TweeBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweeBorderedTextField.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				850CAAD52334BB3A003DD668 /* MiniPopupView.swift */,
 				85D5EB50234A24ED00109089 /* GCashInfoViewController.swift */,
 				850CAAD72334BB4E003DD668 /* MiniPopupView.xib */,
-				85283768231D35390083ADD2 /* ReviewOrderViewController.swift */,
+				85283768231D35390083ADD2 /* ReviewAndPlaceOrderViewController.swift */,
 				85BF0526234A1367001B325D /* SelectPaymentMethodViewController.swift */,
 			);
 			path = Cart;
@@ -734,7 +734,7 @@
 				85808A94232D0DEB00A86822 /* AppManager.swift in Sources */,
 				850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */,
 				856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */,
-				85283769231D35390083ADD2 /* ReviewOrderViewController.swift in Sources */,
+				85283769231D35390083ADD2 /* ReviewAndPlaceOrderViewController.swift in Sources */,
 				85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */,
 				85BEF10B2345FAA4005FE8E4 /* MenuCategoryViewController.swift in Sources */,
 				85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */,

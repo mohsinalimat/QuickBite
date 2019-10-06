@@ -37,7 +37,7 @@ class MenuCategoryViewController: UIViewController, UITableViewDataSource {
 
         let menuItem = menuItemsForCategory[indexPath.row]
         if menuItem.imageUrl.isNotEmpty {
-            cell.menuItemImage.sd_setImage(with: URL(string: menuItem.imageUrl))
+            cell.menuItemImage.sd_setImage(with: URL(string: menuItem.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         } else {
             cell.imageHeightConstraint.constant = 0
         }

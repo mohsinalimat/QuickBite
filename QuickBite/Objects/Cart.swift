@@ -30,6 +30,8 @@ struct Cart {
         }
     }
     
+    static var paymentMethod: PaymentMethod?
+    
     static var totalPrice: Double {
         return items.reduce(0) { (result, next) -> Double in
             return result + next.finalPrice

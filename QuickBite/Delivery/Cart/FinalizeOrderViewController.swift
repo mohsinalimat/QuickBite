@@ -13,7 +13,7 @@ import KeyboardLayoutGuide
 
 class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, MaskedTextFieldDelegateListener {
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var finalizeLabel: UILabel!
+    @IBOutlet weak var header: UILabel!
     @IBOutlet weak var nameTextField: TweeAttributedTextField?
     @IBOutlet weak var phoneTextField: TweeAttributedTextField?
     @IBOutlet weak var continueButton: PMSuperButton!
@@ -21,13 +21,17 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
     
     private var phoneEntryIsValid = false
     
+    // Contact Info Mode, for when the user is changing their contact info from ReviewAndPlaceOrderViewController
+    public var contactInfoMode = false
+    public var reviewAndPlaceOrderVC: ReviewAndPlaceOrderViewController?
+    public var name: String?
+    public var phone: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        finalizeLabel.text = "Finalize your order from \(Cart.restaurant!.name)"
         
         continueButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -8).isActive = true
         
@@ -35,22 +39,41 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
         automaticallyAdjustsScrollViewInsets = false
         scrollView.contentInset = UIEdgeInsets.zero
         
-        if UserUtil.currentUser!.name.isNotEmpty {
-            // Hide name field, set phone as firstResponder
-            nameTextField?.removeFromSuperview()
-            phoneTextField?.becomeFirstResponder()
-        } else if UserUtil.currentUser!.phone.isNotEmpty {
-            // Hide phone field, set name as firstResponder
-            phoneTextField?.removeFromSuperview()
+        if contactInfoMode {
+            header.text = "Contact Info"
             nameTextField?.becomeFirstResponder()
+            continueButton.setTitle("Save", for: .normal)
+            navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(closeSelf), imageName: "close")
+            
+            nameTextField?.text = name
+            phoneTextField?.text = phone
+            continueButton.setEnabled(true)
         } else {
-            // Hide neither, set name to be firstResponder
-            nameTextField?.becomeFirstResponder()
+            header.text = "Finalize your order from \(Cart.restaurant!.name)"
+            
+            if UserUtil.currentUser!.name.isNotEmpty {
+                // Hide name field, set phone as firstResponder
+                nameTextField?.removeFromSuperview()
+                phoneTextField?.becomeFirstResponder()
+            } else if UserUtil.currentUser!.phone.isNotEmpty {
+                // Hide phone field, set name as firstResponder
+                phoneTextField?.removeFromSuperview()
+                nameTextField?.becomeFirstResponder()
+            } else {
+                // Hide neither, set name to be firstResponder
+                nameTextField?.becomeFirstResponder()
+            }
         }
+        
+        nameTextField?.addTarget(self, action: #selector(nameTextDidChange), for: UIControl.Event.editingChanged)
     }
     
     open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         phoneEntryIsValid = complete
+        continueButton.setEnabled(textFieldsAreValid())
+    }
+    
+    @objc func nameTextDidChange() {
         continueButton.setEnabled(textFieldsAreValid())
     }
     
@@ -66,16 +89,12 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        continueButton.setEnabled(textFieldsAreValid())
-    }
-    
     private func showRequiredHints() {
         if let nameTF = nameTextField, nameTF.text!.isEmpty {
             nameTF.showRequiredHint()
         }
         
-        if let phoneTF = phoneTextField, !phoneEntryIsValid {
+        if let phoneTF = phoneTextField, (!phoneEntryIsValid && phoneTF.text!.count != 16) {
             phoneTF.showRequiredHint()
         }
     }
@@ -95,7 +114,7 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
             return false
         }
         
-        if let _ = phoneTextField, !phoneEntryIsValid {
+        if let phoneTF = phoneTextField, (!phoneEntryIsValid && phoneTF.text!.count != 16) {
             return false
         }
         
@@ -107,7 +126,13 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
             hideRequiredHints()
             nameTextField?.resignFirstResponder()
             phoneTextField?.resignFirstResponder()
-            performSegue(withIdentifier: "ShowReviewOrderSegue", sender: nil)
+            if contactInfoMode {
+                reviewAndPlaceOrderVC?.userName = nameTextField!.text!
+                reviewAndPlaceOrderVC?.userPhone = phoneTextField!.text!
+                closeSelf()
+            } else {
+                performSegue(withIdentifier: "ShowReviewOrderSegue", sender: nil)
+            }
         } else {
             showRequiredHints()
         }
@@ -115,7 +140,7 @@ class FinalizeOrderViewController: UIViewController, UITextFieldDelegate, Masked
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let reviewOrderVC = segue.destination as? ReviewOrderViewController {
+        if let reviewOrderVC = segue.destination as? ReviewAndPlaceOrderViewController {
             // Pass user info. We're not saving the user info until the user hits place order.
             if let nameTF = nameTextField {
                 reviewOrderVC.userName = nameTF.text!

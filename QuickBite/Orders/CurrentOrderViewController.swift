@@ -54,7 +54,7 @@ class CurrentOrderViewController: UIViewController {
         currentOrder = UserUtil.currentUser!.currentOrder!
         
         if currentOrder.restaurantImageUrl.isNotEmpty {
-            restaurantImage.sd_setImage(with: URL(string: currentOrder.restaurantImageUrl))
+            restaurantImage.sd_setImage(with: URL(string: currentOrder.restaurantImageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         } else {
             restaurantImageWidthConstraint.constant = 0
         }

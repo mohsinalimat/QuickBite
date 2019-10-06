@@ -22,7 +22,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         addressesTableView.estimatedRowHeight = 60
         
         if !settingsMode {
-            navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(close), imageName: "close")
+            navigationItem.leftBarButtonItem = UIBarButtonItem.barButton(self, action: #selector(closeSelf), imageName: "close")
         }
     }
     
@@ -40,10 +40,6 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         if settingsMode {
             UserUtil.triggerUserSync(property: .addresses)
         }
-    }
-    
-    @objc private func close() {
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addNewTapped(_ sender: Any) {

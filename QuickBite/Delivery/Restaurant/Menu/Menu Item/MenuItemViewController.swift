@@ -67,7 +67,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     
         if menuItem.imageUrl.isNotEmpty {
-            menuItemImage.sd_setImage(with: URL(string: menuItem.imageUrl))
+            menuItemImage.sd_setImage(with: URL(string: menuItem.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         } else {
             menuItemTitleTopConstraint.constant = 100
         }
@@ -228,11 +228,23 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             
             if Cart.totalQuantity >= 10 {
+                // Cart is full
                 let alert = UIAlertController(title: "Cart Full",
                                               message: "Your cart already has the maximum number of items. Please remove some items or reduce the quantity of this item, then try again.",
                     preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            
+            if let _ = UserUtil.currentUser!.currentOrder {
+                // Current order already in progress
+                let alert = UIAlertController(title: "Order Already In Progress",
+                                              message: "You already have an order on its way! Check the Orders tab to see its progress.",
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
                 return
             }
