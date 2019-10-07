@@ -209,14 +209,11 @@ class ReviewAndPlaceOrderViewController: UIViewController, SelectPaymentMethodDe
     // MARK: - Place Order
     private func saveUserInformation() {
         // Only save info if the currently saved name and phone are empty.
-        guard let _ = presentingViewController as? FinalizeOrderViewController else {
-            return
-        }
-        if let newName = userName {
+        if let newName = userName, UserUtil.currentUser!.name.isEmpty {
             UserUtil.setName(newName)
         }
         
-        if let newPhone = userPhone {
+        if let newPhone = userPhone, UserUtil.currentUser!.phone.isEmpty {
             UserUtil.setPhoneNumber(newPhone)
         }
     }
@@ -238,8 +235,8 @@ class ReviewAndPlaceOrderViewController: UIViewController, SelectPaymentMethodDe
         
         let user = UserUtil.currentUser!
         let restaurant = Cart.restaurant!
-        let order = Order(customerName: user.name,
-                          customerContactNumber: user.phone,
+        let order = Order(customerName: contactInfoLabel.text!.chompAt("\n"),
+                          customerContactNumber: String(contactInfoLabel.text!.split(separator: "\n").last!),
                           deliveryAddress: user.selectedAddress.toString(),
                           restaurantName: restaurant.name,
                           restaurantAddress: restaurant.address,
