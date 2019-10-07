@@ -73,19 +73,19 @@ class Restaurant: Codable {
     }
 
     convenience init?(dictionary: [String : Any]) {
-        guard let id = dictionary["id"] as? String,
-            let name = dictionary["name"] as? String,
-            let categories = dictionary["categories"] as? String,
-            let contactNumber = dictionary["contact_number"] as? String,
-            let geoPoint = dictionary["geo_point"] as? GeoPoint,
-            let openHours = dictionary["open_hours"] as? String,
-            let topPick = dictionary["top_pick"] as? Bool,
-            let imageURL = dictionary["image_url"] as? String,
-            let address = dictionary["address"] as? String,
-            let rating = dictionary["rating"] as? Double,
-            let menuItems = dictionary["menu_items"] as? Array<[String : Any]> else { return nil }
+        guard let id            = dictionary["id"] as? String,
+            let name            = dictionary["name"] as? String,
+            let categories      = dictionary["categories"] as? String,
+            let contactNumber   = dictionary["contactNumber"] as? String,
+            let geoPoint        = dictionary["geoPoint"] as? GeoPoint,
+            let openHours       = dictionary["openHours"] as? String,
+            let topPick         = dictionary["topPick"] as? Bool,
+            let imageUrl        = dictionary["imageUrl"] as? String,
+            let address         = dictionary["address"] as? String,
+            let rating          = dictionary["rating"] as? Double,
+            let menuItems       = dictionary["menuItems"] as? Array<[String : Any]> else { return nil }
         
-        let alternativeContactNumber = dictionary["alternative_contact_number"] as? String
+        let alternativeContactNumber = dictionary["alternativeContactNumber"] as? String
         
         self.init(id: id,
                   name: name,
@@ -98,7 +98,7 @@ class Restaurant: Codable {
                   openHours: openHours,
                   address: address,
                   topPick: topPick,
-                  imageURL: imageURL,
+                  imageURL: imageUrl,
                   menuItems: menuItems.compactMap({ MenuItem(dictionary: $0) }))
     }
     

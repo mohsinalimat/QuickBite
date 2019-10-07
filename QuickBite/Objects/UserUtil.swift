@@ -15,9 +15,9 @@ enum SyncProperty: String {
     case name = "name"
     case phone = "phone"
     case addresses = "addresses"
-    case pastOrders = "past_orders"
-    case pushNotifications = "push_notifications_enabled"
-    case smsNotifications = "sms_notifications_enabled"
+    case pastOrders = "pastOrders"
+    case pushNotifications = "pushNotificationsEnabled"
+    case smsNotifications = "smsNotificationsEnabled"
 }
 
 struct UserUtil {
@@ -244,12 +244,12 @@ class User: Codable {
     }
     
     convenience init(dictionary: [String : Any]) {
-        let name = dictionary[SyncProperty.name.rawValue] as? String ?? ""
-        let phone = dictionary[SyncProperty.phone.rawValue] as? String ?? ""
-        let addresses = dictionary[SyncProperty.addresses.rawValue] as? Array<[String : Any]> ?? []
-        let pastOrders = dictionary[SyncProperty.pastOrders.rawValue] as? Array<[String : Any]> ?? []
-        let pushNotificationsEnabled = dictionary[SyncProperty.pushNotifications.rawValue] as? Bool ?? true
-        let smsNotificationsEnabled = dictionary[SyncProperty.smsNotifications.rawValue] as? Bool ?? true
+        let name                        = dictionary[SyncProperty.name.rawValue] as? String ?? ""
+        let phone                       = dictionary[SyncProperty.phone.rawValue] as? String ?? ""
+        let addresses                   = dictionary[SyncProperty.addresses.rawValue] as? Array<[String : Any]> ?? []
+        let pastOrders                  = dictionary[SyncProperty.pastOrders.rawValue] as? Array<[String : Any]> ?? []
+        let pushNotificationsEnabled    = dictionary[SyncProperty.pushNotifications.rawValue] as? Bool ?? true
+        let smsNotificationsEnabled     = dictionary[SyncProperty.smsNotifications.rawValue] as? Bool ?? true
         
         self.init(name: name,
                   phone: phone,

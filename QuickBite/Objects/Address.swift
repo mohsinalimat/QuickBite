@@ -31,13 +31,13 @@ class Address: Codable {
     var dictionary: [String : Any] {
         return [
             "id": id,
-            "user_nickname": userNickname,
-            "floor_door_unit_no": floorDoorUnitNo,
+            "userNickname": userNickname,
+            "floorDoorUnitNo": floorDoorUnitNo,
             "street": street,
-            "building_landmark": buildingLandmark,
+            "buildingLandmark": buildingLandmark,
             "instructions": instructions,
-            "geo_point": GeoPoint(latitude: latitude, longitude: longitude),
-            "is_default": isDefault
+            "geoPoint": GeoPoint(latitude: latitude, longitude: longitude),
+            "isDefault": isDefault
         ]
     }
 
@@ -66,13 +66,13 @@ class Address: Codable {
     convenience init?(dictionary: [String : Any]) {
         guard let id = dictionary["id"] as? String,
             let street = dictionary["street"] as? String,
-            let geoPoint = dictionary["geo_point"] as? GeoPoint else { return nil }
+            let geoPoint = dictionary["geoPoint"] as? GeoPoint else { return nil }
 
-        let userNickname = dictionary["user_nickname"] as? String ?? ""
-        let floorDoorUnitNo = dictionary["floor_door_unit_no"] as? String ?? ""
-        let buildingLandmark = dictionary["building_landmark"] as? String ?? ""
+        let userNickname = dictionary["userNickname"] as? String ?? ""
+        let floorDoorUnitNo = dictionary["floorDoorUnitNo"] as? String ?? ""
+        let buildingLandmark = dictionary["buildingLandmark"] as? String ?? ""
         let instructions = dictionary["instructions"] as? String ?? ""
-        let isDefault = dictionary["is_default"] as? Bool ?? false
+        let isDefault = dictionary["isDefault"] as? Bool ?? false
         
         self.init(id: id,
                   userNickname: userNickname,

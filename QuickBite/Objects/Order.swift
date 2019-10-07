@@ -35,18 +35,18 @@ class Order: Codable {
     var dictionary: [String : Any] {
         return [
             "id": id.uuidString,
-            "customer_name": customerName,
-            "customer_contact_number": customerContactNumber,
-            "date_placed": Timestamp(date: datePlaced),
-            "delivery_address": deliveryAddress,
-            "restaurant_name": restaurantName,
-            "restaurant_address": restaurantAddress,
-            "restaurant_contact_number": restaurantContactNumber,
-            "restaurant_image_url": restaurantImageUrl,
+            "customerName": customerName,
+            "customerContactNumber": customerContactNumber,
+            "datePlaced": Timestamp(date: datePlaced),
+            "deliveryAddress": deliveryAddress,
+            "restaurantName": restaurantName,
+            "restaurantAddress": restaurantAddress,
+            "restaurantContactNumber": restaurantContactNumber,
+            "restaurantImageUrl": restaurantImageUrl,
             "items": itemsDictionary,
-            "payment_method": paymentMethod,
+            "paymentMethod": paymentMethod,
             "total": total,
-            "is_pending_completion": isPendingCompletion
+            "isPendingCompletion": isPendingCompletion
         ]
     }
     
@@ -86,19 +86,19 @@ class Order: Codable {
     }
     
     convenience init?(dictionary: [String : Any]) {
-        guard let id = dictionary["id"] as? String,
-            let customerName = dictionary["customer_name"] as? String,
-            let customerContactNumber = dictionary["customer_contact_number"] as? String,
-            let deliveryAddress = dictionary["delivery_address"] as? String,
-            let datePlacedTimestamp = dictionary["date_placed"] as? Timestamp,
-            let items = dictionary["items"] as? Array<[String : Any]>,
-            let restaurantName = dictionary["restaurant_name"] as? String,
-            let restaurantAddress = dictionary["restaurant_address"] as? String,
-            let restaurantContactNumber = dictionary["restaurant_contact_number"] as? String,
-            let restaurantImageUrl = dictionary["restaurant_image_url"] as? String,
-            let total = dictionary["order_total"] as? Double,
-            let paymentMethod = dictionary["payment_method"] as? String,
-            let isPendingCompletion = dictionary["is_pending_completion"] as? Bool else {
+        guard let id                    = dictionary["id"] as? String,
+            let customerName            = dictionary["customerName"] as? String,
+            let customerContactNumber   = dictionary["customerContactNumber"] as? String,
+            let deliveryAddress         = dictionary["deliveryAddress"] as? String,
+            let datePlacedTimestamp     = dictionary["datePlaced"] as? Timestamp,
+            let items                   = dictionary["items"] as? Array<[String : Any]>,
+            let restaurantName          = dictionary["restaurantName"] as? String,
+            let restaurantAddress       = dictionary["restaurantAddress"] as? String,
+            let restaurantContactNumber = dictionary["restaurantContactNumber"] as? String,
+            let restaurantImageUrl      = dictionary["restaurantImageUrl"] as? String,
+            let total                   = dictionary["total"] as? Double,
+            let paymentMethod           = dictionary["paymentMethod"] as? String,
+            let isPendingCompletion     = dictionary["isPendingCompletion"] as? Bool else {
                 DDLogError("Unable to parse Order object: \(dictionary)")
                 return nil
         }

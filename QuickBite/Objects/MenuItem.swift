@@ -27,11 +27,11 @@ class MenuItem: Codable {
     // USED FOR ORDERS ONLY
     var orderDictionary: [String : Any] {
         return [
-            "item_name": itemName,
-            "final_price": finalPrice,
-            "selected_quantity": selectedQuantity,
-            "selected_options": selectedOptions,
-            "special_instructions": specialInstructions
+            "itemName": itemName,
+            "finalPrice": finalPrice,
+            "selectedQuantity": selectedQuantity,
+            "selectedOptions": selectedOptions,
+            "specialInstructions": specialInstructions
         ]
     }
     
@@ -57,22 +57,22 @@ class MenuItem: Codable {
     
     convenience init?(dictionary: [String : Any]) {
         // Required fields
-        guard let itemName              = dictionary["item_name"] as? String,
+        guard let itemName              = dictionary["itemName"] as? String,
             let description             = dictionary["description"] as? String,
             let price                   = dictionary["price"] as? Double,
             let category                = dictionary["category"] as? String,
             let featured                = dictionary["featured"] as? Bool,
-            let itemOptionCategories    = dictionary["item_option_categories"] as? Array<[String : Any]> else { return nil }
+            let itemOptionCategories    = dictionary["itemOptionCategories"] as? Array<[String : Any]> else { return nil }
         
         // Optional fields
-        let imageURL = dictionary["item_image_url"] as? String ?? ""
+        let imageUrl = dictionary["itemImageUrl"] as? String ?? ""
         
         self.init(itemName: itemName,
                   description: description,
                   price: price,
                   category: category,
                   featured: featured,
-                  imageUrl: imageURL,
+                  imageUrl: imageUrl,
                   itemOptionCategories: itemOptionCategories.compactMap({ MenuItemOptionCategory(dictionary: $0) }))
     }
     
@@ -94,23 +94,21 @@ struct MenuItemOptionCategory: Codable {
 
 extension MenuItemOptionCategory {
     init?(dictionary: [String : Any]) {
-        guard let categoryName      = dictionary["options_category_name"] as? String,
-            let isSingleSelection   = dictionary["single_selection"] as? Bool,
+        guard let categoryName      = dictionary["optionsCategoryName"] as? String,
+            let isSingleSelection   = dictionary["isSingleSelection"] as? Bool,
             let isRequired          = dictionary["required"] as? Bool,
-            let options             = dictionary["options"] as? Array<[String : Any]> else { return nil }
+            let optionsRaw          = dictionary["options"] as? Array<[String : Any]> else { return nil }
         
         // Convert options array into [String] array
-        var optionsStringArray: [String] = []
-        for option in options {
-            if let name = option["option_name"] as? String,
-                let price = option["added_price"] as? Double {
-                let optionString = name + " ₱" + String(price)
-                optionsStringArray.append(optionString)
+        let options: [String] = optionsRaw.compactMap({
+            if let name = $0["optionName"] as? String, let price = $0["addedPrice"] as? Double {
+                return name + " ₱" + String(price)
             }
-        }
+            return nil
+        })
         
         self.init(categoryName: categoryName,
-                  options: optionsStringArray,
+                  options: options,
                   isSingleSelection: isSingleSelection,
                   isRequired: isRequired)
     }
