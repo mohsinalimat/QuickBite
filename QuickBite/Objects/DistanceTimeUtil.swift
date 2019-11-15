@@ -123,13 +123,13 @@ struct DistanceTime: Codable {
 
 struct APIRequestBuilder {
     static func getDistanceMatrixRequestUrl(restaurantGeopoints: [GeoPoint]) -> String {
-        var request = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&"
+        var request = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric"
         
         let user = UserUtil.currentUser!
         
-        let originString = "origins=\(user.selectedAddress.latitude),\(user.selectedAddress.longitude)&"
+        let originString = "&origins=\(user.selectedAddress.latitude),\(user.selectedAddress.longitude)"
         
-        request.append(originString + "destinations=")
+        request.append(originString + "&destinations=")
         
         for geopoint in restaurantGeopoints {
             let destinationString = "\(geopoint.latitude)%2C\(geopoint.longitude)%7C"

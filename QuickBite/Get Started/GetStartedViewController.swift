@@ -53,10 +53,10 @@ class GetStartedViewController: UIViewController, GIDSignInDelegate {
                     // Set UserDefaults current user
                     UserUtil.updateCurrentUser(udUser)
                     self.loadingCoverView.hide() // In case the user comes back from AddNewAddress
-                    if let addresses = UserUtil.currentUser?.addresses, !addresses.isEmpty {
-                        self.performSegue(withIdentifier: "ShowMainDeliveryFromGetStarted", sender: nil)
-                    } else {
+                    if udUser.addresses.isEmpty {
                         self.performSegue(withIdentifier: "AddNewGoogleAddressSegue", sender: nil)
+                    } else {
+                        self.performSegue(withIdentifier: "ShowMainDeliveryFromGetStarted", sender: nil)
                     }
                 }
             }

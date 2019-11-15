@@ -24,9 +24,9 @@ class FirebaseDataWriterViewController: UIViewController {
         let restaurantRef = db.collection("restaurants")
         
         chickaLoca(restaurantRef: restaurantRef)
-        houseOfPancakes(restaurantRef: restaurantRef)
-        silverRain(restaurantRef: restaurantRef)
-        kagayan(restaurantRef: restaurantRef)
+//        houseOfPancakes(restaurantRef: restaurantRef)
+//        silverRain(restaurantRef: restaurantRef)
+//        kagayan(restaurantRef: restaurantRef)
 
     }
     
@@ -39,6 +39,8 @@ class FirebaseDataWriterViewController: UIViewController {
             "openHours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
             "contactNumber": "+63123456789",
             "geoPoint": GeoPoint(latitude: 8.476213, longitude: 124.643741),
+            "latitude": 8.476213,
+            "longitude": 124.643741,
             "rating": 4.7,
             "imageUrl": "https://www.incimages.com/uploaded_files/image/970x450/getty_938993594_401542.jpg",
             "address": "88 Hayes St, Cagayan de Oro, 9000 Misamis Oriental",
@@ -55,7 +57,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Sides",
                             "required": true,
-                            "isSingleSelection": true,
+                            "singleSelection": true,
                             "options": [
                                 [
                                     "optionName": "Side1",
@@ -79,7 +81,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Sides",
                             "required": true,
-                            "isSingleSelection": true,
+                            "singleSelection": true,
                             "options": [
                                 [
                                     "optionName": "Side1",
@@ -112,6 +114,8 @@ class FirebaseDataWriterViewController: UIViewController {
             "openHours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
             "contactNumber": "+63123456789",
             "geoPoint": GeoPoint(latitude: 8.443897, longitude: 124.621148),
+            "latitude": 8.443897,
+            "longitude": 124.621148,
             "rating": 4.7,
             "imageUrl": "https://www.seriouseats.com/2019/07/20190619-korean-bbq-vicky-wasik-19-1500x1125.jpg",
             "address": "19 Masterson Ave, Upper Canitoan, Cagayan de Oro, 9000 Misamis Oriental",
@@ -153,6 +157,8 @@ class FirebaseDataWriterViewController: UIViewController {
             "openHours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
             "contactNumber": "+63123456789",
             "geoPoint": GeoPoint(latitude: 8.482862, longitude: 124.656042),
+            "latitude": 8.482862,
+            "longitude": 124.656042,
             "rating": 4.7,
             "imageUrl": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/Egg-free-french-toast_post.jpg?alt=media&token=8de1aa40-946c-4006-8cd6-6bc462e4236c",
             "address": "Claro M. Recto Ave, Cagayan de Oro, Misamis Oriental",
@@ -168,7 +174,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Sides",
                             "required": true,
-                            "isSingleSelection": true,
+                            "singleSelection": true,
                             "options": [
                                 [
                                     "optionName": "Blueberries",
@@ -183,7 +189,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Extras",
                             "required": false,
-                            "isSingleSelection": false,
+                            "singleSelection": false,
                             "options": [
                                 [
                                     "optionName": "Extra butter packets",
@@ -225,6 +231,8 @@ class FirebaseDataWriterViewController: UIViewController {
             "contactNumber": "+631234567890",
             "alternativeContactNumber": "+634238204728",
             "geoPoint": GeoPoint(latitude: 8.476797, longitude: 124.645025),
+            "latitude": 8.476797,
+            "longitude": 124.645025,
             "rating": 3.5,
             "imageUrl": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/food_sample_inasal.jpg?alt=media&token=70e75f54-b368-4c44-a4b7-5bda1caf5c53",
             "address": "Pabayo corner, Mayor R. Chaves St, Cagayan de Oro, 9000 Misamis Oriental",
@@ -241,7 +249,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Sides",
                             "required": true,
-                            "isSingleSelection": true,
+                            "singleSelection": true,
                             "options": [
                                 [
                                     "optionName": "Side1",
@@ -250,14 +258,46 @@ class FirebaseDataWriterViewController: UIViewController {
                                 [
                                     "optionName": "Side2",
                                     "addedPrice": 40
+                                ],
+                                [
+                                    "optionName": "Side3",
+                                    "addedPrice": 30
+                                ],
+                                [
+                                    "optionName": "Side4",
+                                    "addedPrice": 0
                                 ]
                             ]
                         ],
                         [
                             "optionsCategoryName": "Extras",
                             "required": false,
-                            "isSingleSelection": false,
+                            "singleSelection": false,
                             "options": [
+                                [
+                                    "optionName": "Extra BBQ Sauce",
+                                    "addedPrice": 25
+                                ],
+                                [
+                                    "optionName": "Extra Garlic Sauce",
+                                    "addedPrice": 20
+                                ],
+                                [
+                                    "optionName": "Extra BBQ Sauce",
+                                    "addedPrice": 25
+                                ],
+                                [
+                                    "optionName": "Extra Garlic Sauce",
+                                    "addedPrice": 20
+                                ],
+                                [
+                                    "optionName": "Extra BBQ Sauce",
+                                    "addedPrice": 25
+                                ],
+                                [
+                                    "optionName": "Extra Garlic Sauce",
+                                    "addedPrice": 20
+                                ],
                                 [
                                     "optionName": "Extra BBQ Sauce",
                                     "addedPrice": 25
@@ -281,7 +321,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Sides",
                             "required": true,
-                            "isSingleSelection": true,
+                            "singleSelection": true,
                             "options": [
                                 [
                                     "optionName": "Side1",
@@ -296,7 +336,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Extras",
                             "required": false,
-                            "isSingleSelection": false,
+                            "singleSelection": false,
                             "options": [
                                 [
                                     "optionName": "Extra BBQ Sauce",
@@ -330,7 +370,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Sides",
                             "required": true,
-                            "isSingleSelection": true,
+                            "singleSelection": true,
                             "options": [
                                 [
                                     "optionName": "Side1",
@@ -345,7 +385,7 @@ class FirebaseDataWriterViewController: UIViewController {
                         [
                             "optionsCategoryName": "Extras",
                             "required": false,
-                            "isSingleSelection": false,
+                            "singleSelection": false,
                             "options": [
                                 [
                                     "optionName": "Extra BBQ Sauce",

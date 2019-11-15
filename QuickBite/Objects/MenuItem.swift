@@ -95,7 +95,7 @@ struct MenuItemOptionCategory: Codable {
 extension MenuItemOptionCategory {
     init?(dictionary: [String : Any]) {
         guard let categoryName      = dictionary["optionsCategoryName"] as? String,
-            let isSingleSelection   = dictionary["isSingleSelection"] as? Bool,
+            let isSingleSelection   = dictionary["singleSelection"] as? Bool,
             let isRequired          = dictionary["required"] as? Bool,
             let optionsRaw          = dictionary["options"] as? Array<[String : Any]> else { return nil }
         

@@ -28,9 +28,21 @@ class Address: Codable {
         return userNickname.isNotEmpty ? userNickname : street
     }
     
+    var fullString: String {
+        let addressLines = [userNickname, street + ", Cagayan de Oro", floorDoorUnitNo, buildingLandmark]
+        var fullAddressString = ""
+        for line in addressLines {
+            if line.isNotEmpty {
+                fullAddressString.append(line + ", ")
+            }
+        }
+        return fullAddressString.chompLast(2)
+    }
+    
     var dictionary: [String : Any] {
         return [
             "id": id,
+            "fullString": fullString,
             "userNickname": userNickname,
             "floorDoorUnitNo": floorDoorUnitNo,
             "street": street,
@@ -84,17 +96,5 @@ class Address: Codable {
                   longitude: CLLocationDegrees(geoPoint.longitude),
                   isSelected: false,
                   isDefault: isDefault)
-    }
-
-    func toString() -> String {
-        let streetName = userNickname.isNotEmpty ? userNickname : street
-        let addressLines = [floorDoorUnitNo, streetName + ", Cagayan de Oro", buildingLandmark, instructions,]
-        var fullAddressString = ""
-        for line in addressLines {
-            if line.isNotEmpty {
-                fullAddressString.append(line + ", ")
-            }
-        }
-        return fullAddressString.chompLast(2)
     }
 }

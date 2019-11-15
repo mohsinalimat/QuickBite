@@ -124,7 +124,7 @@ class ReviewAndPlaceOrderViewController: UIViewController, SelectPaymentMethodDe
     private func populateOrderDetails() {
         let cartQuantity = Cart.totalQuantity
         let s = cartQuantity > 1 ? "s" : ""
-        orderLabel.text = "\(cartQuantity) item\(s) from \(Cart.restaurant!.name)\nTotal \(Cart.totalPrice.asPriceString)"
+        orderLabel.text = "\(cartQuantity) item\(s) from \(Cart.restaurant!.name)\nTotal \((Cart.totalPrice + 50).asPriceString)"
     }
     
     private func populateDeliveryEstimate() {
@@ -235,18 +235,21 @@ class ReviewAndPlaceOrderViewController: UIViewController, SelectPaymentMethodDe
         
         let user = UserUtil.currentUser!
         let restaurant = Cart.restaurant!
+        let orderPlacedDate = Date()
         let order = Order(customerName: contactInfoLabel.text!.chompAt("\n"),
                           customerContactNumber: String(contactInfoLabel.text!.split(separator: "\n").last!),
-                          deliveryAddress: user.selectedAddress.toString(),
+                          deliveryAddress: user.selectedAddress,
                           restaurantName: restaurant.name,
                           restaurantAddress: restaurant.address,
                           restaurantContactNumber: restaurant.contactNumber,
-                          restaurantImageUrl: restaurant.imageURL,
-                          datePlaced: Date(),
+                          restaurantImageUrl: restaurant.imageUrl,
+                          datePlaced: orderPlacedDate,
+                          lastUpdated: orderPlacedDate,
                           items: Cart.items,
                           total: Cart.totalPrice,
+                          deliveryTimeEstimate: Int(deliveryEstimate.text!.chompAt(" "))!,
                           paymentMethod: Cart.paymentMethod!.rawValue,
-                          isPendingCompletion: true)
+                          currentStage: .orderSubmitted)
         
         UserUtil.addCurrentOrder(order)
         

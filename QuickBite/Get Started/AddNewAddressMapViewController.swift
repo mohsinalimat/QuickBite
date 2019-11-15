@@ -164,7 +164,7 @@ class AddNewAddressMapViewController: UIViewController, GMSMapViewDelegate, UITe
         
         let userNickname = userStreetNickname ?? selectedAddress.formattedAddress?.gmsStreet
         
-        let makeDefault = UserUtil.currentUser!.addresses.count == 0
+        let makeDefault = UserUtil.currentUser!.addresses.isEmpty
         
         let newAddress = Address(userNickname: userNickname ?? "",
                               floorDoorUnitNo: floorDoorUnitTextField.text ?? "",

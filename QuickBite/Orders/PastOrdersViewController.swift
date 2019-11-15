@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestore
 import CocoaLumberjack
 
-class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var previousOrdersTableView: UITableView!
     @IBOutlet weak var largeTitleContainerViewHeight: NSLayoutConstraint!
     
@@ -50,7 +50,7 @@ class PreviousOrdersViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrderTableViewCell", for: indexPath) as! PreviousOrderTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrderTableViewCell", for: indexPath) as! PastOrderTableViewCell
         
         let order = previousOrders[indexPath.row]
         if order.restaurantImageUrl.isNotEmpty {

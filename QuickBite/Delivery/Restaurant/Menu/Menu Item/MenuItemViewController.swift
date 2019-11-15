@@ -196,8 +196,8 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         let oldQuantity = Int(quantityLabel.text!)!
         let newQuantity = increase ? (oldQuantity + 1) : (oldQuantity - 1)
         
-        decreaseQuantityBtn.isEnabled = !(newQuantity == 1)
-        increaseQuantityBtn.isEnabled = !(newQuantity == 10)
+        decreaseQuantityBtn.isEnabled = newQuantity != 1
+        increaseQuantityBtn.isEnabled = newQuantity != 10
         
         quantityLabel.text = String(newQuantity)
         updateTotalPriceLabel()
@@ -214,7 +214,7 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
         if let cartRestaurant = Cart.restaurant, Cart.hasItems {
             if restaurant.id != cartRestaurant.id {
                 // User is trying to add an item from a different restaurant
-                let alert = UIAlertController(title: "Clear Your Cart?",
+                let alert = UIAlertController(title: "Clear Cart?",
                                               message: "You already have items from \(cartRestaurant.name) in your cart. Adding this item will create a new cart with this item from \(restaurant.name).",
                     preferredStyle: .alert)
                 
@@ -265,12 +265,16 @@ class MenuItemViewController: UIViewController, UITableViewDataSource, UITableVi
                 selectedOrderOptions.append("\(selectedCell.label.text!), ")
             }
             // Trim the extra ", " from the end of the string
-            selectedOrderOptions = String(selectedOrderOptions.dropLast(2))
+            selectedOrderOptions = selectedOrderOptions.chompLast(2)
+        }
+        
+        if selectedOrderOptions == "" {
+            selectedOrderOptions = "None"
         }
         
         menuItem.selectedOptions = selectedOrderOptions
         menuItem.selectedQuantity = Int(quantityLabel.text!)!
-        menuItem.specialInstructions = specialInstructionsTextField.text ?? ""
+        menuItem.specialInstructions = specialInstructionsTextField.text ?? "None"
         menuItem.finalPrice = (Double(menuItem.selectedQuantity) * (menuItem.price + totalAddedPrice))
         Cart.restaurant = restaurant
         Cart.addItem(menuItem)

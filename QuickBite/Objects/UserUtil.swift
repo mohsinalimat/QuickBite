@@ -87,18 +87,15 @@ struct UserUtil {
             return
         }
         
-        let existingAddresses = user.addresses
-        
         // If new address has isDefault == true, set all others false
         if newAddress.isDefault {
-            existingAddresses.forEach({ $0.isDefault = false })
+            user.addresses.forEach({ $0.isDefault = false })
         }
         
         // If new address has isSelected == true, set all others false
         if newAddress.isSelected {
-            existingAddresses.forEach({ $0.isSelected = false })
+            user.addresses.forEach({ $0.isSelected = false })
         }
-        
 
         user.addresses.append(newAddress)
         updateCurrentUser(user)
@@ -112,6 +109,7 @@ struct UserUtil {
         }
         user.addresses.forEach({ $0.isDefault = $0.id == addressId })
         updateCurrentUser(user)
+        syncUserProperty(property: .addresses)
     }
     
     static func setSelectedAddress(addressId: String) {
@@ -154,7 +152,7 @@ struct UserUtil {
     }
     
     // MARK: - Sync
-    // User this for manually triggering sync in situations where syncing
+    // Use this for manually triggering sync in situations where syncing
     // after every change would be excessive, i.e. changing default address
     static func triggerUserSync(property: SyncProperty) {
         syncUserProperty(property: property)

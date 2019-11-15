@@ -35,7 +35,7 @@ class Restaurant: Codable {
     var openHours: String
     var address: String
     var topPick: Bool
-    var imageURL: String
+    var imageUrl: String
     var menuItems: [MenuItem]
     
     var geoPoint: GeoPoint {
@@ -55,7 +55,7 @@ class Restaurant: Codable {
          openHours: String,
          address: String,
          topPick: Bool,
-         imageURL: String,
+         imageUrl: String,
          menuItems: [MenuItem]) {
         self.id = id
         self.name = name
@@ -68,7 +68,7 @@ class Restaurant: Codable {
         self.openHours = openHours
         self.address = address
         self.topPick = topPick
-        self.imageURL = imageURL
+        self.imageUrl = imageUrl
         self.menuItems = menuItems
     }
 
@@ -98,7 +98,7 @@ class Restaurant: Codable {
                   openHours: openHours,
                   address: address,
                   topPick: topPick,
-                  imageURL: imageUrl,
+                  imageUrl: imageUrl,
                   menuItems: menuItems.compactMap({ MenuItem(dictionary: $0) }))
     }
     

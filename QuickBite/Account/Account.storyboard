@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Kq-Mq-TqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Kq-Mq-TqX">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Account-->
         <scene sceneID="GZa-yj-kuE">
             <objects>
-                <navigationController id="5Kq-Mq-TqX" customClass="TDNavigationController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="5Kq-Mq-TqX" customClass="TDNavigationController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="account" id="WLJ-ro-9gH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wmp-z4-slt">
@@ -30,7 +30,7 @@
         <!--Account Menu View Controller-->
         <scene sceneID="ZHf-m5-Itr">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PAo-Fl-1YM" customClass="AccountMenuViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PAo-Fl-1YM" customClass="AccountMenuViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NLk-nb-TUe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,15 +41,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="308" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfc-yi-c75" customClass="AutoSizedTableView" customModule="QuickBite" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="308" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfc-yi-c75" customClass="AutoSizedTableView" customModule="Tsada_Delivery" customModuleProvider="target">
                                 <rect key="frame" x="8" y="108.66666666666669" width="367" height="308"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AccountMenuItemCell" id="wzh-No-CUD" customClass="AccountMenuTableViewCell" customModule="QuickBite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AccountMenuItemCell" id="wzh-No-CUD" customClass="AccountMenuTableViewCell" customModule="Tsada_Delivery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="367" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wzh-No-CUD" id="9dJ-sg-Zeh">
-                                            <rect key="frame" x="0.0" y="0.0" width="340.66666666666669" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="jrg-pd-e07">
@@ -114,7 +114,7 @@
         <!--Addresses View Controller-->
         <scene sceneID="2cu-lo-ujW">
             <objects>
-                <viewController storyboardIdentifier="AddressesVC" id="Kbn-cq-KFk" customClass="AddressesViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddressesVC" id="Kbn-cq-KFk" customClass="AddressesViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zh0-Fc-3NO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,22 +137,23 @@
                                 <rect key="frame" x="0.0" y="45.666666666666686" width="375" height="595.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressCell" id="OdX-IT-xDe" customClass="AddressTableViewCell" customModule="QuickBite" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="41"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressCell" id="OdX-IT-xDe" customClass="AddressTableViewCell" customModule="Tsada_Delivery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="165.66667175292969"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OdX-IT-xDe" id="O4y-Dr-6II">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="165.66667175292969"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="ysr-Yp-WE4">
-                                                    <rect key="frame" x="337" y="5.6666666666666714" width="30" height="30.000000000000004"/>
+                                                    <rect key="frame" x="337" y="68" width="30" height="30"/>
+                                                    <color key="tintColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="FXr-vx-GSV"/>
                                                         <constraint firstAttribute="width" constant="30" id="s7m-rr-RsU"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="default address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPG-ae-0nr" customClass="SmallCapsLabel" customModule="QuickBite" customModuleProvider="target">
-                                                    <rect key="frame" x="16.000000000000007" y="2" width="124.66666666666669" height="20.333333333333332"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="default address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPG-ae-0nr" customClass="SmallCapsLabel" customModule="Tsada_Delivery" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="2" width="132" height="20.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -164,34 +165,34 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xmA-rs-c3C">
-                                                    <rect key="frame" x="16" y="21" width="313" height="0.0"/>
+                                                    <rect key="frame" x="16" y="21.000000000000007" width="313" height="124.66666666666669"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxK-u2-iOh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door #8, 75 Golden Shower Drive" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-8y-h9n">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="23" width="313" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Across from tomas saco petron" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDa-IV-gqF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="43.333333333333329" width="313" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cagayan de Oro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl7-8C-EQU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="63.666666666666679" width="313" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions: really long instructions that I wrote while I was drink" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akR-cl-f4S">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="84" width="313" height="40.666666666666657"/>
                                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -199,7 +200,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msH-xM-Kb8" userLabel="Divider">
-                                                    <rect key="frame" x="0.0" y="40.666666666666657" width="375" height="0.3333333333333357"/>
+                                                    <rect key="frame" x="0.0" y="165.33333333333334" width="375" height="0.33333333333334281"/>
                                                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="gu3-dx-KY8"/>
@@ -263,7 +264,7 @@
         <!--Notifications View Controller-->
         <scene sceneID="GEe-f9-ggY">
             <objects>
-                <viewController id="3CK-fQ-1ft" customClass="NotificationsViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3CK-fQ-1ft" customClass="NotificationsViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fy2-Qf-8VX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,7 +325,7 @@
         <!--Delegate-->
         <scene sceneID="g1P-91-1wD">
             <objects>
-                <viewController id="ziR-Kx-Qz4" customClass="AccountDetailsViewController" customModule="QuickBite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ziR-Kx-Qz4" customClass="AccountDetailsViewController" customModule="Tsada_Delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JlV-lM-nB0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="912"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,7 +345,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="tuC-4g-0Un">
                                                 <rect key="frame" x="16" y="67.666666666666657" width="343" height="106"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOG-dD-Fkn" customClass="TweeAttributedTextField" customModule="QuickBite" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOG-dD-Fkn" customClass="TweeAttributedTextField" customModule="Tsada_Delivery" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="0HC-qL-9Zj"/>
@@ -385,7 +386,7 @@
                                                             <outlet property="delegate" destination="ziR-Kx-Qz4" id="hfc-1w-MGB"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z3O-BV-HHK" customClass="TweeAttributedTextField" customModule="QuickBite" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z3O-BV-HHK" customClass="TweeAttributedTextField" customModule="Tsada_Delivery" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="71" width="343" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="mvq-wY-JeN"/>
@@ -393,7 +394,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="Phone number"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="Phone Number"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="originalPlaceholderFontSize">
                                                                 <real key="value" value="17"/>
                                                             </userDefinedRuntimeAttribute>
@@ -459,7 +460,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientEnabled" value="NO"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
-                                        <color key="value" red="0.95843888519999998" green="0.95843888519999998" blue="0.95843888519999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">

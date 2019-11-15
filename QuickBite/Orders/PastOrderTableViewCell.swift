@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PreviousOrderTableViewCell: UITableViewCell {
+class PastOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantImage: UIImageView!
     @IBOutlet weak var restaurantImageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var restaurantName: UILabel!

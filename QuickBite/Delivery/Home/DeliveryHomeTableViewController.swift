@@ -65,6 +65,7 @@ class DeliveryHomeTableViewController: UITableViewController {
             }
         }
         
+        // FIXME: should remove this line and just use viewWillAppear
         selectedAddress = UserUtil.currentUser!.selectedAddress
         addHomeHeader()
     }
@@ -171,8 +172,8 @@ class DeliveryHomeTableViewController: UITableViewController {
         let restaurantLoc = CLLocation(latitude: restaurant.latitude,
                                        longitude: restaurant.longitude)
         
-        let addressLoc = CLLocation(latitude: UserUtil.currentUser!.selectedAddress.latitude,
-                                    longitude: UserUtil.currentUser!.selectedAddress.longitude)
+        let addressLoc = CLLocation(latitude: selectedAddress.latitude,
+                                    longitude: selectedAddress.longitude)
         
         let distance = ((restaurantLoc.distance(from: addressLoc) / 1000) * 100).rounded() / 100
         let timeEstimate = estimateTimeFromDistance(distance)
@@ -245,7 +246,7 @@ class DeliveryHomeTableViewController: UITableViewController {
                 let restaurant = allRestaurants[indexPath.row - 1]
                 cell.restaurantName.text = restaurant.name
                 cell.restaurantCategories.text = restaurant.categories
-                cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
+                cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
                 cell.restaurantRating.text = String(restaurant.rating)
                 if sortByTime {
                     cell.deliveryTimeEstimate.text = restaurant.distanceTime!.time
@@ -309,7 +310,7 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
         let restaurant = highlightedCategories[collectionView.tag].restaurants[indexPath.row]
         
         cell.restaurantName.text = restaurant.name
-        cell.imageView.sd_setImage(with: URL(string: restaurant.imageURL), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
+        cell.imageView.sd_setImage(with: URL(string: restaurant.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         if sortByTime {
             cell.timeAndDeliveryFee.text = restaurant.distanceTime!.time + " · Free delivery"
         } else {

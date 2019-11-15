@@ -12,13 +12,6 @@ import BEMCheckBox
 import CocoaLumberjack
 import FittedSheets
 
-enum OrderProgressStage: Int {
-    case orderSubmitted
-    case beingPreparedByStore
-    case onItsWay
-    case delivered
-}
-
 class CurrentOrderViewController: UIViewController {
     
     // Restaurant
@@ -195,7 +188,7 @@ class CurrentOrderViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pastOrdersVC = segue.destination as? PreviousOrdersViewController {
+        if let pastOrdersVC = segue.destination as? PastOrdersViewController {
             pastOrdersVC.showBigTitle = false
         }
     }

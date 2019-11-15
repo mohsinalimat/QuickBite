@@ -11,8 +11,6 @@ import CocoaLumberjack
 
 struct Cart {
     
-    static var bannerIsShown = false
-    
     static var hasItems: Bool {
         return items.count >= 1
     }

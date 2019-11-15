@@ -18,9 +18,9 @@ class OrdersContainerViewController: UIViewController {
         return viewController
     }()
     
-    private lazy var previousOrdersViewController: PreviousOrdersViewController = {
+    private lazy var previousOrdersViewController: PastOrdersViewController = {
         let storyboard = UIStoryboard(name: "Orders", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "PastOrdersVC") as! PreviousOrdersViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "PastOrdersVC") as! PastOrdersViewController
         return viewController
     }()
     

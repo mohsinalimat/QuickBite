@@ -45,7 +45,7 @@
 		854348F72311218A00411B80 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854348F62311218A00411B80 /* Account.storyboard */; };
 		854348F92311288700411B80 /* AccountMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854348F82311288700411B80 /* AccountMenuViewController.swift */; };
 		854348FD23113F6A00411B80 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854348FC23113F6A00411B80 /* AccountDetailsViewController.swift */; };
-		85466AC6233CA83E007B8F21 /* PreviousOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85466AC5233CA83E007B8F21 /* PreviousOrderTableViewCell.swift */; };
+		85466AC6233CA83E007B8F21 /* PastOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85466AC5233CA83E007B8F21 /* PastOrderTableViewCell.swift */; };
 		85466AC8233CC750007B8F21 /* CurrentOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85466AC7233CC750007B8F21 /* CurrentOrderViewController.swift */; };
 		8552020C2317C72E00A1E2D0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552020B2317C72E00A1E2D0 /* Structs.swift */; };
 		855202102317DD2A00A1E2D0 /* CartBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8552020F2317DD2A00A1E2D0 /* CartBanner.xib */; };
@@ -80,7 +80,7 @@
 		85B026692337D375004C4826 /* DeliveryHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B026682337D375004C4826 /* DeliveryHomeHeader.xib */; };
 		85BEF10B2345FAA4005FE8E4 /* MenuCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BEF10A2345FAA4005FE8E4 /* MenuCategoryViewController.swift */; };
 		85BF0527234A1367001B325D /* SelectPaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BF0526234A1367001B325D /* SelectPaymentMethodViewController.swift */; };
-		85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */; };
+		85C4A543233B8A8D005819E6 /* PastOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C4A542233B8A8D005819E6 /* PastOrdersViewController.swift */; };
 		85CF2DFF2328F44800F9C815 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */; };
 		85D10E7E233F729700F60923 /* DistanceTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */; };
 		85D5EB51234A24ED00109089 /* GCashInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5EB50234A24ED00109089 /* GCashInfoViewController.swift */; };
@@ -150,7 +150,7 @@
 		854348F62311218A00411B80 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		854348F82311288700411B80 /* AccountMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMenuViewController.swift; sourceTree = "<group>"; };
 		854348FC23113F6A00411B80 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
-		85466AC5233CA83E007B8F21 /* PreviousOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrderTableViewCell.swift; sourceTree = "<group>"; };
+		85466AC5233CA83E007B8F21 /* PastOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrderTableViewCell.swift; sourceTree = "<group>"; };
 		85466AC7233CC750007B8F21 /* CurrentOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderViewController.swift; sourceTree = "<group>"; };
 		8552020B2317C72E00A1E2D0 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8552020F2317DD2A00A1E2D0 /* CartBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartBanner.xib; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		85B026682337D375004C4826 /* DeliveryHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryHomeHeader.xib; sourceTree = "<group>"; };
 		85BEF10A2345FAA4005FE8E4 /* MenuCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategoryViewController.swift; sourceTree = "<group>"; };
 		85BF0526234A1367001B325D /* SelectPaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentMethodViewController.swift; sourceTree = "<group>"; };
-		85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrdersViewController.swift; sourceTree = "<group>"; };
+		85C4A542233B8A8D005819E6 /* PastOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrdersViewController.swift; sourceTree = "<group>"; };
 		85CF2DFE2328F44800F9C815 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		85D10E7D233F729700F60923 /* DistanceTimeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTimeUtil.swift; sourceTree = "<group>"; };
 		85D5EB50234A24ED00109089 /* GCashInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCashInfoViewController.swift; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 				854348CD2310EA5600411B80 /* OrdersContainerViewController.swift */,
 				85466AC7233CC750007B8F21 /* CurrentOrderViewController.swift */,
 				85633C00233CDB3E00193876 /* CurrentOrderDetailViewController.swift */,
-				85C4A542233B8A8D005819E6 /* PreviousOrdersViewController.swift */,
-				85466AC5233CA83E007B8F21 /* PreviousOrderTableViewCell.swift */,
+				85C4A542233B8A8D005819E6 /* PastOrdersViewController.swift */,
+				85466AC5233CA83E007B8F21 /* PastOrderTableViewCell.swift */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -585,7 +585,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 854348C12310EA5600411B80 /* Build configuration list for PBXProject "QuickBite" */;
+			buildConfigurationList = 854348C12310EA5600411B80 /* Build configuration list for PBXProject "Tsada Delivery" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -735,7 +735,7 @@
 				850A7D8E232FA6D600F67125 /* MenuItem.swift in Sources */,
 				856BDCE923151CB6001766AD /* MenuItemViewController.swift in Sources */,
 				85283769231D35390083ADD2 /* ReviewAndPlaceOrderViewController.swift in Sources */,
-				85C4A543233B8A8D005819E6 /* PreviousOrdersViewController.swift in Sources */,
+				85C4A543233B8A8D005819E6 /* PastOrdersViewController.swift in Sources */,
 				85BEF10B2345FAA4005FE8E4 /* MenuCategoryViewController.swift in Sources */,
 				85AF1923231BC19A00D8E86E /* UICollectionViewScrollDirection+PeekDataConversion.swift in Sources */,
 				8552021A2317E87400A1E2D0 /* SPAlertPreset.swift in Sources */,
@@ -746,7 +746,7 @@
 				853B2BFB233235FF003E6011 /* Cart.swift in Sources */,
 				850181BD233B9EF800EF8017 /* Address.swift in Sources */,
 				8552021C2317E87400A1E2D0 /* SPAlertIconDoneView.swift in Sources */,
-				85466AC6233CA83E007B8F21 /* PreviousOrderTableViewCell.swift in Sources */,
+				85466AC6233CA83E007B8F21 /* PastOrderTableViewCell.swift in Sources */,
 				85E927B1231A4615008D8DE0 /* DeliveryHomeTableViewController.swift in Sources */,
 				854348FD23113F6A00411B80 /* AccountDetailsViewController.swift in Sources */,
 				852AE800232BB2DF00804751 /* AnimatedTextField.swift in Sources */,
@@ -1013,7 +1013,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		854348C12310EA5600411B80 /* Build configuration list for PBXProject "QuickBite" */ = {
+		854348C12310EA5600411B80 /* Build configuration list for PBXProject "Tsada Delivery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				854348E32310EA5800411B80 /* Debug */,
