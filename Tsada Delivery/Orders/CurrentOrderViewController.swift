@@ -11,6 +11,7 @@ import GTProgressBar
 import BEMCheckBox
 import CocoaLumberjack
 import FittedSheets
+import FirebaseFirestore
 
 class CurrentOrderViewController: UIViewController {
     
@@ -41,6 +42,8 @@ class CurrentOrderViewController: UIViewController {
     private var currentStage: OrderProgressStage = .orderSubmitted
     private var currentOrder: Order!
     
+    private var currentOrderListener: ListenerRegistration?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +67,40 @@ class CurrentOrderViewController: UIViewController {
         orderQuantityAndTotal.text = "\(currentOrder.items.count) item\(s) · Total \(currentOrder.total.asPriceString)"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let db = Firestore.firestore()
+        currentOrderListener = db.collection("orders").document(currentOrder.id.uuidString)
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching order document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Order document data was empty.")
+                    return
+                }
+                self.currentOrder = Order(dictionary: data)
+                // Save latest orderInfo to currentUser
+                // If currentStage is 3 then TDTabBarActivity will update the current order
+                if self.currentOrder.currentStage != 3 {
+                    UserUtil.addOrUpdateCurrentOrder(self.currentOrder)
+                }
+                self.updateUiIfNeeded()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        currentOrderListener?.remove()
+    }
+    
+    private func updateUiIfNeeded() {
+        if currentStage.rawValue != currentOrder.currentStage {
+            setProgressStage(OrderProgressStage(rawValue: currentOrder.currentStage)!)
+        }
+    }
+    
     // MARK: - Order Progress Tracker
     func setProgressStage(_ newStage: OrderProgressStage) {
         if (newStage.rawValue - currentStage.rawValue) > 1 {
@@ -71,7 +108,6 @@ class CurrentOrderViewController: UIViewController {
             // which will be animated
             catchUpCheckboxes(newStage)
             catchUpTitlesAndSubtitles(newStage)
-            
         }
         advanceProgressBar(newStage)
     }

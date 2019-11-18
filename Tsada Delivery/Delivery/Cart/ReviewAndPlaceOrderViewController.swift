@@ -251,7 +251,7 @@ class ReviewAndPlaceOrderViewController: UIViewController, SelectPaymentMethodDe
                           paymentMethod: Cart.paymentMethod!.rawValue,
                           currentStage: .orderSubmitted)
         
-        UserUtil.addCurrentOrder(order)
+        UserUtil.addOrUpdateCurrentOrder(order)
         
         ordersDb.document(order.id.uuidString).setData(order.dictionary) { err in
             if let err = err {

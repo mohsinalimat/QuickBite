@@ -61,7 +61,7 @@ struct UserUtil {
     }
     
     // MARK: - Order
-    static func addCurrentOrder(_ order: Order) {
+    static func addOrUpdateCurrentOrder(_ order: Order) {
         guard let user = currentUser else {
             return
         }
