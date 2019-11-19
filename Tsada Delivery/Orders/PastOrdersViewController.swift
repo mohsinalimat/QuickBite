@@ -70,7 +70,6 @@ class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.restaurantName.text = order.restaurantName
         cell.date.text = dateFormatter.string(from: order.datePlaced)
         cell.total.text = order.total.asPriceString
-        DDLogDebug("Order items count: \(order.items.count)")
         cell.setMenuItems(order.items)
         
         return cell

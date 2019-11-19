@@ -43,7 +43,6 @@ class Order: Codable {
     var currentStage: Int
     
     var dictionary: [String : Any] {
-        DDLogDebug("itemsDictionary count: \(itemsDictionary.count)")
         return [
             "id": id.uuidString,
             "customerName": customerName,
@@ -121,8 +120,6 @@ class Order: Codable {
                 return nil
         }
         
-        DDLogDebug("items count: \(items.count)")
-
         self.init(id: UUID(uuidString: id)!,
                   customerName: customerName,
                   customerContactNumber: customerContactNumber,
