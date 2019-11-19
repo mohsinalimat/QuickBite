@@ -14,7 +14,7 @@ class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var previousOrdersTableView: UITableView!
     @IBOutlet weak var largeTitleContainerViewHeight: NSLayoutConstraint!
     
-    private var previousOrders: [Order]!
+    private var previousOrders: [Order] = []
     private let dateFormatter = DateFormatter()
     
     var showBigTitle = true
@@ -26,11 +26,20 @@ class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
-        
-        previousOrders = UserUtil.currentUser!.pastOrders
-        if previousOrders.isEmpty {
-            previousOrdersTableView.alpha = 0
-            previousOrdersTableView.isUserInteractionEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let updatedPreviousOrders = UserUtil.currentUser!.pastOrders
+        if previousOrders.count != updatedPreviousOrders.count {
+            // Update UI
+            previousOrders = updatedPreviousOrders
+            if previousOrders.isEmpty {
+                previousOrdersTableView.alpha = 0
+                previousOrdersTableView.isUserInteractionEnabled = false
+            } else {
+                previousOrdersTableView.reloadData()
+            }
         }
     }
     
@@ -61,6 +70,7 @@ class PastOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.restaurantName.text = order.restaurantName
         cell.date.text = dateFormatter.string(from: order.datePlaced)
         cell.total.text = order.total.asPriceString
+        DDLogDebug("Order items count: \(order.items.count)")
         cell.setMenuItems(order.items)
         
         return cell

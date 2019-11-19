@@ -55,6 +55,8 @@ class AccountMenuViewController: UIViewController, UITableViewDataSource, UITabl
         updateNameMenuItem(newName: UserUtil.currentUser!.name)
         
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            guard UserUtil.currentUser!.isGuest else { return }
+            
             if let user = user {
                 let db = Firestore.firestore()
                 

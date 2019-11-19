@@ -23,10 +23,11 @@ class FirebaseDataWriterViewController: UIViewController {
         let db = Firestore.firestore()
         let restaurantRef = db.collection("restaurants")
         
-        chickaLoca(restaurantRef: restaurantRef)
+//        chickaLoca(restaurantRef: restaurantRef)
 //        houseOfPancakes(restaurantRef: restaurantRef)
 //        silverRain(restaurantRef: restaurantRef)
 //        kagayan(restaurantRef: restaurantRef)
+        mySeafoodRestaurant(restaurantRef: restaurantRef)
 
     }
     
@@ -403,6 +404,216 @@ class FirebaseDataWriterViewController: UIViewController {
         ]) { err in
             if let _ = err {
                 DDLogDebug("Error writing chicka loca!")
+            } else {
+                DDLogDebug("Done writing chicka loka")
+            }
+        }
+    }
+    
+    //MARK: - My Seafood Restaurant
+    private func mySeafoodRestaurant(restaurantRef: CollectionReference) {
+        restaurantRef.document("my_seafood_restaurant").setData([
+            "id": UUID().uuidString,
+            "name": "My Seafood Restaurant",
+            "categories": "Seafood, Pasta, Wings",
+            "openHours": "M0800-1600;T0800-1600;W0800-1600;R0800-1600;F0800-1400;S;U1030-1400",
+            "contactNumber": "+631234567890",
+            "alternativeContactNumber": "+634238204728",
+            "geoPoint": GeoPoint(latitude: 8.476797, longitude: 124.645025),
+            "latitude": 8.476797,
+            "longitude": 124.645025,
+            "rating": 5.0,
+            "imageUrl": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/seafood.jpg?alt=media&token=7e729cef-4ade-4799-9429-ab0b95a1ca6b",
+            "address": "Pabayo corner, Mayor R. Chaves St, Cagayan de Oro, 9000 Misamis Oriental",
+            "topPick": true,
+            "menuItems": [
+                [
+                    "itemName": "Seafood Combo",
+                    "description": "Your pick of Shrimps, Crabs, Mussels and side of Coleslaw, Steamed Veggies, or Corn",
+                    "category": "Seafood, Fish, Shrimp",
+                    "featured": true,
+                    "itemImageUrl": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/fish_and_shrimp_combo.jpg?alt=media&token=00d1856a-4826-44bd-9608-32fdba55a560",
+                    "price": 299,
+                    "itemOptionCategories": [
+                        [
+                            "optionsCategoryName": "Entrée",
+                            "required": true,
+                            "singleSelection": true,
+                            "options": [
+                                [
+                                    "optionName": "Shrimps",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Crabs",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Mussels",
+                                    "addedPrice": 0
+                                ]
+                            ]
+                        ],
+                        [
+                            "optionsCategoryName": "Sides",
+                            "required": true,
+                            "singleSelection": true,
+                            "options": [
+                                [
+                                    "optionName": "Coleslaw",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Steamed Vegetables",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Corn",
+                                    "addedPrice": 0
+                                ]
+                            ]
+                        ],
+                        [
+                            "optionsCategoryName": "Drink",
+                            "required": true,
+                            "singleSelection": true,
+                            "options": [
+                                [
+                                    "optionName": "Coca-Cola",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Lipton's Iced Tea",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Sprite",
+                                    "addedPrice": 0
+                                ],
+                                [
+                                    "optionName": "Mango Juice",
+                                    "addedPrice": 0
+                                ]
+                            ]
+                        ],
+                        [
+                            "optionsCategoryName": "Extras",
+                            "required": false,
+                            "singleSelection": false,
+                            "options": [
+                                [
+                                    "optionName": "Extra Shrimp (4 pcs.)",
+                                    "addedPrice": 49
+                                ],
+                                [
+                                    "optionName": "Extra Rice",
+                                    "addedPrice": 12
+                                ],
+                                [
+                                    "optionName": "Extra Garlic Sauce",
+                                    "addedPrice": 10
+                                ],
+                                [
+                                    "optionName": "Extra Dipping Sauce",
+                                    "addedPrice": 10
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                [
+                    "itemName": "Crispy Calamari",
+                    "description": "",
+                    "category": "Seafood",
+                    "featured": true,
+                    "itemImageUrl": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/crispy-fried-calamari-1b.jpg?alt=media&token=3c7695b4-47bd-4430-a699-b4d07f8b6572",
+                    "price": 119,
+                    "itemOptionCategories": [
+                        [
+                            "optionsCategoryName": "Sides",
+                            "required": true,
+                            "singleSelection": true,
+                            "options": [
+                                [
+                                    "optionName": "Side1",
+                                    "addedPrice": 30
+                                ],
+                                [
+                                    "optionName": "Side2",
+                                    "addedPrice": 40
+                                ]
+                            ]
+                        ],
+                        [
+                            "optionsCategoryName": "Extras",
+                            "required": false,
+                            "singleSelection": false,
+                            "options": [
+                                [
+                                    "optionName": "Extra BBQ Sauce",
+                                    "addedPrice": 25
+                                ],
+                                [
+                                    "optionName": "Extra Garlic Sauce",
+                                    "addedPrice": 20
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                [
+                    "itemName": "Sisig",
+                    "description": "",
+                    "category": "Sides",
+                    "featured": true,
+                    "itemImageUrl": "https://firebasestorage.googleapis.com/v0/b/quickbite-1c608.appspot.com/o/Sizzling-Pork-Sisig.jpg?alt=media&token=7893f09a-aefd-40ac-8b53-cbd07fb3eadd",
+                    "price": 99,
+                    "itemOptionCategories": []
+                ],
+                [
+                    "itemName": "6 pc. Spicy BBQ Wings",
+                    "description": "",
+                    "category": "Wings",
+                    "featured": true,
+                    "itemImageUrl": "https://www.averiecooks.com/wp-content/uploads/2016/04/bbqchickenwings-5-650x975.jpg",
+                    "price": 119,
+                    "itemOptionCategories": [
+                        [
+                            "optionsCategoryName": "Sides",
+                            "required": true,
+                            "singleSelection": true,
+                            "options": [
+                                [
+                                    "optionName": "Side1",
+                                    "addedPrice": 30
+                                ],
+                                [
+                                    "optionName": "Side2",
+                                    "addedPrice": 40
+                                ]
+                            ]
+                        ],
+                        [
+                            "optionsCategoryName": "Extras",
+                            "required": false,
+                            "singleSelection": false,
+                            "options": [
+                                [
+                                    "optionName": "Extra BBQ Sauce",
+                                    "addedPrice": 25
+                                ],
+                                [
+                                    "optionName": "Extra Garlic Sauce",
+                                    "addedPrice": 20
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+            ]
+        ]) { err in
+            if let error = err {
+                DDLogDebug("Error writing chicka loca!: \(error)")
             } else {
                 DDLogDebug("Done writing chicka loka")
             }

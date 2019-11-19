@@ -162,6 +162,7 @@ class DeliveryHomeTableViewController: UITableViewController {
         // so that the tableView and collectionViews know to display distance instead of time.
         if let _ = distanceTimes {
             allRestaurants.sort(by: { $0.distanceTime!.timeValue < $1.distanceTime!.timeValue } )
+            sortByTime = true
         } else {
             allRestaurants.sort(by: { $0.distanceTime!.distanceValue < $1.distanceTime!.distanceValue } )
             sortByTime = false
@@ -185,7 +186,7 @@ class DeliveryHomeTableViewController: UITableViewController {
                                                timeValue: timeEstimate * 60)
     }
     
-    // Estimates a travel time for a beeline distance
+    // Estimates a travel time for a beeline distance :/
     private func estimateTimeFromDistance(_ distance: Double) -> Int {
         let timeEstimate = Int(distance * 10)
         if timeEstimate > 45 {
@@ -249,7 +250,7 @@ class DeliveryHomeTableViewController: UITableViewController {
                 cell.restaurantImage.sd_setImage(with: URL(string: restaurant.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
                 cell.restaurantRating.text = String(restaurant.rating)
                 if sortByTime {
-                    cell.deliveryTimeEstimate.text = restaurant.distanceTime!.time
+                    cell.deliveryTimeEstimate.text = restaurant.deliveryTimeEstimate!
                 } else {
                     cell.deliveryTimeEstimate.text = restaurant.distanceTime!.distance
                 }
@@ -312,7 +313,7 @@ extension DeliveryHomeTableViewController: UICollectionViewDataSource {
         cell.restaurantName.text = restaurant.name
         cell.imageView.sd_setImage(with: URL(string: restaurant.imageUrl), placeholderImage: UIImage(named: "tertiary_system_grouped_background"))
         if sortByTime {
-            cell.timeAndDeliveryFee.text = restaurant.distanceTime!.time + " · Free delivery"
+            cell.timeAndDeliveryFee.text = restaurant.deliveryTimeEstimate! + " · Free delivery"
         } else {
             cell.timeAndDeliveryFee.text = restaurant.distanceTime!.distance + " · Free delivery"
         }

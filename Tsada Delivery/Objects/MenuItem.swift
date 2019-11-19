@@ -41,7 +41,11 @@ class MenuItem: Codable {
          category: String,
          featured: Bool,
          imageUrl: String,
-         itemOptionCategories: [MenuItemOptionCategory]) {
+         itemOptionCategories: [MenuItemOptionCategory],
+         selectedOptions: String,
+         selectedQuantity: Int,
+         finalPrice: Double,
+         specialInstructions: String) {
         self.itemName = itemName
         self.description = description
         self.price = price
@@ -49,23 +53,33 @@ class MenuItem: Codable {
         self.featured = featured
         self.imageUrl = imageUrl
         self.itemOptionCategories = itemOptionCategories
-        self.selectedOptions = ""
-        self.selectedQuantity = 0
-        self.finalPrice = 0
-        self.specialInstructions = ""
+        self.selectedOptions = selectedOptions
+        self.selectedQuantity = selectedQuantity
+        self.finalPrice = finalPrice
+        self.specialInstructions = specialInstructions
     }
     
     convenience init?(dictionary: [String : Any]) {
         // Required fields
-        guard let itemName              = dictionary["itemName"] as? String,
-            let description             = dictionary["description"] as? String,
-            let price                   = dictionary["price"] as? Double,
-            let category                = dictionary["category"] as? String,
-            let featured                = dictionary["featured"] as? Bool,
-            let itemOptionCategories    = dictionary["itemOptionCategories"] as? Array<[String : Any]> else { return nil }
+
+        guard let itemName = dictionary["itemName"] as? String else {
+            DDLogError("Dictionary: \(dictionary)")
+            return nil
+        }
         
         // Optional fields
-        let imageUrl = dictionary["itemImageUrl"] as? String ?? ""
+        let category    = dictionary["category"] as? String ?? ""
+        let featured    = dictionary["featured"] as? Bool ?? false
+        let price       = dictionary["price"] as? Double ?? 0.0
+        let description = dictionary["description"] as? String ?? ""
+        let imageUrl    = dictionary["itemImageUrl"] as? String ?? ""
+        let itemOptionCategories = dictionary["itemOptionCategories"] as? Array<[String : Any]> ?? []
+        
+        // Past Order Fields
+        let finalPrice  = dictionary["finalPrice"] as? Double ?? 0.0
+        let selectedOptions = dictionary["selectedOptions"] as? String ?? ""
+        let selectedQuantity = dictionary["selectedQuantity"] as? Int ?? 1
+        let specialInstructions = dictionary["specialInstructions"] as? String ?? ""
         
         self.init(itemName: itemName,
                   description: description,
@@ -73,7 +87,11 @@ class MenuItem: Codable {
                   category: category,
                   featured: featured,
                   imageUrl: imageUrl,
-                  itemOptionCategories: itemOptionCategories.compactMap({ MenuItemOptionCategory(dictionary: $0) }))
+                  itemOptionCategories: itemOptionCategories.compactMap({ MenuItemOptionCategory(dictionary: $0) }),
+                  selectedOptions: selectedOptions,
+                  selectedQuantity: selectedQuantity,
+                  finalPrice: finalPrice,
+                  specialInstructions: specialInstructions)
     }
     
     

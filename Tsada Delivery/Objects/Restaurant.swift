@@ -43,6 +43,19 @@ class Restaurant: Codable {
     }
     
     var distanceTime: DistanceTime? // Used for sorting purposes
+    var deliveryTimeEstimate: String? {
+        if let dt = distanceTime {
+            if let rawTimeEstimate = Int(dt.time.chompAt(" ")) {
+                let realTimeEstimate = rawTimeEstimate + 20
+                return "\(realTimeEstimate) mins"
+            }
+            // Should never be reached
+            DDLogError("Error parsing distanceTime")
+            return dt.time
+        }
+        return nil
+    }
+    
     
     init(id: String,
          name: String,
@@ -107,16 +120,15 @@ class Restaurant: Codable {
     }
     
     func getMenuCategories() -> [String] {
+        // Put all unique categories into a set
         var categories: [String] = []
-        for menuItem in menuItems {
-            if !categories.contains(menuItem.category) {
-                categories.append(menuItem.category)
-            }
+        menuItems.forEach {
+            categories.append(contentsOf: $0.category.components(separatedBy: ", "))
         }
-        return categories
+        return Array(Set(categories)).sorted()
     }
     
     func getItemsInCategory(_ category: String) -> [MenuItem] {
-        return menuItems.filter{ $0.category == category }
+        return menuItems.filter{ $0.category.contains(category) }
     }
 }

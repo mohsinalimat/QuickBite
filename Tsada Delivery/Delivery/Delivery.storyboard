@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uub-QG-GGe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uub-QG-GGe">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -234,7 +234,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="qrD-VN-fm6">
-                                            <rect key="frame" x="40.666666666666664" y="262" width="35.999999999999993" height="36"/>
+                                            <rect key="frame" x="40.666666666666664" y="271" width="18" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="qrD-VN-fm6" secondAttribute="height" multiplier="1:1" id="09S-n3-LRR"/>
                                             </constraints>
@@ -489,16 +489,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_marker" translatesAutoresizingMaskIntoConstraints="NO" id="4Ac-Ps-zbk">
-                                                <rect key="frame" x="16" y="63.666666666666671" width="36" height="36"/>
+                                                <rect key="frame" x="16" y="63.666666666666671" width="1" height="1"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 km · Corrales Avenue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="631-Ai-7Rp">
-                                                <rect key="frame" x="56.000000000000014" y="72.666666666666671" width="168.33333333333337" height="18"/>
+                                                <rect key="frame" x="21" y="55.333333333333329" width="168.33333333333334" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-U6-MOW">
-                                                <rect key="frame" x="16" y="106.66666666666666" width="343" height="40"/>
+                                                <rect key="frame" x="16" y="89.333333333333343" width="343" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JJW-of-usP">
                                                         <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="40"/>
@@ -540,10 +540,10 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-bh-Ri3">
-                                                <rect key="frame" x="0.0" y="146.66666666666663" width="375" height="275"/>
+                                                <rect key="frame" x="0.0" y="129.33333333333337" width="375" height="275"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tID-hs-P1J">
-                                                        <rect key="frame" x="16" y="26" width="137.66666666666666" height="23"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promos &amp; Featured Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tID-hs-P1J">
+                                                        <rect key="frame" x="16" y="26" width="230" height="23"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -587,13 +587,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AM-rt-Rvq">
-                                                <rect key="frame" x="16" y="421.66666666666669" width="88" height="23"/>
+                                                <rect key="frame" x="16" y="404.33333333333331" width="88" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="299.33333333333337" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-dl-qmS" customClass="AutoSizedTableView" customModule="Tsada_Delivery" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="450.66666666666674" width="375" height="302.33333333333326"/>
+                                                <rect key="frame" x="0.0" y="433.33333333333326" width="375" height="319.66666666666674"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MenuCategoryCell" textLabel="LPh-8w-Ckz" detailTextLabel="g3g-Fv-cJi" rowHeight="50" style="IBUITableViewCellStyleValue1" id="qOP-jA-7Kr">
@@ -2172,14 +2172,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="LyP-3s-en4">
-                                                <rect key="frame" x="172.66666666666666" y="343" width="18" height="18"/>
+                                                <rect key="frame" x="170.66666666666666" y="343" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="LyP-3s-en4" secondAttribute="height" multiplier="1:1" id="v5a-0h-odY"/>
                                                     <constraint firstAttribute="width" constant="18" id="xs2-rT-J9O"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="delivery address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uah-Me-YVZ" customClass="SmallCapsLabel" customModule="Tsada_Delivery" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="340.33333333333331" width="148.66666666666666" height="23"/>
+                                                <rect key="frame" x="16" y="340.33333333333331" width="146.66666666666666" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2233,14 +2233,14 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="3Od-T8-UMl">
-                                                <rect key="frame" x="136.66666666666666" y="508.66666666666663" width="18" height="18"/>
+                                                <rect key="frame" x="130" y="508.66666666666663" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="3Od-T8-UMl" secondAttribute="height" multiplier="1:1" id="4jP-UJ-xmJ"/>
                                                     <constraint firstAttribute="width" constant="18" id="qyI-mR-Ocw"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U10-Xh-yaz" customClass="SmallCapsLabel" customModule="Tsada_Delivery" customModuleProvider="target">
-                                                <rect key="frame" x="16.000000000000007" y="506" width="112.66666666666669" height="23"/>
+                                                <rect key="frame" x="16" y="506" width="106" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2265,7 +2265,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="order details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBe-B3-4oI" customClass="SmallCapsLabel" customModule="Tsada_Delivery" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="591.66666666666663" width="118" height="23"/>
+                                                <rect key="frame" x="15.999999999999993" y="591.66666666666663" width="112.33333333333331" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2283,7 +2283,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="delivery estimate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gv-o0-afr" customClass="SmallCapsLabel" customModule="Tsada_Delivery" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="675.33333333333337" width="152" height="23"/>
+                                                <rect key="frame" x="16" y="675.33333333333337" width="152.66666666666666" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2301,7 +2301,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment method" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-aG-Z34" customClass="SmallCapsLabel" customModule="Tsada_Delivery" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="740.66666666666663" width="143.33333333333334" height="23"/>
+                                                <rect key="frame" x="16" y="740.66666666666663" width="151.33333333333334" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <color key="textColor" red="0.86683595179999995" green="0.3687463701" blue="0.33700007199999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2319,14 +2319,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="oYL-qq-Q6C">
-                                                <rect key="frame" x="167.33333333333334" y="743.33333333333337" width="18" height="18"/>
+                                                <rect key="frame" x="175.33333333333334" y="743.33333333333337" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="WHk-mr-uTD"/>
                                                     <constraint firstAttribute="width" secondItem="oYL-qq-Q6C" secondAttribute="height" multiplier="1:1" id="kl5-6H-IOf"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-AC-UkR" userLabel="Payment Method Button">
-                                                <rect key="frame" x="16" y="740.66666666666663" width="169.33333333333334" height="45.333333333333371"/>
+                                                <rect key="frame" x="16" y="740.66666666666663" width="177.33333333333334" height="45.333333333333371"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
                                                 <connections>
                                                     <action selector="changePaymentMethodTapped:" destination="khA-Tt-6Cl" eventType="touchUpInside" id="sPD-SB-k08"/>

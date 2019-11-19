@@ -120,7 +120,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         let restaurant = filteredRestaurants[indexPath.row]
         cell.restaurantName.text = restaurant.name
         cell.restaurantCategories.text = restaurant.categories
-        cell.deliveryEstimate.text = restaurant.distanceTime?.time
+        cell.deliveryEstimate.text = restaurant.deliveryTimeEstimate
         
         return cell
     }
