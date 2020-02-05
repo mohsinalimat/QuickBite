@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeaturedItemCell" id="gTV-IL-0wX" customClass="FeaturedItemCollectionViewCell" customModule="QuickBite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJ4-iC-3E8" userLabel="Content View">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_food_3" translatesAutoresizingMaskIntoConstraints="NO" id="txo-ua-dCV">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="txo-ua-dCV" secondAttribute="height" multiplier="1:1" id="NPr-ga-EF9"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5pcs. Barbeque Chicken Wings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qG-AW-eSj">
+                                <rect key="frame" x="0.0" y="130" width="130" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₱149" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78F-sE-Sds">
+                                <rect key="frame" x="0.0" y="170" width="35" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="txo-ua-dCV" firstAttribute="leading" secondItem="lJ4-iC-3E8" secondAttribute="leading" id="1fe-MP-h53"/>
+                            <constraint firstItem="8qG-AW-eSj" firstAttribute="top" secondItem="txo-ua-dCV" secondAttribute="bottom" id="QH8-yn-LUc"/>
+                            <constraint firstItem="78F-sE-Sds" firstAttribute="leading" secondItem="lJ4-iC-3E8" secondAttribute="leading" id="Qwq-9X-TB4"/>
+                            <constraint firstItem="8qG-AW-eSj" firstAttribute="leading" secondItem="lJ4-iC-3E8" secondAttribute="leading" id="W2O-SD-UvC"/>
+                            <constraint firstAttribute="trailing" secondItem="txo-ua-dCV" secondAttribute="trailing" id="hYA-K1-yeG"/>
+                            <constraint firstItem="78F-sE-Sds" firstAttribute="top" secondItem="8qG-AW-eSj" secondAttribute="bottom" constant="-1" id="oCY-eV-wu1"/>
+                            <constraint firstItem="txo-ua-dCV" firstAttribute="top" secondItem="lJ4-iC-3E8" secondAttribute="top" id="p4A-dM-ROB"/>
+                            <constraint firstAttribute="trailing" secondItem="8qG-AW-eSj" secondAttribute="trailing" id="wX0-qO-EVe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lJ4-iC-3E8" secondAttribute="trailing" id="3fs-Nr-JKO"/>
+                <constraint firstItem="lJ4-iC-3E8" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottom" id="5yw-tx-I2O"/>
+                <constraint firstAttribute="top" secondItem="lJ4-iC-3E8" secondAttribute="top" id="gRL-O1-5OK"/>
+                <constraint firstItem="lJ4-iC-3E8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="q9d-PM-aDg"/>
+            </constraints>
+            <size key="customSize" width="153" height="117"/>
+            <connections>
+                <outlet property="imageView" destination="txo-ua-dCV" id="FZD-Ff-qjD"/>
+                <outlet property="price" destination="78F-sE-Sds" id="D6G-fr-sJO"/>
+                <outlet property="title" destination="8qG-AW-eSj" id="gDe-jA-tJe"/>
+            </connections>
+            <point key="canvasLocation" x="121.73913043478262" y="57.589285714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sample_food_3" width="700" height="350"/>
+    </resources>
+</document>

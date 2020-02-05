@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:QuickBite.xcodeproj">
+      location = "group:/Users/Griffin/Development/iOS/QuickBite/Tsada Delivery.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
