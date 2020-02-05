@@ -12,7 +12,7 @@ Proof-of-concept food delivery app 🍔 Written in Swift 5
 
 <table><tr><td>
     <img src="samples/quickbite.gif">
-  </td><td><img src="samples/screenshot_4.png" width="375"></td></tr>
+  </td><td><img src="samples/screenshot_5.png" width="375"></td></tr>
 <tr><td>
     <img src="samples/screenshot_2.png" width="375">
 </td><td>
@@ -20,5 +20,7 @@ Proof-of-concept food delivery app 🍔 Written in Swift 5
 </td></tr>
 <tr><td>
     <img src="samples/screenshot_1.png" width="375" border="3">
+</td><td>
+    <img src="samples/screenshot_6.png" width="375" border="3">
 </td></tr>
 </table>
