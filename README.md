@@ -1,12 +1,14 @@
 # QuickBite
-Proof-of-concept food delivery app 🍔 Written in Swift 5
+Proof-of-concept food delivery app 🍔 Fully functional. Written in Swift 5.
+
+Android version: https://github.com/gsmalley10/QuickBite-android
 
 ## Technical Features
 - Google & Facebook Sign In
-- Reverse geolocation lookup (Google Places SDK)
+- Reverse geolocation lookup for delivery addresses (Google Places SDK)
 - Google Maps SDK integration
 - Push notifications
-- Firebase integration
+- Firebase integration & realtime updates
 - Crashlytics crash reporting
 - Modern and responsive UI
 
